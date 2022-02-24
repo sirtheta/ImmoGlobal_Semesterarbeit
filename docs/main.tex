@@ -1,0 +1,47 @@
+\documentclass[11pt,paper=a4]{scrartcl}
+
+%include all used packages
+\input{ads/definitions.tex}
+
+\begin{document}
+\input{ads/mainpage}
+%sets the space between text and footer
+%\addtolength{\skip\footins}{2pc plus 5pt}
+\setlength{\skip\footins}{3pc plus 5pt minus 2pt}
+
+\pagenumbering{roman}
+\newpage
+{\pagestyle{plain}
+\setcounter{tocdepth}{2}
+    \tableofcontents
+\cleardoublepage
+
+% Inhalt
+{\pagestyle{fancy}
+\lfoot{\footnotesize \arbeit, \autor, {\the\year}}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\include{content/aufgabenstellung.tex}
+\include{content/documentation.tex}
+\include{content/classdiagram.tex}
+\include{content/contextdiagramm.tex}
+
+%https://www.hermes.admin.ch/de/projektmanagement/verstehen/szenarien/it-individualanwendung.html
+%https://www.hermes.admin.ch/de/projektmanagement/anwenden/szenarien/it-individualanwendung.html#
+
+% Abbildungsverzeichnis
+\newpage 
+{\pagestyle{plain}
+\thispagestyle{empty}
+\quad 
+\newpage
+\pagenumbering{alph}
+\cleardoublepage
+\phantomsection \label{listoffig}
+\listoffigures
+
+% \clearpage
+% \bibliographystyle{agsm}
+% \bibliography{ArbeitBib}
+
+\end{document}

@@ -1,0 +1,88 @@
+@startuml ImmoGlobal
+!theme cerulean-outline
+hide circle
+skinparam classAttributeIconSize 0
+
+Person <|-- UserModel
+Person <|-- Kreditor
+Liegenschaft --{ Objekt
+Objekt }-- Mieter
+Mieter --{ Mietvertrag
+Mieter --{ Rechnung
+Person <|-- Mieter
+
+class Person {
+    -Name : string
+    -Vorname : string
+    -TelefonPrivat : int
+    -TelefonMobile : int
+    -TelefonBüro : int
+    -Email : string
+    -Geburtsdatum : date
+    -Strasse : string
+    -PLZ : int
+    -Ort : string
+}
+
+class Liegenschaft {
+    -Identifikation : int
+    -Bezeichnung : string
+    -Liegenschaftsadresse : string
+    -AnzahlObjekte : int
+    -Versicherung : List<string>
+    -Hauswart : string
+}
+
+class Objekt {
+    -Identifikation : int
+    -Bezeichnung : string
+    -Lage : string
+    -AnzahlZimmer : double
+    -Fläche : double
+    -Objektbeschreibung : string
+    -Kühlschrank : bool
+    -Geschirrspüler : bool
+    -KochherdBckofen : bool
+    -Waschmaschine : bool
+    -Tumbler : bool
+    -AnzahlSchlüssel : int
+}
+
+class UserModel {
+    -Username : string
+    -Passwort : secureString
+}
+
+class Mieter {
+    -Zivilstand : enum
+    -VorherigeAdresse : string
+    -Bankverbindung : string
+}
+
+class Mietvertrag {
+    -Mieter : Mieter
+    -Liegenschaft : Liegenschaft
+    -Mietbeginn : date
+    -Mietende : date
+    -Mietzins : double
+    -Nebenkostenart : enum
+    -Mietdepot : bool
+}
+
+class Rechnung {
+    -Konto : int
+    -Kreditor : Kreditor
+    -Rechnungsdatum : date
+    -Fälligkeitsdatum : date
+    -Zweck : ?
+    -Liegenschaft : Liegenschaft
+    -Betrag : double
+    -Kategorie : enum
+}
+
+class Kreditor {
+    -aktiv : bool
+    -Mehrwertsteuernummer : int
+    -Kontaktperson : strings
+}
+@enduml
