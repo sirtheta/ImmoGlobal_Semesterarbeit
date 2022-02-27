@@ -1,0 +1,10 @@
+trigger:
+- main
+pool:
+  vmImage: 'ubuntu-latest'
+steps:
+- bash: | 
+    sudo apt-get install texlive     
+    echo Starting pdflatex
+    pdflatex -interaction=nonstopmode ./main.tex
+    echo Done pdflatex.
