@@ -1,7 +1,7 @@
 \section{Aufgabenstellung}
 \subsection{Ausgangslage}
 
-Die Firma ImmoGlobal verwaltet im Auftrag ihrer Kunden Wohnliegenschaften in der ganzen Schweiz. Sie beschäftigt insgesamt 30 Personen in der Administration, 20 davon am Hauptsitz in Bern und je 5 in Lausanne und Zürich. Hinzu kommen Haus-wartungspersonen, die für eine oder mehrere Liegenschaften zuständig sind. Die Aktivitäten im Tessin werden von Zürich aus gesteuert.
+Die Firma ImmoGlobal verwaltet im Auftrag ihrer Kunden Wohnliegenschaften in der ganzen Schweiz. Sie beschäftigt insgesamt 30 Personen in der Administration, 20 davon am Hauptsitz in Bern und je 5 in Lausanne und Zürich. Hinzu kommen Hauswartungspersonen, die für eine oder mehrere Liegenschaften zuständig sind. Die Aktivitäten im Tessin werden von Zürich aus gesteuert.
 Das Aufgabenspektrum von ImmoGlobal umfasst folgende Aktivitäten:
 \begin{itemize}
     \item Vermietung der verschiedenen Mietobjekte (Wohnungen, Räume, Garagen und Parkplätze)
@@ -14,9 +14,9 @@ Das Aufgabenspektrum von ImmoGlobal umfasst folgende Aktivitäten:
     \item Rücknahme der Mietobjekte nach Ablauf des Mietverhältnisses (inkl. Übernahmeprotokoll)
 \end{itemize}
 
-ImmoGlobal arbeitet heute mit einer veralteten, eigenentwickelten Software sowie mit den gängigen Microsoft Office-Produkten (Word, Excel und Outlook). Diese Lösung ist nicht mehr zeitgerecht und muss angesichts des Wachstums der Firma in naher Zukunft ersetzt werden. Der Geschäftsführer von ImmoGlobal hat verschiedene, auf dem Markt verfügbare, Standardsoftware für die Verwaltung von Liegenschaften an-geschaut, erachtet sie aber als zu kompliziert. Er bevorzugt eine einfache, auf die Bedürfnisse von ImmoGlobal zugeschnittene Lösung und beauftragt Sie deshalb ei-ne solche Software zu entwickeln.\\
-Die Software soll dem Geschäftsführer und seinen Mitarbeiter/innen einen besseren Überblick über die zu verwaltenden Liegenschaften und Objekte erlauben, die Effizienz steigern sowie die zuhanden der Kunden zu liefernden Abrechnungen automatisieren.\\
-Basierend auf den Angaben im vorliegenden Dokument ist zuerst ein Pflichtenheft zu erstellen. Dabei sind die vorliegenden Informationen auf ihre Vollständigkeit hin zu überprüfen. Allfällige Lücken müssen im Hinblick auf das Verfassen des Pflichten-hefts geschlossen werden. Anschliessend ist auf der Basis des von Ihnen erstellten Pflichtenhefts ein Prototyp der Applikation zu entwickeln.
+ImmoGlobal arbeitet heute mit einer veralteten, eigenentwickelten Software sowie mit den gängigen Microsoft Office-Produkten (Word, Excel und Outlook). Diese Lösung ist nicht mehr zeitgerecht und muss angesichts des Wachstums der Firma in naher Zukunft ersetzt werden. Der Geschäftsführer von ImmoGlobal hat verschiedene, auf dem Markt verfügbare, Standardsoftware für die Verwaltung von Liegenschaften an-geschaut, erachtet sie aber als zu kompliziert. Er bevorzugt eine einfache, auf die Bedürfnisse von ImmoGlobal zugeschnittene Lösung und beauftragt Sie deshalb eine solche Software zu entwickeln.\\
+Die Software soll den Geschäftsführer:innen und seinen Mitarbeiter:innen einen besseren Überblick über die zu verwaltenden Liegenschaften und Objekte erlauben, die Effizienz steigern sowie die zuhanden der Kunden zu liefernden Abrechnungen automatisieren.\\
+Basierend auf den Angaben im vorliegenden Dokument ist zuerst ein Pflichtenheft zu erstellen. Dabei sind die vorliegenden Informationen auf ihre Vollständigkeit hin zu überprüfen. Allfällige Lücken müssen im Hinblick auf das Verfassen des Pflichtenhefts geschlossen werden. Anschliessend ist auf der Basis des von Ihnen erstellten Pflichtenhefts ein Prototyp der Applikation zu entwickeln.
 
 \subsection{Anforderungen}
 Jede Liegenschaft wird durch eine eindeutige Nummer gekennzeichnet und beinhaltet verschiedene Objekte (Wohnungen, Räume, Garagen oder Parkplätze), welche wiederum eine eindeutige Kennzeichnung innerhalb der Liegenschaft aufweisen.\\
@@ -24,7 +24,7 @@ Für jedes Objekt können mehrere Mietverträge im System vorhanden sein, wobei 
 Bei den Kreditorenrechnungen wird zwischen solchen, die ein bestimmtes Objekt betreffen, und solchen, welche die Liegenschaft als Ganzes betreffen, unterschieden. Dementsprechend muss jede Rechnung entweder einem Objekt oder einer Liegen-schaft zugeordnet und auf ein entsprechendes Konto gebucht werden.\\
 \newpage
 Der Prototyp muss mindestens folgende Funktionalität (MUSS-Kriterien) abdecken:
-\begin{itemize}
+\begin{itemize} \label{musskrit}
     \item Mandantenfähigkeit
     \item Verwaltung von Liegenschaften
     \item Verwaltung von Objekten
@@ -76,7 +76,7 @@ Der Prototyp muss mindestens folgende Informationen verwalten können:
         \footnotetext{Mindestanforderung: Ja/Nein; Erweiterung: Marke, Modell, Lieferdatum}
     \end{itemize}
 
-    \item Mieter/in
+    \item Mieter:in
     \begin{itemize}
         \item Name, Vorname 
         \item Geburtsdatum
@@ -89,7 +89,7 @@ Der Prototyp muss mindestens folgende Informationen verwalten können:
     \end{itemize}
     \item Mietvertrag
     \begin{itemize}
-        \item Mieter/in
+        \item Mieter:in
         \item Liegenschaft / Objekt
         \item Mietbeginn und gegebenenfalls Mietende
         \item Monatlicher Mietzins, monatliche Nebenkosten
