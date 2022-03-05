@@ -1,5 +1,6 @@
 @startuml Planning
 printscale weekly zoom 3
+language de
 
 'Phase defines
 Project starts 2022-02-15
@@ -7,21 +8,28 @@ Project starts 2022-02-15
 [1. Review] happens at 2022-03-08
 [Analyse] starts 2022-02-15
 [Analyse] ends 2022-03-13
+[1] happens at 2022-03-13
 [Design] starts at [Analyse]'s end
 [Design] ends 2022-03-31
+[2] happens at 2022-03-31
 [2. Review] happens at 2022-04-05
 [2. Plenum] happens at 2022-04-19
 [Implementation] starts at [Design]'s end
 [Implementation] ends 2022-05-01
+[3] happens at 2022-05-01   
 [Projektabgabe] happens at 2022-05-10
 [Test] starts at [Implementation]'s end
 [Test] ends 2022-05-10
+[Dokumentation] starts 2022-02-15 
+[Dokumentation] ends 2022-05-10 
+
 
 'Coloring
-[Analyse] is colored in Fuchsia
-[Design] is colored in GreenYellow
-[Implementation] is colored in OrangeRed
-[Test] is colored in BlueViolet
+[Analyse] is colored in Fuchsia/Black
+[Design] is colored in GreenYellow/Black
+[Implementation] is colored in OrangeRed/Black
+[Test] is colored in BlueViolet/Black
+[Dokumentation] is colored in Gold/Black
 
 2022-02-22 is colored in Salmon
 2022-03-08 is colored in Salmon

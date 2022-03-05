@@ -4,14 +4,14 @@
 Die Firma ImmoGlobal verwaltet im Auftrag ihrer Kunden Wohnliegenschaften in der ganzen Schweiz. Sie beschäftigt insgesamt 30 Personen in der Administration, 20 davon am Hauptsitz in Bern und je 5 in Lausanne und Zürich. Hinzu kommen Hauswartungspersonen, die für eine oder mehrere Liegenschaften zuständig sind. Die Aktivitäten im Tessin werden von Zürich aus gesteuert.
 Das Aufgabenspektrum von ImmoGlobal umfasst folgende Aktivitäten:
 \begin{itemize}
-    \item Vermietung der verschiedenen Mietobjekte (Wohnungen, Räume, Garagen und Parkplätze)
-    \item Erstellung und Verwaltung der Mietverträge.
-    \item Übergabe der Mietobjekte an die neuen Mieter (inkl. Übergabeprotokoll)
-    \item Mietzinsinkasso (inkl. Kontrolle und Mahnung)
-    \item Abrechnung der Nebenkosten
-    \item Führen einer einfachen Buchhaltung der Ein- und Ausgaben
-    \item Instandhaltung der Gebäude (Reparaturen und Renovationsarbeiten werden extern in Auftrag gegeben)
-    \item Rücknahme der Mietobjekte nach Ablauf des Mietverhältnisses (inkl. Übernahmeprotokoll)
+  \item Vermietung der verschiedenen Mietobjekte (Wohnungen, Räume, Garagen und Parkplätze)
+  \item Erstellung und Verwaltung der Mietverträge.
+  \item Übergabe der Mietobjekte an die neuen Mieter (inkl. Übergabeprotokoll)
+  \item Mietzinsinkasso (inkl. Kontrolle und Mahnung)
+  \item Abrechnung der Nebenkosten
+  \item Führen einer einfachen Buchhaltung der Ein- und Ausgaben
+  \item Instandhaltung der Gebäude (Reparaturen und Renovationsarbeiten werden extern in Auftrag gegeben)
+  \item Rücknahme der Mietobjekte nach Ablauf des Mietverhältnisses (inkl. Übernahmeprotokoll)
 \end{itemize}
 
 ImmoGlobal arbeitet heute mit einer veralteten, eigenentwickelten Software sowie mit den gängigen Microsoft Office-Produkten (Word, Excel und Outlook). Diese Lösung ist nicht mehr zeitgerecht und muss angesichts des Wachstums der Firma in naher Zukunft ersetzt werden. Der Geschäftsführer von ImmoGlobal hat verschiedene, auf dem Markt verfügbare, Standardsoftware für die Verwaltung von Liegenschaften an-geschaut, erachtet sie aber als zu kompliziert. Er bevorzugt eine einfache, auf die Bedürfnisse von ImmoGlobal zugeschnittene Lösung und beauftragt Sie deshalb eine solche Software zu entwickeln.\\
@@ -25,97 +25,97 @@ Bei den Kreditorenrechnungen wird zwischen solchen, die ein bestimmtes Objekt be
 \newpage
 Der Prototyp muss mindestens folgende Funktionalität (MUSS-Kriterien) abdecken:
 \begin{itemize} \label{musskrit}
-    \item Mandantenfähigkeit
-    \item Verwaltung von Liegenschaften
-    \item Verwaltung von Objekten
-    \item Verwaltung von Mieter/innen
-    \item Verwaltung von Mietverträgen (nur Inhalt, siehe unten)
-    \item Mietzinsinkasso / Verbuchung der Mietzinse auf den entsprechenden Konten
-    \item Mietzinskontrolle (inkl. Mahnung)
-    \item Erfassen der Kreditorenrechnungen / Verbuchung auf unterschiedliche Konten
+  \item Mandantenfähigkeit
+  \item Verwaltung von Liegenschaften
+  \item Verwaltung von Objekten
+  \item Verwaltung von Mieter/innen
+  \item Verwaltung von Mietverträgen (nur Inhalt, siehe unten)
+  \item Mietzinsinkasso / Verbuchung der Mietzinse auf den entsprechenden Konten
+  \item Mietzinskontrolle (inkl. Mahnung)
+  \item Erfassen der Kreditorenrechnungen / Verbuchung auf unterschiedliche Konten
 \end{itemize}
 
 \vspace{3mm}
 Gewünschte, zusätzliche Funktionalität (SOLL-Kriterien):
 \begin{itemize}
-    \item Mehrsprachigkeit
-    \item Übergabeprotokoll bei der Übergabe des Mietobjekts
-    \item Übernahmeprotokoll bei der Rücknahme des Mietobjekts
-    \item Nebenkostenabrechnung (Zusammenzug der entsprechend gekennzeichneten Rechnungen pro Konto für eine bestimmte Periode)
-    \item Nebenkosteninkasso / Verbuchung auf den entsprechenden Konten
-    \item Kontrolle des Nebenkosteninkassos (inkl. Mahnung)
+  \item Mehrsprachigkeit
+  \item Übergabeprotokoll bei der Übergabe des Mietobjekts
+  \item Übernahmeprotokoll bei der Rücknahme des Mietobjekts
+  \item Nebenkostenabrechnung (Zusammenzug der entsprechend gekennzeichneten Rechnungen pro Konto für eine bestimmte Periode)
+  \item Nebenkosteninkasso / Verbuchung auf den entsprechenden Konten
+  \item Kontrolle des Nebenkosteninkassos (inkl. Mahnung)
 \end{itemize}
 
 \vspace{3mm}
 Der Prototyp muss mindestens folgende Informationen verwalten können:
 \begin{itemize}
-    \item Liegenschaft
-    \begin{itemize}
-        \item Identifikation (nummerisch, frei wählbar)
-        \item Bezeichnung
-        \item Liegenschaftsadresse
-        \item Anzahl Objekte je Kategorie (Wohnung, Raum, Garage oder Parkplatz)
-        \item Für die Liegenschaft abgeschlossene Versicherungen (insb. Gebäude-, Haftpflicht- und Personenversicherungen).
-        \item Hauswartungsperson
-    \end{itemize}
-    \newpage
-    \item Objekt
-    \begin{itemize}
-        \item Identifikation (frei wählbar)
-        \item Bezeichnung
-        \item Lage (frei wählbar, z.B. «1. OG links», «1. OG Mitte», «1. OG rechts»)
-        \item Anzahl Zimmer (für Wohnungen)
-        \item Fläche (in m2)
-        \item Objektbeschreibung (freier Text)
-        \item Kühlschrank \footnotemark{}
-        \item Geschirrwaschmaschine\footnotemark[\value{footnote}]
-        \item Kochherd/Backofen \footnotemark[\value{footnote}]
-        \item Waschmaschine\footnotemark[\value{footnote}]
-        \item Tumbler\footnotemark[\value{footnote}]
-        \item Anzahl Schlüssel je Kategorie (Haus-, Wohnungs-, Briefkasten-, Waschküche-, Keller-, Estrichschlüssel, usw.)
-        \footnotetext{Mindestanforderung: Ja/Nein; Erweiterung: Marke, Modell, Lieferdatum}
-    \end{itemize}
+  \item Liegenschaft
+  \begin{itemize}
+    \item Identifikation (nummerisch, frei wählbar)
+    \item Bezeichnung
+    \item Liegenschaftsadresse
+    \item Anzahl Objekte je Kategorie (Wohnung, Raum, Garage oder Parkplatz)
+    \item Für die Liegenschaft abgeschlossene Versicherungen (insb. Gebäude-, Haftpflicht- und Personenversicherungen).
+    \item Hauswartungsperson
+  \end{itemize}
+  \newpage
+  \item Objekt
+  \begin{itemize}
+    \item Identifikation (frei wählbar)
+    \item Bezeichnung
+    \item Lage (frei wählbar, z.B. «1. OG links», «1. OG Mitte», «1. OG rechts»)
+    \item Anzahl Zimmer (für Wohnungen)
+    \item Fläche (in m2)
+    \item Objektbeschreibung (freier Text)
+    \item Kühlschrank \footnotemark{}
+    \item Geschirrwaschmaschine\footnotemark[\value{footnote}]
+    \item Kochherd/Backofen \footnotemark[\value{footnote}]
+    \item Waschmaschine\footnotemark[\value{footnote}]
+    \item Tumbler\footnotemark[\value{footnote}]
+    \item Anzahl Schlüssel je Kategorie (Haus-, Wohnungs-, Briefkasten-, Waschküche-, Keller-, Estrichschlüssel, usw.)
+    \footnotetext{Mindestanforderung: Ja/Nein; Erweiterung: Marke, Modell, Lieferdatum}
+  \end{itemize}
 
+  \item Mieter:in
+  \begin{itemize}
+    \item Name, Vorname 
+    \item Geburtsdatum
+    \item Heimatort 
+    \item Zivilstand
+    \item Vorherige Adresse
+    \item Telefonnummer (privat, mobil, beruflich)
+    \item Email-Adresse (privat, beruflich)
+    \item Bank-/Postverbindung
+  \end{itemize}
+  \item Mietvertrag
+  \begin{itemize}
     \item Mieter:in
-    \begin{itemize}
-        \item Name, Vorname 
-        \item Geburtsdatum
-        \item Heimatort 
-        \item Zivilstand
-        \item Vorherige Adresse
-        \item Telefonnummer (privat, mobil, beruflich)
-        \item Email-Adresse (privat, beruflich)
-        \item Bank-/Postverbindung
-    \end{itemize}
-    \item Mietvertrag
-    \begin{itemize}
-        \item Mieter:in
-        \item Liegenschaft / Objekt
-        \item Mietbeginn und gegebenenfalls Mietende
-        \item Monatlicher Mietzins, monatliche Nebenkosten
-        \item Art der Nebenkosten (Pauschal bzw. Akonto)
-        \item Auflistung der Kostenarten, welche über die Nebenkosten abgerechnet werden (Heiz-, Warmwasseraufbereitungs-, Wasser-, Hauswart-, Treppen-reinigungs-, Gartenarbeits-, Strom-, Lift-, Kabelfernsehkosten sowie Abwasser- Kehrichtgebühren)
-        \item Mietdepot (Ja/Nein) und Depotbetrag in CHF
-    \end{itemize}
-    \newpage
-    \item Rechnungen
-    \begin{itemize}
-        \item Konto (nummerisch, mindestens vierstellig)
-        \item Kreditor
-        \item Rechnungsdatum
-        \item Fälligkeitsdatum
-        \item Zweck
-        \item Liegenschaft / Objekt
-        \item Betrag brutto, Rabatt/Skonto, Betrag netto
-        \item Kategorie (Allgemein, Nebenkosten)
-    \end{itemize}
+    \item Liegenschaft / Objekt
+    \item Mietbeginn und gegebenenfalls Mietende
+    \item Monatlicher Mietzins, monatliche Nebenkosten
+    \item Art der Nebenkosten (Pauschal bzw. Akonto)
+    \item Auflistung der Kostenarten, welche über die Nebenkosten abgerechnet werden (Heiz-, Warmwasseraufbereitungs-, Wasser-, Hauswart-, Treppen-reinigungs-, Gartenarbeits-, Strom-, Lift-, Kabelfernsehkosten sowie Abwasser- Kehrichtgebühren)
+    \item Mietdepot (Ja/Nein) und Depotbetrag in CHF
+  \end{itemize}
+  \newpage
+  \item Rechnungen
+  \begin{itemize}
+    \item Konto (nummerisch, mindestens vierstellig)
     \item Kreditor
-    \begin{itemize}
-        \item Aktiv/gesperrt
-        \item Name
-        \item Adresse
-        \item Mehrwertsteuernummer
-        \item Telefonnummer, Fax, Email-Adresse
-        \item Kontaktperson (Name, Vorname, Telefonnummer, Mobilenummer, Email-Adresse)
-    \end{itemize}
+    \item Rechnungsdatum
+    \item Fälligkeitsdatum
+    \item Zweck
+    \item Liegenschaft / Objekt
+    \item Betrag brutto, Rabatt/Skonto, Betrag netto
+    \item Kategorie (Allgemein, Nebenkosten)
+  \end{itemize}
+  \item Kreditor
+  \begin{itemize}
+    \item Aktiv/gesperrt
+    \item Name
+    \item Adresse
+    \item Mehrwertsteuernummer
+    \item Telefonnummer, Fax, Email-Adresse
+    \item Kontaktperson (Name, Vorname, Telefonnummer, Mobilenummer, Email-Adresse)
+  \end{itemize}
 \end{itemize}

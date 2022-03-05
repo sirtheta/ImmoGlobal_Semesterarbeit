@@ -6,29 +6,22 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-%schriftart
+%Schriftart
 \renewcommand{\familydefault}{\sfdefault}
-
-%Definition der Kopfzeile
-% \usepackage{scrlayer-scrpage}
-% \pagestyle{scrheadings}
-% \ihead{\headmark}
-% \automark{section}
-% \chead{}
-% \ohead{\autor}
 
 \usepackage[activate]{microtype}
 %Abb. anstatt Abbildung
 \renewcaptionname{ngerman}{\figurename}{Abb.}
 \usepackage[dcucite]{harvard}
 \renewcommand{\harvardand}{und}
-% Set page size and margins
 
 %damit nur fref verwendet werden kann umm einen verweis auf eine Abbildung einzufügen
 \newcommand{\fref}[1]{\figurename\ \ref{#1}}
 
+%Schriftgrösse Abb. und Tabelle
 \usepackage{caption}
 \captionsetup[figure]{font=scriptsize}
+\captionsetup[table]{font=scriptsize}
 
 \usepackage{float}
 % Useful packages
@@ -38,16 +31,18 @@
 \setlength{\parindent}{0pt}
 \usepackage{setspace}
 %Keine Silbentrennung
-\usepackage[none]{hyphenat}
+% \usepackage[none]{hyphenat}
 \tolerance=1
 \emergencystretch=\maxdimen 
 \hbadness=10000
 
+%Tabellen mit Zeilenumbruch
+\usepackage{tabulary} 
+
 \usepackage{scrlayer-fancyhdr}
 % Turn on the style
 \pagestyle{fancy}
-% Clear the header and footer
-
+% Clear the footer
 \fancyfoot{}
 % Set the right side of the footer to be the page number
 \fancyfoot[R]{Seite | \thepage}
