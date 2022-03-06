@@ -1,0 +1,294 @@
+\section{Projektinitialisierung}
+\subsection{Ausgangslage}
+
+Die Firma ImmoGlobal verwaltet im Auftrag ihrer Kunden Wohnliegenschaften in der ganzen Schweiz. Sie beschäftigt insgesamt 30 Personen in der Administration, 20 davon am Hauptsitz in Bern und je 5 in Lausanne und Zürich. Hinzu kommen Hauswartungspersonen, die für eine oder mehrere Liegenschaften zuständig sind. Die Aktivitäten im Tessin werden von Zürich aus gesteuert.
+Das Aufgabenspektrum von ImmoGlobal umfasst folgende Aktivitäten:
+\begin{itemize}
+  \item Vermietung der verschiedenen Mietobjekte (Wohnungen, Räume, Garagen und Parkplätze)
+  \item Erstellung und Verwaltung der Mietverträge.
+  \item Übergabe der Mietobjekte an die neuen Mieter (inkl. Übergabeprotokoll)
+  \item Mietzinsinkasso (inkl. Kontrolle und Mahnung)
+  \item Abrechnung der Nebenkosten
+  \item Führen einer einfachen Buchhaltung der Ein- und Ausgaben
+  \item Instandhaltung der Gebäude (Reparaturen und Renovationsarbeiten werden extern in Auftrag gegeben)
+  \item Rücknahme der Mietobjekte nach Ablauf des Mietverhältnisses (inkl. Übernahmeprotokoll)
+\end{itemize}
+
+\section{Situationsanalyse (IST-Zustand)}
+ImmoGlobal arbeitet heute mit einer veralteten, eigenentwickelten Software sowie mit den gängigen Microsoft Office-Produkten (Word, Excel und Outlook). Diese Lösung ist nicht mehr zeitgerecht und muss angesichts des Wachstums der Firma in naher Zukunft ersetzt werden. Der Geschäftsführer von ImmoGlobal hat verschiedene, auf dem Markt verfügbare, Standardsoftware für die Verwaltung von Liegenschaften an-geschaut, erachtet sie aber als zu kompliziert. Er bevorzugt eine einfache, auf die Bedürfnisse von ImmoGlobal zugeschnittene Lösung und beauftragt Sie deshalb eine solche Software zu entwickeln.\\
+Die Software soll den Geschäftsführer:innen und seinen Mitarbeiter:innen einen besseren Überblick über die zu verwaltenden Liegenschaften und Objekte erlauben, die Effizienz steigern sowie die zuhanden der Kunden zu liefernden Abrechnungen automatisieren.\\
+Basierend auf den Angaben im vorliegenden Dokument ist zuerst ein Pflichtenheft zu erstellen. Dabei sind die vorliegenden Informationen auf ihre Vollständigkeit hin zu überprüfen. Allfällige Lücken müssen im Hinblick auf das Verfassen des Pflichtenhefts geschlossen werden. Anschliessend ist auf der Basis des von Ihnen erstellten Pflichtenhefts ein Prototyp der Applikation zu entwickeln.
+
+\subsection{Anforderungen}
+Jede Liegenschaft wird durch eine eindeutige Nummer gekennzeichnet und beinhaltet verschiedene Objekte (Wohnungen, Räume, Garagen oder Parkplätze), welche wiederum eine eindeutige Kennzeichnung innerhalb der Liegenschaft aufweisen.\\
+Für jedes Objekt können mehrere Mietverträge im System vorhanden sein, wobei zu einem bestimmten Zeitpunkt nur einer gültig sein darf. Für jeden Mietvertrag werden die geschuldeten und effektiv bezahlten Mietzinse und Nebenkostenanteile auf ent-sprechenden Konten gebucht, so dass eine Übersicht über die ausstehenden Beträge jederzeit erstellt werden kann.\\
+Bei den Kreditorenrechnungen wird zwischen solchen, die ein bestimmtes Objekt betreffen, und solchen, welche die Liegenschaft als Ganzes betreffen, unterschieden. Dementsprechend muss jede Rechnung entweder einem Objekt oder einer Liegen-schaft zugeordnet und auf ein entsprechendes Konto gebucht werden.\\
+
+\newpage
+Der Prototyp muss mindestens folgende Funktionalität (MUSS-Kriterien) abdecken:
+\begin{itemize} \label{musskrit}
+  \item Mandantenfähigkeit
+  \item Verwaltung von Liegenschaften
+  \item Verwaltung von Objekten
+  \item Verwaltung von Mieter/innen
+  \item Verwaltung von Mietverträgen (nur Inhalt, siehe unten)
+  \item Mietzinsinkasso / Verbuchung der Mietzinse auf den entsprechenden Konten
+  \item Mietzinskontrolle (inkl. Mahnung)
+  \item Erfassen der Kreditorenrechnungen / Verbuchung auf unterschiedliche Konten
+\end{itemize}
+
+\vspace{3mm}
+Gewünschte, zusätzliche Funktionalität (SOLL-Kriterien):
+\begin{itemize}
+  \item Mehrsprachigkeit
+  \item Übergabeprotokoll bei der Übergabe des Mietobjekts
+  \item Übernahmeprotokoll bei der Rücknahme des Mietobjekts
+  \item Nebenkostenabrechnung (Zusammenzug der entsprechend gekennzeichneten Rechnungen pro Konto für eine bestimmte Periode)
+  \item Nebenkosteninkasso / Verbuchung auf den entsprechenden Konten
+  \item Kontrolle des Nebenkosteninkassos (inkl. Mahnung)
+\end{itemize}
+
+\vspace{3mm}
+Der Prototyp muss mindestens folgende Informationen verwalten können:
+\begin{itemize}
+  \item Liegenschaft
+  \begin{itemize}
+    \item Identifikation (nummerisch, frei wählbar)
+    \item Bezeichnung
+    \item Liegenschaftsadresse
+    \item Anzahl Objekte je Kategorie (Wohnung, Raum, Garage oder Parkplatz)
+    \item Für die Liegenschaft abgeschlossene Versicherungen (insb. Gebäude-, Haftpflicht- und Personenversicherungen).
+    \item Hauswartungsperson
+  \end{itemize}
+  \newpage
+  \item Objekt
+  \begin{itemize}
+    \item Identifikation (frei wählbar)
+    \item Bezeichnung
+    \item Lage (frei wählbar, z.B. «1. OG links», «1. OG Mitte», «1. OG rechts»)
+    \item Anzahl Zimmer (für Wohnungen)
+    \item Fläche (in m2)
+    \item Objektbeschreibung (freier Text)
+    \item Kühlschrank \footnotemark{}
+    \item Geschirrwaschmaschine\footnotemark[\value{footnote}]
+    \item Kochherd/Backofen \footnotemark[\value{footnote}]
+    \item Waschmaschine\footnotemark[\value{footnote}]
+    \item Tumbler\footnotemark[\value{footnote}]
+    \item Anzahl Schlüssel je Kategorie (Haus-, Wohnungs-, Briefkasten-, Waschküche-, Keller-, Estrichschlüssel, usw.)
+    \footnotetext{Mindestanforderung: Ja/Nein; Erweiterung: Marke, Modell, Lieferdatum}
+  \end{itemize}
+
+  \item Mieter:in
+  \begin{itemize}
+    \item Name, Vorname 
+    \item Geburtsdatum
+    \item Heimatort 
+    \item Zivilstand
+    \item Vorherige Adresse
+    \item Telefonnummer (privat, mobil, beruflich)
+    \item Email-Adresse (privat, beruflich)
+    \item Bank-/Postverbindung
+  \end{itemize}
+  \item Mietvertrag
+  \begin{itemize}
+    \item Mieter:in
+    \item Liegenschaft / Objekt
+    \item Mietbeginn und gegebenenfalls Mietende
+    \item Monatlicher Mietzins, monatliche Nebenkosten
+    \item Art der Nebenkosten (Pauschal bzw. Akonto)
+    \item Auflistung der Kostenarten, welche über die Nebenkosten abgerechnet werden (Heiz-, Warmwasseraufbereitungs-, Wasser-, Hauswart-, Treppen-reinigungs-, Gartenarbeits-, Strom-, Lift-, Kabelfernsehkosten sowie Abwasser- Kehrichtgebühren)
+    \item Mietdepot (Ja/Nein) und Depotbetrag in CHF
+  \end{itemize}
+  \newpage
+  \item Rechnungen
+  \begin{itemize}
+    \item Konto (nummerisch, mindestens vierstellig)
+    \item Kreditor
+    \item Rechnungsdatum
+    \item Fälligkeitsdatum
+    \item Zweck
+    \item Liegenschaft / Objekt
+    \item Betrag brutto, Rabatt/Skonto, Betrag netto
+    \item Kategorie (Allgemein, Nebenkosten)
+  \end{itemize}
+  \item Kreditor
+  \begin{itemize}
+    \item Aktiv/gesperrt
+    \item Name
+    \item Adresse
+    \item Mehrwertsteuernummer
+    \item Telefonnummer, Fax, Email-Adresse
+    \item Kontaktperson (Name, Vorname, Telefonnummer, Mobilenummer, Email-Adresse)
+  \end{itemize}
+\end{itemize}
+
+\subsection{Rahmenbedingungen}
+
+Die Entwicklungsumgebung für dieses Projekt entspricht derjenigen, welche während des Programmierunterrichts verwendet wurde. Begründete Abweichungen davon sind erlaubt, sofern der damit verbundene Eigenprogrammieraufwand vergleichbar bleibt. Die Gründe dafür müssen in der Projektdokumentation dargelegt werden.
+Die Semesterarbeit wird als Informatikprojekt durchgeführt. Es wird erwartet, dass die gelernten Methoden und Instrumente des Projektmanagements sowie des Sys-tem Engineerings in die Praxis umgesetzt werden. Dazu gehören insbesondere (aber nicht nur) die Wahl eines adäquaten Vorgehensmodells, eine fundierte und detaillierte Planung der verschiedenen Aktivitäten sowie eine vollständige und nachvollziehbare Dokumentation des Projekts. Analyse und Design werden mittels UML vorgenommen.
+Das Projektmanagement umfasst nebst der bereits aufgeführten detaillierten Planung noch ein entsprechendes Controlling, eine Risikoanalyse mit Massnahmen, ein Qualitätsmanagement sowie ein Konfigurationsmanagement in einer sinnvollen Granularität.
+
+\subsection{Abgrenzung}
+Während der Semesterarbeit soll ein Prototyp einer Applikation wie in den Anforderungen in Kapitel \ref{musskrit} beschrieben, entstehen. Der Prototyp wird so aufgebaut, dass die Daten nur Lokal in einer Datenbank verwaltet werden. Auf den Anspruch, dass die Liegenschaftsverwaltung ImmoGlobal mehrere Standorte hat die auf die Applikation zugreifen müssen, wird in der Prototypphase nicht eingegangen.\\
+Die Mitarbeiterverwaltung gehört nicht zum Umfang dieser Arbeit.
+
+\subsection{Stakeholder Analyse}
+Die verschiedenen Stakeholder an diesem Projekt haben verschiedene Interessen, die es während dem gesamten Projekt zu berücksichtigen gilt. Als Stakeholder sind all jene gemeint, welche direkt oder indirekt mit dem System in Kontakt stehen. Besonderes Augenmerk sollte auf die Stakeholder welche direkt mit dem System in Verbindung kommen werden, gelegt werden.
+Um die verschiedenen Stakeholder aufzuzeigen, werden diese in 2 verschiedene Gruppen eingeteilt.
+
+\subsubsection{Stakeholder mit direkten Interessen}
+Diese Gruppe beinhaltet die Stakeholder, welche direkt mit der Applikation arbeiten werden.
+
+\begin{itemize}
+  \item Auftraggeber
+  \item Mitarbeiter:innen
+  \item Hauswartungspersonen
+  \item Investoren/Eigentümer der Mietobjekte
+\end{itemize}
+
+\subsubsection{Stakeholder mit indirekten Interessen}
+
+\begin{itemize}
+  \item Gesetzgeber und Behörden
+  \item Mietparteien
+  \item Lieferanten
+\end{itemize}
+
+\subsection{Stakeholder Risikoanalyse}
+Damit das Risiko besser eingeschätzt werden kann, werden die Kriterien «Macht und Einfluss» und «Interesse» bewertet. Durch Multiplikation dieser Faktoren wird das Risiko berechnet.
+
+\begin{table}[H]
+  \newcolumntype{a}{>{\columncolor[HTML]{fdebd0}}L}
+  \newcolumntype{z}{>{\columncolor[HTML]{e8daef}}L}
+  \newcolumntype{y}{>{\columncolor[HTML]{ccd1d1}}L}
+  \centering
+  \settowidth\tymin{\textbf{Stakeholder}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|L|L|L|a|z|y|}
+    \hline
+    \cellcolor[HTML]{e6f2ff}\textbf{Stakeholder} & 
+    \cellcolor[HTML]{e6f2ff}\textbf{Beschreibung} & 
+    \cellcolor[HTML]{fadbd8}\textbf{Erwartung}& 
+    \textbf{Macht und Einfluss} & 
+    \textbf{Interesse} & 
+    \textbf{Risiko}\\
+    \hline
+    Auftraggeber & 
+    Geschäftsführung von ImmoGlobal& 
+    Einfache, dem Bedürfnis von ImmoGlobal entsprechende Software, welche auf das Wachstum der Firma angepasst ist. &
+    7 &
+    5 & 
+    35\\ 
+    \hline
+    Mitarbeiter:innen & 
+    Mitarbeiter:innen von ImmoGlobal an den 3 Standorten & 
+    Einfache, leicht zu bedienende Software&
+    8 &
+    8 &
+    64\\
+    \hline
+    Hauswartungs-personen & 
+    Hauswarte im Dienst von ImmoGlobal &
+    Einfaches auffinden der Objekte durch eindeutige Kennzeichnung &
+    5 &
+    6 &
+    30 \\
+    \hline
+    Investoren/ Eigentümer der Mietobjekte & 
+    Personen/ Juristische Personen welchen die Immobilie gehört &
+    Keine Besonderen Erwartungen, Kosten dürfen nicht erhöht werden &
+    1 &
+    1 &
+    1 \\
+    \hline
+    Gesetzgeber und Behörden &
+    Mietgesetz, Steuerbehörde &
+    Gesetze werden eingehalten &
+    5 &
+    1 &
+    5 \\
+    \hline
+    Mietparteien & 
+    Mieter der Objekte von ImmoGlobal &
+    Korrekte Übergabeprotokolle &
+    1 &
+    2 &
+    2 \\
+    \hline
+    Lieferanten & 
+    Firmen, welche Aufträge von ImmoGlobal ausführen &
+    Schnelle Abwicklung der Zahlungen &
+    1 &
+    2 &
+    2 \\
+    \hline
+  \end{tabulary}
+  \caption{Stakeholder Risikoanalyse}
+  \label{tblRisikonalyse}
+\end{table}
+
+Wie aus der Risikoanalyse hervorgeht, ist besonders auf die Nutzer der Software zu achten. Das Risiko ist bei den Nutzern vor allem die Akzeptanz der Software. Um dieses Risiko möglichst gering zu halten, müssen die zukünftigen Nutzer von Anfang an in den Entwicklungsprozess mittels WireFrames und ersten Prototypen Miteingebungen werden.
+
+\subsection{Ziele}
+\begin{itemize}
+  \item Die Applikation deckt alle Muss-Ziele am Abgabetermin 10.5.2022, wie in den Anforderungen in Kapitel \ref{musskrit} beschrieben, ab.
+  \item Die Applikation kann die Daten persistent abspeichern.
+\end{itemize}
+
+\subsection{Anforderungsanalyse}
+
+
+\subsection{Konfigurationsmanagement}
+Im Kapitel Konfigurationsmanagement wird die Organisationsstruktur und die Projektplanung des Projekts aufgezeigt und wie der Quellcode und die Dokumentation verwaltet wird.
+
+\subsubsection{Beteiligte Personen/Rollen}
+Die Semesterarbeit wird vom Studierenden dokumentiert, ausgeführt und getestet.\\
+Der Auftraggeber ist der Dozent des Fachs System und Softwareengineering, \gutachter.
+
+Während der Semesterarbeit wird der Studierende durch den Dozenten \gutachter begleitet, welcher diese Arbeit dann auch bewerten wird.
+
+\subsubsection{Projektdokumentation}
+Die Projektdokumentation ist auf dem Rechner des Studierenden abgelegt und wird in LaTEX geschrieben. Die Sicherung erfolgt auf OneDrive und wird mit GIT im Ordner 'docs' des Applikationsodner verwaltet. 
+
+\subsubsection{Projektdaten (Code)}
+Die gesamte Arbeit wird, wie auch die Dokumentation, im GIT verwaltet, damit die Änderungen nachverfolgt werden können. Als GIT-Repository wird DevOps mit dem TEKO-Schulaccount verwendet.
+
+\subsubsection{Projektmethode}
+Da die Semesterarbeit mit nur einer Person gemacht wird, wird dies anhand des Sequenziellen Wasserfallmodel abgewickelt. Das Wasserfallmodel erscheint als geeignet, da dieses auf eine kürzere Projektzeit sehr gut angewendet werden kann und die Anforderungen klar dokumentiert und fixiert sind.
+
+\begin{figure}[htp]
+    \begin{center}
+        \includegraphics[width=0.5\linewidth]{content/images/wasserfallmodell.png}
+        \caption{Wasserfallmodell}
+        \label{fig:wasserfallmodell}
+      \end{center}
+\end{figure}
+
+\newpage
+
+\subsubsection{Phasen}
+Wie in der \fref{fig:wasserfallmodell} zu sehen ist, besteht das Modell grundsätzlich aus den folgenden 5 Phasen.
+  \begin{itemize}
+      \item Analyse und Definition:\\
+      Die Dienstleistungen, Einschränkungen und Ziele des Systems werden in Zusammenarbeit mit den Systembenutzern aufgestellt. Dann werden sie detaillierter  definiert und dienen so als Systemspezifikationen. 
+      \item System- und Softwareentwurf:\\  Der Systementwurfsprozess weist die Anforderungen entweder Hard- oder Softwaresystemen zu. So wird eine übergeordnete Systemarchitektur festgelegt. Beim Softwareentwurf geht es um das Erkennen und Beschreiben der grundlegenden abstrakten Softwaresysteme und ihrer Beziehungen zueinander. 
+      \item Implementierung und Modultests:\\  In dieser Phase wird der Softwareentwurf durch eine Menge von Programmen oder Programmeinheiten umgesetzt. Das Testen der Module stellt sicher, dass je de Einheit ihre Spezifikation erfüllt.
+      \item Integration und Systemtest:\\  Die einzelnen Programmeinheiten oder Programme werden integriert und als Ganzes getestet, um sicherzustellen, dass die Softwareanforderungen erfüllt werden. Nach den Tests wird das Softwaresystem an den Kunden ausgeliefert.
+      \item Betrieb und Wartung:\\ Normalerweise ist dies die längste Phase innerhalb des Lebenszyklus. Das System wird installiert und zum Gebrauch freigegeben. Zur Wartung gehören das Korrigieren von Fehlern,  die in den früheren Phasen nicht entdeckt wurden, die Verbesserung der Implementierung von Systemeinheiten und die Verbesserung des Systems, falls neue Anforderungen aufgedeckt werden
+  \end{itemize}
+
+Für die Semesterarbeit sind vor allem die Phasen 1-4 von zentraler Bedeutung.
+
+\subsubsection{Planung der Phasen}
+
+Die Detailplanung wird im DevOps mittels des dort verfügbaren Planungssystem, dem ''Delivery Plans'', erstellt und verwaltet. So können die noch zu erledigenden Arbeiten als Issue erfasst werden und sind dann in der entsprechenden Phase sichtbar.\\
+Die vier Phasen werden hier in der Monatsansicht abgebildet. Die Milestones sind entsprechenden den bekannten Daten markiert.
+
+\vspace*{3mm}
+
+\begin{figure}[htp]
+    \begin{center}
+        \includegraphics[width=1\linewidth]{content/diagrams/out/planning/planning.png}
+        \caption{GANT-Diagramm Planung}
+      \end{center}
+\end{figure}
