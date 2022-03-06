@@ -1,28 +1,5 @@
 \section{Projektinitialisierung}
-\subsection{Ausgangslage}
-
-Die Firma ImmoGlobal verwaltet im Auftrag ihrer Kunden Wohnliegenschaften in der ganzen Schweiz. Sie beschäftigt insgesamt 30 Personen in der Administration, 20 davon am Hauptsitz in Bern und je 5 in Lausanne und Zürich. Hinzu kommen Hauswartungspersonen, die für eine oder mehrere Liegenschaften zuständig sind. Die Aktivitäten im Tessin werden von Zürich aus gesteuert.
-Das Aufgabenspektrum von ImmoGlobal umfasst folgende Aktivitäten:
-\begin{itemize}
-  \item Vermietung der verschiedenen Mietobjekte (Wohnungen, Räume, Garagen und Parkplätze)
-  \item Erstellung und Verwaltung der Mietverträge.
-  \item Übergabe der Mietobjekte an die neuen Mieter (inkl. Übergabeprotokoll)
-  \item Mietzinsinkasso (inkl. Kontrolle und Mahnung)
-  \item Abrechnung der Nebenkosten
-  \item Führen einer einfachen Buchhaltung der Ein- und Ausgaben
-  \item Instandhaltung der Gebäude (Reparaturen und Renovationsarbeiten werden extern in Auftrag gegeben)
-  \item Rücknahme der Mietobjekte nach Ablauf des Mietverhältnisses (inkl. Übernahmeprotokoll)
-\end{itemize}
-
-\subsection{Situationsanalyse (IST-Zustand)}
-ImmoGlobal arbeitet heute mit einer veralteten, eigenentwickelten Software sowie mit den gängigen Microsoft Office-Produkten (Word, Excel und Outlook). Diese Lösung ist nicht mehr zeitgerecht und muss angesichts des Wachstums der Firma in naher Zukunft ersetzt werden. Der Geschäftsführer von ImmoGlobal hat verschiedene, auf dem Markt verfügbare, Standardsoftware für die Verwaltung von Liegenschaften an-geschaut, erachtet sie aber als zu kompliziert. Er bevorzugt eine einfache, auf die Bedürfnisse von ImmoGlobal zugeschnittene Lösung und beauftragt Sie deshalb eine solche Software zu entwickeln.\\
-Die Software soll den Geschäftsführer:innen und seinen Mitarbeiter:innen einen besseren Überblick über die zu verwaltenden Liegenschaften und Objekte erlauben, die Effizienz steigern sowie die zuhanden der Kunden zu liefernden Abrechnungen automatisieren.\\
-Basierend auf den Angaben im vorliegenden Dokument ist zuerst ein Pflichtenheft zu erstellen. Dabei sind die vorliegenden Informationen auf ihre Vollständigkeit hin zu überprüfen. Allfällige Lücken müssen im Hinblick auf das Verfassen des Pflichtenhefts geschlossen werden. Anschliessend ist auf der Basis des von Ihnen erstellten Pflichtenhefts ein Prototyp der Applikation zu entwickeln.
-
-\subsection{Anforderungen}
-Jede Liegenschaft wird durch eine eindeutige Nummer gekennzeichnet und beinhaltet verschiedene Objekte (Wohnungen, Räume, Garagen oder Parkplätze), welche wiederum eine eindeutige Kennzeichnung innerhalb der Liegenschaft aufweisen.\\
-Für jedes Objekt können mehrere Mietverträge im System vorhanden sein, wobei zu einem bestimmten Zeitpunkt nur einer gültig sein darf. Für jeden Mietvertrag werden die geschuldeten und effektiv bezahlten Mietzinse und Nebenkostenanteile auf ent-sprechenden Konten gebucht, so dass eine Übersicht über die ausstehenden Beträge jederzeit erstellt werden kann.\\
-Bei den Kreditorenrechnungen wird zwischen solchen, die ein bestimmtes Objekt betreffen, und solchen, welche die Liegenschaft als Ganzes betreffen, unterschieden. Dementsprechend muss jede Rechnung entweder einem Objekt oder einer Liegen-schaft zugeordnet und auf ein entsprechendes Konto gebucht werden.\\
+\input{content/shared/ausgangslage.tex}
 
 \newpage
 Der Prototyp muss mindestens folgende Funktionalität (MUSS-Kriterien) abdecken:
@@ -122,16 +99,11 @@ Der Prototyp muss mindestens folgende Informationen verwalten können:
   \end{itemize}
 \end{itemize}
 
-\subsection{Rahmenbedingungen}
+\input{content/shared/rahmenbedingungen.tex}
 
-Die Entwicklungsumgebung für dieses Projekt entspricht derjenigen, welche während des Programmierunterrichts verwendet wurde. Begründete Abweichungen davon sind erlaubt, sofern der damit verbundene Eigenprogrammieraufwand vergleichbar bleibt. Die Gründe dafür müssen in der Projektdokumentation dargelegt werden.
-Die Semesterarbeit wird als Informatikprojekt durchgeführt. Es wird erwartet, dass die gelernten Methoden und Instrumente des Projektmanagements sowie des Sys-tem Engineerings in die Praxis umgesetzt werden. Dazu gehören insbesondere (aber nicht nur) die Wahl eines adäquaten Vorgehensmodells, eine fundierte und detaillierte Planung der verschiedenen Aktivitäten sowie eine vollständige und nachvollziehbare Dokumentation des Projekts. Analyse und Design werden mittels UML vorgenommen.
-Das Projektmanagement umfasst nebst der bereits aufgeführten detaillierten Planung noch ein entsprechendes Controlling, eine Risikoanalyse mit Massnahmen, ein Qualitätsmanagement sowie ein Konfigurationsmanagement in einer sinnvollen Granularität.
+\input{content/shared/abgrenzung.tex}
 
-\subsection{Abgrenzung}
-Während der Semesterarbeit soll ein Prototyp einer Applikation wie in den Anforderungen in Kapitel \ref{musskrit} beschrieben, entstehen. Der Prototyp wird so aufgebaut, dass die Daten nur Lokal in einer Datenbank verwaltet werden. Auf den Anspruch, dass die Liegenschaftsverwaltung ImmoGlobal mehrere Standorte hat die auf die Applikation zugreifen müssen, wird in der Prototypphase nicht eingegangen.\\
-Die Mitarbeiterverwaltung gehört nicht zum Umfang dieser Arbeit.
-
+\section{Analyse}
 \subsection{Stakeholder Analyse}
 Die verschiedenen Stakeholder an diesem Projekt haben verschiedene Interessen, die es während dem gesamten Projekt zu berücksichtigen gilt. Als Stakeholder sind all jene gemeint, welche direkt oder indirekt mit dem System in Kontakt stehen. Besonderes Augenmerk sollte auf die Stakeholder welche direkt mit dem System in Verbindung kommen werden, gelegt werden.
 Um die verschiedenen Stakeholder aufzuzeigen, werden diese in 2 verschiedene Gruppen eingeteilt.
@@ -236,24 +208,27 @@ Wie aus der Risikoanalyse hervorgeht, ist besonders auf die Nutzer der Software 
 \end{itemize}
 
 \subsection{Anforderungsanalyse}
+\subsubsection{Funktionale Anforderungen}
+\input{content/shared/funktAnforderungen.tex}
+\subsubsection{Nichtfunktionale Anforderungen}
+\input{content/shared/nichtFunktAnforderungen.tex}
 
-
-\subsection{Konfigurationsmanagement}
+\section{Konfigurationsmanagement}
 Im Kapitel Konfigurationsmanagement wird die Organisationsstruktur und die Projektplanung des Projekts aufgezeigt und wie der Quellcode und die Dokumentation verwaltet wird.
 
-\subsubsection{Beteiligte Personen/Rollen}
+\subsection{Beteiligte Personen/Rollen}
 Die Semesterarbeit wird vom Studierenden dokumentiert, ausgeführt und getestet.\\
 Der Auftraggeber ist der Dozent des Fachs System und Softwareengineering, \gutachter.
 
 Während der Semesterarbeit wird der Studierende durch den Dozenten \gutachter begleitet, welcher diese Arbeit dann auch bewerten wird.
 
-\subsubsection{Projektdokumentation}
+\subsection{Projektdokumentation}
 Die Projektdokumentation ist auf dem Rechner des Studierenden abgelegt und wird in LaTEX geschrieben. Die Sicherung erfolgt auf OneDrive und wird mit GIT im Ordner 'docs' des Applikationsodner verwaltet. 
 
-\subsubsection{Projektdaten (Code)}
+\subsection{Projektdaten (Code)}
 Die gesamte Arbeit wird, wie auch die Dokumentation, im GIT verwaltet, damit die Änderungen nachverfolgt werden können. Als GIT-Repository wird DevOps mit dem TEKO-Schulaccount verwendet.
 
-\subsubsection{Projektmethode}
+\subsection{Projektmethode}
 Da die Semesterarbeit mit nur einer Person gemacht wird, wird dies anhand des Sequenziellen Wasserfallmodel abgewickelt. Das Wasserfallmodel erscheint als geeignet, da dieses auf eine kürzere Projektzeit sehr gut angewendet werden kann und die Anforderungen klar dokumentiert und fixiert sind.
 
 \begin{figure}[htp]
@@ -264,9 +239,7 @@ Da die Semesterarbeit mit nur einer Person gemacht wird, wird dies anhand des Se
       \end{center}
 \end{figure}
 
-\newpage
-
-\subsubsection{Phasen}
+\subsection{Phasen}
 Wie in der \fref{fig:wasserfallmodell} zu sehen ist, besteht das Modell grundsätzlich aus den folgenden 5 Phasen.
   \begin{itemize}
       \item Analyse und Definition:\\
@@ -278,9 +251,8 @@ Wie in der \fref{fig:wasserfallmodell} zu sehen ist, besteht das Modell grundsä
   \end{itemize}
 
 Für die Semesterarbeit sind vor allem die Phasen 1-4 von zentraler Bedeutung.
-
+\newpage
 \subsubsection{Planung der Phasen}
-
 Die Detailplanung wird im DevOps mittels des dort verfügbaren Planungssystem, dem ''Delivery Plans'', erstellt und verwaltet. So können die noch zu erledigenden Arbeiten als Issue erfasst werden und sind dann in der entsprechenden Phase sichtbar.\\
 Die vier Phasen werden hier in der Monatsansicht abgebildet. Die Milestones sind entsprechenden den bekannten Daten markiert.
 

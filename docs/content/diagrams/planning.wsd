@@ -7,11 +7,11 @@ Project starts 2022-02-15
 [1. Plenum] happens at 2022-02-22
 [1. Review] happens at 2022-03-08
 [Analyse] starts 2022-02-15
-[Analyse] ends 2022-03-13
-[1] happens at 2022-03-13
+[Analyse] ends 2022-03-15
+[1] happens at 2022-03-15
 [Design] starts at [Analyse]'s end
-[Design] ends 2022-03-31
-[2] happens at 2022-03-31
+[Design] ends 2022-04-06
+[2] happens at 2022-04-06
 [2. Review] happens at 2022-04-05
 [2. Plenum] happens at 2022-04-19
 [Implementation] starts at [Design]'s end
