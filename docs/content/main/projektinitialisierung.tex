@@ -131,22 +131,45 @@ Das Projektmanagement umfasst nebst der bereits aufgeführten detaillierten Plan
 Während der Semesterarbeit soll ein Prototyp einer Applikation wie in den Anforderungen beschrieben, entstehen. Der Prototyp wird so aufgebaut, dass die Daten nur Lokal in einer Datenbank verwaltet werden. Auf den Anspruch, dass die Liegenschaftsverwaltung ImmoGlobal mehrere Standorte hat, die auf die Applikation zugreifen müssen, wird in der Prototypphase nicht eingegangen.\\
 Die Verwaltung der Mitarbeiter gehört nicht zum Umfang dieser Arbeit.
 
-\section{Konfigurationsmanagement}
+\subsection{Ziele}
+\textbf{Funktionale Ziele}
+\begin{itemize}
+  \item Nach Einführung der Applikation können die Daten in der Applikation persistent abgespeichert werden
+  \item Nach Einführung der Applikation können Mietverträge erfasst werden
+  \item Nach Einführung der Applikation können Zahlungen auf die Mieter:in verbucht werden
+  \item Nach Einführung der Applikation können die Zahlungen der Mietzinse überprüft werden und bei bedarf können Mahnungen dazu erstellt werden
+  \item Nach Einführung der Applikation können Mieter:in, Mietobjekte und Liegenschaften erfasst werde
+  \item Nach Einführung der Applikation können Mieter:in, Mietobjekte und Liegenschaften verändert werden
+  \item Nach Einführung der Applikation können Kreditoren erfasst werden
+  \item Nach Einführung der Applikation können Bezahlungen auf die entsprechenden Konten verbucht werden
+  \item Die Passwörter werden nicht in Klartext in der Datenbank abgespeichert
+\end{itemize}
+
+\textbf{Nichtfunktionale Ziele}
+\begin{itemize}
+  \item Die Mitarbeiter:innen können sich via Persönlichem Login in der Applikation einloggen
+  \item Eine Gesamtübersicht über alle Liegenschaften steht den Mitarbeiter:innen nach dem einloggen zur Verfügung
+  \item Der Start der Applikation dauert nicht mehr als 10 Sekunden
+  \item Um den Datenschutz zu gewährleisten, soll der zugriff auf das Mietzinsinkasso mit einem Audit-Trail aufgezeichnet werden
+\end{itemize}
+
+
+\subsection{Konfigurationsmanagement}
 Im Kapitel Konfigurationsmanagement wird die Organisationsstruktur und die Projektplanung des Projekts aufgezeigt und wie der Quellcode und die Dokumentation verwaltet wird.
 
-\subsection{Beteiligte Personen/Rollen}
+\subsubsection{Beteiligte Personen/Rollen}
 Die Semesterarbeit wird vom Studierenden dokumentiert, ausgeführt und getestet.\\
 Der Auftraggeber ist der Dozent des Fachs System und Softwareengineering, \gutachter.
 
 Während der Semesterarbeit wird der Studierende durch den Dozenten \gutachter begleitet, welcher diese Arbeit dann auch bewerten wird.
 
-\subsection{Projektdokumentation}
-Die Projektdokumentation ist auf dem Rechner des Studierenden abgelegt und wird in LaTEX geschrieben. Die Sicherung erfolgt auf OneDrive und wird mit GIT im Ordner 'docs' des Applikationsodner verwaltet. 
+\subsubsection{Projektdokumentation}
+Die Projektdokumentation ist auf dem Rechner des Studierenden abgelegt und wird in LaTEX geschrieben. Die Sicherung erfolgt auf OneDrive und wird mit GIT im Ordner 'docs' des Applikationsordner verwaltet. 
 
-\subsection{Projektdaten (Code)}
+\subsubsection{Projektdaten (Code)}
 Die gesamte Arbeit wird, wie auch die Dokumentation, im GIT verwaltet, damit die Änderungen nachverfolgt werden können. Als GIT-Repository wird DevOps mit dem TEKO-Schulaccount verwendet.
 
-\subsection{Projektmethode}
+\subsubsection{Projektmethode}
 Da die Semesterarbeit mit nur einer Person gemacht wird, wird dies anhand des Sequenziellen Wasserfallmodel abgewickelt. Das Wasserfallmodel erscheint als geeignet, da dieses auf eine kürzere Projektzeit sehr gut angewendet werden kann und die Anforderungen klar dokumentiert und fixiert sind.
 
 \begin{figure}[htp]
@@ -157,7 +180,7 @@ Da die Semesterarbeit mit nur einer Person gemacht wird, wird dies anhand des Se
       \end{center}
 \end{figure}
 
-\subsection{Phasen}
+\subsubsection{Phasen}
 Wie in der \fref{fig:wasserfallmodell} zu sehen ist, besteht das Modell grundsätzlich aus den folgenden 5 Phasen.
   \begin{itemize}
       \item Analyse und Definition:\\
@@ -169,7 +192,7 @@ Wie in der \fref{fig:wasserfallmodell} zu sehen ist, besteht das Modell grundsä
   \end{itemize}
 
 Für die Semesterarbeit sind vor allem die Phasen 1-4 von zentraler Bedeutung.
-\newpage
+
 \subsubsection{Planung der Phasen}
 Die Detailplanung wird im DevOps mittels des dort verfügbaren Planungssystem, dem ''Delivery Plans'', erstellt und verwaltet. So können die noch zu erledigenden Arbeiten als Issue erfasst werden und sind dann in der entsprechenden Phase sichtbar.\\
 Die vier Phasen werden hier in der Monatsansicht abgebildet. Die Milestones sind entsprechenden den bekannten Daten markiert.
@@ -182,9 +205,74 @@ Die vier Phasen werden hier in der Monatsansicht abgebildet. Die Milestones sind
         \caption{GANT-Diagramm Planung}
       \end{center}
 \end{figure}
+\newpage
+
+\subsection{Qualitätsmanagement}
+Zum sicherstellen der Qualität werden 2 Reviews mit dem Auftraggeber ausgeführt, in welchen der aktuelle Stand des Projektes besprochen wird und eventuelle Massnahmen ergriffen werden können. \\
+Zur Qualitätssicherung der Anforderungen der Applikation werden entsprechende Testfälle erstellt und die Applikation damit verifiziert. Wo Programmiertechnisch machbar, sollen automatisierte Tests erstellt und ausgeführt werden. Um die Nichtfunktionalen Anforderungen zu testen, werden Benutzertests durchgeführt. Dabei werden die zukünftigen Benutzer der Applikation miteinbezogen. Informationen zu den definierten Testfällen siehe Kapitel \ref{testkonzept}.
 
 \newpage
 \section{Analyse}
+\subsection{Risikoanalyse}
+Das Risiko berechnet sich durch Multiplikation der Eintrittswahrscheinlichkeit und der Auswirkung. \\
+\textbf{Auswirkung}
+\begin{itemize}
+  \item 1 = Unbedeutend
+  \item 2 = Gering
+  \item 3 = Moderat
+  \item 4 = Bedeutend
+  \item 5 = Katastrophal
+\end{itemize}
+
+\textbf{Eintrittswahrscheinlichkeit}
+\begin{itemize}
+  \item 1 = unvorstellbar
+  \item 2 = unwahrscheinlich
+  \item 3 = gelegentlich
+  \item 4 = sehr wahrscheinlich
+  \item 5 = häufig
+\end{itemize}
+
+\begin{table}[H]
+  % \newcolumntype{a}{>{\columncolor[HTML]{fdebd0}}L}
+  % \newcolumntype{z}{>{\columncolor[HTML]{e8daef}}L}
+  \centering
+  \settowidth\tymin{\textbf{Auswirkung}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|C|L|L|C|C|C|}
+    \hline
+    \rowcolor[HTML]{fdebd0}
+    \textbf{Nr.} & 
+    \textbf{Risikobeschreibung} & 
+    \textbf{Kategorie}& 
+    \textbf{Eintrittswahr-scheinlichkeit} & 
+    \textbf{Auswirkung} & 
+    \textbf{Risiko}\\
+    \hline
+    1 & Der Zeitplan kann nicht eingehalten werden & Organisatorisch & 3 & 4 & \cellcolor[HTML]{FF0000} 12\\
+    \hline
+    2 & Das Knowhow zum umsetzen des Projektes ist nicht vorhanden & Personell & 2 & 4 & \cellcolor[HTML]{FFC000}8\\
+    \hline
+    3 & Durch Krankheit bedingter Personalausfall  & Personell & 2  & 4 & \cellcolor[HTML]{FFC000}8\\
+    \hline
+    4 & Die neue Software wird vom Endnutzer nicht akzeptiert & Projektmanagement & 2 & 5 & \cellcolor[HTML]{FF0000}10\\
+    \hline
+    5 &  Die gesetzten Ziele können nicht erreicht werden & Organisatorisch & 2  & 4 & \cellcolor[HTML]{FFC000}8\\
+    \hline
+    6 & Es werden falsche Anforderungen umgesetzt & Projektmanagement & 2 & 3 & \cellcolor[HTML]{92D050}6\\
+    \hline
+    7 & Das abspeichern / hinzufügen von Daten dauert zu lange & Technisch & 2 & 2 & \cellcolor[HTML]{00B050}4\\
+    \hline
+    8 & Die Anforderungen an die Applikation ändern sich & Organisatorisch & 1 & 4 & \cellcolor[HTML]{00B050}4\\
+    \hline
+  \end{tabulary}
+  \caption{Risikoanalyse}
+  \label{Risikoanalyse}
+\end{table}
+
+Wie in der Tabelle zu sehen ist, besteht das grösste Risiko in der Zeitplanung. Um dieses Risiko zu minimieren, muss die Zeitplanung täglich aktualisiert werden und so der fortschritt des Projektes überprüft werden. Sobald Abweichungen festgestellt werden, muss die Planung angepasst und Massnahmen ergriffen werden. \\
+Auch das Risiko der Akzeptanz der Endnutzer wird als hoch eingeschätzt. Dem wird entgegengewirkt, indem diese von Anfang an miteinbezogen werden und sobald erste Prototypen vorhanden sind, werden diese mit den Usern besprochen.
+
 \subsection{Stakeholderanalyse}
 Die verschiedenen Stakeholder an diesem Projekt haben verschiedene Interessen, die es während dem gesamten Projekt zu berücksichtigen gilt. Als Stakeholder sind all jene gemeint, welche direkt oder indirekt mit dem System in Kontakt stehen. Besonderes Augenmerk sollte auf die Stakeholder welche direkt mit dem System in Verbindung kommen werden, gelegt werden.
 Um die verschiedenen Stakeholder aufzuzeigen, werden diese in 2 verschiedene Gruppen eingeteilt.
@@ -207,7 +295,6 @@ Diese Gruppe beinhaltet die Stakeholder, welche direkt mit der Applikation arbei
   \item Lieferanten
 \end{itemize}
 
-\newpage
 \subsection{Stakeholderbewertung}
 Damit der Einfluss der einzelnen Stakeholder besser bewertet werden kann, wir deren Macht und Einfluss und das Interesse in einer Tabelle festgehalten.
 
@@ -274,21 +361,13 @@ Damit der Einfluss der einzelnen Stakeholder besser bewertet werden kann, wir de
 
 \begin{figure}[H]
   \begin{center}
-      \includegraphics[width=1\linewidth]{content/images/Stakeholdematrix.png}
-      \caption{Stakeholdematrix}
-      \label{fig:Stakeholder}
+      \includegraphics[width=0.9\linewidth]{content/images/Stakeholdematrix.png}
+      \caption{Stakeholdermatrix}
+      \label{fig:Stakeholdermatrix}
     \end{center}
 \end{figure}
 
 Wie aus der Stakeholderanalyse hervorgeht, ist besonders auf die Nutzer der Software zu achten. Das Risiko ist bei den Nutzern vor allem die Akzeptanz der Software. Um dieses Risiko möglichst gering zu halten, müssen die zukünftigen Nutzer von Anfang an in den Entwicklungsprozess mittels WireFrames und ersten Prototypen mit eingebunden werden.
-
-\subsection{Ziele}
-\begin{itemize}
-  \item Die Applikation deckt alle Muss-Ziele am Abgabetermin 10.5.2022, wie in den Anforderungen in Kapitel \ref{musskrit} beschrieben, ab.
-  \item Die Applikation kann die Daten persistent abspeichern.
-\end{itemize}
-
-\section{Definition der Benutzeranforderungen} \label{anforderungen}
 
 \subsection{Funktionale Anforderungen}
 
