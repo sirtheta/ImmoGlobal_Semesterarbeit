@@ -136,21 +136,23 @@ Die Verwaltung der Mitarbeiter gehört nicht zum Umfang dieser Arbeit.
 \begin{itemize}
   \item Nach Einführung der Applikation können die Daten in der Applikation persistent abgespeichert werden
   \item Nach Einführung der Applikation können Mietverträge erfasst werden
-  \item Nach Einführung der Applikation können Zahlungen auf die Mieter:in verbucht werden
+  \item Nach Einführung der Applikation können Rechnungen erstellt werden
+  \item Nach Einführung der Applikation können Zahlungen der die Mieter:in verbucht werden
   \item Nach Einführung der Applikation können die Zahlungen der Mietzinse überprüft werden und bei bedarf können Mahnungen dazu erstellt werden
-  \item Nach Einführung der Applikation können Mieter:in, Mietobjekte und Liegenschaften erfasst werde
-  \item Nach Einführung der Applikation können Mieter:in, Mietobjekte und Liegenschaften verändert werden
+  \item Nach Einführung der Applikation können Mieter:innen, Mietobjekte und Liegenschaften erfasst werde
+  \item Nach Einführung der Applikation können Mieter:innen, Mietobjekte und Liegenschaften verändert werden
   \item Nach Einführung der Applikation können Kreditoren erfasst werden
   \item Nach Einführung der Applikation können Bezahlungen auf die entsprechenden Konten verbucht werden
   \item Die Passwörter werden nicht in Klartext in der Datenbank abgespeichert
+  \item Die Mitarbeiter:innen können sich via Persönlichem Login in der Applikation einloggen
 \end{itemize}
 
 \textbf{Nichtfunktionale Ziele}
 \begin{itemize}
-  \item Die Mitarbeiter:innen können sich via Persönlichem Login in der Applikation einloggen
   \item Eine Gesamtübersicht über alle Liegenschaften steht den Mitarbeiter:innen nach dem einloggen zur Verfügung
   \item Der Start der Applikation dauert nicht mehr als 10 Sekunden
-  \item Um den Datenschutz zu gewährleisten, soll der zugriff auf das Mietzinsinkasso mit einem Audit-Trail aufgezeichnet werden
+  \item Um den Datenschutz zu gewährleisten, soll jegliche Änderung betreffend Liegenschaft, Objekt und Mieter in Audit-Trail aufgezeichnet werden
+  \item Die Applikation ist so selbsterklärend aufgebaut, dass die Benutzer nach einer kurzen Einführung in der Lage sind die Applikation zu bedienen.
 \end{itemize}
 
 
@@ -199,9 +201,9 @@ Die vier Phasen werden hier in der Monatsansicht abgebildet. Die Milestones sind
 
 \vspace*{3mm}
 
-\begin{figure}[htp]
+\begin{figure}[H]
     \begin{center}
-        \includegraphics[width=1\linewidth]{content/diagrams/out/planning/planning.png}
+        \includegraphics[width=0.95\linewidth]{content/diagrams/out/planning/planning.png}
         \caption{GANT-Diagramm Planung}
       \end{center}
 \end{figure}
@@ -215,27 +217,19 @@ Zur Qualitätssicherung der Anforderungen der Applikation werden entsprechende T
 \section{Analyse}
 \subsection{Risikoanalyse}
 Das Risiko berechnet sich durch Multiplikation der Eintrittswahrscheinlichkeit und der Auswirkung. \\
-\textbf{Auswirkung}
-\begin{itemize}
-  \item 1 = Unbedeutend
-  \item 2 = Gering
-  \item 3 = Moderat
-  \item 4 = Bedeutend
-  \item 5 = Katastrophal
-\end{itemize}
-
-\textbf{Eintrittswahrscheinlichkeit}
-\begin{itemize}
-  \item 1 = unvorstellbar
-  \item 2 = unwahrscheinlich
-  \item 3 = gelegentlich
-  \item 4 = sehr wahrscheinlich
-  \item 5 = häufig
-\end{itemize}
 
 \begin{table}[H]
-  % \newcolumntype{a}{>{\columncolor[HTML]{fdebd0}}L}
-  % \newcolumntype{z}{>{\columncolor[HTML]{e8daef}}L}
+  \centering
+  \settowidth\tymin{\textbf{Auswirkung}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{LCL}
+    \textbf{Auswirkung} & &
+    \textbf{Eintrittswahrscheinlichkeit} \\
+    1 = Unbedeutend\newline 2 = Gering \newline 3 = Moderat \newline 4 = Bedeutend \newline 5 = Katastrophal && 1 = unvorstellbar\newline  2 = unwahrscheinlich\newline 3 = gelegentlich\newline 4 = sehr wahrscheinlich\newline 5 = häufig\\
+  \end{tabulary}
+\end{table}
+
+\begin{table}[H]
   \centering
   \settowidth\tymin{\textbf{Auswirkung}}
   \setlength\extrarowheight{2pt}
@@ -294,7 +288,7 @@ Diese Gruppe beinhaltet die Stakeholder, welche direkt mit der Applikation arbei
   \item Mietparteien
   \item Lieferanten
 \end{itemize}
-
+\newpage
 \subsection{Stakeholderbewertung}
 Damit der Einfluss der einzelnen Stakeholder besser bewertet werden kann, wir deren Macht und Einfluss und das Interesse in einer Tabelle festgehalten.
 
@@ -361,7 +355,7 @@ Damit der Einfluss der einzelnen Stakeholder besser bewertet werden kann, wir de
 
 \begin{figure}[H]
   \begin{center}
-      \includegraphics[width=0.9\linewidth]{content/images/Stakeholdematrix.png}
+      \includegraphics[width=0.58\textwidth]{content/images/Stakeholdematrix.png}
       \caption{Stakeholdermatrix}
       \label{fig:Stakeholdermatrix}
     \end{center}
@@ -369,9 +363,11 @@ Damit der Einfluss der einzelnen Stakeholder besser bewertet werden kann, wir de
 
 Wie aus der Stakeholderanalyse hervorgeht, ist besonders auf die Nutzer der Software zu achten. Das Risiko ist bei den Nutzern vor allem die Akzeptanz der Software. Um dieses Risiko möglichst gering zu halten, müssen die zukünftigen Nutzer von Anfang an in den Entwicklungsprozess mittels WireFrames und ersten Prototypen mit eingebunden werden.
 
-\subsection{Funktionale Anforderungen}
+\subsection{Anforderungsanalyse}
+\subsubsection{Funktionale Anforderungen}
+\input{content/main/funktionaleAnforderungen.tex}
 
-\subsection{Nichtfunktionale Anforderungen}
+\subsubsection{Nichtfunktionale Anforderungen}
 \begin{table}[ht]
   \centering
   \settowidth\tymin{\textbf{Prio}}

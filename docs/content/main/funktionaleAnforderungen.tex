@@ -1,0 +1,171 @@
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Prio}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|m{16cm}|L|}
+    \hline
+    \textbf{Datenhaltung}&\textbf{Prio}\\
+    \hline
+      Die Daten der Applikation müssen in einer Datenbank gespeichert werden & 1\\
+    \hline
+  \end{tabulary}
+  \caption{AF-Datenhaltung}
+  \label{afDatenhaltung}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Prio}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|m{16cm}|L|}
+    \hline
+    \textbf{Mietverträge}&\textbf{Prio}\\
+    \hline
+    In der Applikation müssen die Mietverträge mit folgenden Angaben erfasst werden können:
+    \begin{itemize}
+      \item Welcher Mieter:in, bei Wohngemeinschaften/Ehepaaren muss es möglich sein mehrere Mieter pro Mietvertrag zu erfassen
+      \item Welche Liegenschaft / Objekt
+      \item Der Mietbeginn und gegebenenfalls Mietende
+      \item Der Monatlicher Mietzins und die monatlichen Nebenkosten
+      \item Die Art der Nebenkosten (Pauschal bzw. Akonto)
+      \item Eine Auflistung der Kostenarten, welche über die Nebenkosten abgerechnet werden (Heiz-, Warmwasseraufbereitungs-, Wasser-, Hauswart-, Treppen-reinigungs-, Gartenarbeits-, Strom-, Lift-, Kabelfernsehkosten sowie Abwasser- Kehrichtgebühren)
+      \item Ob ein Mietdepot eingerichtet wurde und wenn ja der Depotbetrag in CHF
+    \end{itemize}  & 1\\ 
+    \hline
+  \end{tabulary}
+  \caption{AF-Mietverträge}
+  \label{afMietverträge}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Prio}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|m{16cm}|L|}
+    \hline
+    \textbf{Liegenschaft erfassen}&\textbf{Prio}\\
+    \hline
+    Die Liegenschaft muss mit folgenden Informationen in der Applikation erfasst werden können:
+    \begin{itemize}
+      \item Eine Identifikationsnummer der Liegenschaft
+      \item Eine Bezeichnung der Liegenschaft
+      \item Die Liegenschaftsadresse
+      \item Wie viele Objekte pro Kategorie in der Liegenschaft vorhanden sind. Objektkategorie pro Liegenschaft sind: Wohnung, Raum, Garage, Parkplatz
+      \item Abgeschlossene Versicherungen für die Liegenschaft
+      \item Die zuständige Hauswartungsperson
+    \end{itemize} & 1\\ 
+    \hline
+  \end{tabulary}
+  \caption{AF-Liegenschaft erfassen}
+  \label{afLiegenschaftErfassen}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Prio}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|m{16cm}|L|}
+    \hline
+    \textbf{Objekt erfassen}&\textbf{Prio}\\
+    \hline
+    Ein Objekt muss mit folgenden Informationen in der Applikation erfasst werden können:
+    \begin{itemize}
+      \item Eine Identifikationsnummer des Objekts
+      \item Eine Bezeichnung des Objekts
+      \item Die Lage des Objekts. Z.B. 1. OG links
+      \item Die Anzahl der Zimmer beim Objekttyp Wohnungen
+      \item Die Fläche des Objekts
+      \item Eine Beschreibung als Freitextfeld
+      \item Was für Geräte in dem Objekt vorhanden sind. Z.B. Kühlschrank, Geschirrwaschmaschine, etc.
+      \item Die Anzahl aller Schlüssel nach Typ, die zu diesem Objekt vorhanden sind 
+    \end{itemize} & 1\\ 
+    \hline
+  \end{tabulary}
+  \caption{AF-Objekt erfassen}
+  \label{afObjektErfassen}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Prio}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|m{16cm}|L|}
+    \hline
+    \textbf{Mieter:in erfassen}&\textbf{Prio}\\
+    \hline
+    Die Mieter müssen mit folgenden Informationen in der Applikation erfasst werden können:
+    \begin{itemize}
+      \item Der Name und Vorname
+      \item Das Geburtsdatum
+      \item Der Heimatort
+      \item Der Zivilstand
+      \item Die vorherige Wohnadresse
+      \item Eine Telefonnummer
+      \item Eine Email-Adresse
+      \item Eine Bankverbindung
+    \end{itemize} & 1\\
+    \hline
+  \end{tabulary}
+  \caption{AF-Mieter:in erfassen}
+  \label{afMieterinerfassen}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Prio}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|m{16cm}|L|}
+    \hline
+    \textbf{Buchhaltung}&\textbf{Prio}\\
+    \hline
+      Es muss eine einfache Buchhaltung mit Ein- und Ausgaben geführt werden, wo die Einzahlungen der Mieter:innen (Mietzinse) und die Ausgaben für den Unterhalt und die Reparaturen verbucht werden können. Es muss überprüft werden können ob die Miete eines bestimmten Mieters schon bezahlt wurde und wenn nicht, muss eine Mahnung generiert werden können. (Mietzinsinkasso)& 1\\
+    \hline
+  \end{tabulary}
+  \caption{AF-Buchhaltung}
+  \label{afBuchhaltung}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Prio}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|m{16cm}|L|}
+    \hline
+    \textbf{Daten verändern}&\textbf{Prio}\\
+    \hline
+    Es müssen die Daten der Mieter:innen, die Daten je Liegenschaft und die Daten je Objekt verändert werden können. & 1\\
+    \hline
+  \end{tabulary}
+  \caption{AF-Daten verändern}
+  \label{afDatenVeraendern}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Prio}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|m{16cm}|L|}
+    \hline
+    \textbf{Änderungsverfolgung}&\textbf{Prio}\\
+    \hline
+     Um die Änderungen nachverfolgen zu können, wird bei jeder Änderung ein Eintrag in einer Audit-Trail-Tabelle auf der Datenbank geschrieben. & 4\\
+    \hline
+  \end{tabulary}
+  \caption{AF-Änderungsverfolgung}
+  \label{afAenderungsverfolgung}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Prio}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|m{16cm}|L|}
+    \hline
+    \textbf{Login in der Applikation}&\textbf{Prio}\\
+    \hline
+    Jede Mitarbeiter:in muss sich mit seinem Persönlichen Login in der Applikation einloggen können & 1\\
+    \hline
+  \end{tabulary}
+  \caption{AF-Login in der Applikation}
+  \label{afLogininderApplikatio}
+\end{table}
