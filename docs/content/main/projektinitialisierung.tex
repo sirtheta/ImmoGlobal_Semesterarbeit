@@ -374,13 +374,13 @@ Wie aus der Stakeholderanalyse hervorgeht, ist besonders auf die Nutzer der Soft
   \setlength\extrarowheight{2pt}
   \begin{tabulary}{1.0\textwidth}{|m{16cm}|L|}
     \hline
-    \textbf{Aufstarten der Applikation}&\textbf{Prio}\\
+    \textbf{Starten der Applikation}&\textbf{Prio}\\
     \hline
-    Das Aufstarten der Applikation sollte nicht länger als 10 Sekunden dauern. Ansonsten muss mit einem Ladebildschirm die Wartezeit überbrückt werden & 3\\ 
+    Das Starten der Applikation sollte nicht länger als 10 Sekunden dauern. Ansonsten muss mit einem Ladebildschirm die Wartezeit überbrückt werden & 3\\ 
     \hline
   \end{tabulary}
-  \caption{AF-2.1}
-  \label{af2.1}
+  \caption{NFA-Starten der Applikation}
+  \label{NFA-Starten}
 \end{table}
 
 \begin{table}[ht]
@@ -394,6 +394,17 @@ Wie aus der Stakeholderanalyse hervorgeht, ist besonders auf die Nutzer der Soft
     Die Passwörter für das Login werden nur verschlüsselt auf der Datenbank abgespeichert damit die Vertraulichkeit gewährleistet ist. & 3\\ 
     \hline
   \end{tabulary}
-  \caption{AF-2.2}
-  \label{af2.2}
+  \caption{NFA-Sicherheit}
+  \label{NFA-Sicherheit}
 \end{table}
+
+\subsection{Lösungsvarianten}
+Als Lösungsvarianten für die Applikation werden verschiedene Technologien in Betracht gezogen.
+\begin{itemize}
+  \item Webbasierte Applikation mit SQL Datenbank in der Cloud
+  \item Applikation mit WPF und .NET, als Datenbankschnittstelle Entity Framework
+  \item Applikation Windows Forms und .net Framework, als Datenbankschnittstelle Entity Framework
+\end{itemize}
+
+Da die Applikation in Verschiedenen Standorten genutzt werden soll und unter Umständen auch von den Hauswartungspersonen zum Erfassen von Reparaturanträgen oder sonstigen Einträgen verwendet werden soll, würde sich eine Webbasierte Applikation bestens eignen.\\
+Da im Rahmen der Semesterarbeit aber nur ein Prototyp mit einer schon bekannten Technologie erstellt werden soll, kommt diese Lösung nicht infrage. Stattdessen wird als Lösung die Variante mit WPF und .NET gewählt, da in einer früheren Projektarbeit schon erfolgreich ein Projekt mit dieser Technologie umgesetzt wurde.
