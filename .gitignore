@@ -11,6 +11,9 @@
 *.cb
 *.cb2
 .*.lb
+##VisualParadigm backup and lock file
+*.vpp.bak*
+*.vpp.lck*
 
 ## Intermediate documents:
 *.dvi
