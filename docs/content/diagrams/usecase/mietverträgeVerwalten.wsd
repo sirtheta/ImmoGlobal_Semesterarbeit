@@ -1,0 +1,23 @@
+@startuml MietverträgeVerwalten
+!theme cerulean-outline
+skinparam handwritten true
+left to right direction
+actor "User" as fc
+rectangle "Mietverträge verwalten" {
+  usecase "Mietbeginn angeben" as UC1
+  usecase "Neuer Mietvertrag\n erfassen" as UC2
+  usecase "erfasste Objekte/\nLiegenschaft" as inc1
+  usecase "Monatlicher Mietzins\n angeben" as UC3
+  usecase "Nebenkostenart \n angeben" as UC4
+  usecase "Auflistung der \n Kostenarten angeben" as UC5
+  usecase "Mietdepot angeben" as UC6
+
+} 
+fc -- UC1
+fc -- UC2
+UC2 .left.> inc1
+fc -- UC3 
+fc -- UC4
+fc -- UC5
+fc -- UC6
+@enduml

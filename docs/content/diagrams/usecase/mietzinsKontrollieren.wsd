@@ -1,0 +1,13 @@
+@startuml MietzinsKontrollieren
+!theme cerulean-outline
+skinparam handwritten true
+left to right direction
+actor "User" as fc
+rectangle "Mietzins kontrollieren" {
+  usecase "Mietzins kontrollieren" as UC1
+  usecase "betreffendes Objekt\n auswählen"as inc1
+
+} 
+fc -- UC1
+UC1 .left.> inc1
+@enduml

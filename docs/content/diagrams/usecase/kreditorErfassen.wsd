@@ -1,0 +1,18 @@
+@startuml Kreditor erfassen
+!theme cerulean-outline
+skinparam handwritten true
+left to right direction
+actor "User" as fc
+rectangle "Kreditor erfassen" {
+  usecase "Name eingeben" as UC1
+  usecase "Adresse eingeben" as UC2
+  usecase "Mehrwertsteuernummer \n eingeben" as UC3
+  usecase "Telefonnummer eingeben" as UC4
+  usecase "Kontakpersonendaten \n eingeben" as UC5
+} 
+fc -- UC1
+fc -- UC2
+fc -- UC3
+fc -- UC4
+fc -- UC5
+@enduml

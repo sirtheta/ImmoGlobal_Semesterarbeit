@@ -21,8 +21,8 @@ Basierend auf den Angaben im vorliegenden Dokument ist zuerst ein Pflichtenheft 
 
 \subsection{Anforderungen}
 Jede Liegenschaft wird durch eine eindeutige Nummer gekennzeichnet und beinhaltet verschiedene Objekte (Wohnungen, Räume, Garagen oder Parkplätze), welche wiederum eine eindeutige Kennzeichnung innerhalb der Liegenschaft aufweisen.\\
-Für jedes Objekt können mehrere Mietverträge im System vorhanden sein, wobei zu einem bestimmten Zeitpunkt nur einer gültig sein darf. Für jeden Mietvertrag werden die geschuldeten und effektiv bezahlten Mietzinse und Nebenkostenanteile auf ent-sprechenden Konten gebucht, so dass eine Übersicht über die ausstehenden Beträge jederzeit erstellt werden kann.\\
-Bei den Kreditorenrechnungen wird zwischen solchen, die ein bestimmtes Objekt betreffen, und solchen, welche die Liegenschaft als Ganzes betreffen, unterschieden. Dementsprechend muss jede Rechnung entweder einem Objekt oder einer Liegen-schaft zugeordnet und auf ein entsprechendes Konto gebucht werden.\\
+Für jedes Objekt können mehrere Mietverträge im System vorhanden sein, wobei zu einem bestimmten Zeitpunkt nur einer gültig sein darf. Für jeden Mietvertrag werden die geschuldeten und effektiv bezahlten Mietzinse und Nebenkostenanteile auf entsprechenden Konten gebucht, so dass eine Übersicht über die ausstehenden Beträge jederzeit erstellt werden kann.\\
+Bei den Kreditorenrechnungen wird zwischen solchen, die ein bestimmtes Objekt betreffen, und solchen, welche die Liegenschaft als Ganzes betreffen, unterschieden. Dementsprechend muss jede Rechnung entweder einem Objekt oder einer Liegenschaft zugeordnet und auf ein entsprechendes Konto gebucht werden.\\
 
 \newpage
 Der Prototyp muss mindestens folgende Funktionalität (MUSS-Kriterien) abdecken:
@@ -225,7 +225,7 @@ Das Risiko berechnet sich durch Multiplikation der Eintrittswahrscheinlichkeit u
   \begin{tabulary}{1.0\textwidth}{LCL}
     \textbf{Auswirkung} & &
     \textbf{Eintrittswahrscheinlichkeit} \\
-    1 = Unbedeutend\newline 2 = Gering \newline 3 = Moderat \newline 4 = Bedeutend \newline 5 = Katastrophal && 1 = unvorstellbar\newline  2 = unwahrscheinlich\newline 3 = gelegentlich\newline 4 = sehr wahrscheinlich\newline 5 = häufig\\
+    1 = Unbedeutend\newline 2 = Gering \newline 3 = Moderat \newline 4 = Bedeutend \newline 5 = Katastrophal && 1 = Sehr unwahrscheinlich\newline  2 = Unwahrscheinlich\newline 3 = Möglich\newline 4 = Wahrscheinlich\newline 5 = Sehr Wahrscheinlich\\
   \end{tabulary}
 \end{table}
 
@@ -368,35 +368,7 @@ Wie aus der Stakeholderanalyse hervorgeht, ist besonders auf die Nutzer der Soft
 \input{content/main/funktionaleAnforderungen.tex}
 
 \subsubsection{Nichtfunktionale Anforderungen}
-\begin{table}[ht]
-  \centering
-  \settowidth\tymin{\textbf{Prio}}
-  \setlength\extrarowheight{2pt}
-  \begin{tabulary}{1.0\textwidth}{|m{16cm}|L|}
-    \hline
-    \textbf{Starten der Applikation}&\textbf{Prio}\\
-    \hline
-    Das Starten der Applikation sollte nicht länger als 10 Sekunden dauern. Ansonsten muss mit einem Ladebildschirm die Wartezeit überbrückt werden & 3\\ 
-    \hline
-  \end{tabulary}
-  \caption{NFA-Starten der Applikation}
-  \label{NFA-Starten}
-\end{table}
-
-\begin{table}[ht]
-  \centering
-  \settowidth\tymin{\textbf{Prio}}
-  \setlength\extrarowheight{2pt}
-  \begin{tabulary}{1.0\textwidth}{|m{16cm}|L|}
-    \hline
-    \textbf{Sicherheit}&\textbf{Prio}\\
-    \hline
-    Die Passwörter für das Login werden nur verschlüsselt auf der Datenbank abgespeichert damit die Vertraulichkeit gewährleistet ist. & 3\\ 
-    \hline
-  \end{tabulary}
-  \caption{NFA-Sicherheit}
-  \label{NFA-Sicherheit}
-\end{table}
+\input{content/main/nichtFunktionaleAnforderungen.tex}
 
 \subsection{Lösungsvarianten}
 Als Lösungsvarianten für die Applikation werden verschiedene Technologien in Betracht gezogen.

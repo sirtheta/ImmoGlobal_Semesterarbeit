@@ -1,0 +1,26 @@
+@startuml ObjektErfassen
+!theme cerulean-outline
+skinparam handwritten true
+left to right direction
+actor "User" as fc
+rectangle "Objekt erfassen" {
+  usecase "Neues Objekt \n hinzufügen" as UC1
+  usecase "Liegenschaft für das\n Objekt auswählen"as inc1
+  usecase "Objektyp aus Liste\n auswählen" as inc2
+  usecase "Identifikationsnummer angeben" as UC2
+  usecase "Objektlage angeben" as UC3
+  usecase "Fläche angeben" as UC4
+  usecase "Beschreibung eintragebn" as UC5
+  usecase "Geräte im Objekt \nauswählen" as UC6
+  usecase "Anzahl der Schlüssel \n angeben" as UC7
+} 
+fc -- UC1
+UC1 .left.> inc1
+UC1 .down.> inc2
+fc -- UC2
+fc -- UC3
+fc -- UC4
+fc -- UC5
+fc -- UC6
+fc -- UC7
+@enduml

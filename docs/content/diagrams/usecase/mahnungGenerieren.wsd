@@ -1,0 +1,13 @@
+@startuml MahnungErstellen
+!theme cerulean-outline
+skinparam handwritten true
+left to right direction
+actor "User" as fc
+rectangle "Mahnung erstellen" {
+  usecase "Mahnung für den \nMieter erstellen" as UC1
+  usecase "betreffenden Mieter \nauswählen"as inc1
+
+} 
+fc -- UC1
+UC1 .left.> inc1
+@enduml
