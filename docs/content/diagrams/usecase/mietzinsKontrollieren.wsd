@@ -1,6 +1,6 @@
 @startuml MietzinsKontrollieren
 !theme cerulean-outline
-skinparam handwritten true
+
 left to right direction
 actor "User" as fc
 rectangle "Mietzins kontrollieren" {
@@ -9,5 +9,5 @@ rectangle "Mietzins kontrollieren" {
 
 } 
 fc -- UC1
-UC1 .left.> inc1
+UC1 .left.> inc1 : <<include>>
 @enduml

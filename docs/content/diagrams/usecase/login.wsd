@@ -1,7 +1,5 @@
 @startuml Login
 !theme cerulean-outline
-skinparam handwritten true
-
 actor "User" as fc
 rectangle Login {
   usecase "Login" as UC1

@@ -1,6 +1,6 @@
 @startuml MietverträgeVerwalten
 !theme cerulean-outline
-skinparam handwritten true
+
 left to right direction
 actor "User" as fc
 rectangle "Mietverträge verwalten" {
@@ -15,7 +15,7 @@ rectangle "Mietverträge verwalten" {
 } 
 fc -- UC1
 fc -- UC2
-UC2 .left.> inc1
+UC2 .left.> inc1 : <<include>>
 fc -- UC3 
 fc -- UC4
 fc -- UC5

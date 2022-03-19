@@ -1,0 +1,24 @@
+@startuml Mieter erfassen
+!theme cerulean-outline
+
+left to right direction
+actor "User" as fc
+rectangle "Mieter erfassen" {
+  usecase "Name/Vorname eingeben" as UC1
+  usecase "Geburtsdatum eingeben" as UC2
+  usecase "Heimatort eingeben" as UC3
+  usecase "Zivilstand eingeben" as UC4
+  usecase "vorherige \n Adresse eingeben" as UC5
+  usecase "Telefonnummer eingeben" as UC6
+  usecase "Email-Adresse Privat \n & Beruflich eingeben" as UC7
+  usecase "Bankverbindung eingeben" as UC8
+} 
+fc -- UC1
+fc -- UC2
+fc -- UC3
+fc -- UC4
+fc -- UC5
+fc -- UC6
+fc -- UC7
+fc -- UC8
+@enduml

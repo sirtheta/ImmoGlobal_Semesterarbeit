@@ -1,6 +1,6 @@
 @startuml ObjektErfassen
 !theme cerulean-outline
-skinparam handwritten true
+
 left to right direction
 actor "User" as fc
 rectangle "Objekt erfassen" {
@@ -15,8 +15,8 @@ rectangle "Objekt erfassen" {
   usecase "Anzahl der Schlüssel \n angeben" as UC7
 } 
 fc -- UC1
-UC1 .left.> inc1
-UC1 .down.> inc2
+UC1 .left.> inc1 : <<include>> 
+UC1 .down.> inc2 : <<include>>
 fc -- UC2
 fc -- UC3
 fc -- UC4

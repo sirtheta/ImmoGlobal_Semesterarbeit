@@ -1,10 +1,9 @@
 @startuml LiegenschaftErfassen
 !theme cerulean-outline
-skinparam handwritten true
+
 left to right direction
 actor "User" as fc
 rectangle "Liegenschaft erfassen" {
-  usecase "Liegenschaft erfassen" as UC1
   usecase "Identifikationsnummer \n eingeben" as UC2
   usecase "Bezeichnung angeben" as UC3
   usecase "Adresse angeben" as UC4
@@ -13,7 +12,6 @@ rectangle "Liegenschaft erfassen" {
   usecase "Objekte pro Kategorie\n erfassen" as UC7
   usecase "Bestehende\nObjektkategorie\nladen" as UC8
 } 
-fc -- UC1
 fc -- UC2
 fc -- UC3
 fc -- UC4

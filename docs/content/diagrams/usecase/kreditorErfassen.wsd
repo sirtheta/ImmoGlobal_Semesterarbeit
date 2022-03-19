@@ -1,6 +1,6 @@
 @startuml Kreditor erfassen
 !theme cerulean-outline
-skinparam handwritten true
+
 left to right direction
 actor "User" as fc
 rectangle "Kreditor erfassen" {

@@ -1,0 +1,34 @@
+@startuml Rechnung erstellen
+!theme cerulean-outline
+
+left to right direction
+actor "User" as fc
+rectangle "Rechnung erstellen" {
+  usecase "Konto für \n Einzahlung angeben" as UC1
+  usecase "Auswahl der vorhandenen Konten" as inc1
+  usecase "Kreditor angeben" as UC2
+  usecase "Auswahl aus \n vorhandenen Kreditoren" as inc2
+  usecase "Rechnungsdatum eingeben" as UC3
+  usecase "Fälligkeitsdatum eingeben" as UC4
+  usecase "Zweck eingeben" as UC5
+  usecase "Liegenschaft oder Objekt angeben" as UC6
+  usecase "Liegenschaft auswählen" as inc3
+  usecase "Objekt auswählen" as inc4
+  usecase "Betrag & Rabatt eingeben" as UC7
+  usecase "Kategorie angeben" as UC8
+  usecase "Kategorie auswählen" as inc5
+} 
+fc -- UC1
+UC1 ..> inc1 : <<include>>
+fc -- UC2
+UC2 ..> inc2 : <<include>>
+fc -- UC3
+fc -- UC4
+fc -- UC5
+fc -- UC6
+UC6 ..> inc3 : <<include>>
+UC6 ..> inc4 : <<include>>
+fc -- UC7
+fc -- UC8
+UC8 ..> inc5 : <<include>>
+@enduml
