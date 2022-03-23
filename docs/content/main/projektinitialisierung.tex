@@ -251,11 +251,11 @@ Das Risiko berechnet sich durch Multiplikation der Eintrittswahrscheinlichkeit u
     \hline
     4 & Die neue Software wird vom Endnutzer nicht akzeptiert & Projektmanagement & 2 & 5 & \cellcolor[HTML]{FF0000}10\\
     \hline
-    5 &  Die gesetzten Ziele können nicht erreicht werden & Organisatorisch & 2  & 4 & \cellcolor[HTML]{FFC000}8\\
+    5 & Es werden falsche Anforderungen umgesetzt & Projektmanagement & 2 & 3 & \cellcolor[HTML]{92D050}6\\
     \hline
-    6 & Es werden falsche Anforderungen umgesetzt & Projektmanagement & 2 & 3 & \cellcolor[HTML]{92D050}6\\
+    6 & Das abspeichern / hinzufügen von Daten dauert zu lange & Technisch & 2 & 2 & \cellcolor[HTML]{00B050}4\\
     \hline
-    7 & Das abspeichern / hinzufügen von Daten dauert zu lange & Technisch & 2 & 2 & \cellcolor[HTML]{00B050}4\\
+    7 & Verwendete NuGet-Pakete weisen Fehler auf oder werden nicht mehr unterstützt & Technisch & 2 & 3 & \cellcolor[HTML]{92D050}6\\
     \hline
     8 & Die Anforderungen an die Applikation ändern sich & Organisatorisch & 1 & 4 & \cellcolor[HTML]{00B050}4\\
     \hline
@@ -264,8 +264,36 @@ Das Risiko berechnet sich durch Multiplikation der Eintrittswahrscheinlichkeit u
   \label{Risikoanalyse}
 \end{table}
 
-Wie in der Tabelle zu sehen ist, besteht das grösste Risiko in der Zeitplanung. Um dieses Risiko zu minimieren, muss die Zeitplanung täglich aktualisiert werden und so der fortschritt des Projektes überprüft werden. Sobald Abweichungen festgestellt werden, muss die Planung angepasst und Massnahmen ergriffen werden. \\
-Auch das Risiko der Akzeptanz der Endnutzer wird als hoch eingeschätzt. Dem wird entgegengewirkt, indem diese von Anfang an miteinbezogen werden und sobald erste Prototypen vorhanden sind, werden diese mit den Usern besprochen.
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Massnahme}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|C|L|L|}
+    \hline
+    \rowcolor[HTML]{fdebd0}
+    \textbf{Nr.} & 
+    \textbf{Risikobeschreibung} & \textbf{Massnahme}\\
+    \hline
+    1 & Der Zeitplan kann nicht eingehalten werden & Zeitplanung täglich aktualisieren. So kann der fortschritt des Projektes überprüft werden. Sobald Abweichungen festgestellt werden, muss die Planung angepasst und weitere Massnahmen ergriffen werden\\
+    \hline
+    2 & Das Knowhow zum umsetzen des Projektes ist nicht vorhanden & Für den Prototypen wird eine schon bekannte Technologie eingesetzt\\
+    \hline
+    3 & Durch Krankheit bedingter Personalausfall & Genügend Puffer einplanen, Stakeholder zeitlich Informieren\\
+    \hline
+    4 & Die neue Software wird vom Endnutzer nicht akzeptiert & Die Endbenutzer werden von Anfang an miteinbezogen und sobald erste Prototypen vorhanden sind, wird dies mit den Usern besprochen.\\
+    \hline
+    5 & Es werden falsche Anforderungen umgesetzt & Pflichtenheft genau Ausarbeiten \\
+    \hline
+    6 & Das abspeichern / hinzufügen von Daten dauert zu lange & Richtige Konfiguration der Datenbank sicherstellen\\
+    \hline
+    7 & Verwendete NuGet-Pakete weisen Fehler auf oder werden nicht mehr unterstützt & Nur NuGet-Pakete verwenden die aktuell und weit verbreitet sind\\
+    \hline
+    8 & Die Anforderungen an die Applikation ändern sich & ImmoGlobal über mögliche Konsequenzen von Nachträglichen Änderungen an den Anforderungen Informieren \\
+    \hline
+  \end{tabulary}
+  \caption{Massnahmen}
+  \label{Massnahmen}
+\end{table}
 
 \subsection{Stakeholderanalyse}
 Die verschiedenen Stakeholder an diesem Projekt haben verschiedene Interessen, die es während dem gesamten Projekt zu berücksichtigen gilt. Als Stakeholder sind all jene gemeint, welche direkt oder indirekt mit dem System in Kontakt stehen. Besonderes Augenmerk sollte auf die Stakeholder welche direkt mit dem System in Verbindung kommen werden, gelegt werden.
@@ -371,12 +399,26 @@ Wie aus der Stakeholderanalyse hervorgeht, ist besonders auf die Nutzer der Soft
 \input{content/main/nichtFunktionaleAnforderungen.tex}
 
 \subsection{Lösungsvarianten}
-Als Lösungsvarianten für die Applikation werden verschiedene Technologien in Betracht gezogen.
+\subsubsection{Analyse mit Morphologischer Kasten}
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{content/images/morphoKasten.png}
+    \caption{Analyse mit Morphologischem Kasten}
+    \label{morphoKasten}
+  \end{center}
+\end{figure}
+
+Als Lösungsvarianten für die Applikation werden verschiedene Technologien in Betracht gezogen und im Morphologischen Kasten als Parameter hinzugefügt. Wie zu sehen ist, gibt es sehr viele verschiedene Möglichkeiten die verwendet werden könnten. Die dargestellten Lösungspfade sind nicht abschliessend.
+
+\subsubsection{Variantenauswahl}
+Als Sinnvolle Lösungsvarianten kommen folgende Möglichkeiten in Frage: 
 \begin{itemize}
   \item Webbasierte Applikation mit SQL Datenbank in der Cloud
-  \item Applikation mit WPF und .NET, als Datenbankschnittstelle Entity Framework
-  \item Applikation Windows Forms und .net Framework, als Datenbankschnittstelle Entity Framework
+  \item Applikation mit WPF und .NET, als Datenbankschnittstelle Entity Framework, SQL in der Cloud oder OnPrem
+  \item Applikation Windows Forms und .net Framework, als Datenbankschnittstelle Entity Framework, SQL in der Cloud oder OnPrem
 \end{itemize}
+Ob die Datenbank schlussendlich OnPrem oder in der Cloud verwaltet wird, spielt im Endeffekt für die Applikation keine so Grosse rolle da nur die entsprechende Verknüpfung angepasst werden muss. Wenn die Datenbank aber in der Cloud gehostet wird, muss darauf hingewiesen werden dass zu jeder zeit eine stabile Internetverbindung zum benutzen der Applikation benötigt wird.\\
+\vspace*{1mm}
 
-Da die Applikation in Verschiedenen Standorten genutzt werden soll und unter Umständen auch von den Hauswartungspersonen zum Erfassen von Reparaturanträgen oder sonstigen Einträgen verwendet werden soll, würde sich eine Webbasierte Applikation bestens eignen.\\
-Da im Rahmen der Semesterarbeit aber nur ein Prototyp mit einer schon bekannten Technologie erstellt werden soll, kommt diese Lösung nicht infrage. Stattdessen wird als Lösung die Variante mit WPF und .NET gewählt, da in einer früheren Projektarbeit schon erfolgreich ein Projekt mit dieser Technologie umgesetzt wurde.
+Da die Applikation in Verschiedenen Standorten genutzt werden soll und unter Umständen auch von den Hauswartungspersonen zum Erfassen von Reparaturanträgen oder sonstigen Einträgen verwendet wird, würde sich eine Webbasierte Applikation bestens eignen.\\
+Im Rahmen der Semesterarbeit soll aber nur ein Prototyp mit einer schon bekannten Technologie erstellt werden. Aus diesem Grund kommt diese Lösung nicht infrage. Stattdessen wird als Lösung die Variante mit WPF und .NET6 gewählt und als ORM das EntityFramework Core, da in einer früheren Projektarbeit schon erfolgreich ein Projekt mit dieser Technologie umgesetzt wurde.

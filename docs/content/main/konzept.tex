@@ -9,6 +9,44 @@
   \label{contextdiag}
 \end{figure}
 
+\subsection{Geschäftsprozesse}
+\begin{table}[H]
+  \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
+  \centering
+  \settowidth\tymin{\textbf{Kurzbeschreibung}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|a|m{12cm}|}
+    \hline
+    \textbf{Name}& Verwaltung von Mietobjekten \\
+    \hline 
+    \textbf{Kurzbeschreibung} & Alle Geschäftsanwendungsfälle die nötig sid um Mietobjekte korrekt verwalten zu können und im Aufgabenbereich von ImmoGlobal liegen\\
+    \hline
+    \textbf{Geschäftsanwendungsfälle} & 
+    \begin{itemize}
+      \item Verwaltung von Objekten
+      \item Verwaltung von Liegenschaften
+      \item Übernahme- und Übergabeprotokoll der Mietobjekte
+      \item Verwaltung der Mieter:innen
+      \item Erstellen / Verwalten der Mietverträge
+      \item Erfassen von Ein- und Ausgaben  (Mietzins, Nebenkosten, Gebühren für Unterhalt der Liegenschaft, etc.)
+      \item Mietzins- und Nebenkostenkontrolle
+      \item Rechnung erstellen
+    \end{itemize}\\
+    \hline
+    \textbf{Verantwortlichkeit} & Geschäftsleiter\\
+    \hline
+    \textbf{Beteiligte} & 
+    \begin{itemize}
+      \item Mitarbeiter der Administration
+      \item Hauswartungspersonen
+      \item Mieter
+    \end{itemize}\\
+    \hline
+  \end{tabulary}
+  \caption{Geschäftsprozesse}
+\end{table}
+
+
 \subsection{Geschäftsanwendungsfälle}
 \input{content/main/geschaeftsanwendungsfaelle.tex}
 
@@ -20,7 +58,7 @@
 \subsubsection{ERD}
 \subsubsection{Beschreibung der Fachentitäten, Beziehungen und der referenziellen Integritätsbedingungen}
 \subsection{Systemarchitektur}
-Die Programmiersprache für die Applikation ist C\# mit der aktuelle .net Core 6. Das GUI wird mit WPF aufgebaut und die gesamte Struktur im MVVM-Pattern gehalten. Um das GUI ansprechend zu gestalten, wird das nuGet-Paket ''Material-Design'' verwendet.\\
+Die Programmiersprache für die Applikation ist C\# mit dem aktuellen .net Core 6 Framework. Das GUI wird mit WPF aufgebaut und die gesamte Struktur im MVVM-Pattern gehalten. Um das GUI ansprechend zu gestalten, wird das NuGet-Paket ''Material-Design'' verwendet.\\
 Für das persistieren der Daten wird das Entity-Framework verwendet, mit welchem bereits in einem früheren Projekt Erfahrung gesammelt werden konnte.
 \subsection{Testkonzept} \label{testkonzept}
 \subsubsection{Vorgehen}

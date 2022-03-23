@@ -1,31 +1,32 @@
+
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.6\linewidth]{content/diagrams/out/usecase/login/Login.png}
     \caption{UC-Login}
+    \label{login}
   \end{center}
-  \label{login}
 \end{figure}
 
 \begin{table}[H]
-  \newcolumntype{a}{>{\columncolor[HTML]{1EB6FF}}L}
+  \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
   \centering
   \settowidth\tymin{\textbf{Kurzbeschreibung}}
   \setlength\extrarowheight{2pt}
-  \begin{tabulary}{1.0\textwidth}{|a|m{12cm}|}
+  \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
     \hline
     \textbf{Name}& Login\\
+    \hline
+    \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung, Hauswartungspersonen, Geschäftsführer\\
     \hline 
-    \textbf{Kurzbeschreibung} & \\
+    \textbf{Beschreibung} & Ein Akteur will sich in der Applikation anmelden\\
     \hline
-    \textbf{Beteiligte Aktoren} & \\
+    \textbf{Daten} & Login-Daten des Benutzers\\
     \hline
-    \textbf{Fachverantwortlicher} & \\
+    \textbf{Auslöser} & Benutzerbefehl der von dem entsprechenden Akteur initiiert wird\\
     \hline
-    \textbf{Referenzen} & \\
+    \textbf{Antwort} & Bestätigung dass das Login erfolgreich war\\
     \hline
-    \textbf{Vorbedingungen} & \\
-    \hline
-    \textbf{Nachbedingungen} & \\
+    \textbf{Kommentare} & -\\
     \hline
   \end{tabulary}
   \caption{UC-Login}
@@ -33,264 +34,281 @@
 
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[width=0.4\linewidth]{content/diagrams/out/usecase/liegenschaftErfassen/LiegenschaftErfassen.png}
-    \caption{Usecase Liegenschaft erfassen}
+    \includegraphics[width=0.43\linewidth]{content/diagrams/out/usecase/liegenschaftErfassen/LiegenschaftErfassen.png}
+    \caption{UC-Liegenschaft erfassen}
+    \label{Liegenschaft}
   \end{center}
-  \label{Liegenschaft}
 \end{figure}
 
+\vspace*{-1cm}
+
 \begin{table}[H]
-  \newcolumntype{a}{>{\columncolor[HTML]{1EB6FF}}L}
+  \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
   \centering
   \settowidth\tymin{\textbf{Kurzbeschreibung}}
   \setlength\extrarowheight{2pt}
-  \begin{tabulary}{1.0\textwidth}{|a|m{12cm}|}
+  \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
     \hline
-    \textbf{Name}& Login\\
+    \textbf{Name}& Liegenschaft erfassen\\
+    \hline
+    \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
     \hline 
-    \textbf{Kurzbeschreibung} & \\
+    \textbf{Beschreibung} & Der zuständige Mitarbeiter:in loggt sich in der Applikation ein und kann anschliessend die Liegenschaft über einen Button erfassen. Es müssen alle Daten zur Liegenschaft eingetragen werden sonst kann diese nicht abgespeichert werden\\
     \hline
-    \textbf{Beteiligte Aktoren} & \\
+    \textbf{Daten} & Informationen zur Liegenschaft\\
     \hline
-    \textbf{Fachverantwortlicher} & \\
+    \textbf{Auslöser} & Benutzerbefehl der von dem entsprechenden Akteur initiiert wird\\
     \hline
-    \textbf{Referenzen} & \\
+    \textbf{Antwort} & Bestätigung dass das erfassen der Liegenschaft erfolgreich war\\
     \hline
-    \textbf{Vorbedingungen} & \\
-    \hline
-    \textbf{Nachbedingungen} & \\
+    \textbf{Kommentare} & Bei fehlenden Angaben wird dem Benutzer eine Fehlermeldung angezeigt\\
     \hline
   \end{tabulary}
-  \caption{UC-Login}
+  \caption{UC-Liegenschaft erfassen}
 \end{table}
 
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.8\linewidth]{content/diagrams/out/usecase/objektErfassen/ObjektErfassen.png}
     \caption{UC-Objekt Erfassen}
+    \label{objekt}
   \end{center}
-  \label{objekt}
 \end{figure}
 
+\vspace*{-0.5cm}
+
 \begin{table}[H]
-  \newcolumntype{a}{>{\columncolor[HTML]{1EB6FF}}L}
+  \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
   \centering
   \settowidth\tymin{\textbf{Kurzbeschreibung}}
   \setlength\extrarowheight{2pt}
-  \begin{tabulary}{1.0\textwidth}{|a|m{12cm}|}
+  \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
     \hline
-    \textbf{Name}& Login\\
+    \textbf{Name}& Objekt Erfassen\\
+    \hline
+    \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
     \hline 
-    \textbf{Kurzbeschreibung} & \\
+    \textbf{Beschreibung} & Der zuständige Mitarbeiter:in loggt sich in der Applikation ein und kann anschliessend das Objekt über einen Button erfassen. Es müssen alle Daten zum Objekt eingetragen werden sonst kann dieses nicht abgespeichert werden\\
     \hline
-    \textbf{Beteiligte Aktoren} & \\
+    \textbf{Daten} & Informationen zum Objekt\\
     \hline
-    \textbf{Fachverantwortlicher} & \\
+    \textbf{Auslöser} & Benutzerbefehl der von dem entsprechenden Akteur initiiert wird\\
     \hline
-    \textbf{Referenzen} & \\
+    \textbf{Antwort} & Bestätigung dass das erfassen des Objektes erfolgreich war\\
     \hline
-    \textbf{Vorbedingungen} & \\
-    \hline
-    \textbf{Nachbedingungen} & \\
+    \textbf{Kommentare} & Bei fehlenden Angaben wird dem Benutzer eine Fehlermeldung angezeigt\\
     \hline
   \end{tabulary}
-  \caption{UC-Login}
+  \caption{UC-Objekt Erfassen}
 \end{table}
 
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[width=0.45\linewidth]{content/diagrams/out/usecase/mietverträgeVerwalten/MietverträgeVerwalten.png}
+    \includegraphics[width=0.43\linewidth]{content/diagrams/out/usecase/mietverträgeVerwalten/MietverträgeVerwalten.png}
     \caption{UC-Mietverträge Verwalten}
+    \label{MietvertraegeVerwalten}
   \end{center}
-  \label{MietvertraegeVerwalten}
 \end{figure}
 
-\begin{table}[H]
-  \newcolumntype{a}{>{\columncolor[HTML]{1EB6FF}}L}
-  \centering
-  \settowidth\tymin{\textbf{Kurzbeschreibung}}
-  \setlength\extrarowheight{2pt}
-  \begin{tabulary}{1.0\textwidth}{|a|m{12cm}|}
-    \hline
-    \textbf{Name}& Login\\
-    \hline 
-    \textbf{Kurzbeschreibung} & \\
-    \hline
-    \textbf{Beteiligte Aktoren} & \\
-    \hline
-    \textbf{Fachverantwortlicher} & \\
-    \hline
-    \textbf{Referenzen} & \\
-    \hline
-    \textbf{Vorbedingungen} & \\
-    \hline
-    \textbf{Nachbedingungen} & \\
-    \hline
+\vspace*{-1cm}
+
+  \begin{table}[H]
+    \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
+    \centering
+    \settowidth\tymin{\textbf{Kurzbeschreibung}}
+    \setlength\extrarowheight{2pt}
+      \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
+        \hline
+        \textbf{Name}& Mietverträge Verwalten\\
+      \hline
+      \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
+      \hline 
+      \textbf{Beschreibung} & Der zuständige Mitarbeiter:in loggt sich in der Applikation ein und erstellt anschliessend einen neuen Mietvertrag der noch den Status ungültig hat, bis dieser von beiden Parteien unterschrieben wurde.\\
+      \hline
+      \textbf{Daten} & Alle Daten die zum erfassen des Mietvertrags nötig sind \\
+      \hline
+      \textbf{Auslöser} & Benutzerbefehl der von dem entsprechenden Akteur initiiert wird\\
+      \hline
+      \textbf{Antwort} & Bestätigung dass der Mietvertrag erfolgreich erfasst wurde und ausgedruckt werden kann\\
+      \hline
+      \textbf{Kommentare} & Bei fehlenden Angaben wird dem Benutzer eine Fehlermeldung angezeigt\\
+      \hline
   \end{tabulary}
-  \caption{UC-Login}
-\end{table}
+  \caption{UC-Mietverträge Verwalten}
+  \end{table}
 
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.4\linewidth]{content/diagrams/out/usecase/mietzinsKontrollieren/MietzinsKontrollieren.png}
     \caption{UC-Mietzins Kontrollieren}
+    \label{MietzinsKontrollieren}
   \end{center}
-  \label{MietzinsKontrollieren}
 \end{figure}
 
 \begin{table}[H]
-  \newcolumntype{a}{>{\columncolor[HTML]{1EB6FF}}L}
+  \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
   \centering
   \settowidth\tymin{\textbf{Kurzbeschreibung}}
   \setlength\extrarowheight{2pt}
-  \begin{tabulary}{1.0\textwidth}{|a|m{12cm}|}
+  \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
     \hline
-    \textbf{Name}& Login\\
+    \textbf{Name}& Mietzins Kontrollieren\\
+    \hline
+    \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
     \hline 
-    \textbf{Kurzbeschreibung} & \\
+    \textbf{Beschreibung} & Wenn die Zahlungen geprüft werden müssen, loggt sich der zuständige Mitarbeiter:in ein und kann auf dem entsprechenden Objekt Kontrollieren ob die Miete oder die Nebenkosten schon als ''bezahlt'' markiert wurde\\
     \hline
-    \textbf{Beteiligte Aktoren} & \\
+    \textbf{Daten} & Zu prüfendes Objekt\\
     \hline
-    \textbf{Fachverantwortlicher} & \\
+    \textbf{Auslöser} & Benutzerbefehl der von dem entsprechenden Akteur initiiert wird\\
     \hline
-    \textbf{Referenzen} & \\
+    \textbf{Antwort} & Zahlungen wurde getätigt oder im Verzug\\
     \hline
-    \textbf{Vorbedingungen} & \\
-    \hline
-    \textbf{Nachbedingungen} & \\
+    \textbf{Kommentare} & Bei Zahlungen im Verzug wird der nächste UseCase \fref{mahnung} eingesetzt\\
     \hline
   \end{tabulary}
-  \caption{UC-Login}
+  \caption{UC-Mietzins Kontrollieren}
 \end{table}
+
+\newpage
 
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.4\linewidth]{content/diagrams/out/usecase/mahnungGenerieren/MahnungErstellen.png}
     \caption{UC-Mahnung Erstellen}
+    \label{mahnung}
   \end{center}
-  \label{mahnung}
 \end{figure}
 
 \begin{table}[H]
-  \newcolumntype{a}{>{\columncolor[HTML]{1EB6FF}}L}
+  \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
   \centering
   \settowidth\tymin{\textbf{Kurzbeschreibung}}
   \setlength\extrarowheight{2pt}
-  \begin{tabulary}{1.0\textwidth}{|a|m{12cm}|}
+  \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
     \hline
-    \textbf{Name}& Login\\
+    \textbf{Name}& Mahnung Erstellen\\
+    \hline
+    \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
     \hline 
-    \textbf{Kurzbeschreibung} & \\
+    \textbf{Beschreibung} & Fällt die Prüfung der Mietzins-oder Nebenkostenzahlung negativ aus, kann der Benutzer eine Mahnung für den Mieter erstellen \\
     \hline
-    \textbf{Beteiligte Aktoren} & \\
+    \textbf{Daten} & Rechnungsbetrag\\
     \hline
-    \textbf{Fachverantwortlicher} & \\
+    \textbf{Auslöser} & Benutzerbefehl der von dem entsprechenden Akteur initiiert wird\\
     \hline
-    \textbf{Referenzen} & \\
+    \textbf{Antwort} & Bestätigung dass die Mahnung erfolgreich erstellt wurde und jetzt ausgedruckt werden kann\\
     \hline
-    \textbf{Vorbedingungen} & \\
-    \hline
-    \textbf{Nachbedingungen} & \\
+    \textbf{Kommentare} & Normalerweise ist der zuständige Mitarbeiter:in in der Applikation schon eingeloggt da er die Prüfung der Zahlung vorgenommen hatte. Das erstellen der Mahnung wird dann direkt von dort aus ausgelöst\\
     \hline
   \end{tabulary}
-  \caption{UC-Login}
+  \caption{UC-Mahnung Erstellen}
 \end{table}
 
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.8\linewidth]{content/diagrams/out/usecase/rechnungErstellen/Rechnung erstellen.png}
     \caption{UC-Rechnung erstellen}
+    \label{RechnungErstellen}
   \end{center}
-  \label{RechnungErstellen}
 \end{figure}
 
+\vspace*{-1cm}
+
 \begin{table}[H]
-  \newcolumntype{a}{>{\columncolor[HTML]{1EB6FF}}L}
+  \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
   \centering
   \settowidth\tymin{\textbf{Kurzbeschreibung}}
   \setlength\extrarowheight{2pt}
-  \begin{tabulary}{1.0\textwidth}{|a|m{12cm}|}
+  \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
     \hline
-    \textbf{Name}& Login\\
+    \textbf{Name}& Rechnung erstellen\\
+    \hline
+    \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
     \hline 
-    \textbf{Kurzbeschreibung} & \\
+    \textbf{Beschreibung} & Um eine Rechnung zu erstellen, muss sich der Zuständige Mitarbeiter:in in der Applikation einloggen. Es kann dann für eine Dienstleistung eine Rechnung erstellt werden. Um die Rechnung für eine Dienstleistung zu erstellen, müssen alle Daten eingegeben werden. \newline 
+    Wird eine Rechnung für die fällige Miete oder die Nebenkosten erstellt, werden die Daten für die Rechnung aus der angewählten Liegenschaft oder Objekt in die Rechnung eingefügt. Allfällige Anpassungen können nachträglichen als separate Rechnungsposition hinzugefügt werden. \\
     \hline
-    \textbf{Beteiligte Aktoren} & \\
+    \textbf{Daten} & 
+      \begin{itemize}
+        \item Kreditor
+        \item Rechnungsbetrag
+        \item Objekt oder Liegenschaft
+      \end{itemize}\\
     \hline
-    \textbf{Fachverantwortlicher} & \\
+    \textbf{Auslöser} & Benutzerbefehl der von dem entsprechenden Akteur initiiert wird\\
     \hline
-    \textbf{Referenzen} & \\
+    \textbf{Antwort} & Bestätigung dass die Rechnung erfolgreich erstellt wurde und ausgedruckt werden kann\\
     \hline
-    \textbf{Vorbedingungen} & \\
-    \hline
-    \textbf{Nachbedingungen} & \\
+    \textbf{Kommentare} & Falls der Kreditor noch nicht erfasst wurde, muss dies noch gemacht werden. Siehe UseCase \fref{kreditorErfassen} \\
     \hline
   \end{tabulary}
-  \caption{UC-Login}
+  \caption{UC-Rechnung erstellen}
 \end{table}
+
 
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.4\linewidth]{content/diagrams/out/usecase/kreditorErfassen/Kreditor erfassen.png}
     \caption{UC-Kreditor Erfassen}
+    \label{kreditorErfassen}
   \end{center}
-  \label{kreditorErfassen}
 \end{figure}
 
 \begin{table}[H]
-  \newcolumntype{a}{>{\columncolor[HTML]{1EB6FF}}L}
+  \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
   \centering
   \settowidth\tymin{\textbf{Kurzbeschreibung}}
   \setlength\extrarowheight{2pt}
-  \begin{tabulary}{1.0\textwidth}{|a|m{12cm}|}
+  \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
     \hline
-    \textbf{Name}& Login\\
+    \textbf{Name}& Kreditor Erfassen\\
+    \hline
+    \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
     \hline 
-    \textbf{Kurzbeschreibung} & \\
+    \textbf{Beschreibung} & Wir für einen Kreditor eine Rechnung erstellt der noch nicht erfasst wurde, wird dies hier gemacht\\
     \hline
-    \textbf{Beteiligte Aktoren} & \\
+    \textbf{Daten} & Vollständige Daten zum Kreditor\\
     \hline
-    \textbf{Fachverantwortlicher} & \\
+    \textbf{Auslöser} & Benutzerbefehl der von dem entsprechenden Akteur initiiert wird\\
     \hline
-    \textbf{Referenzen} & \\
+    \textbf{Antwort} & Bestätigung dass der Kreditor erfolgreich erfasst wurde\\
     \hline
-    \textbf{Vorbedingungen} & \\
-    \hline
-    \textbf{Nachbedingungen} & \\
+    \textbf{Kommentare} & Normalwerkweise ist der Benutzer in der Applikation schon eingeloggt, weil erst beim erstellen der Rechnung bemerkt wird, dass der Kreditor noch nicht erfasst wurde. Für Miet-und Nebenkostenabrechnungen sind die Mieter die Kreditoren \\
     \hline
   \end{tabulary}
-  \caption{UC-Login}
+  \caption{UC-Kreditor Erfassen}
 \end{table}
 
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.4\linewidth]{content/diagrams/out/usecase/mieterErfassen/Mieter erfassen.png}
     \caption{UC-Mieter erfassen}
+    \label{mieterErfassen}
   \end{center}
-  \label{mieterErfassen}
 \end{figure}
 
 \begin{table}[H]
-  \newcolumntype{a}{>{\columncolor[HTML]{1EB6FF}}L}
+  \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
   \centering
   \settowidth\tymin{\textbf{Kurzbeschreibung}}
   \setlength\extrarowheight{2pt}
-  \begin{tabulary}{1.0\textwidth}{|a|m{12cm}|}
+  \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
     \hline
-    \textbf{Name}& Login\\
+    \textbf{Name}& Mieter:in erfassen\\
+    \hline
+    \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
     \hline 
-    \textbf{Kurzbeschreibung} & \\
+    \textbf{Beschreibung} & Wird die Bewerbung eines Mieters für ein Objekt angenommen, muss dieser Mieter:in in der Applikation erfasst werden. Der zuständige Mitarbeiter:in loggt sich dazu in der Applikation ein und kann den Mieter:in im entsprechenden Formular erfassen.\\
     \hline
-    \textbf{Beteiligte Aktoren} & \\
+    \textbf{Daten} & Vollständige Daten zum Mieter\\
     \hline
-    \textbf{Fachverantwortlicher} & \\
+    \textbf{Auslöser} & Benutzerbefehl der von dem entsprechenden Akteur initiiert wird\\
     \hline
-    \textbf{Referenzen} & \\
+    \textbf{Antwort} & Bestätigung dass der Mieter erfolgreich erfasst wurde\\
     \hline
-    \textbf{Vorbedingungen} & \\
-    \hline
-    \textbf{Nachbedingungen} & \\
+    \textbf{Kommentare} & -\\
     \hline
   \end{tabulary}
-  \caption{UC-Login}
+  \caption{UC-Mieter erfassen}
 \end{table}
