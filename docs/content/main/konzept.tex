@@ -55,18 +55,43 @@
 
 \subsection{Sequenzdiagramme}
 
+\newpage
 \subsection{Modellierung der Klassen}
-
 \subsubsection{Klassendiagramm}
-\begin{figure}[H]
+\begin{figure}[htbt]
   \begin{center}
-    \includegraphics[width=0.8\linewidth]{content/diagrams/out/classdiagramm/ImmoGlobal.png}
+    \includegraphics[width=0.9\linewidth]{content/diagrams/out/classdiagram/classdiagram.png}
     \caption{Klassendiagramm}
     \label{classdiagramm}
   \end{center}
 \end{figure}
 
 \subsubsection{Beschreibung der Fachklassen}
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Kurzbeschreibung}}
+  \setlength\extrarowheight{2pt}
+    \begin{tabulary}{1.0\textwidth}{|L|m{15cm}|}
+      \hline
+      \rowcolor[HTML]{4473C5}\textbf{Klasse}& \textbf{Beschreibung}\\
+    \hline
+    \textbf{Persona} & Bildet alle Beteiligten Personen ab. Es werden die Mieter:in, Kreditor und die Hauswartungsperson über diese Klasse erfasst. Z.B. für den Mieter:in werden nicht alle Eigenschaften verwendet wie auch für den Kreditor oder die Hauswartungsperson nicht alle Eigenschaften verwendet werden.\\
+    \hline
+    \textbf{Liegenschaft} & Bildet die Liegenschaft mit ihren Eigenschaften ab und beinhaltet die Hauswartungsperson als Persona Objekt. Jede Liegenschaft kann N-Objekte enthalten\\
+    \hline
+    \textbf{Objekt} & Bildet das Objekt welches in der Liegenschaft enthalten ist, mit seinen Eigenschaften ab. Jedes Objekt kann nur eine Beziehungen zu einer Liegenschaft haben. Pro Objekt können aber N Mietverträge vorhanden sein wobei immer nur einer gültig sein darf. \\
+    \hline
+    \textbf{Mietvertrag} & Bildet den Mietvertrag mit seinen Eigenschaften ab. Jeder Mietvertrag kann einem Objekt zugeordnet sein. Der Mietvertrag ist entweder gültig oder ungültig\\
+    \hline
+    \textbf{Rechnung} & Bildet die Rechnung mit ihren Eigenschaften ab. Es kann eine Rechnung auf ein Objekt oder auf eine Liegenschaft erstellt werden und einem Mieter oder einem Kreditor über ''Persona'' zugeordnet werden.\\
+    \hline
+    \textbf{User} & Bildet die User der Applikation ab\\
+    \hline
+    \textbf{Konto} & Bildet das Konto zum Verbuchen der Rechnung ab\\
+    \hline 
+\end{tabulary}
+\caption{Beschreibung der Fachklassen}
+\end{table}
 
 \subsection{Zustandsdiagramme}
 
