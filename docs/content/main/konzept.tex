@@ -53,7 +53,14 @@
 \subsection{Use-Case-Beschreibungen}
 \input{content/main/usecases.tex}
 
-\subsection{Sequenzdiagramme}
+\subsection{Sequenzdiagramm}
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=1\linewidth]{content/diagrams/out/sequenzdiagram/sequenzdiagram.png}
+    \caption{Sequenzdiagramm}
+    \label{sequenzdiagram}
+  \end{center}
+\end{figure}
 
 \newpage
 \subsection{Modellierung der Klassen}
@@ -69,41 +76,80 @@
 \subsubsection{Beschreibung der Fachklassen}
 \begin{table}[H]
   \centering
-  \settowidth\tymin{\textbf{Kurzbeschreibung}}
+  \settowidth\tymin{\textbf{Liegenschaft}}
   \setlength\extrarowheight{2pt}
     \begin{tabulary}{1.0\textwidth}{|L|m{15cm}|}
       \hline
       \rowcolor[HTML]{4473C5}\textbf{Klasse}& \textbf{Beschreibung}\\
     \hline
-    \textbf{Persona} & Bildet alle Beteiligten Personen ab. Es werden die Mieter:in, Kreditor und die Hauswartungsperson über diese Klasse erfasst. Z.B. für den Mieter:in werden nicht alle Eigenschaften verwendet wie auch für den Kreditor oder die Hauswartungsperson nicht alle Eigenschaften verwendet werden.\\
+    \textbf{Persona} & Bildet alle Beteiligten Personen ab. Es werden die Mieter:in, Kreditor und die Hauswartungsperson über diese Klasse erfasst. Z.B. für den Mieter:in werden nicht alle Eigenschaften verwendet, wie auch für den Kreditor oder die Hauswartungsperson nicht alle Eigenschaften verwendet werden.\\
     \hline
-    \textbf{Liegenschaft} & Bildet die Liegenschaft mit ihren Eigenschaften ab und beinhaltet die Hauswartungsperson als Persona Objekt. Jede Liegenschaft kann N-Objekte enthalten\\
+    \textbf{Liegenschaft} & Bildet die Liegenschaft mit ihren Eigenschaften ab und beinhaltet die Hauswartungsperson als Persona Objekt. Jede Liegenschaft kann N-Objekte enthalten.\\
     \hline
-    \textbf{Objekt} & Bildet das Objekt welches in der Liegenschaft enthalten ist, mit seinen Eigenschaften ab. Jedes Objekt kann nur eine Beziehungen zu einer Liegenschaft haben. Pro Objekt können aber N Mietverträge vorhanden sein wobei immer nur einer gültig sein darf. \\
+    \textbf{Objekt} & Bildet das Objekt, welches in der Liegenschaft enthalten ist, mit seinen Eigenschaften ab. Jedes Objekt kann nur Eine Beziehungen zu einer Liegenschaft haben. Pro Objekt können aber N-Mietverträge vorhanden sein, wobei immer nur einer gültig sein darf. \\
     \hline
-    \textbf{Mietvertrag} & Bildet den Mietvertrag mit seinen Eigenschaften ab. Jeder Mietvertrag kann einem Objekt zugeordnet sein. Der Mietvertrag ist entweder gültig oder ungültig\\
+    \textbf{Mietvertrag} & Bildet den Mietvertrag mit seinen Eigenschaften ab. Jeder Mietvertrag kann einem Objekt zugeordnet sein. Der Mietvertrag ist entweder gültig oder ungültig.\\
     \hline
     \textbf{Rechnung} & Bildet die Rechnung mit ihren Eigenschaften ab. Es kann eine Rechnung auf ein Objekt oder auf eine Liegenschaft erstellt werden und einem Mieter oder einem Kreditor über ''Persona'' zugeordnet werden.\\
     \hline
-    \textbf{User} & Bildet die User der Applikation ab\\
+    \textbf{User} & Bildet die User für das Login in der Applikation ab.\\
     \hline
-    \textbf{Konto} & Bildet das Konto zum Verbuchen der Rechnung ab\\
+    \textbf{Konto} & Bildet das Konto zum Verbuchen der Rechnung ab.\\
     \hline 
 \end{tabulary}
 \caption{Beschreibung der Fachklassen}
 \end{table}
 
-\subsection{Zustandsdiagramme}
+\subsection{Zustandsdiagramm}
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[height=0.85\textheight]{content/diagrams/out/zustand/mietvertrag/mietvertrag.png}
+    \caption{Zustand Mietvertrag}
+    \label{zustMietvertrag}
+  \end{center}
+\end{figure}
 
 \subsection{Modellierung der Datenbank}
 
 \subsubsection{ERD}
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[height=0.85\textheight]{content/diagrams/out/erd/erd.png}
+    \caption{ERD}
+    \label{ERD}
+  \end{center}
+\end{figure}
 
-\subsubsection{Beschreibung der Fachentitäten, Beziehungen und der referenziellen Integritätsbedingungen}
+\subsubsection{Beschreibung der Fachentitäten}
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Liegenschaft}}
+  \setlength\extrarowheight{2pt}
+    \begin{tabulary}{1.0\textwidth}{|L|m{15cm}|}
+      \hline
+      \rowcolor[HTML]{4473C5}\textbf{Entität}& \textbf{Beschreibung}\\
+    \hline
+    \textbf{Liegenschaft} & Bildet die Liegenschaft ab. Hat eine 1:N Beziehungen zur Objekt- und zur Rechnungsentität.\\
+    \hline
+    \textbf{Objekt} & Bildet das Objekt ab. Das Objekt hate eine N:1 Beziehung zur Liegenschaft, beinhaltet also dessen Foreign-Key. Zusätzlich hat das Objekt noch eine 1:N-Beziehung zur Rechnung.\\
+    \hline
+    \textbf{Mietvertrag} & Bildet den Mietvertrag ab. Diese Entität beinhaltet den Foreign-Key von der Entität Persona zum Referenzieren des Mieters und den Foreign-Key zum Objekt, auf welches der Mietvertrag läuft. \\
+    \hline
+    \textbf{Persona} & Bildet alle Beteiligten Personen ab. Es werden die Mieter:in, Kreditor und die Hauswartungsperson über diese Entität erfasst. Somit ist je ein Foreign-Key in der Rechnung und im Mietvertrag enthalten. \\
+    \hline
+    \textbf{Rechnung} & Bildet die Rechnung ab. Da die Rechnung zur Liegenschaft und zum Objekt gestellt werden muss, ist je ein Foreign-Key von diesen Entitäten enthalten. Zum Verbuchen auf ein Konto wir der Foreign-Key der Entität Konto verwendet. Damit die Rechnung einem Mieter oder Kreditor gestellt werden kann, wird der Foreign-Key Persona verwendet.\\
+    \hline
+    \textbf{Konto} & Bildet das Konto zum Verbuchen der Rechnung ab und hat somit eine 1:N-Beziehung zur Rechnung\\
+    \hline
+    \textbf{User} & Bildet die User für das Login in der Applikation ab. Das Passwort wird als HASH gespeichert.\\
+    \hline 
+\end{tabulary}
+\caption{Beschreibung der Fachentitäten}
+\end{table}
 
 \subsection{Systemarchitektur}
 Die Programmiersprache für die Applikation ist C\# mit dem aktuellen .net Core 6 Framework. Das GUI wird mit WPF aufgebaut und die gesamte Struktur im MVVM-Pattern gehalten. Um das GUI ansprechend zu gestalten, wird das NuGet-Paket ''Material-Design'' verwendet.\\
-Für das persistieren der Daten wird das Entity-Framework verwendet, mit welchem bereits in einem früheren Projekt Erfahrung gesammelt werden konnte.
+Für das persistieren der Daten wird das Entity-Framework verwendet, mit welchem bereits in einem früheren Projekt Erfahrungen gesammelt werden konnten.
 \subsection{Testkonzept} \label{testkonzept}
 \subsubsection{Vorgehen}
 \subsubsection{Testobjekte}

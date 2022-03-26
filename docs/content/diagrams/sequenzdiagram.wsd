@@ -1,0 +1,18 @@
+@startuml sequenzdiagram
+!theme cerulean-outline
+skinparam ParticipantPadding 2
+actor User
+User -> User ++ #8ECBF1: login()
+create Liegenschaft
+User -> Liegenschaft ++ #8ECBF1: neueLiegenschaft()
+Liegenschaft->Liegenschaft : speichern()
+create Objekt
+User -> Objekt ++ #8ECBF1: neuesObjekt()
+Objekt->Objekt : speichern()
+create Mietvertrag
+User -> Mietvertrag ++#8ECBF1: neuerMietvertrag()
+Mietvertrag->Mietvertrag : speichern()
+create Rechnung
+User -> Rechnung ++#8ECBF1: neueRechnung()
+Rechnung->Rechnung : speichern()
+@enduml

@@ -1,0 +1,11 @@
+@startuml mietvertrag
+
+hide empty description
+[*] --> Mietvertrag : neuer Mietvertrag
+Mietvertrag --> ungültig
+ungültig --> unterschrieben
+unterschrieben --> gültig
+gültig --> gekündet
+gekündet --> ungültig_
+ungültig_ --> [*]
+@enduml
