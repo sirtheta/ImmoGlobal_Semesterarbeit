@@ -82,7 +82,7 @@
       \hline
       \rowcolor[HTML]{4473C5}\textbf{Klasse}& \textbf{Beschreibung}\\
     \hline
-    \textbf{Persona} & Bildet alle Beteiligten Personen ab. Es werden die Mieter:in, Kreditor und die Hauswartungsperson über diese Klasse erfasst. Z.B. für den Mieter:in werden nicht alle Eigenschaften verwendet, wie auch für den Kreditor oder die Hauswartungsperson nicht alle Eigenschaften verwendet werden.\\
+    \textbf{Persona} & Bildet alle Beteiligten Personen ab. Es werden die Mieter:in, Kreditor und die Hauswartungsperson über diese Klasse erfasst. Z.B. für den Mieter:in werden nicht alle Eigenschaften verwendet, wie auch für den Kreditor oder die Hauswartungsperson nicht alle Eigenschaften verwendet werden. Für jede Personengruppe wird ein separater Konstruktor erstellt.\\
     \hline
     \textbf{Liegenschaft} & Bildet die Liegenschaft mit ihren Eigenschaften ab und beinhaltet die Hauswartungsperson als Persona Objekt. Jede Liegenschaft kann N-Objekte enthalten.\\
     \hline
@@ -150,9 +150,141 @@
 \subsection{Systemarchitektur}
 Die Programmiersprache für die Applikation ist C\# mit dem aktuellen .net Core 6 Framework. Das GUI wird mit WPF aufgebaut und die gesamte Struktur im MVVM-Pattern gehalten. Um das GUI ansprechend zu gestalten, wird das NuGet-Paket ''Material-Design'' verwendet.\\
 Für das persistieren der Daten wird das Entity-Framework verwendet, mit welchem bereits in einem früheren Projekt Erfahrungen gesammelt werden konnten.
+
+\newpage
 \subsection{Testkonzept} \label{testkonzept}
 \subsubsection{Vorgehen}
+Anhand von Szenarien die aus den Use-Case's erstellt werden und dann nach ihrer Eintrittswahrscheinlichkeit und dem Ausmass bewertet werden, werden die Testfälle gebildet. Das Risiko leitet sich aus der Multiplikation der Eintrittswahrscheinlichkeit und dem Ausmass ab.
 \subsubsection{Testobjekte}
+\begin{table}[H]
+  \centering
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{LCL}
+    \textbf{Eintrittswahrscheinlichkeit (ETW)} & &
+    \textbf{Ausmass (Ausm.)} \\
+    1 = Sehr unwahrscheinlich\newline  2 = Unwahrscheinlich\newline 3 = Möglich\newline 4 = Gelegentlich\newline 5 = Häufig && 1 = Kaum bemerkbar\newline 2 = Bemerkbar \newline 3 = Störend \newline 4 = Stark störend \newline 5 = Katastrophal\\
+  \end{tabulary}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Mietverträge}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|L|L|L|C|C|C|}
+    \hline
+    \rowcolor[HTML]{fdebd0}
+    \textbf{UseCase} & 
+    \textbf{Positiv}& 
+    \textbf{Negativ} &
+    \textbf{ETW} & 
+    \textbf{Ausm.} & 
+    \textbf{Risiko}\\
+    \hline
+    Login & \cellcolor[HTML]{02ce16} Der User kann sich mit korrekten Logindaten einloggen & \cellcolor[HTML]{ff0000}$\bullet$ Der User kann sich nur mit Username einloggen \newline $\bullet$  Der User kann sich mit einem falschen Passwort einloggen & 3 & 5 & \cellcolor[HTML]{ff8c00} 15\\
+    \hline
+    Liegenschaft erfassen & \cellcolor[HTML]{02ce16} Der User kann die Liegenschaft abspeichern, wenn alle Muss-Daten eingegeben wurden & \cellcolor[HTML]{ff0000}$\bullet$ Der User kann die Liegenschaft nicht abspeichern, wenn alle Muss-Daten eingegeben wurden \newline $\bullet$  Der User kann die Liegenschaft abspeichern, obwohl nicht alle Muss-Daten eingegeben wurden  & 3 & 4 & \cellcolor[HTML]{ffb600} 12\\
+    \hline
+    Objekt erfassen & \cellcolor[HTML]{02ce16} Der User kann das Objekt abspeichern, wenn alle Muss-Daten eingegeben wurden & \cellcolor[HTML]{ff0000}$\bullet$ Der User kann das Objekt nicht abspeichern, wenn alle Muss-Daten eingegeben wurden \newline $\bullet$  Der User kann das Objekt abspeichern, obwohl nicht alle Muss-Daten eingegeben wurden & 3 & 4 & \cellcolor[HTML]{ffb600} 12\\
+    \hline
+    Mietverträge verwalten & \cellcolor[HTML]{02ce16} Der User kann einen neuen Mietvertrag erstellen, wenn alle Muss-Daten eingegeben wurden & \cellcolor[HTML]{ff0000}$\bullet$ Der User kann den Mietvertrag nicht erstellen, obwohl alle Muss-Daten eingegeben wurden \newline $\bullet$  Der User kann den Mietvertrag erstellen, obwohl nicht alle Muss-Daten eingegeben wurden & 3 & 4 & \cellcolor[HTML]{ffb600} 12\\
+    \hline
+    Mietverträge verwalten & \cellcolor[HTML]{02ce16} Der User kann den Status eines bestehenden Mietvertrages von ungültig auf gültig bzw. von gültig auf ungültig ändern & \cellcolor[HTML]{ff0000}$\bullet$ Der Status des Mietvertrages kann nicht auf gültig bzw. ungültig geändert werden & 3 & 4 & \cellcolor[HTML]{ffb600} 12\\
+    \hline
+  \end{tabulary}
+  \caption{Testfallanalyse (1)}
+  \label{testanforderungen}
+\end{table}
+
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Mietverträge}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|L|L|L|C|C|C|}
+    \hline
+    \rowcolor[HTML]{fdebd0}
+    \textbf{UseCase} & 
+    \textbf{Positiv}& 
+    \textbf{Negativ} &
+    \textbf{ETW} & 
+    \textbf{Ausm.} & 
+    \textbf{Risiko}\\
+    \hline
+    Mietzins-kontrolle & \cellcolor[HTML]{02ce16} Der User kann das betreffende Objekt auswählen und der aktuelle Mietzins \& die Nebenkosten werden angezeigt & \cellcolor[HTML]{ff0000}$\bullet$ Es werden keine Objekte angezeigt \newline $\bullet$  Nach dem anwählen des Objektes, werden die falschen Daten geladen \newline $\bullet$ Nach dem anwählen des Objektes werden keine Daten geladen & 3 & 4 & \cellcolor[HTML]{ffb600} 12\\
+    \hline
+    Mahnung erstellen & \cellcolor[HTML]{02ce16} Der User kann den Mieter/Kreditor zum erstellen der Mahnung auswählen und die Mahnung anschliessend generieren. Auf der Mahnung sind alle Daten korrekt eingetragen & \cellcolor[HTML]{ff0000}$\bullet$ Der Mieter/Kreditor kann nicht ausgewählt werden \newline $\bullet$ Es werden die falschen Daten in die Mahnung eingefügt & 3 & 4 & \cellcolor[HTML]{ffb600} 12\\
+    \hline
+    Rechnung erstellen & \cellcolor[HTML]{02ce16} Der User kann alle relevanten Daten für die Rechnung auswählen. Die Rechnung wird mit den korrekten Daten generiert und kann ausgedruckt werden. Die Rechnung kann nur generiert werden, wenn alle Muss-Daten ausgefüllt wurden & \cellcolor[HTML]{ff0000}$\bullet$ Der Kreditor/Mieter kann nicht ausgewählt werden \newline $\bullet$ Das Konto für die Einzahlung kann nicht ausgewählt werden \newline $\bullet$ Es kann keine Kategorie ausgewählt werden \newline $\bullet$ Die Rechnung kann erstellt werden, obwohl nicht alle Muss-Daten eingegeben wurden & 4 & 4 & \cellcolor[HTML]{ff8c00} 16\\
+    \hline
+    Kreditor erfassen & \cellcolor[HTML]{02ce16} Der User kann den Kreditor nach Eingabe aller Muss-Daten erfolgreich abspeichern & \cellcolor[HTML]{ff0000}$\bullet$ Der Kreditor kann abgespeichert werden, obwohl nicht alle Muss-Daten eingegeben wurden \newline $\bullet$ Der Kreditor kann nicht abgespeichert werden obwohl alle Muss-Daten eingegeben wurden & 3 & 4 & \cellcolor[HTML]{ffb600} 12\\
+    \hline
+    Mieter erfassen & \cellcolor[HTML]{02ce16} Der User kann den Mieter nach Eingabe aller Muss-Daten erfolgreich abspeichern & \cellcolor[HTML]{ff0000}$\bullet$ Der Mieter kann abgespeichert werden, obwohl nicht alle Muss-Daten eingegeben wurden \newline $\bullet$ Der Mieter kann nicht abgespeichert werden, obwohl alle Muss-Daten eingegeben wurden & 3 & 4 & \cellcolor[HTML]{ffb600} 12\\
+    \hline
+  \end{tabulary}
+  \caption{Testfallanalyse (2)}
+  \label{testanforderungen2}
+\end{table}
+
 \subsubsection{Testfälle}
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Mietverträge}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|L|L|L|L|}
+    \hline
+    \rowcolor[HTML]{fdebd0}
+    \textbf{UseCase} & 
+    \textbf{Testfall}& 
+    \textbf{Soll} &
+    \textbf{Wichtigkeit}\\
+    \hline
+    Login & In 10 Loginversuchen haben 3 ein Falsches Passwort und 3 kein Passwort & Alle 6 ungültigen Loginversuche werden erkannt, die 4 korrekten Loginversuche werden korrekt eingeloggt & Critical\\
+    \hline
+    Liegenschaft erfassen & In 10 zu erfassenden Liegenschaften werden 3 Datensätze verwendet die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & Critical\\
+    \hline
+    Liegenschaft erfassen & In 10 zu erfassenden Liegenschaften werden 3 Datensätze verwendet die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & Critical\\
+    \hline
+    Objekt erfassen & In 10 zu erfassenden Objekten werden 3 Datensätze verwendet die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & Critical\\
+    \hline
+    Mietverträge verwalten & In 10 zu erfassenden Mietverträgen werden 3 Datensätze verwendet die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & Critical\\
+    \hline
+    Mietverträge verwalten & Es werden bei 10 Mietverträgen die Stati von ungültig zu gültig verändert und gespeichert & Bei allen 10 Mietverträgen wird der Status gültig gespeichert & Critical\\
+    \hline
+    Mietverträge verwalten & Es werden bei 10 Mietverträgen die Stati von gültig zu ungültig verändert und gespeichert & Bei allen 10 Mietverträgen wird der Status ungültig gespeichert & Critical\\
+    \hline
+    Mietzins-kontrolle & In einer Stichprobe werden 10 verschiedenen Objekte von unterschiedlichen Liegenschaften geladen & Es werden bei allen 10 Objekten der aktuelle und korrekte Mietzins und die korrekten Nebenkosten angezeigt & Critical\\
+    \hline
+    Mahnung erstellen & In einer Stichprobe werden 5 Mahnungen für Mieter und 5 Mahnungen für Kreditoren generiert & Es können alle Mahnungen mit gültigen Daten generiert werden & Critical\\
+    \hline
+  \end{tabulary}
+  \caption{Testfälle (1)}
+  \label{Testfälle1}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Mietverträge}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|L|L|L|L|}
+    \hline
+    \rowcolor[HTML]{fdebd0}
+    \textbf{UseCase} & 
+    \textbf{Testfall}& 
+    \textbf{Soll} &
+    \textbf{Wichtigkeit}\\
+    \hline 
+    Rechnung erstellen & Es werden 10 Rechnungen erstellt. Für 3 Rechnungen werden nicht alle Muss-Daten angegeben & Die 7 gültigen Rechnungen werden erfolgreich erstellt und dir 3 ungültigen werden mit einer Fehlermeldung abgewiesen & Critical\\
+    \hline   
+    Rechnung erstellen & In einer Stichprobe werden 5 Rechnungen für Mieter und 5 Rechnungen für Kreditoren erstellt & Es können alle Rechnungen mit gültigen Daten erstellt werden & Critical\\
+    \hline
+    Kreditor erfassen & Bei 10 zu erfassenden Kreditoren, werden 3 Datensätze verwendet, die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & Critical\\
+    \hline
+    Mieter erfassen & Bei 10 zu erfassenden Mieter:innen, werden 3 Datensätze verwendet, die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & Critical\\
+    \hline
+  \end{tabulary}
+  \caption{Testfälle (2)}
+  \label{Testfälle2}
+\end{table}
 \subsection{Einführungskonzept}
 \subsection{GUI-Design}

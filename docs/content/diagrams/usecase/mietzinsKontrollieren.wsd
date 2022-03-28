@@ -3,8 +3,8 @@
 
 left to right direction
 actor "User" as fc
-rectangle "Mietzins kontrollieren" {
-  usecase "Mietzins kontrollieren" as UC1
+rectangle "Mietzinskontrolle" {
+  usecase "Mietzinskontrolle" as UC1
   usecase "betreffendes Objekt\n auswählen"as inc1
 
 } 

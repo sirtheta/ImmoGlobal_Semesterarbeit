@@ -151,7 +151,7 @@ Die Verwaltung der Mitarbeiter gehört nicht zum Umfang dieser Arbeit.
 \begin{itemize}
   \item Eine Gesamtübersicht über alle Liegenschaften steht den Mitarbeiter:innen nach dem einloggen zur Verfügung
   \item Der Start der Applikation dauert nicht mehr als 10 Sekunden
-  \item Um den Datenschutz zu gewährleisten, soll jegliche Änderung betreffend Liegenschaft, Objekt und Mieter in Audit-Trail aufgezeichnet werden
+  \item Um den Datenschutz zu gewährleisten, soll jegliche Änderung betreffend Liegenschaft, Objekt und Mieter in einer Audit-Trail Tabelle auf der Datenbank aufgezeichnet werden
   \item Die Applikation ist so selbsterklärend aufgebaut, dass die Benutzer nach einer kurzen Einführung in der Lage sind die Applikation zu bedienen.
 \end{itemize}
 
@@ -224,7 +224,7 @@ Das Risiko berechnet sich durch Multiplikation der Eintrittswahrscheinlichkeit u
   \setlength\extrarowheight{2pt}
   \begin{tabulary}{1.0\textwidth}{LCL}
     \textbf{Auswirkung} & &
-    \textbf{Eintrittswahrscheinlichkeit} \\
+    \textbf{Eintrittswahrscheinlichkeit (ETW)} \\
     1 = Unbedeutend\newline 2 = Gering \newline 3 = Moderat \newline 4 = Bedeutend \newline 5 = Katastrophal && 1 = Sehr unwahrscheinlich\newline  2 = Unwahrscheinlich\newline 3 = Möglich\newline 4 = Wahrscheinlich\newline 5 = Sehr Wahrscheinlich\\
   \end{tabulary}
 \end{table}
@@ -239,7 +239,7 @@ Das Risiko berechnet sich durch Multiplikation der Eintrittswahrscheinlichkeit u
     \textbf{Nr.} & 
     \textbf{Risikobeschreibung} & 
     \textbf{Kategorie}& 
-    \textbf{Eintrittswahr-scheinlichkeit} & 
+    \textbf{ETW} & 
     \textbf{Auswirkung} & 
     \textbf{Risiko}\\
     \hline

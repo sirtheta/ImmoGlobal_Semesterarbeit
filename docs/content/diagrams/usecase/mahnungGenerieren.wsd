@@ -4,8 +4,8 @@
 left to right direction
 actor "User" as fc
 rectangle "Mahnung erstellen" {
-  usecase "Mahnung für den \nMieter erstellen" as UC1
-  usecase "betreffenden Mieter \nauswählen"as inc1
+  usecase "Mahnung für den \nMieter/Kreditor erstellen" as UC1
+  usecase "betreffenden Mieter/Kreditor \nauswählen"as inc1
 
 } 
 fc -- UC1

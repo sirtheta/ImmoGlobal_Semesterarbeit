@@ -70,7 +70,7 @@
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.8\linewidth]{content/diagrams/out/usecase/objektErfassen/ObjektErfassen.png}
-    \caption{UC-Objekt Erfassen}
+    \caption{UC-Objekt erfassen}
     \label{objekt}
   \end{center}
 \end{figure}
@@ -84,7 +84,7 @@
   \setlength\extrarowheight{2pt}
   \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
     \hline
-    \textbf{Name}& Objekt Erfassen\\
+    \textbf{Name}& Objekt erfassen\\
     \hline
     \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
     \hline 
@@ -99,13 +99,13 @@
     \textbf{Kommentare} & Bei fehlenden Angaben wird dem Benutzer eine Fehlermeldung angezeigt\\
     \hline
   \end{tabulary}
-  \caption{UC-Objekt Erfassen}
+  \caption{UC-Objekt erfassen}
 \end{table}
 
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.43\linewidth]{content/diagrams/out/usecase/mietverträgeVerwalten/MietverträgeVerwalten.png}
-    \caption{UC-Mietverträge Verwalten}
+    \caption{UC-Mietverträge verwalten}
     \label{MietvertraegeVerwalten}
   \end{center}
 \end{figure}
@@ -119,7 +119,7 @@
     \setlength\extrarowheight{2pt}
       \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
         \hline
-        \textbf{Name}& Mietverträge Verwalten\\
+        \textbf{Name}& Mietverträge verwalten\\
       \hline
       \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
       \hline 
@@ -134,13 +134,13 @@
       \textbf{Kommentare} & Bei fehlenden Angaben wird dem Benutzer eine Fehlermeldung angezeigt\\
       \hline
   \end{tabulary}
-  \caption{UC-Mietverträge Verwalten}
+  \caption{UC-Mietverträge verwalten}
   \end{table}
 
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.4\linewidth]{content/diagrams/out/usecase/mietzinsKontrollieren/MietzinsKontrollieren.png}
-    \caption{UC-Mietzins Kontrollieren}
+    \caption{UC-Mietzins kontrollieren}
     \label{MietzinsKontrollieren}
   \end{center}
 \end{figure}
@@ -152,7 +152,7 @@
   \setlength\extrarowheight{2pt}
   \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
     \hline
-    \textbf{Name}& Mietzins Kontrollieren\\
+    \textbf{Name}& Mietzins kontrollieren\\
     \hline
     \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
     \hline 
@@ -167,15 +167,15 @@
     \textbf{Kommentare} & Bei Zahlungen im Verzug wird der nächste UseCase \fref{mahnung} eingesetzt\\
     \hline
   \end{tabulary}
-  \caption{UC-Mietzins Kontrollieren}
+  \caption{UC-Mietzins kontrollieren}
 \end{table}
 
 \newpage
 
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[width=0.4\linewidth]{content/diagrams/out/usecase/mahnungGenerieren/MahnungErstellen.png}
-    \caption{UC-Mahnung Erstellen}
+    \includegraphics[width=0.5\linewidth]{content/diagrams/out/usecase/mahnungGenerieren/MahnungErstellen.png}
+    \caption{UC-Mahnung erstellen}
     \label{mahnung}
   \end{center}
 \end{figure}
@@ -187,7 +187,7 @@
   \setlength\extrarowheight{2pt}
   \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
     \hline
-    \textbf{Name}& Mahnung Erstellen\\
+    \textbf{Name}& Mahnung erstellen\\
     \hline
     \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
     \hline 
@@ -202,7 +202,7 @@
     \textbf{Kommentare} & Normalerweise ist der zuständige Mitarbeiter:in in der Applikation schon eingeloggt da er die Prüfung der Zahlung vorgenommen hatte. Das erstellen der Mahnung wird dann direkt von dort aus ausgelöst\\
     \hline
   \end{tabulary}
-  \caption{UC-Mahnung Erstellen}
+  \caption{UC-Mahnung erstellen}
 \end{table}
 
 \begin{figure}[H]
@@ -212,8 +212,6 @@
     \label{RechnungErstellen}
   \end{center}
 \end{figure}
-
-\vspace*{-1cm}
 
 \begin{table}[H]
   \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
@@ -229,12 +227,10 @@
     \textbf{Beschreibung} & Um eine Rechnung zu erstellen, muss sich der Zuständige Mitarbeiter:in in der Applikation einloggen. Es kann dann für eine Dienstleistung eine Rechnung erstellt werden. Um die Rechnung für eine Dienstleistung zu erstellen, müssen alle Daten eingegeben werden. \newline 
     Wird eine Rechnung für die fällige Miete oder die Nebenkosten erstellt, werden die Daten für die Rechnung aus der angewählten Liegenschaft oder Objekt in die Rechnung eingefügt. Allfällige Anpassungen können nachträglichen als separate Rechnungsposition hinzugefügt werden. \\
     \hline
-    \textbf{Daten} & 
-      \begin{itemize}
-        \item Kreditor
-        \item Rechnungsbetrag
-        \item Objekt oder Liegenschaft
-      \end{itemize}\\
+    \textbf{Daten} &       
+      $\bullet$ Kreditor\newline
+      $\bullet$ Rechnungsbetrag \newline
+      $\bullet$ Objekt oder Liegenschaft\\
     \hline
     \textbf{Auslöser} & Benutzerbefehl der von dem entsprechenden Akteur initiiert wird\\
     \hline
@@ -250,7 +246,7 @@
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.4\linewidth]{content/diagrams/out/usecase/kreditorErfassen/Kreditor erfassen.png}
-    \caption{UC-Kreditor Erfassen}
+    \caption{UC-Kreditor erfassen}
     \label{kreditorErfassen}
   \end{center}
 \end{figure}
@@ -262,7 +258,7 @@
   \setlength\extrarowheight{2pt}
   \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
     \hline
-    \textbf{Name}& Kreditor Erfassen\\
+    \textbf{Name}& Kreditor erfassen\\
     \hline
     \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
     \hline 
@@ -277,7 +273,7 @@
     \textbf{Kommentare} & Normalwerkweise ist der Benutzer in der Applikation schon eingeloggt, weil erst beim erstellen der Rechnung bemerkt wird, dass der Kreditor noch nicht erfasst wurde. Für Miet-und Nebenkostenabrechnungen sind die Mieter die Kreditoren \\
     \hline
   \end{tabulary}
-  \caption{UC-Kreditor Erfassen}
+  \caption{UC-Kreditor erfassen}
 \end{table}
 
 \begin{figure}[H]
