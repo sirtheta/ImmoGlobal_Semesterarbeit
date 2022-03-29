@@ -220,7 +220,6 @@
   \caption{GA-Mietzins- und Nebenkostenkontrolle}
 \end{table}
 
-
 \begin{table}[H]
   \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
   \centering
@@ -237,7 +236,7 @@
     \textbf{Auslöser} & Es wurde eine Dienstleistung, die die Liegenschaftsverwaltung getätigt hat, bezogen \newline 
     Für eine Liegenschaft oder ein Objekt wurde die Nebenkostenabrechnung erstellt\\
     \hline
-    \textbf{Ergebnis} & Eine Rechnung\\
+    \textbf{Ergebnis} & Eine Rechnung die nach dem freigeben nicht mehr bearbeitet werden kann\\
     \hline
     \textbf{Eingehende Daten} & Informationen warum die Rechnung erstellt werden muss \\
     \hline
@@ -245,8 +244,9 @@
     \hline
     \textbf{Nachbedingungen} & Keine\\
     \hline
-    \textbf{Ablauf} & Der Benutzer erstellt eine neue Rechnung und gibt alle nötigen Informationen für die Rechnung ein.\\
+    \textbf{Ablauf} & Der Benutzer erstellt eine neue Rechnung und gibt alle nötigen Informationen für die Rechnung ein. Wenn die Rechnung für den Kreditor/Mieter freigegeben wird, ändert der Status der Rechnung auf ''freigeben'' und kann nicht mehr abgeändert werden. Wenn nach der Freigabe Fehler bemerkt werden, muss der Status der Rechnung auf Storniert gewechselt werden und eine neue Rechnung erstellt werden. Der Benutzer hat aber auch die Möglichkeit, die Rechnung nicht freizugeben und die Bearbeitung zu einem späteren Zeitpunkt fortzusetzen.\\
     \hline
   \end{tabulary}
   \caption{GA-Rechnung erstellen}
+  \label{GA-rechnungErstellen}
 \end{table}

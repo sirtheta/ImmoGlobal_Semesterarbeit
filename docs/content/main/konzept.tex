@@ -49,7 +49,7 @@
 
 \subsection{Geschäftsanwendungsfälle}
 \input{content/main/geschaeftsanwendungsfaelle.tex}
-
+\newpage
 \subsection{Use-Case-Beschreibungen}
 \input{content/main/usecases.tex}
 
@@ -100,10 +100,10 @@
 \caption{Beschreibung der Fachklassen}
 \end{table}
 
-\subsection{Zustandsdiagramm}
+\subsection{Zustandsdiagramme}
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[height=0.85\textheight]{content/diagrams/out/zustand/mietvertrag/mietvertrag.png}
+    \includegraphics[height=0.6\textheight]{content/diagrams/out/zustand/mietvertragRechnung/mietvertragRechnung.png}
     \caption{Zustand Mietvertrag}
     \label{zustMietvertrag}
   \end{center}
@@ -148,8 +148,8 @@
 \end{table}
 
 \subsection{Systemarchitektur}
-Die Programmiersprache für die Applikation ist C\# mit dem aktuellen .net Core 6 Framework. Das GUI wird mit WPF aufgebaut und die gesamte Struktur im MVVM-Pattern gehalten. Um das GUI ansprechend zu gestalten, wird das NuGet-Paket ''Material-Design'' verwendet.\\
-Für das persistieren der Daten wird das Entity-Framework verwendet, mit welchem bereits in einem früheren Projekt Erfahrungen gesammelt werden konnten.
+Die Programmiersprache für die Applikation ist C\# mit dem aktuellen .net Core 6 Framework. Das GUI wird mit WPF aufgebaut und die gesamte Struktur im MVVM-Pattern gehalten. Mit WPF werden alle GUI-Komponenten über Binding angesteuert, was es in einem weiteren schritt viel einfacher mach die Applikation mehrsprachig zu gestalten.\\ Um das GUI ansprechend zu gestalten, wird das NuGet-Paket ''Material-Design'' und das Font Awesome Paket verwendet.\\
+Für das persistieren der Daten wird das ORM Entity-Framework benutzt, mit welchem bereits in einem früheren Projekt Erfahrungen gesammelt werden konnten.
 
 \newpage
 \subsection{Testkonzept} \label{testkonzept}
@@ -287,4 +287,20 @@ Anhand von Szenarien die aus den Use-Case's erstellt werden und dann nach ihrer 
   \label{Testfälle2}
 \end{table}
 \subsection{Einführungskonzept}
+
+
+\newpage
 \subsection{GUI-Design}
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[height=0.6\textwidth]{content/diagrams/out/guiMap/GuiMindMAp.png}
+    \caption{GUI Flowmap}
+    \label{guiFlowMap}
+  \end{center}
+\end{figure}
+
+Über die Liegenschaft gelangt der User zum Objekt oder er kann sich direkt die zuständige Hauswartungsperson anzeigen lassen, sie editieren oder neu hinzufügen. Über das Objekt können anschliessend die Mieter und die Mietverträge mit den dazugehörigen Rechnungen angesehen, bzw. editiert oder neu erstellt werden.\\
+Über die Kreditoren können die dazugehörigen Rechnungen angesehen oder neu erstellt werden. \\ 
+Über den Mieter können die vom Mieter gemieteten Objekte, seine Rechnungen und die Mietverträge angesehen, bzw. bearbeitet werden.\\
+Wie im Geschäftsanwendungsfall \ref{GA-rechnungErstellen} ''Rechnung Erstellen'' beschrieben, kann eine schon freigegebene Rechnung nicht mehr verändert werden.

@@ -1,0 +1,24 @@
+@startuml mietvertragRechnung
+
+hide empty description
+state Mietvertrag {
+[*] --> ungültig : neuer Mietvertrag
+ungültig --> unterschrieben
+unterschrieben --> gültig
+gültig --> gekündet
+state notValid as "ungültig"
+gekündet --> notValid
+notValid --> [*]
+}
+state Rechnung {
+state "nicht freigegeben" as nf
+[*] --> nf : neue Rechnung
+nf --> freigegeben : freigabe
+state nichtBezahlt as "nicht bezahlt"
+freigegeben --> nichtBezahlt
+nichtBezahlt --> storniert : storno
+nichtBezahlt --> bezahlt : zahlungseingang verbuchen
+bezahlt -->[*]
+storniert -->[*]
+}
+@enduml

@@ -1,0 +1,17 @@
+@startmindmap GuiMindMAp
+!theme cerulean-outline
+* Liegenschaft
+** Objekte
+*** Mieter
+*** Mietverträge
+**** Rechnungen
+** Hauswartungsperson
+
+* Kreditoren
+** Rechnungen
+
+* Mieter
+** Rechnungen
+** Objekte
+** Mietverträge
+@endmindmap
