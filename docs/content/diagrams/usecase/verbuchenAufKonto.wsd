@@ -1,9 +1,9 @@
-@startuml Zahlungsengang auf Konto verbuchen
+@startuml ZahlungseingangaufKontoverbuchen
 !theme cerulean-outline
 
 left to right direction
 actor "User" as fc
-rectangle "Zahlungsengang auf Konto verbuchen" {
+rectangle "Zahlungsein- und Ausgang \nauf Konto verbuchen" {
   usecase "Konto zum verbuchen \n auswählen" as UC1
   usecase "Auswahl der \nvorhandenen Konten" as inc1
 } 

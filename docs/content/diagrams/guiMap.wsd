@@ -1,17 +1,31 @@
-@startmindmap GuiMindMAp
+@startmindmap GuiMindMap
 !theme cerulean-outline
 * Liegenschaft
+** neue Liegenschaft
 ** Objekte
+*** neues Objekt
 *** Mieter
 *** Mietverträge
+**** Mahnung erstellen
 **** Rechnungen
 ** Hauswartungsperson
 
 * Kreditoren
+** neuer Kreditor
 ** Rechnungen
+*** Mahnung erstellen
 
 * Mieter
 ** Rechnungen
+*** neue Rechnung
 ** Objekte
 ** Mietverträge
+*** neuer Mietvertrag
+** neuer Mieter
+
+* Rechnungen
+** neue Rechnung
+* Konto
+** Zahlung verbuchen
+** neues Konto
 @endmindmap

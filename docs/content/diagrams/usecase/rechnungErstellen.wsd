@@ -5,7 +5,7 @@ left to right direction
 actor "User" as fc
 rectangle "Rechnung erstellen" {
   usecase "Konto für \n Einzahlung angeben" as UC1
-  usecase "Auswahl der vorhandenen Konten" as inc1
+  usecase "Auswahl eines vorhandenen \nKontos" as inc1
   usecase "Kreditor angeben" as UC2
   usecase "Auswahl aus \n vorhandenen Kreditoren" as inc2
   usecase "Rechnungsdatum eingeben" as UC3
