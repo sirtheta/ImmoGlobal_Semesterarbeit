@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,9 @@ namespace ImmoGlobal.MainClasses
 {
   internal class Object
   {
-   [Key]
-    public int Id { get; set; }
+    public int ObjectId { get; set; }
+    public int PropertyId { get; set; }
+    public EObjectType ObjectType { get; set; }
     public string? Description { get; set; }
     public string? Location { get; set; }
     public double NumberOfRooms { get; set; }
@@ -23,6 +25,8 @@ namespace ImmoGlobal.MainClasses
     public bool Oven { get; set; }
     public bool WashingMachine { get; set; }
     public bool Tumbler { get; set; }
-    internal EObjectType EObjectType { get; set; }
+
+    public ICollection<Invoice>? Invoices { get; set; }
+    public ICollection<RentalContract>? RentalContracts { get; set; }
   }
 }

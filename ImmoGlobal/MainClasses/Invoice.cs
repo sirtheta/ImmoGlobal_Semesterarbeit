@@ -10,16 +10,19 @@ namespace ImmoGlobal.MainClasses
 {
   internal class Invoice
   {
-    [Key]
-    public int InvoiceNumber { get; set; }
-    public DateOnly InvoiceDate { get; set; }
-    public DateOnly DueDate { get; set; }
+    public int InvoiceId { get; set; }
+    public DateTime InvoiceDate { get; set; }
+    public DateTime DueDate { get; set; }
     public string? InvoicePurpose { get; set; }
-    internal Property? Property { get; set; }
-    internal Object? Object { get; set; }
-    internal Persona? Persona { get; set; }
-    internal Account? Account { get; set; }
-    internal EInvoiceCategory EInvoiceCategory { get; set; }
-    internal EInvoiceState InvoiceState { get; set; }
+    public int PropertyId { get; set; }
+    public Property? Property { get; set; }
+    public int ObjectId { get; set; }
+    public Object? Object { get; set; }
+    public int PersonaId { get; set; }
+    public Persona? Persona { get; set; }
+    public int AccountId { get; set; }
+    public Account? Account { get; set; }
+    public EInvoiceCategory InvoiceCategory { get; set; }
+    public EInvoiceState InvoiceState { get; set; }
   }
 }

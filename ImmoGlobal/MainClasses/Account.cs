@@ -9,8 +9,7 @@ namespace ImmoGlobal.MainClasses
 {
   internal class Account
   {
-    [Key]
-    public int Id { get; set; }
+    public int AccountId { get; set; }
     public string? AccountNumber { get; set; }
     public string? AccountDescription { get; set; }
     public double Balance { get; set; }

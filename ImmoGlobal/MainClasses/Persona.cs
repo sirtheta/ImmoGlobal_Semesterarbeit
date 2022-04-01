@@ -12,7 +12,7 @@ namespace ImmoGlobal.MainClasses
   {
 
     // Constructor for renter
-    public Persona(string name, string surname, int phone, string email, DateOnly birthday, string address, int zip, string city, ECivilStatus eCivilStatus, string adressBefore, int accountNumber, bool isActive,  int mobile = 0, int officePhone = 0)
+    public Persona(string name, string surname, int phone, string email, DateTime birthday, string address, int zip, string city, ECivilStatus eCivilStatus, string adressBefore, int accountNumber, bool isActive,  int mobile = 0, int officePhone = 0)
     {
       Name = name;
       Surname = surname;
@@ -24,7 +24,7 @@ namespace ImmoGlobal.MainClasses
       Address = address;
       Zip = zip;
       City = city;
-      ECivilStatus = eCivilStatus;
+      CivilStatus = eCivilStatus;
       AdressBefore = adressBefore;
       AccountNumber = accountNumber;
       IsActive = isActive;
@@ -69,7 +69,7 @@ namespace ImmoGlobal.MainClasses
     public int Mobile { get; set; }
     public int OfficePhone { get; set; }
     public string Email { get; set; }
-    public DateOnly Birthday { get; set; }
+    public DateTime Birthday { get; set; }
     public string Address { get; set; }
     public int Zip { get; set; }
     public string City { get; set; }
@@ -79,6 +79,6 @@ namespace ImmoGlobal.MainClasses
     public long VatNumber { get; set; }
     public string? CreditorCompanyName { get; set; }
     public string? CreditorContactPerson { get; set; }
-    internal ECivilStatus ECivilStatus { get; set; }
+    public ECivilStatus CivilStatus { get; set; }
   }
 }

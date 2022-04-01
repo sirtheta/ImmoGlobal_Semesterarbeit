@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using ImmoGlobal.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace ImmoGlobal
 {
@@ -24,6 +25,10 @@ namespace ImmoGlobal
         DataContext = new MainViewModel(homeViewModel)
       };
 
+      using var context = new ImmoGlobalContext();
+      //context.Database.EnsureDeleted();
+      context.Database.EnsureCreated();
+      
       MainWindow.Show();
 
       base.OnStartup(e);
