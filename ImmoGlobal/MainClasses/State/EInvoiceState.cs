@@ -13,7 +13,7 @@ namespace ImmoGlobal.MainClasses.State
   {
     NotReleased,
     Released,
-    Sent,
+    OverDue,
     Paid,
     Canceled
   }

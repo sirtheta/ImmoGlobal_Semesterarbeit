@@ -6,8 +6,8 @@ namespace ImmoGlobal
 {
   class ImmoGlobalContext : DbContext
   {
-    
-    public ImmoGlobalContext(): base(new DbContextOptionsBuilder<ImmoGlobalContext>()
+
+    public ImmoGlobalContext() : base(new DbContextOptionsBuilder<ImmoGlobalContext>()
     .UseSqlServer(ConnectionString).Options)
     {
     }
@@ -32,19 +32,14 @@ namespace ImmoGlobal
       }
     }
 
-    public virtual DbSet<Account>? Accounts { get; set; }
-    public virtual DbSet<User>? Users { get; set; }
-    public virtual DbSet<Invoice>? Invoices { get; set; }
-    public virtual DbSet<Object>? Objects { get; set; }
-    public virtual DbSet<Persona>? Personas { get; set; }
-    public virtual DbSet<Property>? Properties { get; set; }
-    public virtual DbSet<RentalContract>? RentalContracts { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-      modelBuilder.Entity<Invoice>().HasOne(p => p.Property).WithMany().OnDelete(DeleteBehavior.NoAction); 
-      modelBuilder.Entity<Invoice>().HasOne(p => p.Persona).WithMany().OnDelete(DeleteBehavior.NoAction);
-      modelBuilder.Entity<RentalContract>().HasOne(p => p.Persona).WithMany().OnDelete(DeleteBehavior.NoAction);
-    }
+    public DbSet<Account>? Accounts { get; set; }
+    public DbSet<Invoice>? Invoices { get; set; }
+    public DbSet<InvoicePosition>? InvoicePositions { get; set; }
+    public DbSet<Object>? Objects { get; set; }
+    public DbSet<Persona>? Personas { get; set; }
+    public DbSet<Property>? Properties { get; set; }
+    public DbSet<RentalContract>? RentalContracts { get; set; }
+    public DbSet<User>? Users { get; set; }
+    public DbSet<AuditTrail>? AuditTrail { get; set; }
   }
 }

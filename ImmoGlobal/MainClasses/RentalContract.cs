@@ -11,15 +11,12 @@ namespace ImmoGlobal.MainClasses
   internal class RentalContract
   {
     public int RentalContractId { get; set; }
+    public Persona? Renter { get; set; }
+    public Object? Object { get; set; }
     public DateTime RentStartDate { get; set; }
     public DateTime? RentEndDate { get; set; }
     public double RentPrice { get; set; }
-    public double Deposit { get; set; }
-    public int PersonaId { get; set; }
-    public Persona? Persona { get; set; }
-    public int ObjectId { get; set; }
-    public Object? Object { get; set; }
-    public EAdditionalCosts EAdditionalCosts { get; set; }
-    public EContractState EContractState { get; set; }
+    public bool Deposit { get; set; }
+    public EContractState ContractState { get; set; }
   }
 }

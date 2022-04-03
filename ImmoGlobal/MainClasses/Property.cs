@@ -15,11 +15,9 @@ namespace ImmoGlobal.MainClasses
     public string? Address { get; set; }
     public string? ZipCode { get; set; }
     public string? City { get; set; }
-    public int NumberOfObjects { get; set; }
-    public string? Insurance { get; set; }
+    public string? PropertyInsurance { get; set; }
     public string? PersonInsurance { get; set; }
     public string? LiabilityInsurance { get; set; }
-    public int PersonaId { get; set; }
     public Persona? Housekeeper { get; set; }
     public ICollection<Object>? Objects { get; set; }
   }

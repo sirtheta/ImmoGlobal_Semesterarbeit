@@ -12,12 +12,12 @@ namespace ImmoGlobal.MainClasses
   internal class Object
   {
     public int ObjectId { get; set; }
-    public int PropertyId { get; set; }
+    public Property? Property { get; set; }
     public EObjectType ObjectType { get; set; }
     public string? Description { get; set; }
     public string? Location { get; set; }
     public double NumberOfRooms { get; set; }
-    public double Surface { get; set; }
+    public double Area { get; set; }
     public int? NumberOfKeys { get; set; }
     public bool Fridge { get; set; }
     public bool Dishwasher { get; set; }
@@ -25,8 +25,6 @@ namespace ImmoGlobal.MainClasses
     public bool Oven { get; set; }
     public bool WashingMachine { get; set; }
     public bool Tumbler { get; set; }
-
-    public ICollection<Invoice>? Invoices { get; set; }
     public ICollection<RentalContract>? RentalContracts { get; set; }
   }
 }

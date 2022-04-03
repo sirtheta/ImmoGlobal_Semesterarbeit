@@ -26,7 +26,7 @@ namespace ImmoGlobal
       };
 
       using var context = new ImmoGlobalContext();
-      //context.Database.EnsureDeleted();
+      context.Database.EnsureDeleted();
       context.Database.EnsureCreated();
       
       MainWindow.Show();

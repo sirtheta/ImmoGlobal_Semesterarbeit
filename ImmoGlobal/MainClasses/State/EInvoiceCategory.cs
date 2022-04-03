@@ -11,9 +11,8 @@ namespace ImmoGlobal.MainClasses.State
   /// </summary>
   internal enum EInvoiceCategory
   {
-    General,
-    Rent,
-    AdditionalCosts,
-    Other
+    Property,
+    Object,
+    Rent
   }
 }

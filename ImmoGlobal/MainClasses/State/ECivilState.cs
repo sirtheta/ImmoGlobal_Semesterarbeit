@@ -9,7 +9,7 @@ namespace ImmoGlobal.MainClasses.State
   /// <summary>
   /// represents the civilStatus of the renter
   /// </summary>
-  internal enum ECivilStatus
+  internal enum ECivilState
   {
     Single,
     Married,
