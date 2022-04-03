@@ -65,7 +65,7 @@
 \newpage
 \subsection{Modellierung der Klassen}
 \subsubsection{Klassendiagramm}
-\begin{figure}[htbt]
+\begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.9\linewidth]{content/diagrams/out/classdiagram/classdiagram.png}
     \caption{Klassendiagramm}
@@ -73,10 +73,20 @@
   \end{center}
 \end{figure}
 
+\vspace*{-1cm}
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.65\linewidth]{content/diagrams/out/classdiagram/Enums.png}
+    \caption{Enum's}
+    \label{enums}
+  \end{center}
+\end{figure}
+
 \subsubsection{Beschreibung der Fachklassen}
 \begin{table}[H]
   \centering
-  \settowidth\tymin{\textbf{Liegenschaft}}
+  \settowidth\tymin{\textbf{RentalContract}}
   \setlength\extrarowheight{2pt}
     \begin{tabulary}{1.0\textwidth}{|L|m{15cm}|}
       \hline
@@ -84,18 +94,20 @@
     \hline
     \textbf{Persona} & Bildet alle Beteiligten Personen ab. Es werden die Mieter:in, Kreditor und die Hauswartungsperson über diese Klasse erfasst. Z.B. für den Mieter:in werden nicht alle Eigenschaften verwendet, wie auch für den Kreditor oder die Hauswartungsperson nicht alle Eigenschaften verwendet werden. Für jede Personengruppe wird ein separater Konstruktor erstellt.\\
     \hline
-    \textbf{Liegenschaft} & Bildet die Liegenschaft mit ihren Eigenschaften ab und beinhaltet die Hauswartungsperson als Persona Objekt. Jede Liegenschaft kann N-Objekte enthalten.\\
+    \textbf{Property} & Bildet die Liegenschaft mit ihren Eigenschaften ab. Für die Hauswartungsperson wird ein Objekt der Klasse \textbf{Persona} verwendet. In jeder Liegenschaft können N-Objekte vorhanden sein.\\
     \hline
-    \textbf{Objekt} & Bildet das Objekt, welches in der Liegenschaft enthalten ist, mit seinen Eigenschaften ab. Jedes Objekt kann nur Eine Beziehungen zu einer Liegenschaft haben. Pro Objekt können aber N-Mietverträge vorhanden sein, wobei immer nur einer gültig sein darf. \\
+    \textbf{Object} & Bildet das Objekt, welches in der Liegenschaft enthalten ist, mit seinen Eigenschaften ab. Jedes Objekt kann nur eine Beziehungen zu einer Liegenschaft haben. Pro Objekt können aber N-Mietverträge vorhanden sein, wobei immer nur einer gültig sein darf. \\
     \hline
-    \textbf{Mietvertrag} & Bildet den Mietvertrag mit seinen Eigenschaften ab. Jeder Mietvertrag kann einem Objekt zugeordnet sein. Der Mietvertrag ist entweder gültig oder ungültig.\\
+    \textbf{RentalContract} & Bildet den Mietvertrag mit seinen Eigenschaften ab. Jeder Mietvertrag kann einem Objekt zugeordnet sein. Der Status des Mietvertrages wird mit dem Enum \textbf{EContractState} abgebildet\\
     \hline
-    \textbf{Rechnung} & Bildet die Rechnung mit ihren Eigenschaften ab. Es kann eine Rechnung auf ein Objekt oder auf eine Liegenschaft erstellt werden und einem Mieter oder einem Kreditor über ''Persona'' zugeordnet werden.\\
+    \textbf{InvoicePosition} & Bildet die Rechnungsposition ab. Zum erstellen einer Rechnung können verschiedene Rechnungspositionen definiert werden. Jede Rechnungsposition wird entweder mit einem Mietvertrag, Liegenschaft oder einem Objekt verknüpft. Zusätzlich wird ein Konto angegeben. So können die Kosten eindeutig verbucht werden.\\
     \hline
+    \textbf{Invoice} & Bildet die Rechnung mit ihren Eigenschaften ab. Jede Rechnung besteht aus mindestens einer Rechnungsposition. Über die Eigenschaft ''Persona'' wird dann die Rechnung entweder einem Mieter oder einem Kreditor zugeordnet. Der Status der Rechnung wird mit dem Enum \textbf{EInvoiceState} abgebildet.\\
+    \hline
+    \textbf{Account} & Bildet das Konto zum Verbuchen der Rechnungsposition ab.\\
+    \hline 
     \textbf{User} & Bildet die User für das Login in der Applikation ab.\\
     \hline
-    \textbf{Konto} & Bildet das Konto zum Verbuchen der Rechnung ab.\\
-    \hline 
 \end{tabulary}
 \caption{Beschreibung der Fachklassen}
 \end{table}
@@ -114,13 +126,13 @@
 \subsubsection{ERD}
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[height=0.85\textheight]{content/diagrams/out/erd/erd.png}
+    \includegraphics[height=1\textwidth]{content/diagrams/out/erd/erd.png}
     \caption{ERD}
     \label{ERD}
   \end{center}
 \end{figure}
 
-\subsubsection{Beschreibung der Fachentitäten}
+\subsubsection{Beschreibung der Entitäten}
 \begin{table}[H]
   \centering
   \settowidth\tymin{\textbf{Liegenschaft}}
@@ -129,22 +141,26 @@
       \hline
       \rowcolor[HTML]{4473C5}\textbf{Entität}& \textbf{Beschreibung}\\
     \hline
-    \textbf{Liegenschaft} & Bildet die Liegenschaft ab. Hat eine 1:N Beziehungen zur Objekt- und zur Rechnungsentität.\\
+    \textbf{Properties} & Bildet die Liegenschaft ab. Hat eine 1:N Beziehungen zur Objekt- und zur Rechnungsposition.\\
     \hline
-    \textbf{Objekt} & Bildet das Objekt ab. Das Objekt hate eine N:1 Beziehung zur Liegenschaft, beinhaltet also dessen Foreign-Key. Zusätzlich hat das Objekt noch eine 1:N-Beziehung zur Rechnung.\\
+    \textbf{Objects} & Bildet das Objekt ab. Das Objekt hate eine N:1 Beziehung zur Liegenschaft, beinhaltet also dessen Foreign-Key. Zusätzlich hat das Objekt noch eine 1:N-Beziehung zur Rechnungsposition.\\
     \hline
-    \textbf{Mietvertrag} & Bildet den Mietvertrag ab. Diese Entität beinhaltet den Foreign-Key von der Entität Persona zum Referenzieren des Mieters und den Foreign-Key zum Objekt, auf welches der Mietvertrag läuft. \\
+    \textbf{RentalContract} & Bildet den Mietvertrag ab. Diese Entität beinhaltet den Foreign-Key von der Entität Persona zum Referenzieren des Mieters und den Foreign-Key zum Objekt, auf welches der Mietvertrag läuft. \\
     \hline
-    \textbf{Persona} & Bildet alle Beteiligten Personen ab. Es werden die Mieter:in, Kreditor und die Hauswartungsperson über diese Entität erfasst. Somit ist je ein Foreign-Key in der Rechnung und im Mietvertrag enthalten. \\
+    \textbf{Personas} & Bildet alle Beteiligten Personen ab. Es werden die Mieter:in, Kreditor und die Hauswartungsperson über diese Entität erfasst. Somit ist je ein Foreign-Key in der Rechnung und im Mietvertrag enthalten. \\
     \hline
-    \textbf{Rechnung} & Bildet die Rechnung ab. Da die Rechnung zur Liegenschaft und zum Objekt gestellt werden muss, ist je ein Foreign-Key von diesen Entitäten enthalten. Zum Verbuchen auf ein Konto wir der Foreign-Key der Entität Konto verwendet. Damit die Rechnung einem Mieter oder Kreditor gestellt werden kann, wird der Foreign-Key Persona verwendet.\\
+    \textbf{InvoicePositions} & Bildet die Rechnungsposition ab und hat pro Position je eine Beziehung zur Liegenschaft, zum Objekt, zum Konto und zur Rechnung.\\
     \hline
-    \textbf{Konto} & Bildet das Konto zum Verbuchen der Rechnung ab und hat somit eine 1:N-Beziehung zur Rechnung\\
+    \textbf{Invoices} & Bildet die Rechnung ab. Die Rechnung beinhaltet N Rechnungspositionen aus deren die Rechnung erstellt wird. Damit die Rechnung einem Mieter oder Kreditor gestellt werden kann, wird der Foreign-Key Persona verwendet.\\
     \hline
-    \textbf{User} & Bildet die User für das Login in der Applikation ab. Das Passwort wird als HASH gespeichert.\\
+    \textbf{Accounts} & Bildet das Konto zum Verbuchen der Rechnung ab und hat somit eine 1:N-Beziehung zur Rechnung\\
+    \hline
+    \textbf{Users} & Bildet die User für das Login in der Applikation ab. Das Passwort wird als HASH gespeichert.\\
+    \hline 
+    \textbf{AuditTrail} & In dieser Entität werden alle Änderungen geloggt, die durch einen User durchgeführt werden.\\
     \hline 
 \end{tabulary}
-\caption{Beschreibung der Fachentitäten}
+\caption{Beschreibung der Entitäten}
 \end{table}
 
 \subsection{Systemarchitektur}
