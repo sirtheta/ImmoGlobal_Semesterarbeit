@@ -13,7 +13,7 @@ namespace ImmoGlobal.Database
   {
     public override int SaveChanges()
     {
-      ChangeTracker.Entries().Where(p => p.State == EntityState.Modified).ToList().ForEach(entry =>
+      ChangeTracker.Entries().ToList().ForEach(entry =>
       {
         Audit(entry);
       });
@@ -25,17 +25,17 @@ namespace ImmoGlobal.Database
     {
       foreach (var property in entry.Properties)
       {
-        if (!property.IsModified)
+        if (property.IsModified)
           continue;
 
         var auditEntry = new AuditTrail
         {
-          Table = entry.Entity.GetType().Name,
-          Column = property.Metadata.Name,
-          OldValue = property.OriginalValue.ToString(),
-          NewValue = property.CurrentValue.ToString(),
-          EditedUser = GetCurrentUser(),
-          Date = DateTime.Now
+          //Table = entry.Entity.GetType().Name,
+          //Column = property.Metadata.Name,
+          //OldValue = property.OriginalValue.ToString(),
+          //NewValue = property.CurrentValue.ToString(),
+          ////EditedUser = GetCurrentUser(),
+          //Date = DateTime.Now
         };
 
         if (AuditTrail != null)

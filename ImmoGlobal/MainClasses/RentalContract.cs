@@ -1,4 +1,4 @@
-﻿using ImmoGlobal.MainClasses.State;
+﻿using ImmoGlobal.MainClasses.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,10 +12,10 @@ namespace ImmoGlobal.MainClasses
   {
     public int RentalContractId { get; set; }
     public Persona? Renter { get; set; }
-    public Object? Object { get; set; }
+    public PropertyObject? PropertyObject { get; set; }
     public DateTime RentStartDate { get; set; }
     public DateTime? RentEndDate { get; set; }
-    public double RentPrice { get; set; }
+    public double Rent { get; set; }
     public bool Deposit { get; set; }
     public EContractState ContractState { get; set; }
   }

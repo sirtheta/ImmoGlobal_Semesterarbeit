@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImmoGlobal.MainClasses.State
+namespace ImmoGlobal.MainClasses.Enum
 {
   /// <summary>
   /// represents the state of the Invoice

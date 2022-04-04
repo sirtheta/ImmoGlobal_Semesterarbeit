@@ -29,5 +29,6 @@
               Position="BottomRight" Margin="0,0,1,1">
     </notifications:NotificationArea>
 
+    <ContentControl Content="{Binding SelectedViewModel}"/>
   </Grid>
 </Window>

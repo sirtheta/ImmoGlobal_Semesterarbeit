@@ -14,6 +14,6 @@ namespace ImmoGlobal.MainClasses
     public string? OldValue { get; set; }
     public string? NewValue { get; set; }
     public DateTime Date { get; set; }
-    public User? EditedUser { get; set; }
+    //public User? EditedUser { get; set; }
   }
 }

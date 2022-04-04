@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using ImmoGlobal.Database;
 using ImmoGlobal.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,14 +25,19 @@ namespace ImmoGlobal
       {
         DataContext = new MainViewModel(homeViewModel)
       };
-
-      using var context = new ImmoGlobalContext();
-      context.Database.EnsureDeleted();
-      context.Database.EnsureCreated();
-      
       MainWindow.Show();
 
       base.OnStartup(e);
+
+      var _delete = false;
+      
+      using var context = new ImmoGlobalContext();
+      if (_delete)
+      {
+        context.Database.EnsureDeleted();        
+        context.Database.EnsureCreated();
+        DatabaseSeeder.CreateTestEntries();
+      }
     }
   }
 }

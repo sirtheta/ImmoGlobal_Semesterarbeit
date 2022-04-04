@@ -1,4 +1,4 @@
-﻿using ImmoGlobal.MainClasses.State;
+﻿using ImmoGlobal.MainClasses.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace ImmoGlobal.MainClasses
   {
     public int InvoicePositionId { get; set; }
     public Property? Property { get; set; }
-    public Object? Object { get; set; }
+    public PropertyObject? PropertyObject { get; set; }
     public double Value { get; set; }
     public EAdditionalCosts? AdditionalCostsCategory { get; set; }
     public Account? Account { get; set; }

@@ -12,5 +12,6 @@
              d:DesignWidth="750"
              d:DesignHeight="450">
   <Grid >
+    <Button Content="Button" HorizontalAlignment="Left" Margin="303,242,0,0" VerticalAlignment="Top"/>
   </Grid>
 </UserControl>

@@ -1,4 +1,4 @@
-﻿using ImmoGlobal.MainClasses.State;
+﻿using ImmoGlobal.MainClasses.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace ImmoGlobal.MainClasses
 {
-  internal class Object
+  internal class PropertyObject
   {
-    public int ObjectId { get; set; }
+    public int PropertyObjectId { get; set; }
     public Property? Property { get; set; }
-    public EObjectType ObjectType { get; set; }
+    public EPropertyObjectType ObjectType { get; set; }
     public string? Description { get; set; }
     public string? Location { get; set; }
     public double NumberOfRooms { get; set; }

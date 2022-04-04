@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImmoGlobal.MainClasses.State
+namespace ImmoGlobal.MainClasses.Enum
 {
   /// <summary>
-  /// represents the invoice categroy 
+  /// represents the rentalContract state
   /// </summary>
-  internal enum EInvoiceCategory
+  internal enum EContractState
   {
-    Property,
-    Object,
-    Rent
+    NotActive,
+    Singend,
+    Active,
+    Canceled
   }
 }

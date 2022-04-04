@@ -1,4 +1,4 @@
-﻿using ImmoGlobal.MainClasses.State;
+﻿using ImmoGlobal.MainClasses.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,7 +14,7 @@ namespace ImmoGlobal.MainClasses
     // Constructor for renter
     public Persona(string name, 
                    string surname, 
-                   int phone,
+                   long phone,
                    string email, 
                    DateTime dateOfBirth, 
                    string address, 
@@ -22,9 +22,9 @@ namespace ImmoGlobal.MainClasses
                    string city, 
                    ECivilState eCivilState,
                    string adressBefore, 
-                   int accountNumber, 
-                   int mobile = 0, 
-                   int officePhone = 0)
+                   string accountNumber, 
+                   long mobile = 0, 
+                   long officePhone = 0)
     {
       Name = name;
       Surname = surname;
@@ -47,12 +47,12 @@ namespace ImmoGlobal.MainClasses
                    string address,
                    int zip,
                    string city,
-                   int phone,
+                   long phone,
                    string creditorContactPerson,
                    string name,
                    string surname,
                    string email,
-                   long vatNumber)
+                   string vatNumber)
     {
       Name = name;
       Surname = surname;
@@ -70,13 +70,13 @@ namespace ImmoGlobal.MainClasses
     // Constructor for Housekeeper
     public Persona(string name,
                    string surname, 
-                   int phone,
-                   int mobile, 
+                   long phone,
                    string email, 
                    string address,
                    int zip,
                    string city,
-                   int accountNumber)
+                   string accountNumber,
+                   long mobile = 0)
     {
       Name = name;
       Surname = surname;
@@ -92,20 +92,20 @@ namespace ImmoGlobal.MainClasses
     public int PersonaId { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
-    public int Phone { get; set; }
-    public int Mobile { get; set; }
-    public int OfficePhone { get; set; }
+    public long Phone { get; set; }
+    public long Mobile { get; set; }
+    public long OfficePhone { get; set; }
     public string Email { get; set; }
-    public DateTime DateOfBirth { get; set; }
+    public DateTime? DateOfBirth { get; set; }
     public string Address { get; set; }
     public int Zip { get; set; }
     public string City { get; set; }
     public ECivilState CivilState { get; set; }
     public string? AdressBefore { get; set; }
-    public int AccountNumber { get; set; }
+    public string? AccountNumber { get; set; }
     public string? CreditorContactPerson { get; set; }
     public bool CreditorIsActive { get; set; }
-    public long VatNumber { get; set; }
+    public string? VatNumber { get; set; }
     public string? CreditorCompanyName { get; set; }
   }
 }

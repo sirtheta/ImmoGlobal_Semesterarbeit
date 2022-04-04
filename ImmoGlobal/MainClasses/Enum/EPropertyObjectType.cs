@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImmoGlobal.MainClasses.State
+namespace ImmoGlobal.MainClasses.Enum
 {
   /// <summary>
-  /// represents the civilStatus of the renter
+  /// represents the Object Type
   /// </summary>
-  internal enum ECivilState
+  internal enum EPropertyObjectType
   {
-    Single,
-    Married,
-    Divorced,
-    Widowed
+    House,
+    Room,
+    Garage,
+    Office,
+    Parking
   }
 }

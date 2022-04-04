@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImmoGlobal.MainClasses.State
+namespace ImmoGlobal.MainClasses.Enum
 {
   /// <summary>
-  /// represents the rentalContract state
+  /// represents the civilStatus of the renter
   /// </summary>
-  internal enum EContractState
+  internal enum ECivilState
   {
-    NotValid,
-    Singend,
-    Valid,
-    Canceled
+    Single,
+    Married,
+    Divorced,
+    Widowed
   }
 }
