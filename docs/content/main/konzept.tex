@@ -88,7 +88,7 @@
   \centering
   \settowidth\tymin{\textbf{RentalContract}}
   \setlength\extrarowheight{2pt}
-    \begin{tabulary}{1.0\textwidth}{|L|m{15cm}|}
+    \begin{tabulary}{1.0\textwidth}{|L|L|}
       \hline
       \rowcolor[HTML]{4473C5}\textbf{Klasse}& \textbf{Beschreibung}\\
     \hline
@@ -98,7 +98,7 @@
     \hline
     \textbf{Object} & Bildet das Objekt, welches in der Liegenschaft enthalten ist, mit seinen Eigenschaften ab. Jedes Objekt kann nur eine Beziehungen zu einer Liegenschaft haben. Pro Objekt können aber N-Mietverträge vorhanden sein, wobei immer nur einer gültig sein darf. \\
     \hline
-    \textbf{RentalContract} & Bildet den Mietvertrag mit seinen Eigenschaften ab. Jeder Mietvertrag kann einem Objekt zugeordnet sein. Der Status des Mietvertrages wird mit dem Enum \textbf{EContractState} abgebildet\\
+    \textbf{RentalContract} & Bildet den Mietvertrag mit seinen Eigenschaften ab. Jeder Mietvertrag kann einem Objekt zugeordnet sein. Der Status des Mietvertrages wird mit dem Enum \textbf{EContractState} abgebildet.\\
     \hline
     \textbf{InvoicePosition} & Bildet die Rechnungsposition ab. Zum erstellen einer Rechnung können verschiedene Rechnungspositionen definiert werden. Jede Rechnungsposition wird entweder mit einem Mietvertrag, Liegenschaft oder einem Objekt verknüpft. Zusätzlich wird ein Konto angegeben. So können die Kosten eindeutig verbucht werden.\\
     \hline
@@ -110,6 +110,34 @@
     \hline
 \end{tabulary}
 \caption{Beschreibung der Fachklassen}
+\end{table}
+
+Zusätzlich zu den Klassen sind in der \fref{enums} auch noch die Enums definiert welche in der Applikation verwendet werden.
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{EInvoiceCategory}}
+  \setlength\extrarowheight{2pt}
+    \begin{tabulary}{1.0\textwidth}{|L|L|}
+      \hline
+      \rowcolor[HTML]{4473C5}\textbf{Enum}& \textbf{Beschreibung}\\
+    \hline
+    \textbf{EAdditionalCosts} & Kategorien für die Nebenkostenabrechnung\\
+    \hline
+    \textbf{EObjectType} & Kategorien damit der Objekttyp unterschieden werden kann\\
+    \hline
+    \textbf{EInvoiceState} & Kategorien um den Status der Rechnung abzubilden\\
+    \hline
+    \textbf{EInvoiceCategory} & Kategorien um in der Rechnungskategorie angeben zu können\\
+    \hline
+    \textbf{ECivilState} & Zivilstand des Mieters\\
+    \hline
+    \textbf{EContractState} & Kategroie um den Status des Mietvertrages abzubilden\\
+    \hline
+    \textbf{ERole} & Userkategorie. Wird für die Zuweisung der Rechte benötigt\\
+    \hline
+\end{tabulary}
+\caption{Beschreibung der Enums}
 \end{table}
 
 \subsection{Zustandsdiagramme}
@@ -126,7 +154,7 @@
 \subsubsection{ERD}
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[height=1\textwidth]{content/diagrams/out/erd/erd.png}
+    \includegraphics[height=1.15\textwidth]{content/diagrams/out/erd/erd.png}
     \caption{ERD}
     \label{ERD}
   \end{center}
