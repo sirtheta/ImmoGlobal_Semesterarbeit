@@ -1,6 +1,6 @@
 @startuml Kreditor erfassen
 !theme cerulean-outline
-
+skinparam dpi 300
 left to right direction
 actor "User" as fc
 rectangle "Kreditor erfassen" {

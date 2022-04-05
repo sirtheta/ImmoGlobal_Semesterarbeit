@@ -1,5 +1,6 @@
 @startuml Login
 !theme cerulean-outline
+skinparam dpi 300
 actor "User" as fc
 rectangle Login {
   usecase "Login" as UC1

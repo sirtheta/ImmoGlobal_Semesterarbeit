@@ -1,12 +1,12 @@
 @startuml MietverträgeVerwalten
 !theme cerulean-outline
-
+skinparam dpi 300
 left to right direction
 actor "User" as fc
 rectangle "Mietverträge verwalten" {
   usecase "Mietbeginn angeben" as UC1
   usecase "Neuer Mietvertrag\n erfassen" as UC2
-  usecase "erfasste Objekte/\nLiegenschaft" as inc1
+  usecase "erfasste Objekte" as inc1
   usecase "Monatlicher Mietzins\n angeben" as UC3
   usecase "Nebenkostenart \n angeben" as UC4
   usecase "Auflistung der \n Kostenarten angeben" as UC5

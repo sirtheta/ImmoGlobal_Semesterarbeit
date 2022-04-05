@@ -1,5 +1,5 @@
 @startuml mietvertragRechnung
-
+skinparam dpi 300
 hide empty description
 state Mietvertrag {
 [*] --> ungültig : neuer Mietvertrag

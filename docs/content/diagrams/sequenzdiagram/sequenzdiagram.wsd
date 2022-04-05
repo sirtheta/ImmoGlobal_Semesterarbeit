@@ -1,8 +1,14 @@
 @startuml sequenzdiagram
 !theme cerulean-outline
 skinparam ParticipantPadding 2
+
+skinparam dpi 300
+
 actor User
 User -> User ++ #8ECBF1: login()
+create Persona
+User -> Persona ++ #8ECBF1: neuePersona()
+Persona->Persona : speichern()
 create Liegenschaft
 User -> Liegenschaft ++ #8ECBF1: neueLiegenschaft()
 Liegenschaft->Liegenschaft : speichern()
@@ -15,4 +21,7 @@ Mietvertrag->Mietvertrag : speichern()
 create Rechnung
 User -> Rechnung ++#8ECBF1: neueRechnung()
 Rechnung->Rechnung : speichern()
+create Konto
+User->Konto ++#8ECBF1: neuesKonto()
+Konto->Konto : speichern()
 @enduml

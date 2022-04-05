@@ -1,5 +1,6 @@
 @startmindmap GuiMindMap
 !theme cerulean-outline
+skinparam dpi 300
 * Liegenschaft
 ** neue Liegenschaft
 ** Objekte

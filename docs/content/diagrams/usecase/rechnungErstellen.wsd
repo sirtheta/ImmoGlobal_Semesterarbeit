@@ -1,6 +1,6 @@
 @startuml Rechnung erstellen
 !theme cerulean-outline
-
+skinparam dpi 300
 left to right direction
 actor "User" as fc
 rectangle "Rechnung erstellen" {

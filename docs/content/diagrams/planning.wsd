@@ -1,7 +1,7 @@
 @startuml Planning
 printscale weekly zoom 3
 language de
-
+skinparam dpi 300
 'Phase defines
 Project starts 2022-02-15
 [1. Plenum] happens at 2022-02-22
