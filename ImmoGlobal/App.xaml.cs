@@ -20,23 +20,32 @@ namespace ImmoGlobal
     protected override void OnStartup(StartupEventArgs e)
     {
       HomeViewModel homeViewModel = HomeViewModel.GetInstance;
+      MenuBarViewModel menuBarViewModel = new();
 
       MainWindow = new MainWindow()
       {
-        DataContext = new MainViewModel(homeViewModel)
+        DataContext = new MainViewModel(homeViewModel, menuBarViewModel)
       };
       MainWindow.Show();
 
       base.OnStartup(e);
 
-      var _delete = false;
-      
+      string? _delete = ConfigurationManager.AppSettings["DropDatabase"];
+      string? _seed = ConfigurationManager.AppSettings["SeedDatabase"];
+
       using var context = new ImmoGlobalContext();
-      if (_delete)
+      if (_delete != null && bool.Parse(_delete))
       {
-        context.Database.EnsureDeleted();        
+        context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
-        DatabaseSeeder.CreateTestEntries();
+        if (_seed != null && bool.Parse(_seed))
+        {
+          DatabaseSeeder.CreateTestEntries();
+        }
+      }
+      else
+      {
+        context.Database.EnsureCreated();
       }
     }
   }

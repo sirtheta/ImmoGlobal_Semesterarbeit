@@ -6,7 +6,9 @@ namespace ImmoGlobal.ViewModels
   internal class MainViewModel : BaseViewModel
   {
     private BaseViewModel _selectedViewModel;
-    
+    private BaseViewModel _menuBarViewModel;
+
+
     private static MainViewModel? instance = null;
 
     /// <summary>
@@ -18,10 +20,21 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    public MainViewModel(BaseViewModel viewModel)
+    public MainViewModel(BaseViewModel viewModel, BaseViewModel menuBarViewModel)
     {
       _selectedViewModel = viewModel;
+      _menuBarViewModel = menuBarViewModel;
       instance = this;
+    }
+
+    public BaseViewModel MenuBarViewModel
+    {
+      get { return _menuBarViewModel; }
+      set
+      {
+        _menuBarViewModel = value;
+        OnPropertyChanged();
+      }
     }
 
     public BaseViewModel SelectedViewModel {

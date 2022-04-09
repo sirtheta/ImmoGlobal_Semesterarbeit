@@ -28,7 +28,14 @@
               x:Name="WindowArea"
               Position="BottomRight" Margin="0,0,1,1">
     </notifications:NotificationArea>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" MinHeight="150" />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+      <ContentControl Content="{Binding MenuBarViewModel}" Grid.Row="0"/>
 
-    <ContentControl Content="{Binding SelectedViewModel}"/>
+      <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="1"/>
+    </Grid>
   </Grid>
 </Window>

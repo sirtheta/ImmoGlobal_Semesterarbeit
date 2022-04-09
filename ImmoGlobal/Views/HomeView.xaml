@@ -5,13 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local ="clr-namespace:ImmoGlobal.Views"            
              xmlns:fa5="http://schemas.fontawesome.com/icons/" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:HomeViewModel}"
              mc:Ignorable="d" 
-             Background="{DynamicResource MaterialDesignPaper}"
+             d:Background="{DynamicResource MaterialDesignPaper}"
              d:DesignWidth="750"
              d:DesignHeight="450">
-  <Grid >
-    <Button Content="Button" HorizontalAlignment="Left" Margin="303,242,0,0" VerticalAlignment="Top"/>
-  </Grid>
+  <Grid />
 </UserControl>

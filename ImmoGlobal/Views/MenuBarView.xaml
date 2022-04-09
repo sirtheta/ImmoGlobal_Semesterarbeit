@@ -1,0 +1,189 @@
+﻿<UserControl x:Class="ImmoGlobal.Views.MenuBarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ImmoGlobal.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:fa6="http://schemas.fontawesome.com/icons/svg"
+             xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:HomeViewModel}"
+             mc:Ignorable="d" 
+             d:Background="{DynamicResource MaterialDesignPaper}"
+             d:DesignWidth="1200" 
+             d:DesignHeight="150">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="140"/>
+      <ColumnDefinition Width="140"/>
+      <ColumnDefinition Width="140"/>
+      <ColumnDefinition Width="140"/>
+      <ColumnDefinition Width="140"/>
+      <ColumnDefinition Width="140"/>
+      <ColumnDefinition Width="140"/>
+      <ColumnDefinition Width="1*"/>
+    </Grid.ColumnDefinitions>
+    <!--property-->
+    <Button Command="{Binding BtnProperty}" 
+            Grid.Column="0" 
+            Height="120" 
+            Width="120" 
+            Padding="0">
+      <Button.Content>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="1*"/>
+          </Grid.RowDefinitions>
+          <fa6:ImageAwesome Icon="Solid_Building" 
+                            Height="80"/>
+          <TextBlock Text="{Binding TxtPropertyBtn}" 
+                     Grid.Row="1"
+                     HorizontalAlignment="Center"
+                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
+                     FontFamily="{DynamicResource MaterialDesignFont}"
+                     FontSize="25"/>
+        </Grid>
+      </Button.Content>
+    </Button>
+    <!--PropertyObject-->
+    <Button Command="{Binding BtnPropertyObject}" 
+            Grid.Column="1" 
+            Height="120" 
+            Width="120" 
+            Padding="0">
+      <Button.Content>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="1*"/>
+          </Grid.RowDefinitions>
+          <fa6:ImageAwesome Icon="Solid_BuildingUser"
+                            Height="80"/>
+          <TextBlock Text="{Binding TxtPropertyObjectBtn}" 
+                     Grid.Row="1"
+                     HorizontalAlignment="Center"
+                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
+                     FontFamily="{DynamicResource MaterialDesignFont}"
+                     FontSize="25"/>
+        </Grid>
+      </Button.Content>
+    </Button>
+    <!--renter-->
+    <Button Command="{Binding BtnRenter}" 
+            Grid.Column="2" 
+            Height="120" 
+            Width="120" 
+            Padding="0">
+      <Button.Content>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="1*"/>
+          </Grid.RowDefinitions>
+          <fa6:ImageAwesome Icon="Solid_UserTag"
+                            Height="80"/>
+          <TextBlock Text="{Binding TxtRenterBtn}" 
+                     Grid.Row="1"
+                     HorizontalAlignment="Center"
+                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
+                     FontFamily="{DynamicResource MaterialDesignFont}"
+                     FontSize="25"/>
+        </Grid>
+      </Button.Content>
+    </Button>
+    <!--creditors-->
+    <Button Command="{Binding BtnCreditors}" 
+            Grid.Column="3" 
+            Height="120" 
+            Width="120" 
+            Padding="0">
+      <Button.Content>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="1*"/>
+          </Grid.RowDefinitions>
+          <fa6:ImageAwesome Icon="Solid_UserTie"
+                            Height="80"/>
+          <TextBlock Text="{Binding TxtCreditorsBtn}" 
+                     Grid.Row="1"
+                     HorizontalAlignment="Center"
+                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
+                     FontFamily="{DynamicResource MaterialDesignFont}"
+                     FontSize="25"/>
+        </Grid>
+      </Button.Content>
+    </Button>
+    <!--rentalContract-->
+    <Button Command="{Binding BtnRentalContract}" 
+            Grid.Column="4" 
+            Height="120" 
+            Width="120" 
+            Padding="0">
+      <Button.Content>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="1*"/>
+          </Grid.RowDefinitions>
+          <fa6:ImageAwesome Icon="Solid_FileContract"
+                            Height="80"/>
+          <TextBlock Text="{Binding TxtRentalContractBtn}" 
+                     Grid.Row="1"
+                     HorizontalAlignment="Center"
+                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
+                     FontFamily="{DynamicResource MaterialDesignFont}"
+                     FontSize="25"/>
+        </Grid>
+      </Button.Content>
+    </Button>
+    <!--invoice-->
+    <Button Command="{Binding BtnInvoice}" 
+            Grid.Column="5" 
+            Height="120" 
+            Width="120" 
+            Padding="0">
+      <Button.Content>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="1*"/>
+          </Grid.RowDefinitions>
+          <fa6:ImageAwesome Icon="Solid_FileInvoiceDollar"
+                            Height="80"/>
+          <TextBlock Text="{Binding TxtInvoiceBtn}" 
+                     Grid.Row="1"
+                     HorizontalAlignment="Center"
+                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
+                     FontFamily="{DynamicResource MaterialDesignFont}"
+                     FontSize="25"/>
+        </Grid>
+      </Button.Content>
+    </Button>
+    <!--account-->
+    <Button Command="{Binding BtnAccount}" 
+            Grid.Column="6" 
+            Height="120" 
+            Width="120" 
+            Padding="0">
+      <Button.Content>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="1*"/>
+          </Grid.RowDefinitions>
+          <fa6:ImageAwesome Icon="Solid_MoneyCheckDollar"
+                            Width="100"/>
+          <TextBlock Text="{Binding TxtAccountBtn}" 
+                     Grid.Row="1"
+                     HorizontalAlignment="Center"
+                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
+                     FontFamily="{DynamicResource MaterialDesignFont}"
+                     FontSize="25"/>
+        </Grid>
+      </Button.Content>
+    </Button>
+
+  </Grid>
+</UserControl>
