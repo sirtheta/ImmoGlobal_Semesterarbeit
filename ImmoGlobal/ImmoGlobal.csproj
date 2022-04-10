@@ -14,5 +14,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
     <PackageReference Include="Notifications.Wpf.Core" Version="1.4.0" />
   </ItemGroup>
-
 </Project>

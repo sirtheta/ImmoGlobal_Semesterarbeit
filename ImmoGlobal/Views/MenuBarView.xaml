@@ -28,7 +28,8 @@
             Grid.Column="0" 
             Height="120" 
             Width="120" 
-            Padding="0">
+            Padding="0"
+            IsEnabled="True">
       <Button.Content>
         <Grid>
           <Grid.RowDefinitions>
@@ -37,12 +38,12 @@
           </Grid.RowDefinitions>
           <fa6:ImageAwesome Icon="Solid_Building" 
                             Height="80"/>
-          <TextBlock Text="{Binding TxtPropertyBtn}" 
+          <TextBlock Text="{DynamicResource property}" 
                      Grid.Row="1"
                      HorizontalAlignment="Center"
                      Style="{DynamicResource MaterialDesignButtonTextBlock}"
                      FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="25"/>
+                     FontSize="19"/>
         </Grid>
       </Button.Content>
     </Button>
@@ -60,12 +61,12 @@
           </Grid.RowDefinitions>
           <fa6:ImageAwesome Icon="Solid_BuildingUser"
                             Height="80"/>
-          <TextBlock Text="{Binding TxtPropertyObjectBtn}" 
+          <TextBlock Text="{DynamicResource propertyObject}" 
                      Grid.Row="1"
                      HorizontalAlignment="Center"
                      Style="{DynamicResource MaterialDesignButtonTextBlock}"
                      FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="25"/>
+                     FontSize="20"/>
         </Grid>
       </Button.Content>
     </Button>
@@ -83,12 +84,12 @@
           </Grid.RowDefinitions>
           <fa6:ImageAwesome Icon="Solid_UserTag"
                             Height="80"/>
-          <TextBlock Text="{Binding TxtRenterBtn}" 
+          <TextBlock Text="{DynamicResource renter}" 
                      Grid.Row="1"
                      HorizontalAlignment="Center"
                      Style="{DynamicResource MaterialDesignButtonTextBlock}"
                      FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="25"/>
+                     FontSize="20"/>
         </Grid>
       </Button.Content>
     </Button>
@@ -106,12 +107,12 @@
           </Grid.RowDefinitions>
           <fa6:ImageAwesome Icon="Solid_UserTie"
                             Height="80"/>
-          <TextBlock Text="{Binding TxtCreditorsBtn}" 
+          <TextBlock Text="{DynamicResource creditor}" 
                      Grid.Row="1"
                      HorizontalAlignment="Center"
                      Style="{DynamicResource MaterialDesignButtonTextBlock}"
                      FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="25"/>
+                     FontSize="20"/>
         </Grid>
       </Button.Content>
     </Button>
@@ -129,12 +130,12 @@
           </Grid.RowDefinitions>
           <fa6:ImageAwesome Icon="Solid_FileContract"
                             Height="80"/>
-          <TextBlock Text="{Binding TxtRentalContractBtn}" 
+          <TextBlock Text="{DynamicResource rentalContract}" 
                      Grid.Row="1"
                      HorizontalAlignment="Center"
                      Style="{DynamicResource MaterialDesignButtonTextBlock}"
                      FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="25"/>
+                     FontSize="20"/>
         </Grid>
       </Button.Content>
     </Button>
@@ -152,12 +153,12 @@
           </Grid.RowDefinitions>
           <fa6:ImageAwesome Icon="Solid_FileInvoiceDollar"
                             Height="80"/>
-          <TextBlock Text="{Binding TxtInvoiceBtn}" 
+          <TextBlock Text="{DynamicResource invoice}" 
                      Grid.Row="1"
                      HorizontalAlignment="Center"
                      Style="{DynamicResource MaterialDesignButtonTextBlock}"
                      FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="25"/>
+                     FontSize="20"/>
         </Grid>
       </Button.Content>
     </Button>
@@ -175,12 +176,12 @@
           </Grid.RowDefinitions>
           <fa6:ImageAwesome Icon="Solid_MoneyCheckDollar"
                             Width="100"/>
-          <TextBlock Text="{Binding TxtAccountBtn}" 
+          <TextBlock Text="{DynamicResource account}" 
                      Grid.Row="1"
                      HorizontalAlignment="Center"
                      Style="{DynamicResource MaterialDesignButtonTextBlock}"
                      FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="25"/>
+                     FontSize="20"/>
         </Grid>
       </Button.Content>
     </Button>

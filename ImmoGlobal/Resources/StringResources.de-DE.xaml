@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+  
+  <!--MenuBar-->
+  <system:String x:Key="property">Liegenschaft</system:String>
+  <system:String x:Key="propertyObject">Objekt</system:String>
+  <system:String x:Key="renter">Mieter</system:String>
+  <system:String x:Key="creditor">Kreditor</system:String>
+  <system:String x:Key="rentalContract">Mietvertrag</system:String>
+  <system:String x:Key="invoice">Rechnung</system:String>
+  <system:String x:Key="account">Konto</system:String>
+</ResourceDictionary>

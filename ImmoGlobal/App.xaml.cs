@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using ImmoGlobal.Database;
@@ -16,9 +17,9 @@ namespace ImmoGlobal
   /// </summary>
   public partial class App : Application
   {
-
     protected override void OnStartup(StartupEventArgs e)
     {
+      SetLanguageDictionary();      
       HomeViewModel homeViewModel = HomeViewModel.GetInstance;
       MenuBarViewModel menuBarViewModel = new();
 
@@ -47,6 +48,23 @@ namespace ImmoGlobal
       {
         context.Database.EnsureCreated();
       }
+    }
+    private void SetLanguageDictionary()
+    {
+      ResourceDictionary dict = new();
+      switch (Thread.CurrentThread.CurrentCulture.ToString())
+      {
+        case "de-CH":
+          dict.Source = new Uri("..\\Resources\\StringResources.de-DE.xaml", UriKind.Relative);
+          break;
+        case "de-DE":
+          dict.Source = new Uri("..\\Resources\\StringResources.de-DE.xaml", UriKind.Relative);
+          break;
+        default:
+          dict.Source = new Uri("..\\Resources\\StringResources.xaml", UriKind.Relative);
+          break;
+      }
+      Resources.MergedDictionaries.Add(dict);
     }
   }
 }

@@ -20,7 +20,7 @@
         TextElement.FontWeight="Regular"
         TextElement.FontSize="15"
         TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto">
+        TextOptions.TextRenderingMode="Auto" WindowState="Maximized">
   <Grid>
     <!--defines the area where to show the totification toast-->
     <notifications:NotificationArea Panel.ZIndex="10" 
