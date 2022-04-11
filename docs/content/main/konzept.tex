@@ -186,7 +186,7 @@ Zusätzlich zu den Klassen sind in der \fref{enums} auch noch die Enums definier
 \end{table}
 
 \subsection{Systemarchitektur}
-Die Programmiersprache für die Applikation ist C\# mit dem aktuellen .net Core 6 Framework. Das GUI wird mit WPF aufgebaut und die gesamte Struktur im MVVM-Pattern gehalten. Mit WPF werden alle GUI-Komponenten über Binding angesteuert, was es in einem weiteren schritt viel einfacher mach die Applikation mehrsprachig zu gestalten.\\ Um das GUI ansprechend zu gestalten, wird das NuGet-Paket ''Material-Design'' und das Font Awesome Paket verwendet.\\
+Die Programmiersprache für die Applikation ist C\# mit dem aktuellen .net Core 6 Framework. Das GUI wird mit WPF aufgebaut und die gesamte Struktur im MVVM-Pattern gehalten. Mit WPF werden alle GUI-Komponenten über Binding angesteuert. So wird die Logik und das GUI schön getrennt gehalten. Die Sprach-Ressourcen werden direkt in einer Ressourcen-Datei erfasst. So ist gewährleistet, dass die Applikation Mehrere Sprachen unterstützt. \\ Um das GUI ansprechend zu gestalten, wird das NuGet-Paket ''Material-Design'' und das NuGet-Paket ''Font Awesome'' verwendet.\\
 Für das persistieren der Daten wird das ORM Entity-Framework benutzt, mit welchem bereits in einem früheren Projekt Erfahrungen gesammelt werden konnten.
 
 \newpage
@@ -338,6 +338,7 @@ Anhand von Szenarien die aus den Use-Case's erstellt werden und dann nach ihrer 
   \end{center}
 \end{figure}
 \subsubsection{GUI-Map Beschreibung}
+Die GUI-Map dient zur besseren Übersicht von wo aus wohin navigiert werden kann und welche Einträge wo angesehen, bearbeitet oder neu hinzugefügt werden können.
 Über die Liegenschaft gelangt der User zum Objekt oder er kann sich direkt die zuständige Hauswartungsperson anzeigen lassen, sie editieren oder neu hinzufügen. Über das Objekt können anschliessend die Mieter und die Mietverträge mit den dazugehörigen Rechnungen angesehen, bzw. editiert oder neu erstellt werden.\\
 Über die Kreditoren können die dazugehörigen Rechnungen angesehen oder neu erstellt werden. \\ 
 Über den Mieter können die vom Mieter gemieteten Objekte, seine Rechnungen und die Mietverträge angesehen, bzw. bearbeitet werden oder es kann ein neuer Mieter erstellt werden.\\
