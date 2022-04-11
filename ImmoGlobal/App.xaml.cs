@@ -19,21 +19,26 @@ namespace ImmoGlobal
   {
     protected override void OnStartup(StartupEventArgs e)
     {
-      SetLanguageDictionary();      
-      HomeViewModel homeViewModel = HomeViewModel.GetInstance;
+      CheckDatabase();
+      
+      SetLanguageDictionary();
+      PropertyViewModel propertyViewModel = PropertyViewModel.GetInstance;
       MenuBarViewModel menuBarViewModel = new();
+      SideMenuViewModel sideMenuViewModel = new();
 
       MainWindow = new MainWindow()
       {
-        DataContext = new MainViewModel(homeViewModel, menuBarViewModel)
+        DataContext = new MainViewModel(propertyViewModel, menuBarViewModel, sideMenuViewModel)
       };
       MainWindow.Show();
 
       base.OnStartup(e);
+    }
 
+    private static void CheckDatabase()
+    {
       string? _delete = ConfigurationManager.AppSettings["DropDatabase"];
       string? _seed = ConfigurationManager.AppSettings["SeedDatabase"];
-
       using var context = new ImmoGlobalContext();
       if (_delete != null && bool.Parse(_delete))
       {

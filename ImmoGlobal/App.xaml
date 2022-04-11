@@ -6,14 +6,16 @@
              xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels">
   <Application.Resources>
     <ResourceDictionary>
-      <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
-      <views:HomeView/>
-    </DataTemplate>
       <DataTemplate DataType="{x:Type viewmodels:MenuBarViewModel}">
         <views:MenuBarView/>
       </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:SideMenuViewModel}">
+        <views:SideMenuView/>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:PropertyViewModel}">
+        <views:PropertyView/>
+      </DataTemplate>
       <ResourceDictionary.MergedDictionaries>
-        <!--<ResourceDictionary Source="Resources/StringResources.xaml"/>-->
         <ResourceDictionary Source="Resources/StringResources.de-DE.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />

@@ -1,4 +1,5 @@
-﻿using ImmoGlobal.MainClasses.Enum;
+﻿using ImmoGlobal.Database;
+using ImmoGlobal.MainClasses.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

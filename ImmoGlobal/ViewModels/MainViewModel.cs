@@ -7,6 +7,7 @@ namespace ImmoGlobal.ViewModels
   {
     private BaseViewModel _selectedViewModel;
     private BaseViewModel _menuBarViewModel;
+    private BaseViewModel _sideMenuViewModel;
 
 
     private static MainViewModel? instance = null;
@@ -20,10 +21,11 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    public MainViewModel(BaseViewModel viewModel, BaseViewModel menuBarViewModel)
+    public MainViewModel(BaseViewModel viewModel, BaseViewModel menuBarViewModel, BaseViewModel sideMenuViewModel)
     {
       _selectedViewModel = viewModel;
       _menuBarViewModel = menuBarViewModel;
+      _sideMenuViewModel = sideMenuViewModel;
       instance = this;
     }
 
@@ -33,6 +35,16 @@ namespace ImmoGlobal.ViewModels
       set
       {
         _menuBarViewModel = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public BaseViewModel SideMenuViewModel
+    {
+      get { return _sideMenuViewModel; }
+      set
+      {
+        _sideMenuViewModel = value;
         OnPropertyChanged();
       }
     }
