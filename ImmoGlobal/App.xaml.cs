@@ -28,7 +28,7 @@ namespace ImmoGlobal
 
       MainWindow = new MainWindow()
       {
-        DataContext = new MainViewModel(propertyViewModel, menuBarViewModel, sideMenuViewModel)
+        DataContext = new MainViewModel(propertyViewModel)
       };
       MainWindow.Show();
 

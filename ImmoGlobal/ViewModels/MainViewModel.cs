@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using System.Windows.Media;
 using ImmoGlobal.Commands;
 
 namespace ImmoGlobal.ViewModels
@@ -6,8 +7,8 @@ namespace ImmoGlobal.ViewModels
   internal class MainViewModel : BaseViewModel
   {
     private BaseViewModel _selectedViewModel;
-    private BaseViewModel _menuBarViewModel;
-    private BaseViewModel _sideMenuViewModel;
+    private MenuBarViewModel _menuBarViewModel;
+    private SideMenuViewModel _sideMenuViewModel;
 
 
     private static MainViewModel? instance = null;
@@ -15,47 +16,71 @@ namespace ImmoGlobal.ViewModels
     /// <summary>
     /// returns instance of class MainViewModel
     /// </summary>
-    public static MainViewModel? GetInstance {
-      get {
-        return instance; 
+    public static MainViewModel? GetInstance
+    {
+      get
+      {
+        return instance;
       }
     }
 
-    public MainViewModel(BaseViewModel viewModel, BaseViewModel menuBarViewModel, BaseViewModel sideMenuViewModel)
+    public MainViewModel(BaseViewModel viewModel)
     {
       _selectedViewModel = viewModel;
-      _menuBarViewModel = menuBarViewModel;
-      _sideMenuViewModel = sideMenuViewModel;
+      _menuBarViewModel = new MenuBarViewModel();
+      _sideMenuViewModel = new SideMenuViewModel();
       instance = this;
     }
 
-    public BaseViewModel MenuBarViewModel
+    public MenuBarViewModel MenuBarViewModel
     {
       get { return _menuBarViewModel; }
       set
       {
         _menuBarViewModel = value;
-        OnPropertyChanged();
       }
     }
 
-    public BaseViewModel SideMenuViewModel
+    public SideMenuViewModel SideMenuViewModel
     {
       get { return _sideMenuViewModel; }
       set
       {
         _sideMenuViewModel = value;
-        OnPropertyChanged();
       }
     }
 
-    public BaseViewModel SelectedViewModel {
-      get {
+    public BaseViewModel SelectedViewModel
+    {
+      get
+      {
+        SetMenuBarIconColor();
         return _selectedViewModel;
       }
-      set {
+      set
+      {
         _selectedViewModel = value;
+        SetMenuBarIconColor();
         OnPropertyChanged(nameof(SelectedViewModel));
+      }
+    }
+
+    
+    private void SetMenuBarIconColor()
+    {
+      switch (_selectedViewModel)
+      {
+        case PropertyViewModel:
+          MenuBarViewModel.BtnPropertyColor = Brushes.Red;    
+          MenuBarViewModel.BtnPropertyObjectColor = Brushes.Black;
+          MenuBarViewModel.BtnRenterColor         = Brushes.Black;
+          MenuBarViewModel.BtnCreditorColor       = Brushes.Black;
+          MenuBarViewModel.BtnRentalContractColor = Brushes.Black;
+          MenuBarViewModel.BtnInvoiceColor        = Brushes.Black;
+          MenuBarViewModel.BtnAccountColor        = Brushes.Black;
+          break;
+        default:
+          break;
       }
     }
   }

@@ -1,10 +1,13 @@
 ﻿using ImmoGlobal.Commands;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace ImmoGlobal.ViewModels
 {
@@ -13,13 +16,15 @@ namespace ImmoGlobal.ViewModels
 
     public MenuBarViewModel()
     {
-      BtnProperty       = new RelayCommand<object>(BtnPropertyClick); 
-      BtnPropertyObject = new RelayCommand<object>(BtnPropertyObjectClick); 
-      BtnRenter         = new RelayCommand<object>(BtnRenterClick); 
-      BtnCreditors      = new RelayCommand<object>(BtnCreditorsClick); 
-      BtnRentalContract = new RelayCommand<object>(BtnRentalContractClick); 
-      BtnInvoice        = new RelayCommand<object>(BtnInvoiceClick); 
-      BtnAccount        = new RelayCommand<object>(BtnAccountClick); 
+      BtnProperty = new RelayCommand<object>(BtnPropertyClick);
+      BtnPropertyObject = new RelayCommand<object>(BtnPropertyObjectClick);
+      BtnRenter = new RelayCommand<object>(BtnRenterClick);
+      BtnCreditor = new RelayCommand<object>(BtnCreditorsClick);
+      BtnRentalContract = new RelayCommand<object>(BtnRentalContractClick);
+      BtnInvoice = new RelayCommand<object>(BtnInvoiceClick);
+      BtnAccount = new RelayCommand<object>(BtnAccountClick);
+
+
     }
 
 
@@ -75,7 +80,7 @@ namespace ImmoGlobal.ViewModels
       private set;
     }
 
-    public ICommand BtnCreditors
+    public ICommand BtnCreditor
     {
       get;
       private set;
@@ -98,5 +103,12 @@ namespace ImmoGlobal.ViewModels
       get;
       private set;
     }
+    public Brush BtnPropertyColor { get; set; }
+    public Brush BtnPropertyObjectColor { get ; set; }
+    public Brush BtnRenterColor { get; set; }
+    public Brush BtnCreditorColor { get; set; }
+    public Brush BtnRentalContractColor { get; set; }
+    public Brush BtnInvoiceColor { get; set; }
+    public Brush BtnAccountColor { get; set; }
   }
 }
