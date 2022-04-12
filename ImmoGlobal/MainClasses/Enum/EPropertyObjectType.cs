@@ -6,6 +6,7 @@
   internal enum EPropertyObjectType
   {
     House,
+    Apartment,
     Room,
     Garage,
     Office,

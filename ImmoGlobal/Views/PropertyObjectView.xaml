@@ -102,7 +102,7 @@
                                FontFamily="{DynamicResource MaterialDesignFont}"/>
 
                     <TextBlock Grid.Column="1" 
-                               Text="{Binding ObjectType}" 
+                               Text="{Binding ObjectTypeName}" 
                                Margin="5,0,0,0"
                                FontFamily="{DynamicResource MaterialDesignFont}"/>
                   </Grid>

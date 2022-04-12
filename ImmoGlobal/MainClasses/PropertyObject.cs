@@ -4,6 +4,7 @@ using ImmoGlobal.MainClasses.Enum;
 using ImmoGlobal.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ImmoGlobal.MainClasses
@@ -35,8 +36,26 @@ namespace ImmoGlobal.MainClasses
     public string CurrentRenter
     {
       get
+      {        
+        return GetRentalContractToObject().Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.GetRenterFullName() ?? 
+          Application.Current.FindResource("notRented2") as string ?? "not rented";
+      }
+    }
+
+    public string ObjectTypeName
+    {
+      get
       {
-        return GetRentalContractToObject().Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.GetRenterFullName() ?? "nicht vermietet";
+        return ObjectType switch
+        {
+          EPropertyObjectType.House => Application.Current.FindResource("house") as string ?? "house",
+          EPropertyObjectType.Apartment => Application.Current.FindResource("apartment") as string ?? "apartment",
+          EPropertyObjectType.Room => Application.Current.FindResource("room") as string ?? "room",
+          EPropertyObjectType.Garage => Application.Current.FindResource("garage") as string ?? "garage",
+          EPropertyObjectType.Office => Application.Current.FindResource("office") as string ?? "office",
+          EPropertyObjectType.Parking => Application.Current.FindResource("parking") as string ?? "parking",
+          _ => "string not defined",
+        };
       }
     }
 
@@ -49,7 +68,7 @@ namespace ImmoGlobal.MainClasses
     {
       if (MainWindowViewModel.GetInstance != null)
       {
-
+        // to implement
       }
     }
   }

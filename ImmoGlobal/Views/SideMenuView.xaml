@@ -99,7 +99,7 @@
             Visibility="{Binding BtnRentalContractsVisibility}"/>
       
       <Button Command="{Binding BtnNewCreditor}" 
-            Content="{DynamicResource NewCreditor}"
+            Content="{DynamicResource newCreditor}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
             FontFamily="{DynamicResource MaterialDesignFont}"
             FontSize="20"
