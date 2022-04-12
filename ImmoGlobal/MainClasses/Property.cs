@@ -1,7 +1,10 @@
-﻿using ImmoGlobal.Database;
+﻿using ImmoGlobal.Commands;
+using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses.Enum;
+using ImmoGlobal.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 
 namespace ImmoGlobal.MainClasses
 {
@@ -28,7 +31,7 @@ namespace ImmoGlobal.MainClasses
 
     private List<PropertyObject> GetPropertyObjects()
     {
-      return DbController.GetPropertiesWithIdFromDb(this);
+      return DbController.GetPropertyObjectsWithIdFromDb(this);
     }
 
     private readonly List<RentalContract> _rentalContracts = new();
@@ -61,7 +64,7 @@ namespace ImmoGlobal.MainClasses
         return RentalContracts?.Where(x => x.ContractState == EContractState.Active).Count() ?? 0;
       }
     }
-    
+
     /// <summary>
     /// Gets all inactive rental conracts in a prpoerty
     /// </summary>
@@ -71,6 +74,28 @@ namespace ImmoGlobal.MainClasses
       {
         return RentalContracts?.Where(x => x.ContractState != EContractState.Active).Count() ?? 0;
       }
+    }
+
+    public ICommand PropertyClickCommand
+    {
+      get { return new RelayCommand<object>(PropertyClick); }
+    }
+
+    private void PropertyClick(object obj)
+    {
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyObjectViewModel(GetPropertyObjects(), GetHouskeeper(), Description);
+      }
+    }
+
+    /// <summary>
+    /// returns string of housekeeper name
+    /// </summary>
+    /// <returns>string FirstName + LastName</returns>
+    private string GetHouskeeper()
+    {
+      return DbController.GetHouskeeperFromDb(this).FullName;
     }
   }
 }

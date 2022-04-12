@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using ImmoGlobal.Database;
+﻿using ImmoGlobal.Database;
 using ImmoGlobal.ViewModels;
-using Microsoft.EntityFrameworkCore;
+using System;
+using System.Configuration;
+using System.Threading;
+using System.Windows;
 
 namespace ImmoGlobal
 {
@@ -20,15 +15,13 @@ namespace ImmoGlobal
     protected override void OnStartup(StartupEventArgs e)
     {
       CheckDatabase();
-      
-      SetLanguageDictionary();
-      PropertyViewModel propertyViewModel = PropertyViewModel.GetInstance;
-      MenuBarViewModel menuBarViewModel = new();
-      SideMenuViewModel sideMenuViewModel = new();
 
-      MainWindow = new MainWindow()
+      SetLanguageDictionary();
+      PropertyViewModel propertyViewModel = new();
+
+      MainWindow = new MainWindowView()
       {
-        DataContext = new MainViewModel(propertyViewModel)
+        DataContext = new MainWindowViewModel(propertyViewModel)
       };
       MainWindow.Show();
 

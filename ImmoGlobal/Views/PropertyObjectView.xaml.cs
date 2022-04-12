@@ -3,11 +3,11 @@
 namespace ImmoGlobal.Views
 {
   /// <summary>
-  /// Interaction logic for PropertyView.xaml
+  /// Interaction logic for PropertyObjectView.xaml
   /// </summary>
-  public partial class PropertyView : UserControl
+  public partial class PropertyObjectView : UserControl
   {
-    public PropertyView()
+    public PropertyObjectView()
     {
       InitializeComponent();
     }

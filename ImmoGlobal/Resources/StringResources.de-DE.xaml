@@ -12,9 +12,24 @@
 
   <system:String x:Key="newProperty">Neue Liegenschaft</system:String>
   <system:String x:Key="propertyOverview">Übersicht Liegenschaften</system:String>
+  <system:String x:Key="housekeeper">Hauswartungsperson:</system:String>
 
+  <system:String x:Key="overviewPropertyObjects">Übersicht Objekte in der Liegenschaft</system:String>
   <system:String x:Key="newPropertyObject">Neues Objekt</system:String>
   <system:String x:Key="numberOfPropertyObjects">Anzahl Objekte:</system:String>
   <system:String x:Key="notRented">Nicht Vermietet:</system:String>
   <system:String x:Key="rented">Vermietet:</system:String>
+  <system:String x:Key="typ">Typ:</system:String>
+  <system:String x:Key="location">Lage:</system:String>
+  <system:String x:Key="rentedTo">Vermietet an:</system:String>
+  <system:String x:Key="numberOfRoooms">Anzahl Zimmer:</system:String>
+
+
+  <system:String x:Key="newRenter">Neuer Mieter</system:String>
+  <system:String x:Key="newInvoice">Neue Rechnung</system:String>
+  <system:String x:Key="newCreditor">Neuer Kreditor</system:String>
+  <system:String x:Key="newBillReminder">Neue Mahnung</system:String>
+  <system:String x:Key="newRentalContract">Neuer Mietvertrag</system:String>
+  <system:String x:Key="newAccount">Neues Konto</system:String>
+  <system:String x:Key="newPaymentRecord">Zahlung Verbuchen</system:String>
 </ResourceDictionary>

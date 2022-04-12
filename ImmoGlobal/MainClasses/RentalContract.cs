@@ -1,10 +1,6 @@
-﻿using ImmoGlobal.MainClasses.Enum;
+﻿using ImmoGlobal.Database;
+using ImmoGlobal.MainClasses.Enum;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImmoGlobal.MainClasses
 {
@@ -18,5 +14,10 @@ namespace ImmoGlobal.MainClasses
     public double Rent { get; set; }
     public bool Deposit { get; set; }
     public EContractState ContractState { get; set; }
+
+    public string GetRenterFullName()
+    {
+      return DbController.GetRenterFromDb(this)?.FullName ?? "";
+    }
   }
 }

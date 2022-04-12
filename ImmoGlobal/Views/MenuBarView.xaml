@@ -47,33 +47,9 @@
         </Grid>
       </Button.Content>
     </Button>
-    <!--PropertyObject-->
-    <Button Command="{Binding BtnPropertyObject}" 
-            Grid.Column="1" 
-            Height="120" 
-            Width="120" 
-            Padding="0">
-      <Button.Content>
-        <Grid>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="0.5*"/>
-          </Grid.RowDefinitions>
-          <fa6:ImageAwesome Icon="Solid_BuildingUser"
-                            Height="80"
-                            PrimaryColor="{Binding BtnPropertyObjectColor}"/>
-          <TextBlock Text="{DynamicResource propertyObject}" 
-                     Grid.Row="1"
-                     HorizontalAlignment="Center"
-                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
-                     FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="20"/>
-        </Grid>
-      </Button.Content>
-    </Button>
     <!--renter-->
     <Button Command="{Binding BtnRenter}" 
-            Grid.Column="2" 
+            Grid.Column="1" 
             Height="120" 
             Width="120" 
             Padding="0">
@@ -97,7 +73,7 @@
     </Button>
     <!--creditors-->
     <Button Command="{Binding BtnCreditor}" 
-            Grid.Column="3" 
+            Grid.Column="2" 
             Height="120" 
             Width="120" 
             Padding="0">
@@ -121,7 +97,7 @@
     </Button>
     <!--rentalContract-->
     <Button Command="{Binding BtnRentalContract}" 
-            Grid.Column="4" 
+            Grid.Column="3" 
             Height="120" 
             Width="120" 
             Padding="0">
@@ -145,7 +121,7 @@
     </Button>
     <!--invoice-->
     <Button Command="{Binding BtnInvoice}" 
-            Grid.Column="5" 
+            Grid.Column="4" 
             Height="120" 
             Width="120" 
             Padding="0">
@@ -169,7 +145,7 @@
     </Button>
     <!--account-->
     <Button Command="{Binding BtnAccount}" 
-            Grid.Column="6" 
+            Grid.Column="5" 
             Height="120" 
             Width="120" 
             Padding="0">

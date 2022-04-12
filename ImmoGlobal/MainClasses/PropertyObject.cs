@@ -1,12 +1,10 @@
-﻿using ImmoGlobal.Database;
+﻿using ImmoGlobal.Commands;
+using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses.Enum;
-using System;
+using ImmoGlobal.ViewModels;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ImmoGlobal.MainClasses
 {
@@ -27,5 +25,32 @@ namespace ImmoGlobal.MainClasses
     public bool WashingMachine { get; set; }
     public bool Tumbler { get; set; }
     public ICollection<RentalContract>? RentalContracts { get; set; }
+
+
+    private List<RentalContract> GetRentalContractToObject()
+    {
+      return DbController.GetAllRentalContractsToPropertyObject(this).ToList();
+    }
+
+    public string CurrentRenter
+    {
+      get
+      {
+        return GetRentalContractToObject().Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.GetRenterFullName() ?? "nicht vermietet";
+      }
+    }
+
+    public ICommand PropertyObjectClickCommand
+    {
+      get { return new RelayCommand<object>(PropertyClick); }
+    }
+
+    private void PropertyClick(object obj)
+    {
+      if (MainWindowViewModel.GetInstance != null)
+      {
+
+      }
+    }
   }
 }

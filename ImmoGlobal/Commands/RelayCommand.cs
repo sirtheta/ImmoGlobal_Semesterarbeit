@@ -37,11 +37,14 @@ namespace ImmoGlobal.Commands
       return _CanExecute == null || _CanExecute((T)Parameter);
     }
 
-    public event EventHandler? CanExecuteChanged {
-      add {
+    public event EventHandler? CanExecuteChanged
+    {
+      add
+      {
         CommandManager.RequerySuggested += value;
       }
-      remove {
+      remove
+      {
         CommandManager.RequerySuggested -= value;
       }
     }

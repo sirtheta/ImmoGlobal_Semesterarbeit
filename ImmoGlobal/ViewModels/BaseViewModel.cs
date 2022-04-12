@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Notifications.Wpf.Core;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
-using Notifications.Wpf.Core;
 
 namespace ImmoGlobal.ViewModels
 {
   internal abstract class BaseViewModel : DependencyObject, INotifyPropertyChanged
   {
-   
+
     internal static void ShowNotification(string titel, string message, NotificationType type)
     {
       var notificationManager = new NotificationManager();

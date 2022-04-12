@@ -1,10 +1,5 @@
 ﻿using ImmoGlobal.MainClasses.Enum;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImmoGlobal.MainClasses
 {
@@ -12,22 +7,22 @@ namespace ImmoGlobal.MainClasses
   {
 
     // Constructor for renter
-    public Persona(string name, 
-                   string surname, 
+    public Persona(string lastName,
+                   string firstName,
                    long phone,
-                   string email, 
-                   DateTime dateOfBirth, 
-                   string address, 
-                   int zip, 
-                   string city, 
+                   string email,
+                   DateTime dateOfBirth,
+                   string address,
+                   int zip,
+                   string city,
                    ECivilState eCivilState,
-                   string adressBefore, 
-                   string accountNumber, 
-                   long mobile = 0, 
+                   string adressBefore,
+                   string accountNumber,
+                   long mobile = 0,
                    long officePhone = 0)
     {
-      Name = name;
-      Surname = surname;
+      FirstName = firstName;
+      LastName = lastName;
       Phone = phone;
       Mobile = mobile;
       OfficePhone = officePhone;
@@ -49,13 +44,13 @@ namespace ImmoGlobal.MainClasses
                    string city,
                    long phone,
                    string creditorContactPerson,
-                   string name,
-                   string surname,
+                   string lastName,
+                   string firstName,
                    string email,
                    string vatNumber)
     {
-      Name = name;
-      Surname = surname;
+      FirstName = firstName;
+      LastName = lastName;
       Phone = phone;
       Email = email;
       Address = address;
@@ -68,18 +63,18 @@ namespace ImmoGlobal.MainClasses
     }
 
     // Constructor for Housekeeper
-    public Persona(string name,
-                   string surname, 
+    public Persona(string lastName,
+                   string firstName,
                    long phone,
-                   string email, 
+                   string email,
                    string address,
                    int zip,
                    string city,
                    string accountNumber,
                    long mobile = 0)
     {
-      Name = name;
-      Surname = surname;
+      FirstName = firstName;
+      LastName = lastName;
       Phone = phone;
       Mobile = mobile;
       Email = email;
@@ -90,8 +85,8 @@ namespace ImmoGlobal.MainClasses
     }
 
     public int PersonaId { get; set; }
-    public string Name { get; set; }
-    public string Surname { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
     public long Phone { get; set; }
     public long Mobile { get; set; }
     public long OfficePhone { get; set; }
@@ -107,5 +102,8 @@ namespace ImmoGlobal.MainClasses
     public bool CreditorIsActive { get; set; }
     public string? VatNumber { get; set; }
     public string? CreditorCompanyName { get; set; }
+
+    public string FullName => $"{LastName} {FirstName}";
+
   }
 }

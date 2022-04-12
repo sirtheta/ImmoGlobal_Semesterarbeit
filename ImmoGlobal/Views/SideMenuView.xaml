@@ -12,8 +12,9 @@
              d:Background="{DynamicResource MaterialDesignPaper}"
              d:DesignWidth="350" 
              d:DesignHeight="800">
-    <Grid>
-    <Button Command="{Binding BtnNewProperty}" 
+  <Grid>
+    <StackPanel>
+      <Button Command="{Binding BtnNewProperty}" 
             Content="{DynamicResource newProperty}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
             FontFamily="{DynamicResource MaterialDesignFont}"
@@ -22,6 +23,140 @@
             Margin="10,60,0,0"
             MinWidth="180"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"/>
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnNewPropertyVisibility}"/>
+
+      <Button Command="{Binding BtnNewPropertyObject}" 
+            Content="{DynamicResource newPropertyObject}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnNewPropertyObjectVisibility}"/>
+      
+      <Button Command="{Binding BtnNewRenter}" 
+            Content="{DynamicResource newRenter}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnNewRenterVisibility}"/>
+      
+      <Button Command="{Binding BtnInvoice}" 
+            Content="{DynamicResource invoice}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnInvoiceVisibility}"/>
+      
+      <Button Command="{Binding BtnNewInvoice}" 
+            Content="{DynamicResource newInvoice}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnNewInvoiceVisibility}"/>
+      
+      <Button Command="{Binding BtnObjects}" 
+            Content="{DynamicResource propertyObject}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnObjectsVisibility}"/>
+      
+      <Button Command="{Binding BtnRentalContracts}" 
+            Content="{DynamicResource rentalContract}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnRentalContractsVisibility}"/>
+      
+      <Button Command="{Binding BtnNewCreditor}" 
+            Content="{DynamicResource NewCreditor}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnNewCreditorVisibility}"/>
+
+      <Button Command="{Binding BtnNewBillReminder}" 
+            Content="{DynamicResource newBillReminder}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnNewBillReminderVisibility}"/>
+
+      <Button Command="{Binding BtnNewRentalContract}" 
+            Content="{DynamicResource newRentalContract}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnNewRentalContractVisibility}"/>
+
+      <Button Command="{Binding BtnNewAccount}" 
+            Content="{DynamicResource newAccount}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnNewAccountVisibility}"/>
+
+      <Button Command="{Binding BtnNewPaymentRecord}" 
+            Content="{DynamicResource newPaymentRecord}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnNewPaymentRecordVisibility}"/>
+    </StackPanel>
   </Grid>
 </UserControl>

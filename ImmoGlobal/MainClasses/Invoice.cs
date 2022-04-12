@@ -1,10 +1,6 @@
-﻿using System;
+﻿using ImmoGlobal.MainClasses.Enum;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ImmoGlobal.MainClasses.Enum;
 
 namespace ImmoGlobal.MainClasses
 {
@@ -19,5 +15,6 @@ namespace ImmoGlobal.MainClasses
     public EInvoiceState InvoiceState { get; set; }
     public double TotalValue { get; set; }
     public ICollection<InvoicePosition>? InvoicePositions { get; set; }
+    public int BillReminders { get; set; }
   }
 }

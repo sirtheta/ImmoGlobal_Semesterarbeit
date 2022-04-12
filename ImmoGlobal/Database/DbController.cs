@@ -1,9 +1,6 @@
 ﻿using ImmoGlobal.MainClasses;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImmoGlobal.Database
 {
@@ -25,7 +22,7 @@ namespace ImmoGlobal.Database
     /// </summary>
     /// <param name="property"></param>
     /// <returns> List of PropertyObject</returns>
-    public static List<PropertyObject> GetPropertiesWithIdFromDb(Property property)
+    public static List<PropertyObject> GetPropertyObjectsWithIdFromDb(Property property)
     {
       using var db = new ImmoGlobalContext();
       return (from p in db.PropertyObjects
@@ -33,12 +30,44 @@ namespace ImmoGlobal.Database
               select p).ToList();
     }
 
+    /// <summary>
+    /// Return renter to a contract
+    /// </summary>
+    /// <param name="rentalContract"></param>
+    /// <returns>Persona</returns>
+    internal static Persona? GetRenterFromDb(RentalContract rentalContract)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.RentalContracts
+              where p == rentalContract
+              select p.Renter).FirstOrDefault();
+    }
+
+    /// <summary>
+    /// Return a List of RentalContracts
+    /// </summary>
+    /// <param name="propertyObject"></param>
+    /// <returns>List of RentalContract</returns>
     internal static List<RentalContract> GetAllRentalContractsToPropertyObject(PropertyObject propertyObject)
     {
       using var db = new ImmoGlobalContext();
       return (from r in db.RentalContracts
               where r.PropertyObject == propertyObject
               select r).ToList();
+    }
+
+    /// <summary>
+    /// Return the Housekeeper to a property
+    /// </summary>
+    /// <param name="property"></param>
+    /// <returns></returns>
+    internal static Persona? GetHouskeeperFromDb(Property property)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.Properties
+              where p == property
+              select p.Housekeeper).FirstOrDefault();
+
     }
   }
 }

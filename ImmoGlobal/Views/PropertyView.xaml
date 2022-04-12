@@ -37,6 +37,9 @@
                     Margin="10"
                     Padding="0"
                     Background="{DynamicResource MaterialDesignBackground}">
+              <Border.InputBindings>
+                <MouseBinding Gesture="LeftClick" Command="{Binding PropertyClickCommand}"/>
+              </Border.InputBindings>
               <Border.Effect>
                 <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="1"/>
               </Border.Effect>
