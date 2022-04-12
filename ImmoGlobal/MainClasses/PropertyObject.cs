@@ -37,7 +37,7 @@ namespace ImmoGlobal.MainClasses
     {
       get
       {        
-        return GetRentalContractToObject().Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.GetRenterFullName() ?? 
+        return GetRentalContractToObject().Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.GetRenterFullName ?? 
           Application.Current.FindResource("notRented2") as string ?? "not rented";
       }
     }

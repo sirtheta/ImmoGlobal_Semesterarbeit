@@ -15,8 +15,8 @@
       <DataTemplate DataType="{x:Type viewmodels:PropertyViewModel}">
         <views:PropertyView/>
       </DataTemplate>
-      <DataTemplate DataType="{x:Type viewmodels:PropertyObjectViewModel}">
-        <views:PropertyObjectView/>
+      <DataTemplate DataType="{x:Type viewmodels:PropertyObjectOverviewViewModel}">
+        <views:PropertyObjectOverviewView/>
       </DataTemplate>
       <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Resources/StringResources.de-DE.xaml"/>

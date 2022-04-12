@@ -4,13 +4,13 @@ using System.Collections.ObjectModel;
 
 namespace ImmoGlobal.ViewModels
 {
-  internal class PropertyObjectViewModel : BaseViewModel
+  internal class PropertyObjectOverviewViewModel : BaseViewModel
   {
     private ObservableCollection<PropertyObject>? _propertyObjectCollection;
     private string _housekeeper;
     private string _description;
 
-    public PropertyObjectViewModel(List<PropertyObject> property, string housekeeper, string description)
+    public PropertyObjectOverviewViewModel(List<PropertyObject> property, string housekeeper, string description)
     {
       _propertyObjectCollection = new ObservableCollection<PropertyObject>();
       property.ForEach(x => _propertyObjectCollection.Add(x));

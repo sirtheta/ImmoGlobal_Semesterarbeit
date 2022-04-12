@@ -111,7 +111,7 @@ namespace ImmoGlobal.ViewModels
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Collapsed;
           break;
-        case PropertyObjectViewModel:
+        case PropertyObjectOverviewViewModel:
           SideMenuViewModel.BtnNewPropertyVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewPropertyObjectVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewRenterVisibility = Visibility.Collapsed;

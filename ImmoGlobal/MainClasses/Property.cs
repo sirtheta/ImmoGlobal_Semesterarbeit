@@ -85,7 +85,7 @@ namespace ImmoGlobal.MainClasses
     {
       if (MainWindowViewModel.GetInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyObjectViewModel(GetPropertyObjects(), GetHouskeeper(), Description);
+        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyObjectOverviewViewModel(GetPropertyObjects(), GetHouskeeper(), Description ?? "no description found");
       }
     }
 
@@ -95,7 +95,7 @@ namespace ImmoGlobal.MainClasses
     /// <returns>string FirstName + LastName</returns>
     private string GetHouskeeper()
     {
-      return DbController.GetHouskeeperFromDb(this).FullName;
+      return DbController.GetHouskeeperFromDb(this)?.FullName ?? "";
     }
   }
 }

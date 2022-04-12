@@ -14,9 +14,10 @@ namespace ImmoGlobal.Database
       var _renter = new Persona("Max", "Musterman", 0334328978, "mail@mail.de", DateTime.Parse("25.10.1988"), "Barstreet 5", 3612, "Steffisburg", ECivilState.Married, "Thunstr. 15, 3600 Bern", "12ET34UI56789", 0791234567);
       var _creditor = new Persona(true, "Creditors Company Name", "Creditors Company Address", 3800, "Interlaken", 0797891236, "Creditor ContactPerson", "CreditorName", "CreditorSurname", "mail@test.de", "CHE-123.456.789");
       var _housekeeper = new Persona("Moritz", "Houskeeperman", 0238905678, "moritz@mail.de", "Obsolet Adress 4", 2344, "Ronmalingen", "893489uip099322", 8907894561);
+      var _housekeeper2 = new Persona("Peter", "Schneider", 0236565678, "peter@schneider.de", "Obsolet Adress 5", 3262, "Tübingen", "893489uip6544542", 5896314782);
 
       var _property1 = new Property() { Housekeeper = _housekeeper, Description = "TestLiegenschaft1", Adress = "TestAdress1", ZipCode = 3612, City = "TestCity1", PropertyInsurance = "Helvetia1", PersonInsurance = "Mobiliar1", LiabilityInsurance = "Emmitaler1" };
-      var _property2 = new Property() { Housekeeper = _housekeeper, Description = "TestLiegenschaft2", Adress = "TestAdress2", ZipCode = 3613, City = "TestCity2", PropertyInsurance = "Helvetia2", PersonInsurance = "Mobiliar2", LiabilityInsurance = "Emmitaler2" };
+      var _property2 = new Property() { Housekeeper = _housekeeper2, Description = "TestLiegenschaft2", Adress = "TestAdress2", ZipCode = 3613, City = "TestCity2", PropertyInsurance = "Helvetia2", PersonInsurance = "Mobiliar2", LiabilityInsurance = "Emmitaler2" };
 
       var _objectHouse = new PropertyObject() { Property = _property1, ObjectType = EPropertyObjectType.House, Description = "Wohnung 1", Location = "TestLocation", NumberOfRooms = 4.5, Area = 100, NumberOfKeys = 5, Fridge = true, Dishwasher = true, Stove = true, Oven = true };
       var _objectGarage = new PropertyObject() { Property = _property1, ObjectType = EPropertyObjectType.Garage, Description = "Garage von Wohnung 1", Location = "irgendwo nebenan", Area = 15 };
@@ -56,6 +57,7 @@ namespace ImmoGlobal.Database
       db.Personas.Add(_renter);
       db.Personas.Add(_creditor);
       db.Personas.Add(_housekeeper);
+      db.Personas.Add(_housekeeper2);
       db.PropertyObjects.Add(_objectHouse);
       db.PropertyObjects.Add(_objectGarage);
       db.PropertyObjects.Add(_objectRoom);

@@ -15,9 +15,12 @@ namespace ImmoGlobal.MainClasses
     public bool Deposit { get; set; }
     public EContractState ContractState { get; set; }
 
-    public string GetRenterFullName()
+    public string GetRenterFullName
     {
-      return DbController.GetRenterFromDb(this)?.FullName ?? "";
+      get
+      {
+        return DbController.GetRenterFromDb(this)?.FullName ?? "";
+      }
     }
   }
 }
