@@ -14,7 +14,7 @@
              d:DesignWidth="800">
   <Grid>
     <Grid.RowDefinitions>
-      <RowDefinition Height="0.25*"/>
+      <RowDefinition Height="auto"/>
       <RowDefinition Height="1*"/>
     </Grid.RowDefinitions>
     <Grid Grid.Row="0">
@@ -149,7 +149,7 @@
                       <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"
-                               Text="{DynamicResource numberOfRoooms}"
+                               Text="{DynamicResource numberOfRooms}"
                                FontFamily="{DynamicResource MaterialDesignFont}"/>
                     <TextBlock Grid.Column="1"
                                Text="{Binding NumberOfRooms}"

@@ -18,6 +18,9 @@
       <DataTemplate DataType="{x:Type viewmodels:PropertyObjectOverviewViewModel}">
         <views:PropertyObjectOverviewView/>
       </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:PropertyObjectViewModel}">
+        <views:PropertyObjectView/>
+      </DataTemplate>
       <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Resources/StringResources.de-DE.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

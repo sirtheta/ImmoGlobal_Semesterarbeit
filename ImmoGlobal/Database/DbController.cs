@@ -1,4 +1,5 @@
 ﻿using ImmoGlobal.MainClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -41,6 +42,19 @@ namespace ImmoGlobal.Database
       return (from p in db.RentalContracts
               where p == rentalContract
               select p.Renter).FirstOrDefault();
+    }
+
+    /// <summary>
+    /// Return a property from a propertyObject
+    /// </summary>
+    /// <param name="propertyObject"></param>
+    /// <returns>Property</returns>
+    internal static Property? GetPropertyWithObject(PropertyObject propertyObject)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.PropertyObjects
+              where p == propertyObject
+              select p.Property).FirstOrDefault();
     }
 
     /// <summary>

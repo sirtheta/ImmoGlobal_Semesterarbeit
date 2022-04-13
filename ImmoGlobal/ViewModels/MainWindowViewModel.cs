@@ -125,8 +125,33 @@ namespace ImmoGlobal.ViewModels
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Collapsed;
           break;
+        case PropertyObjectViewModel:
+          SideMenuViewModel.BtnNewPropertyVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewPropertyObjectVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewRenterVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnInvoiceVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnObjectsVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnRentalContractsVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewCreditorVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewAccountVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Collapsed;
+          break;
         default:
-
+          SideMenuViewModel.BtnNewPropertyVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewPropertyObjectVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewRenterVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnInvoiceVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnObjectsVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnRentalContractsVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewCreditorVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewAccountVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Collapsed;
           break;
       }
     }

@@ -25,8 +25,8 @@ namespace ImmoGlobal.Database
       var _objectOffice = new PropertyObject() { Property = _property1, ObjectType = EPropertyObjectType.Office, Description = "Office in " + _property1.Description, Location = "4 Stock", NumberOfRooms = 2, Area = 35, NumberOfKeys = 3, Fridge = true, Dishwasher = true };
 
       var _rentalContract1 = new RentalContract() { Renter = _renter, PropertyObject = _objectHouse, RentStartDate = DateTime.Parse("01.04.2022"), RentEndDate = DateTime.Parse("31.10.2030"), Rent = 1650, Deposit = true, ContractState = EContractState.Active };
-      var _rentalContract2 = new RentalContract() { Renter = _renter, PropertyObject = _objectHouse, RentStartDate = DateTime.Parse("01.11.2030"), Rent = 1850, Deposit = true, ContractState = EContractState.Singend };
-      var _rentalContract3 = new RentalContract() { Renter = _renter, PropertyObject = _objectHouse, RentStartDate = DateTime.Parse("01.04.2018"), RentEndDate = DateTime.Parse("31.03.2022"), Rent = 1450, Deposit = true, ContractState = EContractState.Canceled };
+      var _rentalContract2 = new RentalContract() { Renter = _renter, PropertyObject = _objectGarage, RentStartDate = DateTime.Parse("01.11.2030"), Rent = 1850, Deposit = true, ContractState = EContractState.Singend };
+      var _rentalContract3 = new RentalContract() { Renter = _renter, PropertyObject = _objectOffice, RentStartDate = DateTime.Parse("01.04.2018"), RentEndDate = DateTime.Parse("31.03.2022"), Rent = 1450, Deposit = true, ContractState = EContractState.Canceled };
 
       var _account1 = new Account() { AccountNumber = "5634RE56034", Balance = 500.4, AccountDescription = "Konto 1" };
       var _account2 = new Account() { AccountNumber = "23VFYYXX034", Balance = 54566.49, AccountDescription = "Konto 2" };

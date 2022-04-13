@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-  
+
   <system:String x:Key="property">Liegenschaft</system:String>
   <system:String x:Key="propertyObject">Objekt</system:String>
   <system:String x:Key="renter">Mieter</system:String>
@@ -15,7 +15,8 @@
   <system:String x:Key="housekeeper">Hauswartungsperson:</system:String>
 
   <system:String x:Key="overviewPropertyObjects">Übersicht Objekte in der Liegenschaft</system:String>
-  <system:String x:Key="newPropertyObject">Neues Objekt</system:String>
+  <system:String x:Key="detailPropertyObject">Detailansicht Objekt:</system:String>
+  
   <system:String x:Key="numberOfPropertyObjects">Anzahl Objekte:</system:String>
   <system:String x:Key="notRented">Nicht vermietete:</system:String>
   <system:String x:Key="notRented2">Nicht vermietet</system:String>
@@ -23,8 +24,27 @@
   <system:String x:Key="typ">Typ:</system:String>
   <system:String x:Key="location">Lage:</system:String>
   <system:String x:Key="rentedTo">Vermietet an:</system:String>
-  <system:String x:Key="numberOfRoooms">Anzahl Zimmer:</system:String>
+  <system:String x:Key="numberOfRooms">Anzahl Zimmer:</system:String>
+  <system:String x:Key="area">Fläche</system:String>
+  <system:String x:Key="numberOfKeys">Anzahl Schlüssel</system:String>
+  <system:String x:Key="fridge">Kühlschrank</system:String>
+  <system:String x:Key="dishwasher">Geschirrspüler</system:String>
+  <system:String x:Key="stove">Kochherd</system:String>
+  <system:String x:Key="oven">Backofen</system:String>
+  <system:String x:Key="washingMachine">Waschmaschine</system:String>
+  <system:String x:Key="tumbler">Tumbler</system:String>
 
+
+  <system:String x:Key="heating">Heizung</system:String>
+  <system:String x:Key="electricity">Elektrizität</system:String>
+  <system:String x:Key="water">Wasser</system:String>
+  <system:String x:Key="garbage">Müll</system:String>
+
+  <system:String x:Key="yes">Ja</system:String>
+  <system:String x:Key="no">Nein</system:String>
+  <system:String x:Key="none">keine</system:String>
+
+  <system:String x:Key="newPropertyObject">Neues Objekt</system:String>
   <system:String x:Key="newRenter">Neuer Mieter</system:String>
   <system:String x:Key="newInvoice">Neue Rechnung</system:String>
   <system:String x:Key="newCreditor">Neuer Kreditor</system:String>
@@ -32,6 +52,10 @@
   <system:String x:Key="newRentalContract">Neuer Mietvertrag</system:String>
   <system:String x:Key="newAccount">Neues Konto</system:String>
   <system:String x:Key="newPaymentRecord">Zahlung Verbuchen</system:String>
+
+  <system:String x:Key="rentStart">Mietbeginn</system:String>
+  <system:String x:Key="rentEnd">Mietende</system:String>
+  <system:String x:Key="activeContract">Aktiver Vertrag</system:String>
 
   <system:String x:Key="house">Haus</system:String>
   <system:String x:Key="apartment">Wohnung</system:String>

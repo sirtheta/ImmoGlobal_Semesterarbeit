@@ -15,7 +15,7 @@ namespace ImmoGlobal.MainClasses
     public bool Deposit { get; set; }
     public EContractState ContractState { get; set; }
 
-    public string GetRenterFullName
+    public string RenterFullName
     {
       get
       {
