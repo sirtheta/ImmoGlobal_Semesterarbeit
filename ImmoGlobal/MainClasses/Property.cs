@@ -31,7 +31,7 @@ namespace ImmoGlobal.MainClasses
 
     private List<PropertyObject> GetPropertyObjects()
     {
-      return DbController.GetPropertyObjectsWithIdFromDb(this);
+      return DbController.GetPropertyObjectsByProperty(this);
     }
 
     private readonly List<RentalContract> _rentalContracts = new();
@@ -95,7 +95,7 @@ namespace ImmoGlobal.MainClasses
     /// <returns>string FirstName + LastName</returns>
     private string GetHouskeeper()
     {
-      return DbController.GetHouskeeperFromDb(this)?.FullName ?? "";
+      return DbController.GetHouskeeper(this)?.FullName ?? "";
     }
   }
 }

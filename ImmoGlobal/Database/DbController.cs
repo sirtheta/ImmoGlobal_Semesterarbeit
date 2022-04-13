@@ -13,7 +13,7 @@ namespace ImmoGlobal.Database
     /// <returns>
     /// List of Properties
     /// </returns>
-    internal static List<Property> GetPropertiesFromDb()
+    internal static List<Property> GetProperties()
     {
       using var db = new ImmoGlobalContext();
       return db.Properties.ToList();
@@ -23,7 +23,7 @@ namespace ImmoGlobal.Database
     /// </summary>
     /// <param name="property"></param>
     /// <returns> List of PropertyObject</returns>
-    public static List<PropertyObject> GetPropertyObjectsWithIdFromDb(Property property)
+    public static List<PropertyObject> GetPropertyObjectsByProperty(Property property)
     {
       using var db = new ImmoGlobalContext();
       return (from p in db.PropertyObjects
@@ -36,7 +36,7 @@ namespace ImmoGlobal.Database
     /// </summary>
     /// <param name="rentalContract"></param>
     /// <returns>Persona</returns>
-    internal static Persona? GetRenterFromDb(RentalContract rentalContract)
+    internal static Persona? GetRenter(RentalContract rentalContract)
     {
       using var db = new ImmoGlobalContext();
       return (from p in db.RentalContracts
@@ -75,7 +75,7 @@ namespace ImmoGlobal.Database
     /// </summary>
     /// <param name="property"></param>
     /// <returns></returns>
-    internal static Persona? GetHouskeeperFromDb(Property property)
+    internal static Persona? GetHouskeeper(Property property)
     {
       using var db = new ImmoGlobalContext();
       return (from p in db.Properties

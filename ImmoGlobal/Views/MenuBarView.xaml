@@ -24,6 +24,16 @@
       <ColumnDefinition Width="140"/>
       <ColumnDefinition Width="1*"/>
     </Grid.ColumnDefinitions>
+    <Grid.Resources>
+      <Style TargetType="TextBlock">
+        <Setter Property="FontFamily"
+                Value="{DynamicResource MaterialDesignFont}"/>
+        <Setter Property="FontSize"
+                Value="20"/>
+        <Setter Property="HorizontalAlignment"
+                Value="Center"/>
+      </Style>
+    </Grid.Resources>
     <!--property-->
     <Button Command="{Binding BtnProperty}" 
             Grid.Column="0" 
@@ -40,11 +50,7 @@
                             Height="80"
                             PrimaryColor="{Binding BtnPropertyColor}"/>
           <TextBlock Text="{DynamicResource property}" 
-                     Grid.Row="1"
-                     HorizontalAlignment="Center"
-                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
-                     FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="20"/>
+                     Grid.Row="1"/>
         </Grid>
       </Button.Content>
     </Button>
@@ -64,11 +70,7 @@
                             Height="80"
                             PrimaryColor="{Binding BtnRenterColor}"/>
           <TextBlock Text="{DynamicResource renter}" 
-                     Grid.Row="1"
-                     HorizontalAlignment="Center"
-                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
-                     FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="20"/>
+                     Grid.Row="1"/>
         </Grid>
       </Button.Content>
     </Button>
@@ -88,11 +90,7 @@
                             Height="80"
                             PrimaryColor="{Binding BtnCreditorColor}"/>
           <TextBlock Text="{DynamicResource creditor}" 
-                     Grid.Row="1"
-                     HorizontalAlignment="Center"
-                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
-                     FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="20"/>
+                     Grid.Row="1"/>
         </Grid>
       </Button.Content>
     </Button>
@@ -112,11 +110,7 @@
                             Height="80"
                             PrimaryColor="{Binding BtnRentalContractColor}"/>
           <TextBlock Text="{DynamicResource rentalContract}" 
-                     Grid.Row="1"
-                     HorizontalAlignment="Center"
-                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
-                     FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="20"/>
+                     Grid.Row="1"/>
         </Grid>
       </Button.Content>
     </Button>
@@ -136,11 +130,7 @@
                             Height="80"
                             PrimaryColor="{Binding BtnInvoiceColor}"/>
           <TextBlock Text="{DynamicResource invoice}" 
-                     Grid.Row="1"
-                     HorizontalAlignment="Center"
-                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
-                     FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="20"/>
+                     Grid.Row="1"/>
         </Grid>
       </Button.Content>
     </Button>
@@ -160,14 +150,9 @@
                             Width="100"
                             PrimaryColor="{Binding BtnAccountColor}"/>
           <TextBlock Text="{DynamicResource account}" 
-                     Grid.Row="1"
-                     HorizontalAlignment="Center"
-                     Style="{DynamicResource MaterialDesignButtonTextBlock}"
-                     FontFamily="{DynamicResource MaterialDesignFont}"
-                     FontSize="20"/>
+                     Grid.Row="1"/>
         </Grid>
       </Button.Content>
     </Button>
-
   </Grid>
 </UserControl>

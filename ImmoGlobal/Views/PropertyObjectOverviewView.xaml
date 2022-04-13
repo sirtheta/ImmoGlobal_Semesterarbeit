@@ -23,19 +23,21 @@
         <ColumnDefinition Width="1*"/>
         <ColumnDefinition Width="1*"/>
       </Grid.ColumnDefinitions>
+      <Grid.Resources>
+        <Style TargetType="TextBlock">
+          <Setter Property="FontFamily"
+                  Value="{DynamicResource MaterialDesignFont}"/>
+        </Style>
+      </Grid.Resources>
       <StackPanel Grid.Column="0">
         <TextBlock Text="{DynamicResource overviewPropertyObjects}"
                  HorizontalAlignment="Left"
                  Padding="10"
-                 Style="{DynamicResource MaterialDesignButtonTextBlock}"
-                 FontFamily="{DynamicResource MaterialDesignFont}"
                  FontSize="30"
                  TextWrapping="Wrap"/>
         <TextBlock Text="{Binding Description}"
                  HorizontalAlignment="Left"
                  Padding="10"
-                 Style="{DynamicResource MaterialDesignButtonTextBlock}"
-                 FontFamily="{DynamicResource MaterialDesignFont}"
                  FontSize="15"
                  TextWrapping="Wrap"/>
       </StackPanel>
@@ -44,16 +46,12 @@
                  Text="{DynamicResource housekeeper}"
                  HorizontalAlignment="Left"
                  Padding="10"
-                 Style="{DynamicResource MaterialDesignButtonTextBlock}"
-                 FontFamily="{DynamicResource MaterialDesignFont}"
                  FontSize="30"
                  TextWrapping="Wrap"/>
         <TextBlock Grid.Column="1"
                  Text="{Binding Housekeeper}"
                  HorizontalAlignment="Left"
                  Padding="10"
-                 Style="{DynamicResource MaterialDesignButtonTextBlock}"
-                 FontFamily="{DynamicResource MaterialDesignFont}"
                  FontSize="15"/>
       </StackPanel>
 
@@ -70,95 +68,63 @@
             <Border CornerRadius="5"
                     Margin="10"
                     Padding="0"
-                    Background="{DynamicResource MaterialDesignBackground}"
-                    Height="200"
-                    Width="200">
+                    Background="{DynamicResource MaterialDesignBackground}">
               <Border.InputBindings>
                 <MouseBinding Gesture="LeftClick" Command="{Binding PropertyObjectClickCommand}"/>
               </Border.InputBindings>
               <Border.Effect>
                 <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="1"/>
               </Border.Effect>
-              <Grid>
+              <Grid ShowGridLines="True">
                 <Grid.RowDefinitions>
-                  <RowDefinition Height="1*"/>
+                  <RowDefinition Height="auto"/>
                   <RowDefinition Height="1*"/>
                   <RowDefinition Height="1*"/>
                   <RowDefinition Height="1*"/>
                   <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="{Binding Description}" 
-                           Margin="10" 
-                           FontFamily="{DynamicResource MaterialDesignFont}"
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="auto"/>
+                  <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                  <Style TargetType="TextBlock">
+                    <Setter Property="Padding"
+                            Value="5,10,0,10" />
+                  </Style>
+                </Grid.Resources>
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+                           Text="{Binding Description}" 
                            TextWrapping="Wrap"/>
 
-                <Grid Grid.Row="1">
-                  <!--typ-->
-                  <Grid Margin="7,0,0,0">
-                    <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="0.3*"/>
-                      <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="{DynamicResource typ}"                             
-                               FontFamily="{DynamicResource MaterialDesignFont}"/>
-
-                    <TextBlock Grid.Column="1" 
-                               Text="{Binding ObjectTypeName}" 
-                               Margin="5,0,0,0"
-                               FontFamily="{DynamicResource MaterialDesignFont}"/>
-                  </Grid>
-                </Grid>
+                <!--typ-->
+                <TextBlock Grid.Column="0" Grid.Row="1" 
+                           Text="{DynamicResource typ}"/>                             
+                <TextBlock Grid.Column="1" Grid.Row="1"
+                           Text="{Binding ObjectTypeName}" />
 
                 <!--Location-->
-                <Grid Grid.Row="2" Margin="7,0,0,0">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.3*"/>
-                    <ColumnDefinition Width="1*"/>
-                  </Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0"
-                             Text="{DynamicResource location}"
-                             FontFamily="{DynamicResource MaterialDesignFont}"/>
-
-                  <TextBlock Grid.Column="1"
-                             Text="{Binding Location}"
-                             Margin="5,0,0,0"
-                             FontFamily="{DynamicResource MaterialDesignFont}"
-                             HorizontalAlignment="Left"
-                             TextWrapping="Wrap"/>
-                </Grid>
-                <Grid Grid.Row="3" Margin="7,0,0,0">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                  </Grid.ColumnDefinitions>
-                  <!--rented to-->
-                  <TextBlock Grid.Column="0"
-                      Text="{DynamicResource rentedTo}"
-                             FontFamily="{DynamicResource MaterialDesignFont}"/>
-
-                  <TextBlock Grid.Column="1"
-                             Text="{Binding CurrentRenter}"
-                             FontFamily="{DynamicResource MaterialDesignFont}"
-                             HorizontalAlignment="Left"
-                             TextWrapping="Wrap"/>
-                </Grid>
-                <Grid Grid.Row="4" >
-                  <!--number of Rooms-->
-                  <Grid Grid.Row="3" Margin="7,0,0,0">
-                    <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="1.5*"/>
-                      <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Text="{DynamicResource numberOfRooms}"
-                               FontFamily="{DynamicResource MaterialDesignFont}"/>
-                    <TextBlock Grid.Column="1"
-                               Text="{Binding NumberOfRooms}"
-                               Margin="5,0,0,0"
-                               FontFamily="{DynamicResource MaterialDesignFont}"
-                               HorizontalAlignment="Left"/>
-                  </Grid>
-                </Grid>
+                <TextBlock Grid.Column="0" Grid.Row="2"
+                           Text="{DynamicResource location}"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"
+                           Text="{Binding Location}"
+                           HorizontalAlignment="Left"
+                           TextWrapping="Wrap"/>
+                
+                <!--rented to-->
+                <TextBlock Grid.Column="0" Grid.Row="3" 
+                           Text="{DynamicResource rentedTo}"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"
+                           Text="{Binding CurrentRenter}"
+                           HorizontalAlignment="Left"
+                           TextWrapping="Wrap"/>
+                
+                <!--number of Rooms-->
+                <TextBlock Grid.Column="0" Grid.Row="5"
+                           Text="{DynamicResource numberOfRooms}"/>
+                <TextBlock Grid.Column="1" Grid.Row="5"
+                           Text="{Binding NumberOfRooms}"
+                           HorizontalAlignment="Left"/>
               </Grid>
             </Border>
           </StackPanel>
