@@ -1,6 +1,7 @@
 ﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses.Enum;
 using System;
+using System.Windows;
 
 namespace ImmoGlobal.MainClasses
 {
@@ -15,11 +16,34 @@ namespace ImmoGlobal.MainClasses
     public bool Deposit { get; set; }
     public EContractState ContractState { get; set; }
 
+
     public string RenterFullName
     {
       get
       {
-        return DbController.GetRenterFromDb(this)?.FullName ?? "";
+        return GetRenter()?.FullName ?? "";
+      }
+    }
+
+    public Persona? GetRenter()
+    {
+      return DbController.GetRenterFromDb(this);
+    }
+
+    public string DepositString
+    {
+      get
+      {
+        return Deposit ? Application.Current.FindResource("yes") as string ?? "yes" :
+          Application.Current.FindResource("no") as string ?? "no";
+      }
+    }
+    public string ActivContract
+    {
+      get
+      {
+        return ContractState == EContractState.Active ? Application.Current.FindResource("yes") as string ?? "yes" :
+          Application.Current.FindResource("no") as string ?? "no";
       }
     }
   }

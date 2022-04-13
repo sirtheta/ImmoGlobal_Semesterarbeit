@@ -15,7 +15,11 @@
   <system:String x:Key="housekeeper">Hauswartungsperson:</system:String>
 
   <system:String x:Key="overviewPropertyObjects">Übersicht Objekte in der Liegenschaft</system:String>
-  <system:String x:Key="detailPropertyObject">Detailansicht Objekt:</system:String>
+  <system:String x:Key="detailView">Details zu</system:String>
+  <system:String x:Key="overviewRentalContracts">Übersicht der Mietverträge zum Objekt</system:String>
+  <system:String x:Key="overviewInvoices">Übersicht der Rechnungen zum Objekt</system:String>
+  <system:String x:Key="detailToRenter">Informationen zum aktuellen Mieter</system:String>
+  <system:String x:Key="detailToObject">Informationen zum Objekt</system:String>
   
   <system:String x:Key="numberOfPropertyObjects">Anzahl Objekte:</system:String>
   <system:String x:Key="notRented">Nicht vermietete:</system:String>
@@ -56,6 +60,8 @@
   <system:String x:Key="rentStart">Mietbeginn</system:String>
   <system:String x:Key="rentEnd">Mietende</system:String>
   <system:String x:Key="activeContract">Aktiver Vertrag</system:String>
+  <system:String x:Key="deposit">Kaution</system:String>
+  <system:String x:Key="rent">Miete</system:String>
 
   <system:String x:Key="house">Haus</system:String>
   <system:String x:Key="apartment">Wohnung</system:String>
@@ -63,4 +69,25 @@
   <system:String x:Key="garage">Garage</system:String>
   <system:String x:Key="office">Büro</system:String>
   <system:String x:Key="parking">Parkplatz</system:String>
+
+  <system:String x:Key="firstName">Vorname</system:String>
+  <system:String x:Key="lastName">Nachname</system:String>
+  <system:String x:Key="phone">Telefon Privat</system:String>
+  <system:String x:Key="mobilePhone">Mobiltelefon</system:String>
+  <system:String x:Key="officePhone">Telefon Büro</system:String>
+  <system:String x:Key="email">E-Mail</system:String>
+  <system:String x:Key="dateOfBirth">Geburtsdatum</system:String>
+  <system:String x:Key="address">Strasse</system:String>
+  <system:String x:Key="zipCode">PLZ</system:String>
+  <system:String x:Key="city">Ort</system:String>
+  <system:String x:Key="civilState">Zivilstatus</system:String>
+  <system:String x:Key="single">Alleinstehend</system:String>
+  <system:String x:Key="married">Verheiratet</system:String>
+  <system:String x:Key="divorced">Geschieden</system:String>
+  <system:String x:Key="widowed">Verwitwet</system:String>
+  <system:String x:Key="addressBefore">Vorherige Adresse</system:String>
+  <system:String x:Key="accountNumber">Kontonummer</system:String>
+  <system:String x:Key="creditorActiv">Aktiver Kreditor</system:String>
+  <system:String x:Key="vatNumber">Mehrwertsteuer Nummer</system:String>
+  <system:String x:Key="creditorContactPerson">Kreditor Kontaktperson</system:String>
 </ResourceDictionary>

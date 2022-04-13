@@ -1,4 +1,5 @@
 ﻿using ImmoGlobal.MainClasses;
+using ImmoGlobal.MainClasses.Enum;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,29 +12,33 @@ namespace ImmoGlobal.ViewModels
 {
   internal class PropertyObjectViewModel : BaseViewModel
   {
-    private PropertyObject _propertyObject;
 
     public PropertyObjectViewModel(PropertyObject propertyObject)
     {
-      _propertyObject = propertyObject;
-    }
-    
-    public PropertyObject PropertyObject 
-    { 
-      get => _propertyObject; 
-      set => _propertyObject = value; 
+      PropertyObject = propertyObject;
     }
 
-    public ObservableCollection<Invoice>? InvoicesOfPropertyObject
-    {
-      get;
-      set;
-    }
+    public PropertyObject PropertyObject { get; set; }
+
+    public ObservableCollection<Invoice>? InvoicesOfPropertyObject { get; set; }
+
 
     public ObservableCollection<RentalContract>? RentalContracsOfPropertyObject
     {
       get { return new ObservableCollection<RentalContract>(PropertyObject.GetRentalContractToObject()); }
-      set { _ = value; }
+    }
+
+
+    /// <summary>
+    /// return renter from activ Contract
+    /// </summary>
+    public Persona? Renter
+    {
+      get
+      {
+        return RentalContracsOfPropertyObject?.Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.GetRenter();
+      }
     }
   }
 }
+

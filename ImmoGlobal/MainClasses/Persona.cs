@@ -1,5 +1,6 @@
 ﻿using ImmoGlobal.MainClasses.Enum;
 using System;
+using System.Windows;
 
 namespace ImmoGlobal.MainClasses
 {
@@ -16,7 +17,7 @@ namespace ImmoGlobal.MainClasses
                    int zip,
                    string city,
                    ECivilState eCivilState,
-                   string adressBefore,
+                   string addressBefore,
                    string accountNumber,
                    long mobile = 0,
                    long officePhone = 0)
@@ -32,7 +33,7 @@ namespace ImmoGlobal.MainClasses
       Zip = zip;
       City = city;
       CivilState = eCivilState;
-      AdressBefore = adressBefore;
+      AddressBefore = addressBefore;
       AccountNumber = accountNumber;
     }
 
@@ -96,14 +97,30 @@ namespace ImmoGlobal.MainClasses
     public int Zip { get; set; }
     public string City { get; set; }
     public ECivilState CivilState { get; set; }
-    public string? AdressBefore { get; set; }
+    public string? AddressBefore { get; set; }
     public string? AccountNumber { get; set; }
     public string? CreditorContactPerson { get; set; }
     public bool CreditorIsActive { get; set; }
     public string? VatNumber { get; set; }
     public string? CreditorCompanyName { get; set; }
-
+    
+    
     public string FullName => $"{LastName} {FirstName}";
+    public string CivilStateString
+    {
+      get
+      {
+        return CivilState switch
+        {
+          ECivilState.Single => Application.Current.FindResource("single") as string ?? "Single",
+          ECivilState.Married => Application.Current.FindResource("married") as string ?? "Married",
+          ECivilState.Divorced => Application.Current.FindResource("divorced") as string ?? "Divorced",
+          ECivilState.Widowed => Application.Current.FindResource("widowed") as string ?? "Widowed",
+          _ => "unknown",
+        };
+      }
+    }
+    
 
   }
 }
