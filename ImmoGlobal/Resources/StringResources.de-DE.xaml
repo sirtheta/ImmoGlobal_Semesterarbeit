@@ -53,6 +53,7 @@
   <system:String x:Key="newInvoice">Neue Rechnung</system:String>
   <system:String x:Key="newCreditor">Neuer Kreditor</system:String>
   <system:String x:Key="newBillReminder">Neue Mahnung</system:String>
+  <system:String x:Key="billReminder">Mahnung</system:String>
   <system:String x:Key="newRentalContract">Neuer Mietvertrag</system:String>
   <system:String x:Key="newAccount">Neues Konto</system:String>
   <system:String x:Key="newPaymentRecord">Zahlung Verbuchen</system:String>
@@ -90,4 +91,19 @@
   <system:String x:Key="creditorActiv">Aktiver Kreditor</system:String>
   <system:String x:Key="vatNumber">Mehrwertsteuer Nummer</system:String>
   <system:String x:Key="creditorContactPerson">Kreditor Kontaktperson</system:String>
+
+  <system:String x:Key="invoiceDate">Rechnungsdatum</system:String>
+  <system:String x:Key="invoiceValue">Rechnungsbetrag</system:String>
+  <system:String x:Key="invoicePurpose">Rechnungsgrund</system:String>
+  <system:String x:Key="invoiceState">Rechnungsstatus</system:String>
+  <system:String x:Key="invoiceCategory">Rechnungskategorie</system:String>
+  <system:String x:Key="additionalCosts">Nebenkosten</system:String>
+  <system:String x:Key="notReleased">Nicht Freigegeben</system:String>
+  <system:String x:Key="released">Freigegeben</system:String>
+  <system:String x:Key="overDue">Überfällig</system:String>
+  <system:String x:Key="paid">Bezahlt</system:String>
+  <system:String x:Key="canceled">Abgelehnt</system:String>
+  <system:String x:Key="billReminders">Mahnungen</system:String>
+
+
 </ResourceDictionary>

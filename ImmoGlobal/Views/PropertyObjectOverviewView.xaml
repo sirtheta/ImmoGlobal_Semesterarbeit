@@ -68,6 +68,7 @@
             <Border CornerRadius="5"
                     Margin="10"
                     Padding="0"
+                    MaxWidth="250"
                     Background="{DynamicResource MaterialDesignBackground}">
               <Border.InputBindings>
                 <MouseBinding Gesture="LeftClick" Command="{Binding PropertyObjectClickCommand}"/>
@@ -75,7 +76,7 @@
               <Border.Effect>
                 <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="1"/>
               </Border.Effect>
-              <Grid ShowGridLines="True">
+              <Grid>
                 <Grid.RowDefinitions>
                   <RowDefinition Height="auto"/>
                   <RowDefinition Height="1*"/>
@@ -90,7 +91,7 @@
                 <Grid.Resources>
                   <Style TargetType="TextBlock">
                     <Setter Property="Padding"
-                            Value="5,10,0,10" />
+                            Value="5,10,5,10" />
                   </Style>
                 </Grid.Resources>
                 <TextBlock Grid.Row="0" Grid.ColumnSpan="2"

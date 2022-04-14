@@ -20,12 +20,22 @@ namespace ImmoGlobal.ViewModels
 
     public PropertyObject PropertyObject { get; set; }
 
-    public ObservableCollection<Invoice>? InvoicesOfPropertyObject { get; set; }
-
+    public ObservableCollection<Invoice>? InvoicesOfPropertyObject
+    {
+      get
+      {
+        var invoices = new List<Invoice>();
+        foreach (var item in PropertyObject.GetInvoicePositions())
+        {
+          invoices.Add(item.GetInvoiceToInvoicePosition());
+        }
+        return new ObservableCollection<Invoice>(invoices.DistinctBy(p => p.InvoiceId));
+      }
+    }
 
     public ObservableCollection<RentalContract>? RentalContracsOfPropertyObject
     {
-      get { return new ObservableCollection<RentalContract>(PropertyObject.GetRentalContractToObject()); }
+      get => new(PropertyObject.GetRentalContractToObject());
     }
 
 
@@ -34,10 +44,7 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     public Persona? Renter
     {
-      get
-      {
-        return RentalContracsOfPropertyObject?.Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.GetRenter();
-      }
+      get => RentalContracsOfPropertyObject?.Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.GetRenter();
     }
   }
 }

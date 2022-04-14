@@ -27,7 +27,7 @@ namespace ImmoGlobal.MainClasses
 
     public Persona? GetRenter()
     {
-      return DbController.GetRenter(this);
+      return DbController.GetRenterDB(this);
     }
 
     public string DepositString

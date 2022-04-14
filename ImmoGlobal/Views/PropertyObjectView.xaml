@@ -380,6 +380,38 @@
                    Padding="5,5,0,5"
                    FontSize="20"
                    TextWrapping="Wrap"/>
+            <DataGrid Grid.Row="1" 
+                  ItemsSource="{Binding InvoicesOfPropertyObject, UpdateSourceTrigger=PropertyChanged}" 
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False" 
+                  CanUserDeleteRows="False" 
+                  Style="{DynamicResource MaterialDesignDataGrid}">
+              <DataGrid.Columns>
+                <DataGridTextColumn Header="{DynamicResource invoiceDate}"         
+                                IsReadOnly="True" 
+                                Binding="{Binding InvoiceDate, StringFormat=\{0:dd.MM.yyyy\}}"/>
+                
+                <DataGridTextColumn Header="{DynamicResource invoiceValue}"           
+                                IsReadOnly="True" 
+                                Binding="{Binding TotalValue}"/>
+                
+                <DataGridTextColumn Header="{DynamicResource invoicePurpose}"        
+                                IsReadOnly="True" 
+                                Binding="{Binding InvoicePurpose}"/>
+
+                <DataGridTextColumn Header="{DynamicResource invoiceCategory}"      
+                                IsReadOnly="True" 
+                                Binding="{Binding InvoiceCategoryString, Mode=OneWay}"/>
+                
+                <DataGridTextColumn Header="{DynamicResource invoiceState}"        
+                                IsReadOnly="True" 
+                                Binding="{Binding InvoiceStateString}" />
+
+                <DataGridTextColumn Header="{DynamicResource billReminders}" 
+                                IsReadOnly="True" 
+                                Binding="{Binding BillRemindersString}"/>
+              </DataGrid.Columns>
+            </DataGrid>
           </Grid>
         </Border>
       </Grid>

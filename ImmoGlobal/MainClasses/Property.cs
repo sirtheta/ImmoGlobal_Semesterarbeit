@@ -31,7 +31,12 @@ namespace ImmoGlobal.MainClasses
 
     private List<PropertyObject> GetPropertyObjects()
     {
-      return DbController.GetPropertyObjectsByProperty(this);
+      return DbController.GetPropertyObjectsToPropertyDB(this).ToList();
+    }
+
+    public ICollection<InvoicePosition> GetInvoicePositions()
+    {
+      return DbController.GetInvoicePositionsToPropertyDB(this);
     }
 
     private readonly List<RentalContract> _rentalContracts = new();
@@ -39,19 +44,16 @@ namespace ImmoGlobal.MainClasses
     /// <summary>
     /// Gets all rental contracts of all PropertyObjects in a property
     /// </summary>
-    public List<RentalContract>? RentalContracts
+    private List<RentalContract>? RentalContracts()
     {
-      get
+      foreach (var item in GetPropertyObjects())
       {
-        foreach (var item in GetPropertyObjects())
+        foreach (var contract in DbController.GetAllRentalContractsToPropertyObjectDB(item).ToList())
         {
-          foreach (var contract in DbController.GetAllRentalContractsToPropertyObject(item).ToList())
-          {
-            _rentalContracts.Add(contract);
-          }
+          _rentalContracts.Add(contract);
         }
-        return _rentalContracts;
       }
+      return _rentalContracts;
     }
 
     /// <summary>
@@ -61,7 +63,7 @@ namespace ImmoGlobal.MainClasses
     {
       get
       {
-        return RentalContracts?.Where(x => x.ContractState == EContractState.Active).Count() ?? 0;
+        return RentalContracts()?.Where(x => x.ContractState == EContractState.Active).Count() ?? 0;
       }
     }
 
@@ -72,8 +74,17 @@ namespace ImmoGlobal.MainClasses
     {
       get
       {
-        return RentalContracts?.Where(x => x.ContractState != EContractState.Active).Count() ?? 0;
+        return RentalContracts()?.Where(x => x.ContractState != EContractState.Active).Count() ?? 0;
       }
+    }
+
+    /// <summary>
+    /// returns string of housekeeper name
+    /// </summary>
+    /// <returns>string FirstName + LastName</returns>
+    private string GetHouskeeper()
+    {
+      return DbController.GetHouskeeperDB(this)?.FullName ?? "";
     }
 
     public ICommand PropertyClickCommand
@@ -87,15 +98,6 @@ namespace ImmoGlobal.MainClasses
       {
         MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyObjectOverviewViewModel(GetPropertyObjects(), GetHouskeeper(), Description ?? "no description found");
       }
-    }
-
-    /// <summary>
-    /// returns string of housekeeper name
-    /// </summary>
-    /// <returns>string FirstName + LastName</returns>
-    private string GetHouskeeper()
-    {
-      return DbController.GetHouskeeper(this)?.FullName ?? "";
     }
   }
 }
