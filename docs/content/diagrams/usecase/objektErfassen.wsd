@@ -5,7 +5,6 @@ left to right direction
 actor "User" as fc
 rectangle "Objekt erfassen" {
   usecase "Neues Objekt \n hinzufügen" as UC1
-  usecase "Liegenschaft für das\n Objekt auswählen"as inc1
   usecase "Objektyp aus Liste\n auswählen" as inc2
   usecase "Identifikationsnummer angeben" as UC2
   usecase "Objektlage angeben" as UC3
@@ -15,7 +14,6 @@ rectangle "Objekt erfassen" {
   usecase "Anzahl der Schlüssel \n angeben" as UC7
 } 
 fc -- UC1
-UC1 .left.> inc1 : <<include>> 
 UC1 .down.> inc2 : <<include>>
 fc -- UC2
 fc -- UC3
