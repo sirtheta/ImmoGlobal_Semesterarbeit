@@ -12,16 +12,16 @@ namespace ImmoGlobal.ViewModels
     {
       BtnNewProperty = new RelayCommand<object>(BtnNewPropertyClicked);
       BtnNewPropertyObject = new RelayCommand<object>(BtnNewPropertyObjectClicked);
-      BtnNewRenter = new RelayCommand<object>(BtnBtnNewRenterClicked);
-      BtnInvoice = new RelayCommand<object>(BtnBtnInvoiceClicked);
-      BtnNewInvoice = new RelayCommand<object>(BtnBtnNewInvoiceClicked);
-      BtnObjects = new RelayCommand<object>(BtnBtnObjectsClicked);
-      BtnRentalContracts = new RelayCommand<object>(BtnBtnRentalContractsClicked);
-      BtnNewCreditor = new RelayCommand<object>(BtnBtnNewCreditorClicked);
-      BtnNewBillReminder = new RelayCommand<object>(BtnBtnNewBillReminderClicked);
-      BtnNewRentalContract = new RelayCommand<object>(BtnBtnNewRentalContractClicked);
-      BtnNewAccount = new RelayCommand<object>(BtnBtnNewAccountClicked);
-      BtnNewPaymentRecord = new RelayCommand<object>(BtnBtnNewPaymentRecordClicked);
+      BtnNewRenter = new RelayCommand<object>(BtnNewRenterClicked);
+      BtnInvoice = new RelayCommand<object>(BtnInvoiceClicked);
+      BtnNewInvoice = new RelayCommand<object>(BtnNewInvoiceClicked);
+      BtnObjects = new RelayCommand<object>(BtnObjectsClicked);
+      BtnRentalContracts = new RelayCommand<object>(BtnRentalContractsClicked);
+      BtnNewCreditor = new RelayCommand<object>(BtnNewCreditorClicked);
+      BtnNewBillReminder = new RelayCommand<object>(BtnNewBillReminderClicked);
+      BtnNewRentalContract = new RelayCommand<object>(BtnNewRentalContractClicked);
+      BtnNewAccount = new RelayCommand<object>(BtnNewAccountClicked);
+      BtnNewPaymentRecord = new RelayCommand<object>(BtnNewPaymentRecordClicked);
     }
     #region Commands
     public ICommand BtnNewProperty
@@ -98,61 +98,65 @@ namespace ImmoGlobal.ViewModels
     #region MethodsToCommands
     private void BtnNewPropertyClicked(object obj)
     {
-      throw new NotImplementedException();
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new NewPropertyViewModel();
+      };
     }
     private void BtnNewPropertyObjectClicked(object obj)
     {
       throw new NotImplementedException();
     }
-    private void BtnBtnNewPaymentRecordClicked(object obj)
+    private void BtnNewPaymentRecordClicked(object obj)
     {
       throw new NotImplementedException();
     }
 
-    private void BtnBtnNewAccountClicked(object obj)
+    private void BtnNewAccountClicked(object obj)
     {
       throw new NotImplementedException();
     }
 
-    private void BtnBtnNewRentalContractClicked(object obj)
+    private void BtnNewRentalContractClicked(object obj)
     {
       throw new NotImplementedException();
     }
 
-    private void BtnBtnNewBillReminderClicked(object obj)
+    private void BtnNewBillReminderClicked(object obj)
     {
       throw new NotImplementedException();
     }
 
-    private void BtnBtnNewCreditorClicked(object obj)
+    private void BtnNewCreditorClicked(object obj)
     {
       throw new NotImplementedException();
     }
 
-    private void BtnBtnRentalContractsClicked(object obj)
+    private void BtnRentalContractsClicked(object obj)
     {
       throw new NotImplementedException();
     }
 
-    private void BtnBtnObjectsClicked(object obj)
+    private void BtnObjectsClicked(object obj)
     {
       throw new NotImplementedException();
     }
 
-    private void BtnBtnNewInvoiceClicked(object obj)
+    private void BtnNewInvoiceClicked(object obj)
     {
       throw new NotImplementedException();
     }
 
-    private void BtnBtnInvoiceClicked(object obj)
+    private void BtnInvoiceClicked(object obj)
     {
       throw new NotImplementedException();
     }
 
-    private void BtnBtnNewRenterClicked(object obj)
+    private void BtnNewRenterClicked(object obj)
     {
       throw new NotImplementedException();
     }
+
     #endregion
     /// <summary>
     /// Visibilty Properties for all Buttons

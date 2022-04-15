@@ -1,5 +1,6 @@
 ﻿using ImmoGlobal.MainClasses.Enum;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace ImmoGlobal.MainClasses
@@ -85,6 +86,7 @@ namespace ImmoGlobal.MainClasses
       AccountNumber = accountNumber;
     }
 
+    [Key]
     public int PersonaId { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
@@ -104,8 +106,8 @@ namespace ImmoGlobal.MainClasses
     public string? VatNumber { get; set; }
     public string? CreditorCompanyName { get; set; }
     
-    
     public string FullName => $"{LastName} {FirstName}";
+    public string FullNameAndCity => $"{LastName} {FirstName}, {City}";
     public string CivilStateString
     {
       get
@@ -119,8 +121,6 @@ namespace ImmoGlobal.MainClasses
           _ => "unknown",
         };
       }
-    }
-    
-
+    } 
   }
 }

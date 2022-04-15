@@ -12,7 +12,7 @@ namespace ImmoGlobal.MainClasses
   {
     public int PropertyId { get; set; }
     public string? Description { get; set; }
-    public string? Adress { get; set; }
+    public string? Address { get; set; }
     public int ZipCode { get; set; }
     public string? City { get; set; }
     public string? PropertyInsurance { get; set; }
@@ -31,7 +31,7 @@ namespace ImmoGlobal.MainClasses
 
     private List<PropertyObject> GetPropertyObjects()
     {
-      return DbController.GetPropertyObjectsToPropertyDB(this).ToList();
+      return new(DbController.GetPropertyObjectsToPropertyDB(this));
     }
 
     public ICollection<InvoicePosition> GetInvoicePositions()

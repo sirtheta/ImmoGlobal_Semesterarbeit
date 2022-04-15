@@ -16,8 +16,8 @@ namespace ImmoGlobal.Database
       var _housekeeper = new Persona("Houskeeperman", "Moritz", 0238905678, "moritz@mail.de", "Obsolet Adress 4", 2344, "Ronmalingen", "893489uip099322", 8907894561);
       var _housekeeper2 = new Persona("Schneider", "Peter", 0236565678, "peter@schneider.de", "Obsolet Adress 5", 3262, "Tübingen", "893489uip6544542", 5896314782);
 
-      var _property1 = new Property() { Housekeeper = _housekeeper, Description = "TestLiegenschaft1", Adress = "TestAdress1", ZipCode = 3612, City = "TestCity1", PropertyInsurance = "Helvetia1", PersonInsurance = "Mobiliar1", LiabilityInsurance = "Emmitaler1" };
-      var _property2 = new Property() { Housekeeper = _housekeeper2, Description = "TestLiegenschaft2", Adress = "TestAdress2", ZipCode = 3613, City = "TestCity2", PropertyInsurance = "Helvetia2", PersonInsurance = "Mobiliar2", LiabilityInsurance = "Emmitaler2" };
+      var _property1 = new Property() { Housekeeper = _housekeeper, Description = "TestLiegenschaft1", Address = "TestAdress1", ZipCode = 3612, City = "TestCity1", PropertyInsurance = "Helvetia1", PersonInsurance = "Mobiliar1", LiabilityInsurance = "Emmitaler1" };
+      var _property2 = new Property() { Housekeeper = _housekeeper2, Description = "TestLiegenschaft2", Address = "TestAdress2", ZipCode = 3613, City = "TestCity2", PropertyInsurance = "Helvetia2", PersonInsurance = "Mobiliar2", LiabilityInsurance = "Emmitaler2" };
 
       var _objectHouse = new PropertyObject() { Property = _property1, ObjectType = EPropertyObjectType.House, Description = "Wohnung 1", Location = "TestLocation", NumberOfRooms = 4.5, Area = 100, NumberOfKeys = 5, Fridge = true, Dishwasher = true, Stove = true, Oven = true };
       var _objectGarage = new PropertyObject() { Property = _property1, ObjectType = EPropertyObjectType.Garage, Description = "Garage von Wohnung 1", Location = "irgendwo nebenan", Area = 15 };

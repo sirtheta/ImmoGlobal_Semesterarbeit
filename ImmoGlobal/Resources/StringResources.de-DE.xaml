@@ -9,10 +9,15 @@
   <system:String x:Key="rentalContract">Mietvertrag</system:String>
   <system:String x:Key="invoice">Rechnung</system:String>
   <system:String x:Key="account">Konto</system:String>
+  <system:String x:Key="description">Beschreibung</system:String>
 
   <system:String x:Key="newProperty">Neue Liegenschaft</system:String>
   <system:String x:Key="propertyOverview">Übersicht Liegenschaften</system:String>
+  <system:String x:Key="propertyInsurance">Liegenschaftsversicherung</system:String>
+  <system:String x:Key="personInsurance">Personenversicherung</system:String>
+  <system:String x:Key="liabilityInsurance">Haftpflichtversicherung</system:String>
   <system:String x:Key="housekeeper">Hauswartungsperson:</system:String>
+  <system:String x:Key="selectHousekeeper">Hauswartungsperson auswählen</system:String>
 
   <system:String x:Key="overviewPropertyObjects">Übersicht Objekte in der Liegenschaft</system:String>
   <system:String x:Key="detailView">Details zu</system:String>
@@ -105,5 +110,11 @@
   <system:String x:Key="canceled">Abgelehnt</system:String>
   <system:String x:Key="billReminders">Mahnungen</system:String>
 
+  <system:String x:Key="createNewProperty">Neue Liegenschaft erstellen</system:String>
 
+  <system:String x:Key="save">Speichern</system:String>
+  <system:String x:Key="errorFillAllFields">Bitte alle Felder ausfüllen!</system:String>
+  <system:String x:Key="errorZipCode">Bitte eine gültige PLZ eingeben!</system:String>
+  <system:String x:Key="successAddProperty">Liegenschat erfolgreich hinzugefügt!</system:String>
+  <system:String x:Key="errorAddProperty">Speichern der Liegenschaft Fehlgeschlagen!</system:String>
 </ResourceDictionary>

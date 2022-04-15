@@ -48,7 +48,7 @@
                 <TextBlock Text="{Binding Description}" 
                            Margin="10" 
                            FontFamily="{DynamicResource MaterialDesignFont}"/>
-                <TextBlock Text="{Binding Adress}" 
+                <TextBlock Text="{Binding Address}" 
                            Margin="10" 
                            FontFamily="{DynamicResource MaterialDesignFont}"/>
                 <TextBlock FontFamily="{DynamicResource MaterialDesignFont}"

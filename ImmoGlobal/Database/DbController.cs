@@ -7,18 +7,6 @@ namespace ImmoGlobal.Database
 {
   internal class DbController
   {
-    /// <summary>
-    /// Get Properties from DB
-    /// </summary>
-    /// <returns>
-    /// List of Properties
-    /// </returns>
-    internal static List<Property> GetPropertiesDB()
-    {
-      using var db = new ImmoGlobalContext();
-      return db.Properties.ToList();
-    }
-
     internal static Invoice GetInvoiceToPositionDB(InvoicePosition invoicePosition)
     {
       using var db = new ImmoGlobalContext();
@@ -26,7 +14,7 @@ namespace ImmoGlobal.Database
               where p.InvoicePositions.Contains(invoicePosition)
               select p).First();
     }
-    
+
     internal static Account GetAccountToPositionDB(InvoicePosition invoicePosition)
     {
       using var db = new ImmoGlobalContext();
@@ -73,16 +61,15 @@ namespace ImmoGlobal.Database
     }
 
     /// <summary>
-    /// Return renter to a contract
+    /// Get Properties from DB
     /// </summary>
-    /// <param name="rentalContract"></param>
-    /// <returns>Persona</returns>
-    internal static Persona GetRenterDB(RentalContract rentalContract)
+    /// <returns>
+    /// List of Properties
+    /// </returns>
+    internal static List<Property> GetPropertiesDB()
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.RentalContracts
-              where p == rentalContract
-              select p.Renter).First();
+      return db.Properties.ToList();
     }
 
     /// <summary>
@@ -96,6 +83,23 @@ namespace ImmoGlobal.Database
       return (from p in db.PropertyObjects
               where p == propertyObject
               select p.Property).First();
+    }
+
+    internal static bool AddNewPropertyDB(Property property)
+    {
+      try
+      {
+        using var db = new ImmoGlobalContext();
+        if (property.Housekeeper != null)
+          db.Attach(property.Housekeeper);
+        db.Properties.Add(property);
+        db.SaveChanges();
+        return true;
+      }
+      catch (Exception)
+      {
+        return false;
+      }
     }
 
     /// <summary>
@@ -122,7 +126,25 @@ namespace ImmoGlobal.Database
       return (from p in db.Properties
               where p == property
               select p.Housekeeper).First();
+    }
 
+    /// <summary>
+    /// Return renter to a contract
+    /// </summary>
+    /// <param name="rentalContract"></param>
+    /// <returns>Persona</returns>
+    internal static Persona GetRenterDB(RentalContract rentalContract)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.RentalContracts
+              where p == rentalContract
+              select p.Renter).First();
+    }
+
+    internal static ICollection<Persona> GetAllPersonasDB()
+    {
+      using var db = new ImmoGlobalContext();
+      return db.Personas.ToList();
     }
   }
 }
