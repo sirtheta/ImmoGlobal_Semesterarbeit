@@ -60,17 +60,6 @@ namespace ImmoGlobal.Database
               select p).ToList();
     }
 
-    /// <summary>
-    /// Get Properties from DB
-    /// </summary>
-    /// <returns>
-    /// List of Properties
-    /// </returns>
-    internal static List<Property> GetPropertiesDB()
-    {
-      using var db = new ImmoGlobalContext();
-      return db.Properties.ToList();
-    }
 
     /// <summary>
     /// Return a property from a propertyObject
@@ -85,14 +74,68 @@ namespace ImmoGlobal.Database
               select p.Property).First();
     }
 
-    internal static bool AddNewPropertyDB(Property property)
+    /// <summary>
+    /// Create and Update Property Object in DB
+    /// </summary>
+    /// <param name="propertyObject"></param>
+    /// <returns></returns>
+    internal static bool UpsertPropertyObjectDB(PropertyObject propertyObject)
+    {
+      try
+      {
+        using var db = new ImmoGlobalContext();
+        if (propertyObject.Property != null)
+          db.Attach(propertyObject.Property);
+        if (propertyObject.PropertyObjectId == 0)
+        {
+          db.PropertyObjects.Add(propertyObject);
+        }
+        else
+        {
+          db.PropertyObjects.Update(propertyObject);
+        }
+        db.SaveChanges();
+        return true;
+      }
+      catch (Exception)
+      {
+        return false;
+      }
+    }
+
+    /// <summary>
+    /// Get Properties from DB
+    /// </summary>
+    /// <returns>
+    /// List of Properties
+    /// </returns>
+    internal static List<Property> GetPropertiesDB()
+    {
+      using var db = new ImmoGlobalContext();
+      return db.Properties.ToList();
+    }
+
+    /// <summary>
+    /// Create or update a property in DB
+    /// </summary>
+    /// <param name="property"></param>
+    /// <returns></returns>
+    internal static bool UpsertPropertyToDB(Property property)
     {
       try
       {
         using var db = new ImmoGlobalContext();
         if (property.Housekeeper != null)
           db.Attach(property.Housekeeper);
-        db.Properties.Add(property);
+
+        if (property.PropertyId == 0)
+        {
+          db.Properties.Add(property);
+        }
+        else
+        {
+          db.Properties.Update(property);
+        }
         db.SaveChanges();
         return true;
       }

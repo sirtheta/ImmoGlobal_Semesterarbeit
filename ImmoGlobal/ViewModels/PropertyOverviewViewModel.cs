@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 
 namespace ImmoGlobal.ViewModels
 {
-  internal class PropertyViewModel : BaseViewModel
+  internal class PropertyOverviewViewModel : BaseViewModel
   {
-    internal PropertyViewModel()
+    internal PropertyOverviewViewModel()
     {
       PropertyCollection = new ObservableCollection<Property>(DbController.GetPropertiesDB());
     }

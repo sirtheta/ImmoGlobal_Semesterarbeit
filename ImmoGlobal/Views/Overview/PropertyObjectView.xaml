@@ -30,6 +30,7 @@
       <TextBlock Grid.Row="0"
                Padding="0,5,0,10" 
                FontSize="30"
+               FontWeight="Bold"
                TextWrapping="Wrap">
       <Run Text="{DynamicResource detailView}"/>
       <Run Text="{Binding PropertyObject.Description}"/>

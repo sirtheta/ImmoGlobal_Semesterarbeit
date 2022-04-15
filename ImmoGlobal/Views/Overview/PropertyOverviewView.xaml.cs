@@ -5,9 +5,9 @@ namespace ImmoGlobal.Views
   /// <summary>
   /// Interaction logic for PropertyView.xaml
   /// </summary>
-  public partial class PropertyView : UserControl
+  public partial class PropertyOverviewView : UserControl
   {
-    public PropertyView()
+    public PropertyOverviewView()
     {
       InitializeComponent();
     }

@@ -31,28 +31,31 @@
       </Grid.Resources>
       <StackPanel Grid.Column="0">
         <TextBlock Text="{DynamicResource overviewPropertyObjects}"
-                 HorizontalAlignment="Left"
-                 Padding="10"
-                 FontSize="30"
-                 TextWrapping="Wrap"/>
+                   HorizontalAlignment="Left"
+                   Padding="10"
+                   FontSize="30"
+                   FontWeight="Bold"
+                   TextWrapping="Wrap"/>
         <TextBlock Text="{Binding Description}"
-                 HorizontalAlignment="Left"
-                 Padding="10"
-                 FontSize="15"
-                 TextWrapping="Wrap"/>
+                   HorizontalAlignment="Left"
+                   Padding="10"
+                   FontSize="15" 
+                   FontWeight="Bold"
+                   TextWrapping="Wrap"/>
       </StackPanel>
       <StackPanel Grid.Column="1">
-        <TextBlock 
-                 Text="{DynamicResource housekeeper}"
-                 HorizontalAlignment="Left"
-                 Padding="10"
-                 FontSize="30"
-                 TextWrapping="Wrap"/>
+        <TextBlock Text="{DynamicResource housekeeper}"
+                   HorizontalAlignment="Left"
+                   Padding="10"
+                   FontSize="30"
+                   FontWeight="Bold"
+                   TextWrapping="Wrap"/>
         <TextBlock Grid.Column="1"
-                 Text="{Binding Housekeeper}"
-                 HorizontalAlignment="Left"
-                 Padding="10"
-                 FontSize="15"/>
+                   Text="{Binding Housekeeper}"
+                   HorizontalAlignment="Left"
+                   Padding="10" 
+                   FontWeight="Bold"
+                   FontSize="15"/>
       </StackPanel>
 
     </Grid>

@@ -26,22 +26,20 @@ namespace ImmoGlobal
     public static string Hash(string password, int iterations)
     {
       // Create salt
-      using (var rng = RandomNumberGenerator.Create())
-      {
-        byte[] salt;
-        rng.GetBytes(salt = new byte[SaltSize]);
-        using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256);
-        var hash = pbkdf2.GetBytes(HashSize);
-        // Combine salt and hash
-        var hashBytes = new byte[SaltSize + HashSize];
-        Array.Copy(salt, 0, hashBytes, 0, SaltSize);
-        Array.Copy(hash, 0, hashBytes, SaltSize, HashSize);
-        // Convert to base64
-        var base64Hash = Convert.ToBase64String(hashBytes);
+      using var rng = RandomNumberGenerator.Create();
+      byte[] salt;
+      rng.GetBytes(salt = new byte[SaltSize]);
+      using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256);
+      var hash = pbkdf2.GetBytes(HashSize);
+      // Combine salt and hash
+      var hashBytes = new byte[SaltSize + HashSize];
+      Array.Copy(salt, 0, hashBytes, 0, SaltSize);
+      Array.Copy(hash, 0, hashBytes, SaltSize, HashSize);
+      // Convert to base64
+      var base64Hash = Convert.ToBase64String(hashBytes);
 
-        // Format hash with extra information
-        return $"$HASH|V1${iterations}${base64Hash}";
-      }
+      // Format hash with extra information
+      return $"$HASH|V1${iterations}${base64Hash}";
     }
 
     /// Creates a hash from a password with 10000 iterations

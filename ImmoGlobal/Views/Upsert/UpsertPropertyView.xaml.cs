@@ -18,9 +18,9 @@ namespace ImmoGlobal.Views
   /// <summary>
   /// Interaction logic for NewPropertyView.xaml
   /// </summary>
-  public partial class NewPropertyView : UserControl
+  public partial class UpsertPropertyView : UserControl
   {
-    public NewPropertyView()
+    public UpsertPropertyView()
     {
       InitializeComponent();
     }

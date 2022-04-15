@@ -22,7 +22,9 @@ namespace ImmoGlobal.ViewModels
       BtnNewRentalContract = new RelayCommand<object>(BtnNewRentalContractClicked);
       BtnNewAccount = new RelayCommand<object>(BtnNewAccountClicked);
       BtnNewPaymentRecord = new RelayCommand<object>(BtnNewPaymentRecordClicked);
+      BtnEdit = new RelayCommand<object>(BtnEditClicked);
     }
+
     #region Commands
     public ICommand BtnNewProperty
     {
@@ -93,6 +95,11 @@ namespace ImmoGlobal.ViewModels
       get;
       private set;
     }
+    public ICommand BtnEdit
+    {
+      get;
+      private set;
+    }
     #endregion
 
     #region MethodsToCommands
@@ -100,12 +107,15 @@ namespace ImmoGlobal.ViewModels
     {
       if (MainWindowViewModel.GetInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new NewPropertyViewModel();
+        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertPropertyViewModel();
       };
     }
     private void BtnNewPropertyObjectClicked(object obj)
     {
-      throw new NotImplementedException();
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertPropertyObjectViewModel(MainWindowViewModel.GetInstance.SelectedProperty);
+      };
     }
     private void BtnNewPaymentRecordClicked(object obj)
     {
@@ -156,6 +166,43 @@ namespace ImmoGlobal.ViewModels
     {
       throw new NotImplementedException();
     }
+    private void BtnEditClicked(object obj)
+    {
+      var instance = MainWindowViewModel.GetInstance;
+      if (instance != null)
+      {
+        switch (instance.SelectedViewModel)
+        {
+          case PropertyObjectOverviewViewModel:
+            instance.SelectedViewModel = new UpsertPropertyViewModel(instance.SelectedProperty);
+            break;
+          case PropertyObjectViewModel:
+            instance.SelectedViewModel = new UpsertPropertyObjectViewModel(instance.SelectedProperty, instance.SelectedPropertyObject);
+            break;
+            //case UpsertRenterViewModel upsertRenterViewModel:
+            //  upsertRenterViewModel.EditRenter();
+            //  break;
+            //case UpsertInvoiceViewModel upsertInvoiceViewModel:
+            //  upsertInvoiceViewModel.EditInvoice();
+            //  break;
+            //case UpsertCreditorViewModel upsertCreditorViewModel:
+            //  upsertCreditorViewModel.EditCreditor();
+            //  break;
+            //case UpsertBillReminderViewModel upsertBillReminderViewModel:
+            //  upsertBillReminderViewModel.EditBillReminder();
+            //  break;
+            //case UpsertRentalContractViewModel upsertRentalContractViewModel:
+            //  upsertRentalContractViewModel.EditRentalContract();
+            //  break;
+            //case UpsertAccountViewModel upsertAccountViewModel:
+            //  upsertAccountViewModel.EditAccount();
+            //  break;
+            //case UpsertPaymentRecordViewModel upsertPaymentRecordViewModel:
+            //  upsertPaymentRecordViewModel.EditPaymentRecord();
+            //  break;
+        }
+      };
+    }
 
     #endregion
     /// <summary>
@@ -174,6 +221,7 @@ namespace ImmoGlobal.ViewModels
     private Visibility _btnNewRentalContractVisibility;
     private Visibility _btnNewAccountVisibility;
     private Visibility _btnNewPaymentRecordVisibility;
+    private Visibility _btnEditVisibility;
 
     public Visibility BtnNewPropertyVisibility
     {
@@ -327,6 +375,19 @@ namespace ImmoGlobal.ViewModels
       set
       {
         _btnNewPaymentRecordVisibility = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public Visibility BtnEditVisibility
+    {
+      get
+      {
+        return _btnEditVisibility;
+      }
+      set
+      {
+        _btnEditVisibility = value;
         OnPropertyChanged();
       }
     }

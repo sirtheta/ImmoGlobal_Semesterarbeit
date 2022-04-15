@@ -21,7 +21,7 @@ namespace ImmoGlobal.ViewModels
     {
       if (MainWindowViewModel.GetInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyViewModel();
+        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyOverviewViewModel();
       }
     }
 

@@ -12,9 +12,9 @@ namespace ImmoGlobal.MainClasses
   internal class PropertyObject
   {
     public int PropertyObjectId { get; set; }
-    public Property? Property { get; set; }
-    public EPropertyObjectType ObjectType { get; set; }
     public string? Description { get; set; }
+    public EPropertyObjectType ObjectType { get; set; }
+    public Property? Property { get; set; }
     public string? Location { get; set; }
     public double NumberOfRooms { get; set; }
     public double Area { get; set; }
@@ -54,6 +54,9 @@ namespace ImmoGlobal.MainClasses
       }
     }
 
+    /// <summary>
+    /// gets the Object Type name from enum to a translated string
+    /// </summary>
     public string ObjectTypeName
     {
       get
@@ -80,10 +83,12 @@ namespace ImmoGlobal.MainClasses
     {
       if (MainWindowViewModel.GetInstance != null)
       {
+        MainWindowViewModel.GetInstance.SelectedPropertyObject = this;
         MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyObjectViewModel(this);
       }
     }
 
+    // Gets translatet string for boolean, yes or no
     public string FridgeString 
     {
       get { return Fridge ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no"; }

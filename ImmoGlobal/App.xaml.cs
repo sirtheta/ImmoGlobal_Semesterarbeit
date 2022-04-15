@@ -17,7 +17,7 @@ namespace ImmoGlobal
       CheckDatabase();
 
       SetLanguageDictionary();
-      PropertyViewModel propertyViewModel = new();
+      PropertyOverviewViewModel propertyViewModel = new();
 
       MainWindow = new MainWindowView()
       {
@@ -47,21 +47,16 @@ namespace ImmoGlobal
         context.Database.EnsureCreated();
       }
     }
+    
     private void SetLanguageDictionary()
     {
       ResourceDictionary dict = new();
-      switch (Thread.CurrentThread.CurrentCulture.ToString())
+      dict.Source = Thread.CurrentThread.CurrentCulture.ToString() switch
       {
-        case "de-CH":
-          dict.Source = new Uri("..\\Resources\\StringResources.de-DE.xaml", UriKind.Relative);
-          break;
-        case "de-DE":
-          dict.Source = new Uri("..\\Resources\\StringResources.de-DE.xaml", UriKind.Relative);
-          break;
-        default:
-          dict.Source = new Uri("..\\Resources\\StringResources.xaml", UriKind.Relative);
-          break;
-      }
+        "de-CH" => new Uri("..\\Resources\\StringResources.de-DE.xaml", UriKind.Relative),
+        "de-DE" => new Uri("..\\Resources\\StringResources.de-DE.xaml", UriKind.Relative),
+        _ => new Uri("..\\Resources\\StringResources.xaml", UriKind.Relative),
+      };
       Resources.MergedDictionaries.Add(dict);
     }
   }

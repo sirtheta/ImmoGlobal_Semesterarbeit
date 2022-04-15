@@ -18,6 +18,7 @@
   <system:String x:Key="liabilityInsurance">Haftpflichtversicherung</system:String>
   <system:String x:Key="housekeeper">Hauswartungsperson:</system:String>
   <system:String x:Key="selectHousekeeper">Hauswartungsperson auswählen</system:String>
+  <system:String x:Key="selectProperty">Liegenschaft auswählen</system:String>
 
   <system:String x:Key="overviewPropertyObjects">Übersicht Objekte in der Liegenschaft</system:String>
   <system:String x:Key="detailView">Details zu</system:String>
@@ -111,10 +112,28 @@
   <system:String x:Key="billReminders">Mahnungen</system:String>
 
   <system:String x:Key="createNewProperty">Neue Liegenschaft erstellen</system:String>
+  <system:String x:Key="edit">bearbeiten</system:String>
+  <system:String x:Key="newPropertyObjectFor">Neues Objekt für</system:String>
+  <system:String x:Key="create">erstellen</system:String>
+  <system:String x:Key="selectType">Objekttyp wählen:</system:String>
+
+  <system:String x:Key="btnEdit">Bearbeiten</system:String>
+
 
   <system:String x:Key="save">Speichern</system:String>
+  
   <system:String x:Key="errorFillAllFields">Bitte alle Felder ausfüllen!</system:String>
   <system:String x:Key="errorZipCode">Bitte eine gültige PLZ eingeben!</system:String>
+  <system:String x:Key="errorArea">Bitte eine gültige Fläche eingeben!</system:String>
+  <system:String x:Key="errorRooms">Bitte eine gültige anzahl Räume eingeben!</system:String>
+  <system:String x:Key="errorKeys">Bitte eine gültige anzahl Schlüssel eingeben!</system:String>
+  
   <system:String x:Key="successAddProperty">Liegenschat erfolgreich hinzugefügt!</system:String>
+  <system:String x:Key="successUpdateProperty">Liegenschat erfolgreich upgedatet!</system:String>
   <system:String x:Key="errorAddProperty">Speichern der Liegenschaft Fehlgeschlagen!</system:String>
+
+  <system:String x:Key="successAddPropertyObject">Objekt erfolgreich hinzugefügt!</system:String>
+  <system:String x:Key="successUpdatePropertyObject">Objekt erfolgreich upgedatet!</system:String>
+  <system:String x:Key="errorAddPropertyObject">Speichern der Liegenschaft Fehlgeschlagen!</system:String>
+  
 </ResourceDictionary>

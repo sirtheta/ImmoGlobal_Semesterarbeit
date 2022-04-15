@@ -158,6 +158,18 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Visibility="{Binding BtnNewPaymentRecordVisibility}"/>
+
+      <Button Command="{Binding BtnEdit}" 
+            Content="{DynamicResource btnEdit}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnEditVisibility}"/>
     </StackPanel>
   </Grid>
 </UserControl>

@@ -78,13 +78,29 @@ namespace ImmoGlobal.MainClasses
       }
     }
 
+    public string DescriptionAndAddress
+    {
+      get
+      {
+        return $"{Description}, {Address}, {ZipCode} {City}";
+      }
+    }
+
     /// <summary>
     /// returns string of housekeeper name
     /// </summary>
     /// <returns>string FirstName + LastName</returns>
-    private string GetHouskeeper()
+    public Persona GetHouskeeper()
     {
-      return DbController.GetHouskeeperDB(this)?.FullName ?? "";
+      return DbController.GetHouskeeperDB(this);
+    }
+
+    public string HouskeeperName
+    {
+      get
+      {
+        return GetHouskeeper()?.FullName ?? "";
+      }
     }
 
     public ICommand PropertyClickCommand
@@ -96,7 +112,8 @@ namespace ImmoGlobal.MainClasses
     {
       if (MainWindowViewModel.GetInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyObjectOverviewViewModel(GetPropertyObjects(), GetHouskeeper(), Description ?? "no description found");
+        MainWindowViewModel.GetInstance.SelectedProperty = this;
+        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyObjectOverviewViewModel(GetPropertyObjects(), HouskeeperName, Description ?? "no description found");
       }
     }
   }

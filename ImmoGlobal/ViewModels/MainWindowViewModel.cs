@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using ImmoGlobal.MainClasses;
+using System.Windows;
 using System.Windows.Media;
 
 namespace ImmoGlobal.ViewModels
@@ -65,6 +66,10 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged(nameof(SelectedViewModel));
       }
     }
+
+    internal Property? SelectedProperty { get; set; }
+    internal PropertyObject? SelectedPropertyObject { get; set; }
+
     /// <summary>
     /// sets the color of the menu bar icon
     /// </summary>
@@ -72,7 +77,7 @@ namespace ImmoGlobal.ViewModels
     {
       switch (_selectedViewModel)
       {
-        case PropertyViewModel:
+        case PropertyOverviewViewModel:
           MenuBarViewModel.BtnPropertyColor = Brushes.Red;
           MenuBarViewModel.BtnRenterColor = Brushes.Black;
           MenuBarViewModel.BtnCreditorColor = Brushes.Black;
@@ -97,7 +102,7 @@ namespace ImmoGlobal.ViewModels
     {
       switch (_selectedViewModel)
       {
-        case PropertyViewModel:
+        case PropertyOverviewViewModel:
           SideMenuViewModel.BtnNewPropertyVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewPropertyObjectVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewRenterVisibility = Visibility.Collapsed;
@@ -110,6 +115,7 @@ namespace ImmoGlobal.ViewModels
           SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnEditVisibility = Visibility.Collapsed;
           break;
         case PropertyObjectOverviewViewModel:
           SideMenuViewModel.BtnNewPropertyVisibility = Visibility.Collapsed;
@@ -124,6 +130,7 @@ namespace ImmoGlobal.ViewModels
           SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           break;
         case PropertyObjectViewModel:
           SideMenuViewModel.BtnNewPropertyVisibility = Visibility.Collapsed;
@@ -138,6 +145,7 @@ namespace ImmoGlobal.ViewModels
           SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           break;
         default:
           SideMenuViewModel.BtnNewPropertyVisibility = Visibility.Collapsed;
@@ -152,6 +160,7 @@ namespace ImmoGlobal.ViewModels
           SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnEditVisibility = Visibility.Collapsed;
           break;
       }
     }
