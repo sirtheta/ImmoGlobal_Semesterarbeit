@@ -121,6 +121,7 @@
 
 
   <system:String x:Key="save">Speichern</system:String>
+  <system:String x:Key="delete">Löschen</system:String>
   
   <system:String x:Key="errorFillAllFields">Bitte alle Felder ausfüllen!</system:String>
   <system:String x:Key="errorZipCode">Bitte eine gültige PLZ eingeben!</system:String>
@@ -129,11 +130,17 @@
   <system:String x:Key="errorKeys">Bitte eine gültige anzahl Schlüssel eingeben!</system:String>
   
   <system:String x:Key="successAddProperty">Liegenschat erfolgreich hinzugefügt!</system:String>
-  <system:String x:Key="successUpdateProperty">Liegenschat erfolgreich upgedatet!</system:String>
-  <system:String x:Key="errorAddProperty">Speichern der Liegenschaft Fehlgeschlagen!</system:String>
+  <system:String x:Key="successUpdateProperty">Update der Liegenschat erfolgreich</system:String>
+  <system:String x:Key="errorAddProperty">Speichern der Liegenschaft fehlgeschlagen!</system:String>
+  <system:String x:Key="errorDeleteProperty">Eine Liegenschaft kann nur gelöscht werden, wenn der Liegenschaft keine Objekte zugeordnet sind.</system:String>
+  <system:String x:Key="successDeleteProperty">Löschen der Liegenschaft erfolgreich!</system:String>
+
+  <system:String x:Key="errorDeletePropertyObject">Fehler beim löschen des Objekts</system:String>
+  <system:String x:Key="successDeletePropertyObject">Löschen des Objekts erfolgreich!</system:String>
+
 
   <system:String x:Key="successAddPropertyObject">Objekt erfolgreich hinzugefügt!</system:String>
-  <system:String x:Key="successUpdatePropertyObject">Objekt erfolgreich upgedatet!</system:String>
-  <system:String x:Key="errorAddPropertyObject">Speichern der Liegenschaft Fehlgeschlagen!</system:String>
+  <system:String x:Key="successUpdatePropertyObject">Update des Objekts erfolgreich!</system:String>
+  <system:String x:Key="errorAddPropertyObject">Speichern der Liegenschaft fehlgeschlagen!</system:String>
   
 </ResourceDictionary>

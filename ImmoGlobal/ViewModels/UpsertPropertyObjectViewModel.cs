@@ -16,6 +16,8 @@ namespace ImmoGlobal.ViewModels
     public UpsertPropertyObjectViewModel(Property selectedProperty)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
+      BtnDeleteVisibility = Visibility.Collapsed;
+      
       _property = selectedProperty;
       _formTitel =
         (Application.Current.FindResource("newPropertyObjectFor") as string ?? "new property object for") + " " +
@@ -27,6 +29,8 @@ namespace ImmoGlobal.ViewModels
     public UpsertPropertyObjectViewModel(Property selectedProperty, PropertyObject propertyObject)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
+      BtnDelete = new RelayCommand<object>(DeleteClicked);
+      BtnDeleteVisibility = Visibility.Visible;
       PropertyObjectId = propertyObject.PropertyObjectId;
       _property = selectedProperty;
       _description = propertyObject.Description;
@@ -46,7 +50,6 @@ namespace ImmoGlobal.ViewModels
         " " + propertyObject.Description + " " +
         (Application.Current.FindResource("edit") as string ?? "edit");
     }
-
 
     private string? _description;
     private EPropertyObjectType _objectType;
@@ -218,6 +221,26 @@ namespace ImmoGlobal.ViewModels
       get;
       private set;
     }
+    public ICommand? BtnDelete
+    {
+      get;
+      private set;
+    }
+
+    public Visibility BtnDeleteVisibility { get; set; }
+
+    private void DeleteClicked(object obj)
+    {
+      if (DbController.DeletePropertyObjcetDB(PropertyObjectId))
+      {
+        ShowNotification("Success", Application.Current.FindResource("successDeletePropertyObject") as string ?? "Property object deleted successfully", NotificationType.Success);
+        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyOverviewViewModel();
+      }
+      else
+      {
+        ShowMessageBox(Application.Current.FindResource("errorDeletePropertyObject") as string ?? "Cannot delete property with objects", MessageType.Error, MessageButtons.Ok);
+      }
+    }
 
     private void SaveClicked(object obj)
     {
@@ -263,8 +286,6 @@ namespace ImmoGlobal.ViewModels
         ShowMessageBox(Application.Current.FindResource("errorAddProperty") as string ?? "Error adding property", MessageType.Error, MessageButtons.Ok);
       }
     }
-
-
 
     /// <summary>
     /// Create a new property object

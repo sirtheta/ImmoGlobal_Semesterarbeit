@@ -28,8 +28,12 @@ namespace ImmoGlobal.MainClasses
         return GetPropertyObjects()?.Count ?? 0;
       }
     }
-
-    private List<PropertyObject> GetPropertyObjects()
+    
+    /// <summary>
+    /// gets all PropertyObjects of the Property
+    /// </summary>
+    /// <returns></returns>
+    internal List<PropertyObject> GetPropertyObjects()
     {
       return new(DbController.GetPropertyObjectsToPropertyDB(this));
     }
@@ -90,7 +94,7 @@ namespace ImmoGlobal.MainClasses
     /// returns string of housekeeper name
     /// </summary>
     /// <returns>string FirstName + LastName</returns>
-    public Persona GetHouskeeper()
+    internal Persona GetHouskeeper()
     {
       return DbController.GetHouskeeperDB(this);
     }

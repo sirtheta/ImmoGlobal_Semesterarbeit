@@ -59,19 +59,22 @@ namespace ImmoGlobal.Database
               where p.Property == property
               select p).ToList();
     }
-
-
-    /// <summary>
-    /// Return a property from a propertyObject
-    /// </summary>
-    /// <param name="propertyObject"></param>
-    /// <returns>Property</returns>
-    internal static Property GetPropertyWithObjectDB(PropertyObject propertyObject)
+    
+    internal static bool DeletePropertyObjcetDB(int? propertyObjectId)
     {
-      using var db = new ImmoGlobalContext();
-      return (from p in db.PropertyObjects
-              where p == propertyObject
-              select p.Property).First();
+      try
+      {
+        using var db = new ImmoGlobalContext();
+        var propertyObject = db.PropertyObjects.Find(propertyObjectId);
+        db.PropertyObjects.Remove(propertyObject);
+        db.SaveChanges();
+        return true;
+      }
+      catch (Exception)
+      {
+
+        return false;
+      }
     }
 
     /// <summary>
@@ -103,6 +106,18 @@ namespace ImmoGlobal.Database
       }
     }
 
+    /// <summary>
+    /// Return a property from a propertyObject
+    /// </summary>
+    /// <param name="propertyObject"></param>
+    /// <returns>Property</returns>
+    internal static Property GetPropertyWithObjectDB(PropertyObject propertyObject)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.PropertyObjects
+              where p == propertyObject
+              select p.Property).First();
+    }
     /// <summary>
     /// Get Properties from DB
     /// </summary>
@@ -141,6 +156,23 @@ namespace ImmoGlobal.Database
       }
       catch (Exception)
       {
+        return false;
+      }
+    }
+
+    internal static bool DeletePropertyDB(int? propertyId)
+    {
+      try
+      {
+        using var db = new ImmoGlobalContext();
+        var property = db.Properties.Find(propertyId);
+        db.Properties.Remove(property);
+        db.SaveChanges();
+        return true;
+      }
+      catch (Exception)
+      {
+
         return false;
       }
     }

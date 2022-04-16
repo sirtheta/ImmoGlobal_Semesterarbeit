@@ -3,7 +3,7 @@ using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
-using System.Collections.Generic;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -16,6 +16,7 @@ namespace ImmoGlobal.ViewModels
     public UpsertPropertyViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
+      BtnDeleteVisibility = Visibility.Collapsed;
       _personas = new(DbController.GetAllPersonasDB());
       _formTitel = Application.Current.FindResource("createNewProperty") as string ?? "create new property";
     }
@@ -23,16 +24,12 @@ namespace ImmoGlobal.ViewModels
     public UpsertPropertyViewModel(Property property)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
-      //_tempPersonas = new();
-      //_tempPersonas.Add(property.GetHouskeeper());
-
-      //foreach (var item in DbController.GetAllPersonasDB())
-      //{
-      //  _tempPersonas.Add(item);
-      //}
-
+      BtnDelete = new RelayCommand<object>(DeleteClicked);
+      BtnDeleteVisibility = Visibility.Visible;
       _personas = new(DbController.GetAllPersonasDB());
+
       Housekeeper = property.GetHouskeeper();
+      Property = property;
       PropertyId = property.PropertyId;
       _description = property.Description;
       _address = property.Address;
@@ -46,7 +43,6 @@ namespace ImmoGlobal.ViewModels
                    (Application.Current.FindResource("edit") as string ?? "edit");
     }
 
-
     private string? _description;
     private string? _address;
     private string? _zipCode;
@@ -56,7 +52,6 @@ namespace ImmoGlobal.ViewModels
     private string? _liabilityInsurance;
     private Persona? _housekeeper;
     private ObservableCollection<Persona> _personas;
-    //private List<Persona>? _tempPersonas;
 
     // sets the titel of the form
     private string _formTitel;
@@ -66,6 +61,7 @@ namespace ImmoGlobal.ViewModels
       set => _formTitel = value;
     }
 
+    private Property? Property { get; set; }
     private int? PropertyId { get; set; }
     public string? Description
     {
@@ -154,6 +150,27 @@ namespace ImmoGlobal.ViewModels
       get;
       private set;
     }
+    public ICommand? BtnDelete
+    {
+      get;
+      private set;
+    }
+
+    public Visibility BtnDeleteVisibility { get; set; }
+
+    private void DeleteClicked(object obj)
+    {
+      if (Property.GetPropertyObjects().Count == 0 && DbController.DeletePropertyDB(PropertyId))
+      {
+        ShowNotification("Success", Application.Current.FindResource("successDeleteProperty") as string ?? "Property deleted successfully", NotificationType.Success);
+        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyOverviewViewModel();
+      }
+      else
+      {
+        ShowMessageBox(Application.Current.FindResource("errorDeleteProperty") as string ?? "Cannot delete property with objects", MessageType.Error, MessageButtons.Ok);
+      }
+    }
+
     private void SaveClicked(object obj)
     {
       if (!NullFieldCheck())

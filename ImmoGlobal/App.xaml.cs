@@ -17,11 +17,11 @@ namespace ImmoGlobal
       CheckDatabase();
 
       SetLanguageDictionary();
-      PropertyOverviewViewModel propertyViewModel = new();
+      PropertyOverviewViewModel propertyOverviewViewModel = new();
 
       MainWindow = new MainWindowView()
       {
-        DataContext = new MainWindowViewModel(propertyViewModel)
+        DataContext = new MainWindowViewModel(propertyOverviewViewModel)
       };
       MainWindow.Show();
 
