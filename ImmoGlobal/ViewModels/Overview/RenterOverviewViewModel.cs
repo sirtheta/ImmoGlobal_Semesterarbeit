@@ -64,6 +64,10 @@ namespace ImmoGlobal.ViewModels
           SelectedRenterDetailsViewModel = new RenterDetailsViewModel(_selectedRenter);
           InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetInvoiceToPerson(_selectedRenter));
           RentalContractCollection = new ObservableCollection<RentalContract>(DbController.GetRentalContractsToPersonDB(_selectedRenter));
+          if (MainWindowViewModel.GetInstance != null)
+          {
+            MainWindowViewModel.GetInstance.SelectedRenter = _selectedRenter;
+          }
           OnPropertyChanged();
         }
       }

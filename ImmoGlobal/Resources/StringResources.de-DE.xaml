@@ -4,7 +4,7 @@
 
   <system:String x:Key="property">Liegenschaft</system:String>
   <system:String x:Key="propertyObject">Objekt</system:String>
-  <system:String x:Key="renter">Mieter</system:String>
+  <system:String x:Key="renter">Mieter:in</system:String>
   <system:String x:Key="creditor">Kreditor</system:String>
   <system:String x:Key="rentalContract">Mietvertrag</system:String>
   <system:String x:Key="rentalContracts">Mietverträge</system:String>
@@ -59,6 +59,7 @@
 
   <system:String x:Key="newPropertyObject">Neues Objekt</system:String>
   <system:String x:Key="newRenter">Neuer Mieter</system:String>
+  <system:String x:Key="addNewRenter">Neuen Mieter:in hinzufügen</system:String>
   <system:String x:Key="newInvoice">Neue Rechnung</system:String>
   <system:String x:Key="newCreditor">Neuer Kreditor</system:String>
   <system:String x:Key="newBillReminder">Neue Mahnung</system:String>
@@ -145,5 +146,16 @@
   <system:String x:Key="successAddPropertyObject">Objekt erfolgreich hinzugefügt!</system:String>
   <system:String x:Key="successUpdatePropertyObject">Update des Objekts erfolgreich!</system:String>
   <system:String x:Key="errorAddPropertyObject">Speichern der Liegenschaft fehlgeschlagen!</system:String>
+
+  <system:String x:Key="successAddRenter">Mieter:in erfolgreich hinzugefügt!</system:String>
+  <system:String x:Key="successUpdateRenter">Update des Mieters erfolgreich!</system:String>
+  <system:String x:Key="errorAddRenter">Speichern des Mieters fehlgeschlagen!</system:String>
+
+  <system:String x:Key="errorPhone">Bitte mindestens eine Telefonnummer angeben!</system:String>
+  <system:String x:Key="errorMail">Bitte eine gültige Email-Adresse eingeben!</system:String>
   
+  <system:String x:Key="for">für</system:String>
+  
+  
+
 </ResourceDictionary>

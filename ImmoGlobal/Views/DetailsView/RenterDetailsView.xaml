@@ -76,19 +76,19 @@
             <Run Text="{Binding LastName}"/>
       </TextBlock>
       <TextBlock Grid.Column="1" Grid.Row="2" Margin="10,0,0,0">
-            <Run Text="{Binding Phone}"/>
+            <Run Text="{Binding PhoneString, Mode=OneWay}"/>
       </TextBlock>
       <TextBlock Grid.Column="1" Grid.Row="3" Margin="10,0,0,0">
-            <Run Text="{Binding Mobile}"/>
+            <Run Text="{Binding MobileString, Mode=OneWay}"/>
       </TextBlock>
       <TextBlock Grid.Column="1" Grid.Row="4" Margin="10,0,0,0">
-            <Run Text="{Binding OfficePhone}"/>
+            <Run Text="{Binding OfficePhoneString, Mode=OneWay}"/>
       </TextBlock>
       <TextBlock Grid.Column="1" Grid.Row="5" Margin="10,0,0,0">
             <Run Text="{Binding Email}"/>
       </TextBlock>
       <TextBlock Grid.Column="1" Grid.Row="6" Margin="10,0,0,0">
-            <Run Text="{Binding DateOfBirth, StringFormat=\{0:dd. MM. yyyy\}}"/>
+            <Run Text="{Binding DateOfBirth, StringFormat=\{0:dd.MM.yyyy\}}"/>
       </TextBlock>
       <TextBlock Grid.Column="1" Grid.Row="7" Margin="10,0,0,0">
             <Run Text="{Binding Address}"/>

@@ -1,0 +1,189 @@
+﻿<UserControl x:Class="ImmoGlobal.Views.UpsertRenterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ImmoGlobal.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:fa6="http://schemas.fontawesome.com/icons/svg"
+             xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:UpsertRenterViewModel}"
+             mc:Ignorable="d" 
+             d:Background="{DynamicResource MaterialDesignPaper}"
+             d:DesignHeight="650" 
+             d:DesignWidth="800"
+             TextOptions.TextFormattingMode="Display">
+  <Grid ShowGridLines="false">
+    <Grid.Resources>
+      <Style TargetType="TextBlock">
+        <Setter Property="FontFamily"
+                Value="{DynamicResource MaterialDesignFont}"/>
+      </Style>
+    </Grid.Resources>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0"
+               Grid.RowSpan="2"
+               Padding="0,5,0,10"
+               Margin="10,0,0,0"
+               FontSize="30"
+               FontWeight="Bold"
+               TextWrapping="Wrap">
+      <Run Text="{Binding FormTitel}"/>
+    </TextBlock>
+    <Grid Grid.Row="1" ShowGridLines="false">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="1*"/>
+      </Grid.RowDefinitions>
+      <StackPanel>
+
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <TextBox Text="{Binding FirstName}"
+               Margin="10" 
+               materialDesign:HintAssist.Hint="{DynamicResource firstName}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+               HorizontalAlignment="Stretch"/>
+
+          <TextBox Grid.Column="1" Text="{Binding LastName}"
+               Margin="10" 
+               materialDesign:HintAssist.Hint="{DynamicResource lastName}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+               HorizontalAlignment="Stretch"/>
+        </Grid>
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <TextBox Text="{Binding Phone}" 
+                 Margin="10" 
+               materialDesign:HintAssist.Hint="{DynamicResource phone}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+               HorizontalAlignment="Stretch"/>
+
+          <TextBox Grid.Column="1" Text="{Binding MobilePhone}" 
+                 Margin="10" 
+               materialDesign:HintAssist.Hint="{DynamicResource mobilePhone}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+               HorizontalAlignment="Stretch"/>
+        </Grid>
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <TextBox Text="{Binding OfficePhone}" 
+                 Margin="10" 
+               materialDesign:HintAssist.Hint="{DynamicResource officePhone}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+               HorizontalAlignment="Stretch"/>
+
+          <TextBox Grid.Column="1" Text="{Binding Email}" 
+                 Margin="10" 
+               materialDesign:HintAssist.Hint="{DynamicResource email}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+               HorizontalAlignment="Stretch"/>
+        </Grid>
+        <Grid Margin="0,-10,0,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+
+          <DatePicker SelectedDate="{Binding DateOfBirth}" 
+                      Margin="10,22,0,0"
+                      Style="{DynamicResource MaterialDesignDatePicker}"
+                      materialDesign:HintAssist.Hint="{DynamicResource dateOfBirth}"/>
+
+          <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock>
+              <Run Text="{DynamicResource civilState}"/>:
+            </TextBlock>
+            <ComboBox ItemsSource="{Binding Path=ECivilStateTypeWithCaptions}" 
+                  Margin="0,5,0,0"
+                  DisplayMemberPath="Value" 
+                  SelectedValuePath="Key"
+                  SelectedItem="{Binding CivilState, Mode=OneWay}"
+                  SelectedValue="{Binding Path=CivilState, Mode=TwoWay}" />
+          </StackPanel>
+        </Grid>
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <TextBox Text="{Binding Address}" 
+                 Margin="10" 
+               materialDesign:HintAssist.Hint="{DynamicResource address}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+               HorizontalAlignment="Stretch"/>
+
+          <TextBox Grid.Column="1" Text="{Binding Zip}" 
+                 Margin="10" 
+               materialDesign:HintAssist.Hint="{DynamicResource zipCode}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+               HorizontalAlignment="Stretch"/>
+
+          <TextBox Grid.Column="2" Text="{Binding City}" 
+                 Margin="10" 
+               materialDesign:HintAssist.Hint="{DynamicResource city}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+               HorizontalAlignment="Stretch"/>
+        </Grid>
+
+        <TextBox Grid.Column="1" Text="{Binding AddressBefore}" 
+                 Margin="10" 
+               materialDesign:HintAssist.Hint="{DynamicResource addressBefore}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+               HorizontalAlignment="Stretch"/>
+
+        <TextBox Grid.Column="1" Text="{Binding AccountNumber}" 
+                 Margin="10" 
+               materialDesign:HintAssist.Hint="{DynamicResource accountNumber}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+               HorizontalAlignment="Stretch"/>
+
+      </StackPanel>
+      <Grid Grid.Row="1">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="1"
+            Command="{Binding BtnSave}" 
+            Content="{DynamicResource save}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"/>
+      </Grid>
+    </Grid>
+  </Grid>
+</UserControl>

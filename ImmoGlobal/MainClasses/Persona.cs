@@ -21,7 +21,8 @@ namespace ImmoGlobal.MainClasses
                    string addressBefore,
                    string accountNumber,
                    long mobile = 0,
-                   long officePhone = 0)
+                   long officePhone = 0,
+                   int? personaId = null)
     {
       FirstName = firstName;
       LastName = lastName;
@@ -37,6 +38,10 @@ namespace ImmoGlobal.MainClasses
       AddressBefore = addressBefore;
       AccountNumber = accountNumber;
       IsRenter = true;
+      if (personaId != null)
+      {
+        PersonaId = (int)personaId;
+      }
     }
 
     // Constructor for creditor
@@ -109,7 +114,11 @@ namespace ImmoGlobal.MainClasses
     public bool IsRenter { get; set; }
     public string? VatNumber { get; set; }
     public string? CreditorCompanyName { get; set; }
-    
+
+
+    public string MobileString => Mobile == 0 ? Application.Current.FindResource("none") as string ?? "none" : Mobile.ToString("D10");
+    public string PhoneString => Phone == 0 ? Application.Current.FindResource("none") as string ?? "none" : Phone.ToString("D10");
+    public string OfficePhoneString => OfficePhone == 0 ? Application.Current.FindResource("none") as string ?? "none" : OfficePhone.ToString("D10");
     public string FullName => $"{LastName} {FirstName}";
     public string FullNameAndCity => $"{LastName} {FirstName}, {City}";
     public string CivilStateString
@@ -125,6 +134,6 @@ namespace ImmoGlobal.MainClasses
           _ => "unknown",
         };
       }
-    } 
+    }
   }
 }

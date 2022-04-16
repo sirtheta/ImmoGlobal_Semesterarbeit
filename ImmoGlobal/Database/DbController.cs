@@ -244,6 +244,28 @@ namespace ImmoGlobal.Database
               select p.Renter).First();
     }
 
+    internal static bool UpsertPersonaToDB(Persona persona)
+    {
+      try
+      {
+        using var db = new ImmoGlobalContext();
+        if (persona.PersonaId == 0)
+        {
+          db.Personas.Add(persona);
+        }
+        else
+        {
+          db.Personas.Update(persona);
+        }
+        db.SaveChanges();
+        return true;
+      }
+      catch (Exception)
+      {
+        return false;
+      }
+    }
+
     /// <summary>
     /// returns all renters from DB
     /// </summary>
@@ -261,7 +283,22 @@ namespace ImmoGlobal.Database
       using var db = new ImmoGlobalContext();
       return db.Personas.ToList();
     }
-    
+
+    internal static bool DeletePersonaDB(Persona selectedRenter)
+    {
+      try
+      {
+        using var db = new ImmoGlobalContext();
+        db.Personas.Remove(selectedRenter);
+        db.SaveChanges();
+        return true;
+      }
+      catch (Exception)
+      {
+        return false;
+      }
+    }
+
     internal static Account GetAccountToPositionDB(InvoicePosition invoicePosition)
     {
       using var db = new ImmoGlobalContext();

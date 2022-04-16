@@ -164,8 +164,12 @@ namespace ImmoGlobal.ViewModels
 
     private void BtnNewRenterClicked(object obj)
     {
-      throw new NotImplementedException();
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertRenterViewModel();
+      }
     }
+
     private void BtnEditClicked(object obj)
     {
       var instance = MainWindowViewModel.GetInstance;
@@ -179,9 +183,12 @@ namespace ImmoGlobal.ViewModels
           case PropertyObjectViewModel:
             instance.SelectedViewModel = new UpsertPropertyObjectViewModel(instance.SelectedProperty, instance.SelectedPropertyObject);
             break;
-            //case UpsertRenterViewModel upsertRenterViewModel:
-            //  upsertRenterViewModel.EditRenter();
-            //  break;
+          case RenterOverviewViewModel:
+            if (instance.SelectedRenter != null)
+            {
+              instance.SelectedViewModel = new UpsertRenterViewModel(instance.SelectedRenter);
+            }
+            break;
             //case UpsertInvoiceViewModel upsertInvoiceViewModel:
             //  upsertInvoiceViewModel.EditInvoice();
             //  break;

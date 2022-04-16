@@ -1,4 +1,5 @@
 ﻿using ImmoGlobal.MainClasses;
+using System;
 using System.Windows;
 using System.Windows.Media;
 
@@ -63,12 +64,19 @@ namespace ImmoGlobal.ViewModels
         _selectedViewModel = value;
         SetMenuBarIconColor();
         SetSideMenuButtons();
+        SetSideMenuPropertiesToNull();
         OnPropertyChanged(nameof(SelectedViewModel));
       }
     }
 
+    private void SetSideMenuPropertiesToNull()
+    {
+      SelectedRenter = null;
+    }
+
     internal Property? SelectedProperty { get; set; }
     internal PropertyObject? SelectedPropertyObject { get; set; }
+    internal Persona? SelectedRenter { get; set; }
 
     /// <summary>
     /// sets the color of the menu bar icon
@@ -86,6 +94,7 @@ namespace ImmoGlobal.ViewModels
           MenuBarViewModel.BtnAccountColor = Brushes.Black;
           break;
         case RenterOverviewViewModel:
+        case UpsertRenterViewModel:  
           MenuBarViewModel.BtnPropertyColor = Brushes.Black;
           MenuBarViewModel.BtnRenterColor = Brushes.Red;
           MenuBarViewModel.BtnCreditorColor = Brushes.Black;
@@ -143,14 +152,14 @@ namespace ImmoGlobal.ViewModels
         case PropertyObjectViewModel:
           SideMenuViewModel.BtnNewPropertyVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewPropertyObjectVisibility = Visibility.Collapsed;
-          SideMenuViewModel.BtnNewRenterVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnNewRenterVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnInvoiceVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Visible;
           SideMenuViewModel.BtnObjectsVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnRentalContractsVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewCreditorVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
-          SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
