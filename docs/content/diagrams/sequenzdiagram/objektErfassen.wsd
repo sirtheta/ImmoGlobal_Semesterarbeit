@@ -1,4 +1,4 @@
-@startuml LiegenschaftErfassen
+@startuml ObjekttErfassen
 !theme cerulean-outline
 
 skinparam sequence {
@@ -9,12 +9,12 @@ skinparam dpi 300
 
 actor User as user
 activate user
-participant Property as prop
+participant PropertyObject as probj
 database Database as db
 activate db
-create prop
-user -> prop : create()
-activate prop
-prop ->prop : setValuesForProperty()  
-prop ->db : save()
+create probj
+user -> probj : create()
+activate probj
+probj ->probj : setValuesForProperty()
+probj ->db : save()
 @enduml
