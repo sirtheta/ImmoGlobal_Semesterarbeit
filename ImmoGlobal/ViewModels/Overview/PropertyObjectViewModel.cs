@@ -16,6 +16,7 @@ namespace ImmoGlobal.ViewModels
     public PropertyObjectViewModel(PropertyObject propertyObject)
     {
       PropertyObject = propertyObject;
+      RenterDetailsViewModel = new RenterDetailsViewModel(Renter);
     }
 
     public PropertyObject PropertyObject { get; set; }
@@ -37,6 +38,8 @@ namespace ImmoGlobal.ViewModels
     {
       get => new(PropertyObject.GetRentalContractToObject());
     }
+
+    public RenterDetailsViewModel RenterDetailsViewModel { get; set; }
 
 
     /// <summary>

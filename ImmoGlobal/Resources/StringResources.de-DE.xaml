@@ -7,7 +7,9 @@
   <system:String x:Key="renter">Mieter</system:String>
   <system:String x:Key="creditor">Kreditor</system:String>
   <system:String x:Key="rentalContract">Mietvertrag</system:String>
+  <system:String x:Key="rentalContracts">Mietverträge</system:String>
   <system:String x:Key="invoice">Rechnung</system:String>
+  <system:String x:Key="invoices">Rechnungen</system:String>
   <system:String x:Key="account">Konto</system:String>
   <system:String x:Key="description">Beschreibung</system:String>
 
@@ -24,7 +26,8 @@
   <system:String x:Key="detailView">Details zu</system:String>
   <system:String x:Key="overviewRentalContracts">Übersicht der Mietverträge zum Objekt</system:String>
   <system:String x:Key="overviewInvoices">Übersicht der Rechnungen zum Objekt</system:String>
-  <system:String x:Key="detailToRenter">Informationen zum aktuellen Mieter</system:String>
+  <system:String x:Key="detailToCurrentRenter">Informationen zum aktuellen Mieter</system:String>
+  <system:String x:Key="detailToRenter">Informationen zum ausgwählten Mieter</system:String>
   <system:String x:Key="detailToObject">Informationen zum Objekt</system:String>
   
   <system:String x:Key="numberOfPropertyObjects">Anzahl Objekte:</system:String>

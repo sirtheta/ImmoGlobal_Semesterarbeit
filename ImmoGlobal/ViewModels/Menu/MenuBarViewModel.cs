@@ -27,7 +27,10 @@ namespace ImmoGlobal.ViewModels
 
     private void BtnRenterClick(object obj)
     {
-      throw new NotImplementedException();
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new RenterOverviewViewModel();
+      }
     }
 
     private void BtnRentalContractClick(object obj)

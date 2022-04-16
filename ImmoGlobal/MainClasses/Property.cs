@@ -96,7 +96,7 @@ namespace ImmoGlobal.MainClasses
     /// <returns>string FirstName + LastName</returns>
     internal Persona GetHouskeeper()
     {
-      return DbController.GetHouskeeperDB(this);
+      return DbController.GetHouskeeperToPropertyDB(this);
     }
 
     public string HouskeeperName

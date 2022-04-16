@@ -36,6 +36,7 @@ namespace ImmoGlobal.MainClasses
       CivilState = eCivilState;
       AddressBefore = addressBefore;
       AccountNumber = accountNumber;
+      IsRenter = true;
     }
 
     // Constructor for creditor
@@ -62,6 +63,7 @@ namespace ImmoGlobal.MainClasses
       VatNumber = vatNumber;
       CreditorCompanyName = creditorCompanyName;
       CreditorContactPerson = creditorContactPerson;
+      IsCreditor = true;
     }
 
     // Constructor for Housekeeper
@@ -103,6 +105,8 @@ namespace ImmoGlobal.MainClasses
     public string? AccountNumber { get; set; }
     public string? CreditorContactPerson { get; set; }
     public bool CreditorIsActive { get; set; }
+    public bool IsCreditor { get; set; }
+    public bool IsRenter { get; set; }
     public string? VatNumber { get; set; }
     public string? CreditorCompanyName { get; set; }
     

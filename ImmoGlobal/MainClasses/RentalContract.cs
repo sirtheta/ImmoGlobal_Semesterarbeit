@@ -27,7 +27,7 @@ namespace ImmoGlobal.MainClasses
 
     public Persona? GetRenter()
     {
-      return DbController.GetRenterDB(this);
+      return DbController.GetRenterToRentalContractDB(this);
     }
 
     public string DepositString
@@ -44,6 +44,18 @@ namespace ImmoGlobal.MainClasses
       {
         return ContractState == EContractState.Active ? Application.Current.FindResource("yes") as string ?? "yes" :
           Application.Current.FindResource("no") as string ?? "no";
+      }
+    }
+
+    private PropertyObject? GetPropertyToRentalContract()
+    {
+      return DbController.GetPropertyObjectToRentalContractDB(this);
+    }
+    public string PropertyObjectName
+    {
+      get
+      {
+        return GetPropertyToRentalContract()?.Description ?? "";
       }
     }
   }

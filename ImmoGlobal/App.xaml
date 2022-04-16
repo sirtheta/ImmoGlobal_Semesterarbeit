@@ -27,6 +27,12 @@
       <DataTemplate DataType="{x:Type viewmodels:UpsertPropertyObjectViewModel}">
         <views:UpsertPropertyObjectView/>
       </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:RenterDetailsViewModel}">
+        <views:RenterDetailsView/>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:RenterOverviewViewModel}">
+        <views:RenterOverviewView/>
+      </DataTemplate>
       <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Resources/StringResources.de-DE.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
