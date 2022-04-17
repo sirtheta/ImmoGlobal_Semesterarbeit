@@ -23,6 +23,8 @@ namespace ImmoGlobal.ViewModels
       BtnNewAccount = new RelayCommand<object>(BtnNewAccountClicked);
       BtnNewPaymentRecord = new RelayCommand<object>(BtnNewPaymentRecordClicked);
       BtnEdit = new RelayCommand<object>(BtnEditClicked);
+      BtnHousekeeper = new RelayCommand<object>(BtnHousekeeperClicked);
+      BtnNewHousekeeper = new RelayCommand<object>(BtnNewHousekeeperClicked);
     }
 
     #region Commands
@@ -96,6 +98,18 @@ namespace ImmoGlobal.ViewModels
       private set;
     }
     public ICommand BtnEdit
+    {
+      get;
+      private set;
+    }
+    
+    public ICommand BtnHousekeeper
+    {
+      get;
+      private set;
+    }
+
+    public ICommand BtnNewHousekeeper
     {
       get;
       private set;
@@ -202,6 +216,16 @@ namespace ImmoGlobal.ViewModels
       };
     }
 
+    private void BtnHousekeeperClicked(object obj)
+    {
+      throw new NotImplementedException();
+    }
+
+    private void BtnNewHousekeeperClicked(object obj)
+    {
+      throw new NotImplementedException();
+    }
+
     #endregion
     /// <summary>
     /// Visibilty Properties for all Buttons
@@ -220,6 +244,8 @@ namespace ImmoGlobal.ViewModels
     private Visibility _btnNewAccountVisibility;
     private Visibility _btnNewPaymentRecordVisibility;
     private Visibility _btnEditVisibility;
+    private Visibility _btnHousekeeperVisibility;
+    private Visibility _btnNewHousekeeperVisibility;
 
     public Visibility BtnNewPropertyVisibility
     {
@@ -386,6 +412,32 @@ namespace ImmoGlobal.ViewModels
       set
       {
         _btnEditVisibility = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public Visibility BtnHousekeeperVisibility
+    {
+      get
+      {
+        return _btnHousekeeperVisibility;
+      }
+      set
+      {
+        _btnHousekeeperVisibility = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public Visibility BtnNewHousekeeperVisibility
+    {
+      get
+      {
+        return _btnNewHousekeeperVisibility;
+      }
+      set
+      {
+        _btnNewHousekeeperVisibility = value;
         OnPropertyChanged();
       }
     }

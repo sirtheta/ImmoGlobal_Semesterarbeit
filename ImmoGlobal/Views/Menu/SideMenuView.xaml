@@ -11,7 +11,7 @@
              mc:Ignorable="d" 
              d:Background="{DynamicResource MaterialDesignPaper}"
              d:DesignWidth="350" 
-             d:DesignHeight="800"
+             d:DesignHeight="1500"
              TextOptions.TextFormattingMode="Display">
   <Grid>
     <StackPanel>
@@ -170,6 +170,33 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Visibility="{Binding BtnEditVisibility}"/>
+
+      <Button Command="{Binding BtnHousekeeper}" 
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,-30"
+            Width="180"
+            Height="50"  
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnHousekeeperVisibility}">
+        <TextBlock Text="{DynamicResource btnHousekeeper}" TextWrapping="Wrap"/>
+      </Button>
+
+      <Button Command="{Binding BtnNewHousekeeper}" 
+              Content="{DynamicResource btnNewHousekeeper}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,-30"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnHousekeeperVisibility}">
+      </Button>
     </StackPanel>
   </Grid>
 </UserControl>
