@@ -3,11 +3,11 @@
 namespace ImmoGlobal.Views
 {
   /// <summary>
-  /// Interaction logic for RenterDetails.xaml
+  /// Interaction logic for CreditorOverviewView.xaml
   /// </summary>
-  public partial class RenterDetailsView : UserControl
+  public partial class CreditorOverviewView : UserControl
   {
-    public RenterDetailsView()
+    public CreditorOverviewView()
     {
       InitializeComponent();
     }

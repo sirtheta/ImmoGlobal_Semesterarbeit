@@ -3,11 +3,11 @@
 namespace ImmoGlobal.Views
 {
   /// <summary>
-  /// Interaction logic for RenterDetails.xaml
+  /// Interaction logic for UpsertCreditorView.xaml
   /// </summary>
-  public partial class RenterDetailsView : UserControl
+  public partial class UpsertCreditorView : UserControl
   {
-    public RenterDetailsView()
+    public UpsertCreditorView()
     {
       InitializeComponent();
     }

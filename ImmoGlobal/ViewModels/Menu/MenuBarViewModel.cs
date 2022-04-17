@@ -40,8 +40,12 @@ namespace ImmoGlobal.ViewModels
 
     private void BtnCreditorsClick(object obj)
     {
-      throw new NotImplementedException();
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new CreditorOverviewViewModel();
+      }
     }
+
     private void BtnInvoiceClick(object obj)
 
     {

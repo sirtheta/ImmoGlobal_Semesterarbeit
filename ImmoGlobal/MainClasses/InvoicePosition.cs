@@ -13,13 +13,13 @@ namespace ImmoGlobal.MainClasses
     public Account? Account { get; set; }
 
     public Invoice GetInvoiceToInvoicePosition()
-    {      
+    {
       return DbController.GetInvoiceToPositionDB(this);
     }
 
     public Account GetAccountToInvoicePosition()
     {
       return DbController.GetAccountToPositionDB(this);
-    }    
+    }
   }
 }

@@ -55,11 +55,16 @@ namespace ImmoGlobal.MainClasses
                    string lastName,
                    string firstName,
                    string email,
-                   string vatNumber)
+                   string vatNumber,
+                   long mobile = 0,
+                   long officePhone = 0,
+                   int? personaId = null)
     {
       FirstName = firstName;
       LastName = lastName;
       Phone = phone;
+      Mobile = mobile;
+      OfficePhone = officePhone;
       Email = email;
       Address = address;
       Zip = zip;
@@ -69,6 +74,10 @@ namespace ImmoGlobal.MainClasses
       CreditorCompanyName = creditorCompanyName;
       CreditorContactPerson = creditorContactPerson;
       IsCreditor = true;
+      if (personaId != null)
+      {
+        PersonaId = (int)personaId;
+      }
     }
 
     // Constructor for Housekeeper
@@ -134,6 +143,11 @@ namespace ImmoGlobal.MainClasses
           _ => "unknown",
         };
       }
+    }
+
+    public string CreditorIsActiveString
+    {
+      get => CreditorIsActive ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
     }
   }
 }

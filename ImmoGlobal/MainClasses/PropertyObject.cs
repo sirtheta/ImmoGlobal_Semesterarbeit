@@ -27,7 +27,6 @@ namespace ImmoGlobal.MainClasses
     public bool Tumbler { get; set; }
     public ICollection<RentalContract>? RentalContracts { get; set; }
 
-    
     public ICollection<InvoicePosition> GetInvoicePositions()
     {
       return DbController.GetInvoicePositionsToPropertyObjectDB(this);
@@ -48,8 +47,8 @@ namespace ImmoGlobal.MainClasses
     public string CurrentRenter
     {
       get
-      {        
-        return GetRentalContractToObject().Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.RenterFullName ?? 
+      {
+        return GetRentalContractToObject().Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.RenterFullName ??
           Application.Current.FindResource("notRented2") as string ?? "not rented";
       }
     }
@@ -89,38 +88,38 @@ namespace ImmoGlobal.MainClasses
     }
 
     // Gets translatet string for boolean, yes or no
-    public string FridgeString 
+    public string FridgeString
     {
-      get { return Fridge ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no"; }
+      get => Fridge ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
     }
 
     public string DishwasherString
     {
-      get { return Dishwasher ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no"; }
+      get => Dishwasher ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
     }
 
     public string StoveString
     {
-      get { return Stove ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no"; }
+      get => Stove ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
     }
 
     public string OvenString
     {
-      get { return Oven ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no"; }
+      get => Oven ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
     }
 
     public string WashingMachineString
     {
-      get { return WashingMachine ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no"; }
+      get => WashingMachine ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
     }
 
     public string TumblerString
     {
-      get { return Tumbler ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no"; }
+      get => Tumbler ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
     }
     public string? NumberOfKeysString
     {
-      get { return NumberOfKeys > 0 ? NumberOfKeys.ToString() : Application.Current.FindResource("none") as string ?? "none"; }
+      get => NumberOfKeys > 0 ? NumberOfKeys.ToString() : Application.Current.FindResource("none") as string ?? "none";
     }
   }
 }

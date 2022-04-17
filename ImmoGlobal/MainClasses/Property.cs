@@ -28,7 +28,7 @@ namespace ImmoGlobal.MainClasses
         return GetPropertyObjects()?.Count ?? 0;
       }
     }
-    
+
     /// <summary>
     /// gets all PropertyObjects of the Property
     /// </summary>

@@ -51,7 +51,7 @@ namespace ImmoGlobal.MainClasses
       }
     }
 
-    public string BillRemindersString 
+    public string BillRemindersString
     {
       get => BillReminders?.ToString() ?? Application.Current.FindResource("none") as string ?? "none";
     }

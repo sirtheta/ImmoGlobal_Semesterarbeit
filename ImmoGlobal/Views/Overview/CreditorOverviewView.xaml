@@ -1,5 +1,5 @@
-﻿<UserControl x:Class="ImmoGlobal.Views.RenterOverviewView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<UserControl x:Class="ImmoGlobal.Views.CreditorOverviewView"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:fa6="http://schemas.fontawesome.com/icons/svg"
              xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels" 
-             d:DataContext="{d:DesignInstance Type=viewmodels:RenterOverviewViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:CreditorOverviewViewModel}"
              mc:Ignorable="d" 
              d:Background="{DynamicResource MaterialDesignPaper}"
              d:DesignHeight="650" 
@@ -23,7 +23,7 @@
       <ColumnDefinition Width="auto"/>
       <ColumnDefinition Width="auto"/>
     </Grid.ColumnDefinitions>
-    <!--Renter details-->
+    <!--creditor details-->
     <Border Grid.Column="0" CornerRadius="2"
                 Margin="0,0,0,0"
                 Padding="10"
@@ -40,19 +40,19 @@
           <ColumnDefinition Width="auto" MinWidth="300"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0"
-                 Text="{DynamicResource detailToRenter}"
+                 Text="{DynamicResource detailToCreditor}"
                  HorizontalAlignment="Left"
                  Padding="0,0,0,5"
                  FontSize="20"
                  TextWrapping="Wrap"/>
 
         <Grid Grid.Column="0" Grid.Row="1" ShowGridLines="false">
-          <ContentControl Content="{Binding SelectedRenterDetailsViewModel}"/>
+          <ContentControl Content="{Binding SelectedCreditorDetailsViewModel}"/>
         </Grid>
       </Grid>
     </Border>
 
-    <!--Renter list-->
+    <!--creditor list-->
     <Border Grid.Column="1" CornerRadius="2"
             Margin="10,0,0,0"
             Padding="10"
@@ -69,14 +69,14 @@
           <ColumnDefinition Width="auto" MinWidth="300"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0"
-                 Text="{DynamicResource renter}"
+                 Text="{DynamicResource creditor}"
                  HorizontalAlignment="Left"
                  Padding="0,0,0,5"
                  FontSize="20"
                  TextWrapping="Wrap"/>
         <DataGrid Grid.Row="1" 
-                  ItemsSource="{Binding RenterCollection, UpdateSourceTrigger=PropertyChanged}" 
-                  SelectedItem="{Binding SelectedRenter}"
+                  ItemsSource="{Binding CreditorCollection, UpdateSourceTrigger=PropertyChanged}" 
+                  SelectedItem="{Binding SelectedCreditor}"
                   SelectionMode="Extended"
                   SelectionUnit="FullRow"
                   AutoGenerateColumns="False" 
@@ -84,14 +84,14 @@
                   CanUserDeleteRows="False" 
                   Style="{DynamicResource MaterialDesignDataGrid}">
           <DataGrid.Columns>
-            <DataGridTextColumn Header="{DynamicResource renter}"         
+            <DataGridTextColumn Header="{DynamicResource creditor}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding FullNameAndCity}"/>
           </DataGrid.Columns>
         </DataGrid>
       </Grid>
     </Border>
-    
+
     <!--invoices-->
     <Border Grid.Column="2" Grid.Row="0" CornerRadius="2"
             Margin="10,0,0,0"
@@ -142,58 +142,5 @@
         </DataGrid>
       </Grid>
     </Border>
-
-    <!--rental Contracts-->
-    <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="2"
-            Margin="0,10,0,0"
-            Padding="10"
-            Background="{DynamicResource MaterialDesignBackground}">
-      <Border.Effect>
-        <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
-      </Border.Effect>
-      <Grid ShowGridLines="false">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="auto"/>
-          <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="auto" MinWidth="300"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0"
-                 Text="{DynamicResource rentalContracts}"
-                 HorizontalAlignment="Left"
-                 Padding="0,0,0,5"
-                 FontSize="20"
-                 TextWrapping="Wrap"/>
-        <DataGrid Grid.Row="1" 
-                  ItemsSource="{Binding RentalContractCollection, UpdateSourceTrigger=PropertyChanged}" 
-                  SelectionMode="Extended"
-                  SelectionUnit="FullRow"
-                  AutoGenerateColumns="False" 
-                  CanUserAddRows="False" 
-                  CanUserDeleteRows="False" 
-                  Style="{DynamicResource MaterialDesignDataGrid}">
-          <DataGrid.Columns>
-            <DataGridTextColumn Header="{DynamicResource activeContract}"         
-                                IsReadOnly="True" 
-                                Binding="{Binding ActivContract}"/>
-            <DataGridTextColumn Header="{DynamicResource propertyObject}"         
-                                IsReadOnly="True" 
-                                Binding="{Binding PropertyObjectName}"/>
-            <DataGridTextColumn Header="{DynamicResource rentStart}"         
-                                IsReadOnly="True" 
-                                Binding="{Binding RentStartDate, StringFormat=\{0:dd. MM. yyyy\}}"/>
-            <DataGridTextColumn Header="{DynamicResource rentEnd}"         
-                                IsReadOnly="True" 
-                                Binding="{Binding RentEndDate, StringFormat=\{0:dd. MM. yyyy\}}"/>
-
-            <DataGridTextColumn Header="{DynamicResource rent}"         
-                                IsReadOnly="True" 
-                                Binding="{Binding Rent}"/>
-          </DataGrid.Columns>
-        </DataGrid>
-      </Grid>
-    </Border>
-
   </Grid>
 </UserControl>

@@ -14,7 +14,7 @@ namespace ImmoGlobal.Database
               where p.InvoicePositions.Contains(invoicePosition)
               select p).First();
     }
-    
+
     internal static ICollection<Invoice> GetInvoiceToPerson(Persona persona)
     {
       using var db = new ImmoGlobalContext();
@@ -132,7 +132,7 @@ namespace ImmoGlobal.Database
               where p == propertyObject
               select p.Property).First();
     }
-    
+
     /// <summary>
     /// Get Properties from DB
     /// </summary>
@@ -275,6 +275,18 @@ namespace ImmoGlobal.Database
       using var db = new ImmoGlobalContext();
       return (from p in db.Personas
               where p.IsRenter
+              select p).ToList();
+    }
+
+    /// <summary>
+    /// returns all creditors from DB
+    /// </summary>
+    /// <returns></returns>
+    internal static IEnumerable<Persona> GetAllCreditors()
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.Personas
+              where p.IsCreditor
               select p).ToList();
     }
 

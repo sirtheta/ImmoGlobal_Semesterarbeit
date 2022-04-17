@@ -30,11 +30,20 @@
       <DataTemplate DataType="{x:Type viewmodels:RenterDetailsViewModel}">
         <views:RenterDetailsView/>
       </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:CreditorDetailsViewModel}">
+        <views:CreditorDetailsView/>
+      </DataTemplate>
       <DataTemplate DataType="{x:Type viewmodels:RenterOverviewViewModel}">
         <views:RenterOverviewView/>
       </DataTemplate>
       <DataTemplate DataType="{x:Type viewmodels:UpsertRenterViewModel}">
         <views:UpsertRenterView/>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:CreditorOverviewViewModel}">
+        <views:CreditorOverviewView/>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:UpsertCreditorViewModel}">
+        <views:UpsertCreditorView/>
       </DataTemplate>
 
       <ResourceDictionary.MergedDictionaries>

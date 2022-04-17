@@ -15,6 +15,6 @@ namespace ImmoGlobal.Helpers
       {
         return false;
       }
-    }    
+    }
   }
 }

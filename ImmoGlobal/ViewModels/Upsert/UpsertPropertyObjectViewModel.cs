@@ -5,7 +5,6 @@ using ImmoGlobal.MainClasses.Enum;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -17,7 +16,7 @@ namespace ImmoGlobal.ViewModels
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
       BtnDeleteVisibility = Visibility.Collapsed;
-      
+
       _property = selectedProperty;
       _formTitel =
         (Application.Current.FindResource("newPropertyObjectFor") as string ?? "new property object for") + " " +
@@ -72,7 +71,7 @@ namespace ImmoGlobal.ViewModels
       get => _formTitel;
       set => _formTitel = value;
     }
-    
+
     private int? PropertyObjectId { get; set; }
 
     public string? Description
@@ -326,7 +325,7 @@ namespace ImmoGlobal.ViewModels
     /// <param name="numberOfKeys"></param>
     /// <param name="propertyObjectId"></param>
     /// <returns></returns>
-    private bool UpdatePropertyObject(double numberOfRooms, double area, int numberOfKeys, int propertyObjectId )
+    private bool UpdatePropertyObject(double numberOfRooms, double area, int numberOfKeys, int propertyObjectId)
     {
       if (DbController.UpsertPropertyObjectDB(new PropertyObject()
       {

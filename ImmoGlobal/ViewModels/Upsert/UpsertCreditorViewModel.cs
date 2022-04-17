@@ -2,63 +2,61 @@
 using ImmoGlobal.Database;
 using ImmoGlobal.Helpers;
 using ImmoGlobal.MainClasses;
-using ImmoGlobal.MainClasses.Enum;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
-using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
 namespace ImmoGlobal.ViewModels
 {
-  internal class UpsertRenterViewModel : BaseViewModel
+  internal class UpsertCreditorViewModel : BaseViewModel
+
   {
-    public UpsertRenterViewModel()
+    public UpsertCreditorViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
-      _formTitel = Application.Current.FindResource("addNewRenter") as string ?? "create new renter";
+      _formTitel = Application.Current.FindResource("addNewCreditor") as string ?? "create new creditor";
     }
 
-    public UpsertRenterViewModel(Persona selectedRenter)
+    public UpsertCreditorViewModel(Persona selectedCreditor)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
-      SelectedRenter = selectedRenter;
+      SelectedCreditor = selectedCreditor;
 
-      PersonaId = selectedRenter.PersonaId;
-      _lastName = selectedRenter.LastName;
-      _firstName = selectedRenter.FirstName;
-      _phone = selectedRenter.PhoneString;
-      _email = selectedRenter.Email;
-      _dateOfBirth = selectedRenter.DateOfBirth;
-      _address = selectedRenter.Address;
-      _zip = selectedRenter.Zip.ToString();
-      _city = selectedRenter.City;
-      _eCivilState = selectedRenter.CivilState;
-      _addressBefore = selectedRenter.AddressBefore;
-      _accountNumber = selectedRenter.AccountNumber;
-      _mobilePhone = selectedRenter.MobileString;
-      _officePhone = selectedRenter.OfficePhoneString;
+      PersonaId = selectedCreditor.PersonaId;
+      _lastName = selectedCreditor.LastName;
+      _firstName = selectedCreditor.FirstName;
+      _phone = selectedCreditor.PhoneString;
+      _mobilePhone = selectedCreditor.MobileString;
+      _officePhone = selectedCreditor.OfficePhoneString;
+      _email = selectedCreditor.Email;
+      _address = selectedCreditor.Address;
+      _zip = selectedCreditor.Zip.ToString();
+      _city = selectedCreditor.City;
+      _creditorIsActive = selectedCreditor.CreditorIsActive;
+      _vatNumber = selectedCreditor.VatNumber;
+      _creditorCompanyName = selectedCreditor.CreditorCompanyName;
+      _creditorContactPerson = selectedCreditor.CreditorContactPerson;
 
-      _formTitel = (Application.Current.FindResource("renter") as string ?? "property") + " " +
+      _formTitel = (Application.Current.FindResource("creditor") as string ?? "creditor") + " " +
              (Application.Current.FindResource("edit") as string ?? "edit");
     }
 
-    private string? _lastName;
     private string? _firstName;
+    private string? _lastName;
     private string? _phone;
+    private string? _mobilePhone;
+    private string? _officePhone;
     private string? _email;
-    private DateTime? _dateOfBirth;
     private string? _address;
     private string? _zip;
     private string? _city;
-    private ECivilState _eCivilState;
-    private string? _addressBefore;
-    private string? _accountNumber;
-    private string? _mobilePhone;
-    private string? _officePhone;
+    private bool _creditorIsActive;
+    private string? _vatNumber;
+    private string? _creditorCompanyName;
+    private string? _creditorContactPerson;
 
     private int? PersonaId { get; set; }
 
@@ -131,16 +129,6 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    public DateTime? DateOfBirth
-    {
-      get => _dateOfBirth;
-      set
-      {
-        _dateOfBirth = value;
-        OnPropertyChanged();
-      }
-    }
-
     public string? Address
     {
       get => _address;
@@ -171,47 +159,47 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    public ECivilState CivilState
+    public bool CreditorIsActive
     {
-      get => _eCivilState;
+      get => _creditorIsActive;
       set
       {
-        _eCivilState = value;
+        _creditorIsActive = value;
         OnPropertyChanged();
       }
     }
 
-    public Dictionary<ECivilState, string> ECivilStateTypeWithCaptions { get; } =
-    new Dictionary<ECivilState, string>()
+    public string? VatNumber
     {
-              {ECivilState.Single, Application.Current.FindResource("single") as string ?? "single" },
-              {ECivilState.Married, Application.Current.FindResource("married") as string ?? "married"},
-              {ECivilState.Divorced, Application.Current.FindResource("divorced") as string ?? "divorced"},
-              {ECivilState.Widowed, Application.Current.FindResource("widowed") as string ?? "widowed"},
-    };
-
-    public string? AddressBefore
-    {
-      get => _addressBefore;
+      get => _vatNumber;
       set
       {
-        _addressBefore = value;
+        _vatNumber = value;
         OnPropertyChanged();
       }
     }
 
-    public string? AccountNumber
+    public string? CreditorCompanyName
     {
-      get => _accountNumber;
+      get => _creditorCompanyName;
       set
       {
-        _accountNumber = value;
+        _creditorCompanyName = value;
         OnPropertyChanged();
       }
     }
 
+    public string? CreditorContactPerson
+    {
+      get => _creditorContactPerson;
+      set
+      {
+        _creditorContactPerson = value;
+        OnPropertyChanged();
+      }
+    }
 
-    public Persona? SelectedRenter { get; set; }
+    public Persona? SelectedCreditor { get; set; }
 
     public ICommand BtnSave
     {
@@ -267,17 +255,17 @@ namespace ImmoGlobal.ViewModels
       //Create Persona
       if (PersonaId == null && CreatePersona(phone, mobilePhone, officePhone, zipCode))
       {
-        ShowNotification("Success", Application.Current.FindResource("successAddRenter") as string ?? "Renter added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.FindResource("successAddCreditor") as string ?? "Creditor added successfully", NotificationType.Success);
         ClearValues();
       }
       // Update Perrsona
       else if (PersonaId != null && UpdatePersona(phone, mobilePhone, officePhone, zipCode, (int)PersonaId))
       {
-        ShowNotification("Success", Application.Current.FindResource("successUpdateRenter") as string ?? "Renter updated successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.FindResource("successUpdateCreditor") as string ?? "Creditor updated successfully", NotificationType.Success);
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorAddRenter") as string ?? "Error adding renter", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.FindResource("errorAddCreditor") as string ?? "Error adding creditor", MessageType.Error, MessageButtons.Ok);
       }
     }
 
@@ -292,9 +280,9 @@ namespace ImmoGlobal.ViewModels
           string.IsNullOrEmpty(Address) ||
           string.IsNullOrEmpty(Zip) ||
           string.IsNullOrEmpty(City) ||
-          string.IsNullOrEmpty(AddressBefore) ||
-          string.IsNullOrEmpty(AccountNumber) ||
-          DateOfBirth == null)
+          string.IsNullOrEmpty(VatNumber) ||
+          string.IsNullOrEmpty(CreditorCompanyName) ||
+          string.IsNullOrEmpty(CreditorContactPerson))
       {
         return false;
       }
@@ -311,8 +299,7 @@ namespace ImmoGlobal.ViewModels
     /// <returns></returns>
     private bool CreatePersona(long phone, long mobilePhone, long officePhone, int zipCode)
     {
-      if (DateOfBirth != null &&
-        DbController.UpsertPersonaToDB(new Persona(LastName, FirstName, phone, Email, (DateTime)DateOfBirth, Address, zipCode, City, CivilState, AddressBefore, AccountNumber, mobilePhone, officePhone)))
+      if (DbController.UpsertPersonaToDB(new Persona(CreditorIsActive, CreditorCompanyName, Address, zipCode, City, phone, CreditorContactPerson, LastName, FirstName, Email, VatNumber, mobilePhone, officePhone)))
       {
         return true;
       }
@@ -330,8 +317,7 @@ namespace ImmoGlobal.ViewModels
     /// <returns></returns>
     private bool UpdatePersona(long phone, long mobilePhone, long officePhone, int zipCode, int personaId)
     {
-      if (DateOfBirth != null &&
-        DbController.UpsertPersonaToDB(new Persona(LastName, FirstName, phone, Email, (DateTime)DateOfBirth, Address, zipCode, City, CivilState, AddressBefore, AccountNumber, mobilePhone, officePhone, personaId)))
+      if (DbController.UpsertPersonaToDB(new Persona(CreditorIsActive, CreditorCompanyName, Address, zipCode, City, phone, CreditorContactPerson, LastName, FirstName, Email, VatNumber, mobilePhone, officePhone, personaId)))
       {
         return true;
       }
@@ -352,10 +338,10 @@ namespace ImmoGlobal.ViewModels
       Address = null;
       Zip = null;
       City = null;
-      AddressBefore = null;
-      AccountNumber = null;
-      DateOfBirth = null;
-      CivilState = ECivilState.Single;
+      VatNumber = null;
+      CreditorCompanyName = null;
+      CreditorContactPerson = null;
+      CreditorIsActive = false;
     }
   }
 }

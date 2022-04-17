@@ -1,11 +1,6 @@
 ﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImmoGlobal.ViewModels
 {
@@ -66,7 +61,7 @@ namespace ImmoGlobal.ViewModels
           RentalContractCollection = new ObservableCollection<RentalContract>(DbController.GetRentalContractsToPersonDB(_selectedRenter));
           if (MainWindowViewModel.GetInstance != null)
           {
-            MainWindowViewModel.GetInstance.SelectedRenter = _selectedRenter;
+            MainWindowViewModel.GetInstance.SelectedPersona = _selectedRenter;
           }
           OnPropertyChanged();
         }

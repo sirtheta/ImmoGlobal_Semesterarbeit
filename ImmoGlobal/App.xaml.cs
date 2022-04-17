@@ -47,7 +47,7 @@ namespace ImmoGlobal
         context.Database.EnsureCreated();
       }
     }
-    
+
     private void SetLanguageDictionary()
     {
       ResourceDictionary dict = new();

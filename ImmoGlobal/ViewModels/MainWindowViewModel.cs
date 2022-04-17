@@ -1,5 +1,4 @@
 ﻿using ImmoGlobal.MainClasses;
-using System;
 using System.Windows;
 using System.Windows.Media;
 
@@ -71,12 +70,12 @@ namespace ImmoGlobal.ViewModels
 
     private void SetSideMenuPropertiesToNull()
     {
-      SelectedRenter = null;
+      SelectedPersona = null;
     }
 
     internal Property? SelectedProperty { get; set; }
     internal PropertyObject? SelectedPropertyObject { get; set; }
-    internal Persona? SelectedRenter { get; set; }
+    internal Persona? SelectedPersona { get; set; }
 
     /// <summary>
     /// sets the color of the menu bar icon
@@ -94,10 +93,19 @@ namespace ImmoGlobal.ViewModels
           MenuBarViewModel.BtnAccountColor = Brushes.Black;
           break;
         case RenterOverviewViewModel:
-        case UpsertRenterViewModel:  
+        case UpsertRenterViewModel:
           MenuBarViewModel.BtnPropertyColor = Brushes.Black;
           MenuBarViewModel.BtnRenterColor = Brushes.Red;
           MenuBarViewModel.BtnCreditorColor = Brushes.Black;
+          MenuBarViewModel.BtnRentalContractColor = Brushes.Black;
+          MenuBarViewModel.BtnInvoiceColor = Brushes.Black;
+          MenuBarViewModel.BtnAccountColor = Brushes.Black;
+          break;
+        case CreditorOverviewViewModel:
+        case UpsertCreditorViewModel:
+          MenuBarViewModel.BtnPropertyColor = Brushes.Black;
+          MenuBarViewModel.BtnRenterColor = Brushes.Black;
+          MenuBarViewModel.BtnCreditorColor = Brushes.Red;
           MenuBarViewModel.BtnRentalContractColor = Brushes.Black;
           MenuBarViewModel.BtnInvoiceColor = Brushes.Black;
           MenuBarViewModel.BtnAccountColor = Brushes.Black;
@@ -174,6 +182,21 @@ namespace ImmoGlobal.ViewModels
           SideMenuViewModel.BtnRentalContractsVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewCreditorVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewAccountVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
+          break;
+        case CreditorOverviewViewModel:
+          SideMenuViewModel.BtnNewPropertyVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewPropertyObjectVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewRenterVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnInvoiceVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnObjectsVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnRentalContractsVisibility = Visibility.Collapsed;
+          SideMenuViewModel.BtnNewCreditorVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Collapsed;
           SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Collapsed;

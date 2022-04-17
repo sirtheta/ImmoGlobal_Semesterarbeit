@@ -139,7 +139,10 @@ namespace ImmoGlobal.ViewModels
 
     private void BtnNewCreditorClicked(object obj)
     {
-      throw new NotImplementedException();
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertCreditorViewModel();
+      };
     }
 
     private void BtnRentalContractsClicked(object obj)
@@ -184,29 +187,17 @@ namespace ImmoGlobal.ViewModels
             instance.SelectedViewModel = new UpsertPropertyObjectViewModel(instance.SelectedProperty, instance.SelectedPropertyObject);
             break;
           case RenterOverviewViewModel:
-            if (instance.SelectedRenter != null)
+            if (instance.SelectedPersona != null)
             {
-              instance.SelectedViewModel = new UpsertRenterViewModel(instance.SelectedRenter);
+              instance.SelectedViewModel = new UpsertRenterViewModel(instance.SelectedPersona);
             }
             break;
-            //case UpsertInvoiceViewModel upsertInvoiceViewModel:
-            //  upsertInvoiceViewModel.EditInvoice();
-            //  break;
-            //case UpsertCreditorViewModel upsertCreditorViewModel:
-            //  upsertCreditorViewModel.EditCreditor();
-            //  break;
-            //case UpsertBillReminderViewModel upsertBillReminderViewModel:
-            //  upsertBillReminderViewModel.EditBillReminder();
-            //  break;
-            //case UpsertRentalContractViewModel upsertRentalContractViewModel:
-            //  upsertRentalContractViewModel.EditRentalContract();
-            //  break;
-            //case UpsertAccountViewModel upsertAccountViewModel:
-            //  upsertAccountViewModel.EditAccount();
-            //  break;
-            //case UpsertPaymentRecordViewModel upsertPaymentRecordViewModel:
-            //  upsertPaymentRecordViewModel.EditPaymentRecord();
-            //  break;
+          case CreditorOverviewViewModel:
+            if (instance.SelectedPersona != null)
+            {
+              instance.SelectedViewModel = new UpsertCreditorViewModel(instance.SelectedPersona);
+            }
+            break;
         }
       };
     }

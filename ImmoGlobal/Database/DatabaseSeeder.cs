@@ -34,7 +34,7 @@ namespace ImmoGlobal.Database
 
       //additionalCosts prop 1
       var _invoicePosition1 = new InvoicePosition() { Property = _property1, Value = 1320, AdditionalCostsCategory = EAdditionalCosts.Electricity, Account = _account3 };
-      var _invoicePosition2 = new InvoicePosition() { Property = _property1, Value = 45.23, AdditionalCostsCategory = EAdditionalCosts.Gas, Account = _account3};
+      var _invoicePosition2 = new InvoicePosition() { Property = _property1, Value = 45.23, AdditionalCostsCategory = EAdditionalCosts.Gas, Account = _account3 };
       //rent
       var _invoicePosition3 = new InvoicePosition() { PropertyObject = _objectHouse, Value = _rentalContract1.Rent, Account = _account2 };
       //additionalCosts object 1
@@ -50,14 +50,14 @@ namespace ImmoGlobal.Database
         PropertyObject = _objectHouse,
         Value = 50,
         AdditionalCostsCategory = EAdditionalCosts.Gas,
-         Account = _account1
+        Account = _account1
       };
       var _invoicePosition6 = new InvoicePosition()
       {
         PropertyObject = _objectHouse,
         Value = 25,
         AdditionalCostsCategory = EAdditionalCosts.Sewer,
-         Account = _account1
+        Account = _account1
       };
       var _invoicePosition7 = new InvoicePosition()
       {
