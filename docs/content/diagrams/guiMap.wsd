@@ -7,6 +7,7 @@ skinparam dpi 300
 *** neues Objekt
 *** Mieter
 *** Mietverträge
+**** neuer Mietvertrag
 **** Mahnung erstellen
 **** Rechnungen
 ** Hauswartungsperson
@@ -19,9 +20,7 @@ skinparam dpi 300
 * Mieter
 ** Rechnungen
 *** neue Rechnung
-** Objekte
 ** Mietverträge
-*** neuer Mietvertrag
 ** neuer Mieter
 
 * Rechnungen
