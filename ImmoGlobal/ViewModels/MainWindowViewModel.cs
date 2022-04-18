@@ -63,14 +63,8 @@ namespace ImmoGlobal.ViewModels
         _selectedViewModel = value;
         SetMenuBarIconColor();
         SetSideMenuButtons();
-        SetSideMenuPropertiesToNull();
         OnPropertyChanged(nameof(SelectedViewModel));
       }
-    }
-
-    private void SetSideMenuPropertiesToNull()
-    {
-      SelectedPersona = null;
     }
 
     internal Property? SelectedProperty { get; set; }

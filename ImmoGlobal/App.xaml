@@ -45,6 +45,9 @@
       <DataTemplate DataType="{x:Type viewmodels:UpsertCreditorViewModel}">
         <views:UpsertCreditorView/>
       </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:UpsertHousekeeperViewModel}">
+        <views:UpsertHousekeeperView/>
+      </DataTemplate>
 
       <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Resources/StringResources.de-DE.xaml"/>

@@ -44,12 +44,14 @@
                    TextWrapping="Wrap"/>
       </StackPanel>
       <StackPanel Grid.Column="1">
-        <TextBlock Text="{DynamicResource housekeeper}"
-                   HorizontalAlignment="Left"
+        <TextBlock HorizontalAlignment="Left"
                    Padding="10"
                    FontSize="30"
                    FontWeight="Bold"
-                   TextWrapping="Wrap"/>
+                   TextWrapping="Wrap">
+          <Run Text="{DynamicResource housekeeper}"/>:
+        </TextBlock>
+        
         <TextBlock Grid.Column="1"
                    Text="{Binding Housekeeper}"
                    HorizontalAlignment="Left"

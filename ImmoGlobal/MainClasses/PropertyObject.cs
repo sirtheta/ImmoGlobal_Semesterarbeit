@@ -46,11 +46,8 @@ namespace ImmoGlobal.MainClasses
 
     public string CurrentRenter
     {
-      get
-      {
-        return GetRentalContractToObject().Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.RenterFullName ??
+      get => GetRentalContractToObject().Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.RenterFullName ??
           Application.Current.FindResource("notRented2") as string ?? "not rented";
-      }
     }
 
     /// <summary>
@@ -75,7 +72,7 @@ namespace ImmoGlobal.MainClasses
 
     public ICommand PropertyObjectClickCommand
     {
-      get { return new RelayCommand<object>(PropertyClick); }
+      get => new RelayCommand<object>(PropertyClick);
     }
 
     private void PropertyClick(object obj)

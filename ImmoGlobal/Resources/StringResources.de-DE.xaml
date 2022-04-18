@@ -18,7 +18,7 @@
   <system:String x:Key="propertyInsurance">Liegenschaftsversicherung</system:String>
   <system:String x:Key="personInsurance">Personenversicherung</system:String>
   <system:String x:Key="liabilityInsurance">Haftpflichtversicherung</system:String>
-  <system:String x:Key="housekeeper">Hauswartungsperson:</system:String>
+  <system:String x:Key="housekeeper">Hauswartungsperson</system:String>
   <system:String x:Key="selectHousekeeper">Hauswartungsperson auswählen</system:String>
   <system:String x:Key="selectProperty">Liegenschaft auswählen</system:String>
 
@@ -127,6 +127,7 @@
   <system:String x:Key="btnEdit">Bearbeiten</system:String>
   <system:String x:Key="btnHousekeeper">Hauswart ansehen/bearbeiten</system:String>
   <system:String x:Key="btnNewHousekeeper">Neuer Hauswart</system:String>
+  <system:String x:Key="addNewHousekeeper">Neuer Hauswart erstellen</system:String>
 
 
   <system:String x:Key="save">Speichern</system:String>
@@ -164,5 +165,9 @@
   <system:String x:Key="successAddCreditor">Kreditor erfolgreich hinzugefügt!</system:String>
   <system:String x:Key="successUpdateCreditor">Update des Kreditors erfolgreich!</system:String>
   <system:String x:Key="errorAddCreditor">Speichern des Kreditors fehlgeschlagen!</system:String>
+
+  <system:String x:Key="successAddhousekeeperr">Hauswart erfolgreich hinzugefügt!</system:String>
+  <system:String x:Key="successUpdateHousekeeper">Update des Hauswarts erfolgreich!</system:String>
+  <system:String x:Key="errorAddHousekeeper">Speichern des Hauswarts fehlgeschlagen!</system:String>
 
 </ResourceDictionary>

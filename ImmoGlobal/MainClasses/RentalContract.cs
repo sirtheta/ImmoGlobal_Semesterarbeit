@@ -19,10 +19,7 @@ namespace ImmoGlobal.MainClasses
 
     public string RenterFullName
     {
-      get
-      {
-        return GetRenter()?.FullName ?? "";
-      }
+      get => GetRenter()?.FullName ?? "";
     }
 
     public Persona? GetRenter()
@@ -32,19 +29,14 @@ namespace ImmoGlobal.MainClasses
 
     public string DepositString
     {
-      get
-      {
-        return Deposit ? Application.Current.FindResource("yes") as string ?? "yes" :
+      get => Deposit ? Application.Current.FindResource("yes") as string ?? "yes" :
           Application.Current.FindResource("no") as string ?? "no";
-      }
+
     }
     public string ActivContract
     {
-      get
-      {
-        return ContractState == EContractState.Active ? Application.Current.FindResource("yes") as string ?? "yes" :
+      get => ContractState == EContractState.Active ? Application.Current.FindResource("yes") as string ?? "yes" :
           Application.Current.FindResource("no") as string ?? "no";
-      }
     }
 
     private PropertyObject? GetPropertyToRentalContract()
@@ -53,10 +45,7 @@ namespace ImmoGlobal.MainClasses
     }
     public string PropertyObjectName
     {
-      get
-      {
-        return GetPropertyToRentalContract()?.Description ?? "";
-      }
+      get => GetPropertyToRentalContract()?.Description ?? "";
     }
   }
 }

@@ -65,10 +65,8 @@ namespace ImmoGlobal.MainClasses
     /// </summary>
     public int NumberOfActiveContracts
     {
-      get
-      {
-        return RentalContracts()?.Where(x => x.ContractState == EContractState.Active).Count() ?? 0;
-      }
+      get => RentalContracts()?.Where(x => x.ContractState == EContractState.Active).Count() ?? 0;
+
     }
 
     /// <summary>
@@ -76,18 +74,12 @@ namespace ImmoGlobal.MainClasses
     /// </summary>
     public int NumberOfInactiveContracts
     {
-      get
-      {
-        return RentalContracts()?.Where(x => x.ContractState != EContractState.Active).Count() ?? 0;
-      }
+      get => RentalContracts()?.Where(x => x.ContractState != EContractState.Active).Count() ?? 0;
     }
 
     public string DescriptionAndAddress
     {
-      get
-      {
-        return $"{Description}, {Address}, {ZipCode} {City}";
-      }
+      get => $"{Description}, {Address}, {ZipCode} {City}";
     }
 
     /// <summary>
@@ -99,17 +91,9 @@ namespace ImmoGlobal.MainClasses
       return DbController.GetHouskeeperToPropertyDB(this);
     }
 
-    public string HouskeeperName
-    {
-      get
-      {
-        return GetHouskeeper()?.FullName ?? "";
-      }
-    }
-
     public ICommand PropertyClickCommand
     {
-      get { return new RelayCommand<object>(PropertyClick); }
+      get => new RelayCommand<object>(PropertyClick);
     }
 
     private void PropertyClick(object obj)
@@ -117,7 +101,7 @@ namespace ImmoGlobal.MainClasses
       if (MainWindowViewModel.GetInstance != null)
       {
         MainWindowViewModel.GetInstance.SelectedProperty = this;
-        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyObjectOverviewViewModel(GetPropertyObjects(), HouskeeperName, Description ?? "no description found");
+        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyObjectOverviewViewModel(GetPropertyObjects(), GetHouskeeper(), Description ?? "no description found");
       }
     }
   }

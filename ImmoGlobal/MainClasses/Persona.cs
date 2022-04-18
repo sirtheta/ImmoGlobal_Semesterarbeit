@@ -7,6 +7,9 @@ namespace ImmoGlobal.MainClasses
 {
   internal class Persona
   {
+    private Persona()
+    {
+    }
 
     // Constructor for renter
     public Persona(string lastName,
@@ -89,7 +92,8 @@ namespace ImmoGlobal.MainClasses
                    int zip,
                    string city,
                    string accountNumber,
-                   long mobile = 0)
+                   long mobile = 0,
+                   int? personaId = null)
     {
       FirstName = firstName;
       LastName = lastName;
@@ -100,9 +104,13 @@ namespace ImmoGlobal.MainClasses
       Zip = zip;
       City = city;
       AccountNumber = accountNumber;
+      if (personaId != null)
+      {
+        PersonaId = (int)personaId;
+      }
     }
 
-    [Key]
+
     public int PersonaId { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }

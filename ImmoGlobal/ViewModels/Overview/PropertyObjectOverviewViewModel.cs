@@ -10,12 +10,13 @@ namespace ImmoGlobal.ViewModels
     private string _housekeeper;
     private string _description;
 
-    public PropertyObjectOverviewViewModel(List<PropertyObject> property, string housekeeper, string description)
+    public PropertyObjectOverviewViewModel(List<PropertyObject> propertyObjects, Persona persona, string description)
     {
       _propertyObjectCollection = new ObservableCollection<PropertyObject>();
-      property.ForEach(x => _propertyObjectCollection.Add(x));
-      _housekeeper = housekeeper;
+      propertyObjects.ForEach(po => _propertyObjectCollection.Add(po));
+      _housekeeper = persona.FullName;
       _description = description;
+      MainWindowViewModel.GetInstance.SelectedPersona = persona;
     }
 
     public ObservableCollection<PropertyObject>? PropertyObjectCollection

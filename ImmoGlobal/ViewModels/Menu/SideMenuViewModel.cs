@@ -218,12 +218,20 @@ namespace ImmoGlobal.ViewModels
 
     private void BtnHousekeeperClicked(object obj)
     {
-      throw new NotImplementedException();
+      var instance = MainWindowViewModel.GetInstance;
+      if (instance != null && instance.SelectedPersona != null)
+      {
+        instance.SelectedViewModel = new UpsertHousekeeperViewModel(instance.SelectedPersona);
+      }
     }
 
     private void BtnNewHousekeeperClicked(object obj)
     {
-      throw new NotImplementedException();
+      var instance = MainWindowViewModel.GetInstance;
+      if (instance != null)
+      {
+        instance.SelectedViewModel = new UpsertHousekeeperViewModel();
+      }
     }
 
     #endregion
