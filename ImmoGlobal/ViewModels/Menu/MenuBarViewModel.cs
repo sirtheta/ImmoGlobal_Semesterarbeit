@@ -35,7 +35,10 @@ namespace ImmoGlobal.ViewModels
 
     private void BtnRentalContractClick(object obj)
     {
-      throw new NotImplementedException();
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new RentalContractsOverviewViewModel();
+      }
     }
 
     private void BtnCreditorsClick(object obj)
@@ -49,12 +52,18 @@ namespace ImmoGlobal.ViewModels
     private void BtnInvoiceClick(object obj)
 
     {
-      throw new NotImplementedException();
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new InvoicesOverviewViewModel();
+      }
     }
 
     private void BtnAccountClick(object obj)
     {
-      throw new NotImplementedException();
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new AccountsOverviewViewModel();
+      }
     }
 
     public ICommand BtnProperty

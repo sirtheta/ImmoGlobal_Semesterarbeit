@@ -66,10 +66,13 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged(nameof(SelectedViewModel));
       }
     }
-
+    
     internal Property? SelectedProperty { get; set; }
     internal PropertyObject? SelectedPropertyObject { get; set; }
     internal Persona? SelectedPersona { get; set; }
+    internal Invoice? SelectedInvoice { get; set; }
+    internal Account? SelectedAccount { get; set; }
+    internal RentalContract? SelectedRentalContract { get; set; }
 
     /// <summary>
     /// sets the color of the menu bar icon
@@ -96,12 +99,24 @@ namespace ImmoGlobal.ViewModels
         case UpsertCreditorViewModel:
           MenuBarViewModel.BtnCreditorColor = Brushes.Red;
           break;
+        case RentalContractsOverviewViewModel:
+        case UpsertRentalContractViewModel:
+          MenuBarViewModel.BtnRentalContractColor = Brushes.Red;
+          break;
+        case InvoicesOverviewViewModel:
+        case UpsertInvoiceViewModel:
+          MenuBarViewModel.BtnInvoiceColor = Brushes.Red;
+          break;
+        case AccountsOverviewViewModel:
+        case UpsertAccountViewModel:
+          MenuBarViewModel.BtnAccountColor = Brushes.Red;
+          break;
         default:
           break;
       }
     }
     /// <summary>
-    /// Sets the side menu buttons.
+    /// Sets the visibility of the side menu buttons.
     /// </summary>
     private void SetSideMenuButtons()
     {
@@ -110,8 +125,6 @@ namespace ImmoGlobal.ViewModels
       SideMenuViewModel.BtnNewRenterVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnInvoiceVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Collapsed;
-      SideMenuViewModel.BtnObjectsVisibility = Visibility.Collapsed;
-      SideMenuViewModel.BtnRentalContractsVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnNewCreditorVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Collapsed;
@@ -146,6 +159,25 @@ namespace ImmoGlobal.ViewModels
           SideMenuViewModel.BtnInvoiceVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewCreditorVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
+          break;
+        case RentalContractsOverviewViewModel:
+          SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnInvoiceVisibility = Visibility.Visible;
+          break;
+        case InvoicesOverviewViewModel:
+          SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
+          break;
+        case AccountsOverviewViewModel:
+          SideMenuViewModel.BtnNewAccountVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
+          break;
+        case UpsertAccountViewModel:
+          SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Visible;
           SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           break;
         default:

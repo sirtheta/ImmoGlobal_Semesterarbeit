@@ -1,4 +1,5 @@
 ﻿using ImmoGlobal.Commands;
+using ImmoGlobal.MainClasses;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -15,8 +16,6 @@ namespace ImmoGlobal.ViewModels
       BtnNewRenter = new RelayCommand<object>(BtnNewRenterClicked);
       BtnInvoice = new RelayCommand<object>(BtnInvoiceClicked);
       BtnNewInvoice = new RelayCommand<object>(BtnNewInvoiceClicked);
-      BtnObjects = new RelayCommand<object>(BtnObjectsClicked);
-      BtnRentalContracts = new RelayCommand<object>(BtnRentalContractsClicked);
       BtnNewCreditor = new RelayCommand<object>(BtnNewCreditorClicked);
       BtnNewBillReminder = new RelayCommand<object>(BtnNewBillReminderClicked);
       BtnNewRentalContract = new RelayCommand<object>(BtnNewRentalContractClicked);
@@ -51,18 +50,6 @@ namespace ImmoGlobal.ViewModels
     }
 
     public ICommand BtnNewInvoice
-    {
-      get;
-      private set;
-    }
-
-    public ICommand BtnObjects
-    {
-      get;
-      private set;
-    }
-
-    public ICommand BtnRentalContracts
     {
       get;
       private set;
@@ -138,12 +125,18 @@ namespace ImmoGlobal.ViewModels
 
     private void BtnNewAccountClicked(object obj)
     {
-      throw new NotImplementedException();
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertAccountViewModel();
+      }
     }
 
     private void BtnNewRentalContractClicked(object obj)
     {
-      throw new NotImplementedException();
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertRentalContractViewModel();
+      }
     }
 
     private void BtnNewBillReminderClicked(object obj)
@@ -159,19 +152,12 @@ namespace ImmoGlobal.ViewModels
       };
     }
 
-    private void BtnRentalContractsClicked(object obj)
-    {
-      throw new NotImplementedException();
-    }
-
-    private void BtnObjectsClicked(object obj)
-    {
-      throw new NotImplementedException();
-    }
-
     private void BtnNewInvoiceClicked(object obj)
     {
-      throw new NotImplementedException();
+      if (MainWindowViewModel.GetInstance != null)
+      {
+        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertInvoiceViewModel();
+      }
     }
 
     private void BtnInvoiceClicked(object obj)
@@ -212,6 +198,24 @@ namespace ImmoGlobal.ViewModels
               instance.SelectedViewModel = new UpsertCreditorViewModel(instance.SelectedPersona);
             }
             break;
+          case InvoicesOverviewViewModel:
+            if (instance.SelectedInvoice != null)
+            {
+              instance.SelectedViewModel = new UpsertInvoiceViewModel(instance.SelectedInvoice);
+            }
+            break;
+          case AccountsOverviewViewModel:
+            if (instance.SelectedInvoice != null)
+            {
+              instance.SelectedViewModel = new UpsertAccountViewModel(instance.SelectedAccount);
+            }
+            break;
+          case RentalContractsOverviewViewModel:
+            if (instance.SelectedInvoice != null)
+            {
+              instance.SelectedViewModel = new UpsertRentalContractViewModel(instance.SelectedRentalContract);
+            }
+            break;
         }
       };
     }
@@ -244,8 +248,6 @@ namespace ImmoGlobal.ViewModels
     private Visibility _btnNewRenterVisibility;
     private Visibility _btnInvoiceVisibility;
     private Visibility _btnNewInvoiceVisibility;
-    private Visibility _btnObjectsVisibility;
-    private Visibility _btnRentalContractsVisibility;
     private Visibility _btnNewCreditorVisibility;
     private Visibility _btnNewBillReminderVisibility;
     private Visibility _btnNewRentalContractVisibility;
@@ -316,32 +318,6 @@ namespace ImmoGlobal.ViewModels
       set
       {
         _btnNewInvoiceVisibility = value;
-        OnPropertyChanged();
-      }
-    }
-
-    public Visibility BtnObjectsVisibility
-    {
-      get
-      {
-        return _btnObjectsVisibility;
-      }
-      set
-      {
-        _btnObjectsVisibility = value;
-        OnPropertyChanged();
-      }
-    }
-
-    public Visibility BtnRentalContractsVisibility
-    {
-      get
-      {
-        return _btnRentalContractsVisibility;
-      }
-      set
-      {
-        _btnRentalContractsVisibility = value;
         OnPropertyChanged();
       }
     }

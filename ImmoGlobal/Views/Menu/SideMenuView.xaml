@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ImmoGlobal.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:fa6="http://schemas.fontawesome.com/icons/svg"
              xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:SideMenuViewModel}"
              mc:Ignorable="d" 
@@ -73,31 +72,7 @@
             MinWidth="180"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Visibility="{Binding BtnNewInvoiceVisibility}"/>
-      
-      <Button Command="{Binding BtnObjects}" 
-            Content="{DynamicResource propertyObject}"
-            Style="{DynamicResource MaterialDesignRaisedButton}"
-            FontFamily="{DynamicResource MaterialDesignFont}"
-            FontSize="20"
-            Padding="0"
-            Margin="10,60,0,-30"
-            MinWidth="180"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Visibility="{Binding BtnObjectsVisibility}"/>
-      
-      <Button Command="{Binding BtnRentalContracts}" 
-            Content="{DynamicResource rentalContract}"
-            Style="{DynamicResource MaterialDesignRaisedButton}"
-            FontFamily="{DynamicResource MaterialDesignFont}"
-            FontSize="20"
-            Padding="0"
-            Margin="10,60,0,-30"
-            MinWidth="180"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Visibility="{Binding BtnRentalContractsVisibility}"/>
+            Visibility="{Binding BtnNewInvoiceVisibility}"/>    
       
       <Button Command="{Binding BtnNewCreditor}" 
             Content="{DynamicResource newCreditor}"

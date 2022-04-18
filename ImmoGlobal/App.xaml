@@ -12,6 +12,7 @@
       <DataTemplate DataType="{x:Type viewmodels:SideMenuViewModel}">
         <views:SideMenuView/>
       </DataTemplate>
+      
       <DataTemplate DataType="{x:Type viewmodels:PropertyOverviewViewModel}">
         <views:PropertyOverviewView/>
       </DataTemplate>
@@ -20,34 +21,54 @@
       </DataTemplate>
       <DataTemplate DataType="{x:Type viewmodels:PropertyObjectViewModel}">
         <views:PropertyObjectView/>
+      </DataTemplate>      
+      <DataTemplate DataType="{x:Type viewmodels:RenterOverviewViewModel}">
+        <views:RenterOverviewView/>
+      </DataTemplate>      
+      <DataTemplate DataType="{x:Type viewmodels:CreditorOverviewViewModel}">
+        <views:CreditorOverviewView/>
+      </DataTemplate>      
+      <DataTemplate DataType="{x:Type viewmodels:RentalContractsOverviewViewModel}">
+        <views:RentalContractsOverviewView/>
       </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:InvoicesOverviewViewModel}">
+        <views:InvoicesOverviewView/>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:AccountsOverviewViewModel}">
+        <views:AccountsOverviewView/>
+      </DataTemplate>
+
+      <DataTemplate DataType="{x:Type viewmodels:UpsertPropertyObjectViewModel}">
+        <views:UpsertPropertyObjectView/>
+      </DataTemplate>      
+      <DataTemplate DataType="{x:Type viewmodels:UpsertRenterViewModel}">
+        <views:UpsertRenterView/>
+      </DataTemplate>      
+      <DataTemplate DataType="{x:Type viewmodels:UpsertCreditorViewModel}">
+        <views:UpsertCreditorView/>
+      </DataTemplate>      
+      <DataTemplate DataType="{x:Type viewmodels:UpsertHousekeeperViewModel}">
+        <views:UpsertHousekeeperView/>
+      </DataTemplate>      
       <DataTemplate DataType="{x:Type viewmodels:UpsertPropertyViewModel}">
         <views:UpsertPropertyView/>
       </DataTemplate>
-      <DataTemplate DataType="{x:Type viewmodels:UpsertPropertyObjectViewModel}">
-        <views:UpsertPropertyObjectView/>
+      <DataTemplate DataType="{x:Type viewmodels:UpsertRentalContractViewModel}">
+        <views:UpsertRentalContractView/>
       </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:UpsertInvoiceViewModel}">
+        <views:UpsertInvoiceView/>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:UpsertAccountViewModel}">
+        <views:UpsertAccountView/>
+      </DataTemplate>
+
       <DataTemplate DataType="{x:Type viewmodels:RenterDetailsViewModel}">
         <views:RenterDetailsView/>
       </DataTemplate>
       <DataTemplate DataType="{x:Type viewmodels:CreditorDetailsViewModel}">
         <views:CreditorDetailsView/>
-      </DataTemplate>
-      <DataTemplate DataType="{x:Type viewmodels:RenterOverviewViewModel}">
-        <views:RenterOverviewView/>
-      </DataTemplate>
-      <DataTemplate DataType="{x:Type viewmodels:UpsertRenterViewModel}">
-        <views:UpsertRenterView/>
-      </DataTemplate>
-      <DataTemplate DataType="{x:Type viewmodels:CreditorOverviewViewModel}">
-        <views:CreditorOverviewView/>
-      </DataTemplate>
-      <DataTemplate DataType="{x:Type viewmodels:UpsertCreditorViewModel}">
-        <views:UpsertCreditorView/>
-      </DataTemplate>
-      <DataTemplate DataType="{x:Type viewmodels:UpsertHousekeeperViewModel}">
-        <views:UpsertHousekeeperView/>
-      </DataTemplate>
+      </DataTemplate>      
 
       <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Resources/StringResources.de-DE.xaml"/>
