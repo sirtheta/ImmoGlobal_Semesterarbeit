@@ -10,7 +10,7 @@
              mc:Ignorable="d" 
              d:Background="{DynamicResource MaterialDesignPaper}"
              d:DesignWidth="350" 
-             d:DesignHeight="1500"
+             d:DesignHeight="1000"
              TextOptions.TextFormattingMode="Display">
   <Grid>
     <StackPanel>

@@ -12,86 +12,88 @@
              d:DesignHeight="650" 
              d:DesignWidth="800"
              TextOptions.TextFormattingMode="Display">
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="1*"/>
-    </Grid.RowDefinitions>
-    <TextBlock Grid.Row="0" 
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="1*"/>
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" 
                  Text="{DynamicResource propertyOverview}"
                  HorizontalAlignment="Left"
                  Padding="10"
                  FontFamily="{DynamicResource MaterialDesignFont}"
                  FontSize="30"
                  FontWeight="Bold"/>
-    <ItemsControl ItemsSource="{Binding PropertyCollection}" Grid.Row="1">
-      <ItemsControl.ItemsPanel>
-        <ItemsPanelTemplate>
-          <StackPanel Orientation="Horizontal"/>
-        </ItemsPanelTemplate>
-      </ItemsControl.ItemsPanel>
-      <ItemsControl.ItemTemplate>
-        <DataTemplate>
-          <StackPanel>
-            <Border CornerRadius="5"
+      <ItemsControl ItemsSource="{Binding PropertyCollection}" Grid.Row="1">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel Orientation="Horizontal"/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <StackPanel>
+              <Border CornerRadius="5"
                     Margin="10"
                     Padding="0"
                     Background="{DynamicResource MaterialDesignBackground}">
-              <Border.InputBindings>
-                <MouseBinding Gesture="LeftClick" Command="{Binding PropertyClickCommand}"/>
-              </Border.InputBindings>
-              <Border.Effect>
-                <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="1"/>
-              </Border.Effect>
-              <StackPanel>
-                <TextBlock Text="{Binding Description}" 
+                <Border.InputBindings>
+                  <MouseBinding Gesture="LeftClick" Command="{Binding PropertyClickCommand}"/>
+                </Border.InputBindings>
+                <Border.Effect>
+                  <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="1"/>
+                </Border.Effect>
+                <StackPanel>
+                  <TextBlock Text="{Binding Description}" 
                            Margin="10" 
                            FontFamily="{DynamicResource MaterialDesignFont}"/>
-                <TextBlock Text="{Binding Address}" 
+                  <TextBlock Text="{Binding Address}" 
                            Margin="10" 
                            FontFamily="{DynamicResource MaterialDesignFont}"/>
-                <TextBlock FontFamily="{DynamicResource MaterialDesignFont}"
+                  <TextBlock FontFamily="{DynamicResource MaterialDesignFont}"
                            Margin="7,10">
-                  <TextBlock.Text>
-                    <MultiBinding StringFormat=" {0} {1}">
-                      <Binding Path="ZipCode"/>
-                      <Binding Path="City"/>
-                    </MultiBinding>
-                  </TextBlock.Text>
-                </TextBlock>
-                <Grid Width="160">
-                  <TextBlock Text="{DynamicResource numberOfPropertyObjects}"
+                    <TextBlock.Text>
+                      <MultiBinding StringFormat=" {0} {1}">
+                        <Binding Path="ZipCode"/>
+                        <Binding Path="City"/>
+                      </MultiBinding>
+                    </TextBlock.Text>
+                  </TextBlock>
+                  <Grid Width="160">
+                    <TextBlock Text="{DynamicResource numberOfPropertyObjects}"
                              Margin="10"
                              FontFamily="{DynamicResource MaterialDesignFont}"/>
-                  <TextBlock Text="{Binding NumberOfPropertyObjects}" 
+                    <TextBlock Text="{Binding NumberOfPropertyObjects}" 
                              Margin="10" 
                              FontFamily="{DynamicResource MaterialDesignFont}"
                              HorizontalAlignment="Right"/>
-                </Grid>
+                  </Grid>
 
-                <Grid Width="160">
-                  <TextBlock Text="{DynamicResource rented}"
+                  <Grid Width="160">
+                    <TextBlock Text="{DynamicResource rented}"
                              Margin="10"
                              FontFamily="{DynamicResource MaterialDesignFont}"/>
-                  <TextBlock Text="{Binding NumberOfActiveContracts}" 
+                    <TextBlock Text="{Binding NumberOfActiveContracts}" 
                              Margin="10" 
                              FontFamily="{DynamicResource MaterialDesignFont}"
                              HorizontalAlignment="Right"/>
-                </Grid>
-                <Grid Width="160">
-                  <TextBlock Text="{DynamicResource notRented}"
+                  </Grid>
+                  <Grid Width="160">
+                    <TextBlock Text="{DynamicResource notRented}"
                              Margin="10"
                              FontFamily="{DynamicResource MaterialDesignFont}"/>
-                  <TextBlock Text="{Binding NumberOfInactiveContracts}" 
+                    <TextBlock Text="{Binding NumberOfInactiveContracts}" 
                              Margin="10" 
                              FontFamily="{DynamicResource MaterialDesignFont}"
                              HorizontalAlignment="Right"/>
-                </Grid>
-              </StackPanel>
-            </Border>
-          </StackPanel>
-        </DataTemplate>
-      </ItemsControl.ItemTemplate>
-    </ItemsControl>
-  </Grid>
+                  </Grid>
+                </StackPanel>
+              </Border>
+            </StackPanel>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </Grid>
+  </ScrollViewer>
 </UserControl>

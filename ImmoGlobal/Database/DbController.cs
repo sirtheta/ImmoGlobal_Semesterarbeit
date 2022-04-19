@@ -15,6 +15,7 @@ namespace ImmoGlobal.Database
               select p).First();
     }
 
+
     internal static ICollection<Invoice> GetInvoiceToPerson(Persona persona)
     {
       using var db = new ImmoGlobalContext();
@@ -190,6 +191,13 @@ namespace ImmoGlobal.Database
 
         return false;
       }
+    }
+
+    internal static ICollection<RentalContract> GetAllRentalContractsDB()
+    {
+      using var db = new ImmoGlobalContext();
+      return (from r in db.RentalContracts
+              select r).ToList();
     }
 
     /// <summary>

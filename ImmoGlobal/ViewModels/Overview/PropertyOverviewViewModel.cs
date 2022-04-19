@@ -11,11 +11,6 @@ namespace ImmoGlobal.ViewModels
       PropertyCollection = new ObservableCollection<Property>(DbController.GetPropertiesDB());
     }
 
-    private ObservableCollection<Property>? _propertyCollection;
-    public ObservableCollection<Property>? PropertyCollection
-    {
-      get => _propertyCollection;
-      set => _propertyCollection = value;
-    }
+    public ObservableCollection<Property>? PropertyCollection { get; set; }
   }
 }

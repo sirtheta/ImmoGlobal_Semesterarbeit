@@ -15,22 +15,23 @@
   <UserControl.Resources>
     <conv:MinusOneConverter x:Key="MinusOneConverter"/>
   </UserControl.Resources>
-  <Grid ShowGridLines="false">
-    <Grid.Resources>
-      <Style TargetType="TextBlock">
-        <Setter Property="FontFamily"
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <Grid ShowGridLines="false">
+      <Grid.Resources>
+        <Style TargetType="TextBlock">
+          <Setter Property="FontFamily"
                 Value="{DynamicResource MaterialDesignFont}"/>
-      </Style>
-    </Grid.Resources>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition/>
-      <ColumnDefinition Width="*"/>
-    </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="50"/>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
-    <TextBlock Text="{Binding FormTitel}"
+        </Style>
+      </Grid.Resources>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <TextBlock Text="{Binding FormTitel}"
                Grid.Row="0"
                Grid.RowSpan="2"
                Margin="10,0,0,0"
@@ -38,70 +39,70 @@
                FontSize="30"
                FontWeight="Bold"
                TextWrapping="Wrap"/>
-    <Grid Grid.Row="1" ShowGridLines="false">
-      <Grid.RowDefinitions>
-        <RowDefinition Height="auto"/>
-        <RowDefinition Height="1*"/>
-      </Grid.RowDefinitions>
-      <StackPanel>
+      <Grid Grid.Row="1" ShowGridLines="false">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
 
-        <TextBox Text="{Binding Description}"
+          <TextBox Text="{Binding Description}"
                Margin="10" 
                materialDesign:HintAssist.Hint="{DynamicResource description}" 
                TextWrapping="Wrap"
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
 
-        <TextBox Text="{Binding Address}" 
+          <TextBox Text="{Binding Address}" 
                  Margin="10" 
                materialDesign:HintAssist.Hint="{DynamicResource address}" 
                TextWrapping="Wrap"
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
-        <TextBox Text="{Binding ZipCode}" 
+          <TextBox Text="{Binding ZipCode}" 
                  Margin="10" 
                materialDesign:HintAssist.Hint="{DynamicResource zipCode}" 
                TextWrapping="Wrap"
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
-        <TextBox Text="{Binding City}" 
+          <TextBox Text="{Binding City}" 
                  Margin="10" 
                materialDesign:HintAssist.Hint="{DynamicResource city}" 
                TextWrapping="Wrap"
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
-        <TextBox Text="{Binding PropertyInsurance}" 
+          <TextBox Text="{Binding PropertyInsurance}" 
                  Margin="10" 
                materialDesign:HintAssist.Hint="{DynamicResource propertyInsurance}" 
                TextWrapping="Wrap"
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
-        <TextBox Text="{Binding PersonInsurance}" 
+          <TextBox Text="{Binding PersonInsurance}" 
                  Margin="10" 
                materialDesign:HintAssist.Hint="{DynamicResource personInsurance}" 
                TextWrapping="Wrap"
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
-        <TextBox Text="{Binding LiabilityInsurance}" 
+          <TextBox Text="{Binding LiabilityInsurance}" 
                  Margin="10" 
                materialDesign:HintAssist.Hint="{DynamicResource liabilityInsurance}" 
                TextWrapping="Wrap"
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
-        <ComboBox ItemsSource="{Binding PersonaCollection}"
+          <ComboBox ItemsSource="{Binding PersonaCollection}"
                   SelectedItem="{Binding Housekeeper}"                   
                   DisplayMemberPath="FullNameAndCity"
                   Margin="10"
                   SelectedIndex="{Binding Housekeeper.PersonaId, Converter={StaticResource MinusOneConverter}}"
                   materialDesign:HintAssist.Hint="{DynamicResource selectHousekeeper}"/>
 
-      </StackPanel>
-      <Grid Grid.Row="1">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-      <Button Grid.Row="1"
+        </StackPanel>
+        <Grid Grid.Row="1" Margin="0,-50,0,10">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+          </Grid.ColumnDefinitions>
+          <Button Grid.Row="1"
             Command="{Binding BtnSave}" 
             Content="{DynamicResource save}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
@@ -112,8 +113,8 @@
             MinWidth="180"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"/>
-        
-        <Button Grid.Column="1"
+
+          <Button Grid.Column="1"
             Command="{Binding BtnDelete}" 
             Content="{DynamicResource delete}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
@@ -125,7 +126,8 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Visibility="{Binding BtnDeleteVisibility}"/>
+        </Grid>
       </Grid>
     </Grid>
-  </Grid>
+  </ScrollViewer>
 </UserControl>

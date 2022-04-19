@@ -12,68 +12,69 @@
              d:DesignHeight="650" 
              d:DesignWidth="1500"
              TextOptions.TextFormattingMode="Display">
-  <Grid ShowGridLines="false">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="auto" MinHeight="440"/>
-      <RowDefinition Height="1*"/>
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="auto" MinWidth="500"/>
-      <ColumnDefinition Width="auto"/>
-      <ColumnDefinition Width="auto"/>
-    </Grid.ColumnDefinitions>
-    <!--creditor details-->
-    <Border Grid.Column="0" CornerRadius="2"
+  <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+    <Grid ShowGridLines="false" Margin="10">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto" MinHeight="440"/>
+        <RowDefinition Height="1*"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="auto" MinWidth="500"/>
+        <ColumnDefinition Width="auto"/>
+        <ColumnDefinition Width="auto"/>
+      </Grid.ColumnDefinitions>
+      <!--creditor details-->
+      <Border Grid.Column="0" CornerRadius="2"
                 Margin="0,0,0,0"
                 Padding="10"
                 Background="{DynamicResource MaterialDesignBackground}">
-      <Border.Effect>
-        <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
-      </Border.Effect>
-      <Grid>
-        <Grid.RowDefinitions>
-          <RowDefinition Height="auto"/>
-          <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="auto" MinWidth="300"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0"
+        <Border.Effect>
+          <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
+        </Border.Effect>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" MinWidth="300"/>
+          </Grid.ColumnDefinitions>
+          <TextBlock Grid.Row="0"
                  Text="{DynamicResource detailToCreditor}"
                  HorizontalAlignment="Left"
                  Padding="0,0,0,5"
                  FontSize="20"
                  TextWrapping="Wrap"/>
 
-        <Grid Grid.Column="0" Grid.Row="1" ShowGridLines="false">
-          <ContentControl Content="{Binding SelectedCreditorDetailsViewModel}"/>
+          <Grid Grid.Column="0" Grid.Row="1" ShowGridLines="false">
+            <ContentControl Content="{Binding SelectedCreditorDetailsViewModel}"/>
+          </Grid>
         </Grid>
-      </Grid>
-    </Border>
+      </Border>
 
-    <!--creditor list-->
-    <Border Grid.Column="1" CornerRadius="2"
+      <!--creditor list-->
+      <Border Grid.Column="1" CornerRadius="2"
             Margin="10,0,0,0"
             Padding="10"
             Background="{DynamicResource MaterialDesignBackground}">
-      <Border.Effect>
-        <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
-      </Border.Effect>
-      <Grid ShowGridLines="false">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="auto"/>
-          <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="auto" MinWidth="300"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0"
+        <Border.Effect>
+          <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
+        </Border.Effect>
+        <Grid ShowGridLines="false">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" MinWidth="300"/>
+          </Grid.ColumnDefinitions>
+          <TextBlock Grid.Row="0"
                  Text="{DynamicResource creditor}"
                  HorizontalAlignment="Left"
                  Padding="0,0,0,5"
                  FontSize="20"
                  TextWrapping="Wrap"/>
-        <DataGrid Grid.Row="1" 
+          <DataGrid Grid.Row="1" 
                   ItemsSource="{Binding CreditorCollection, UpdateSourceTrigger=PropertyChanged}" 
                   SelectedItem="{Binding SelectedCreditor}"
                   SelectionMode="Extended"
@@ -82,38 +83,38 @@
                   CanUserAddRows="False" 
                   CanUserDeleteRows="False" 
                   Style="{DynamicResource MaterialDesignDataGrid}">
-          <DataGrid.Columns>
-            <DataGridTextColumn Header="{DynamicResource creditor}"         
+            <DataGrid.Columns>
+              <DataGridTextColumn Header="{DynamicResource creditor}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding FullNameAndCity}"/>
-          </DataGrid.Columns>
-        </DataGrid>
-      </Grid>
-    </Border>
+            </DataGrid.Columns>
+          </DataGrid>
+        </Grid>
+      </Border>
 
-    <!--invoices-->
-    <Border Grid.Column="2" Grid.Row="0" CornerRadius="2"
+      <!--invoices-->
+      <Border Grid.Column="2" Grid.Row="0" CornerRadius="2"
             Margin="10,0,0,0"
             Padding="10"
             Background="{DynamicResource MaterialDesignBackground}">
-      <Border.Effect>
-        <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
-      </Border.Effect>
-      <Grid ShowGridLines="false">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="auto"/>
-          <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="auto" MinWidth="300"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0"
+        <Border.Effect>
+          <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
+        </Border.Effect>
+        <Grid ShowGridLines="false">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" MinWidth="300"/>
+          </Grid.ColumnDefinitions>
+          <TextBlock Grid.Row="0"
                  Text="{DynamicResource invoices}"
                  HorizontalAlignment="Left"
                  Padding="0,0,0,5"
                  FontSize="20"
                  TextWrapping="Wrap"/>
-        <DataGrid Grid.Row="1" 
+          <DataGrid Grid.Row="1" 
                   ItemsSource="{Binding InvoiceCollection, UpdateSourceTrigger=PropertyChanged}"
                   SelectionMode="Extended"
                   SelectionUnit="FullRow"
@@ -121,25 +122,26 @@
                   CanUserAddRows="False" 
                   CanUserDeleteRows="False" 
                   Style="{DynamicResource MaterialDesignDataGrid}">
-          <DataGrid.Columns>
-            <DataGridTextColumn Header="{DynamicResource invoice}"         
+            <DataGrid.Columns>
+              <DataGridTextColumn Header="{DynamicResource invoice}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding InvoicePurpose}"/>
-            <DataGridTextColumn Header="{DynamicResource invoiceState}"         
+              <DataGridTextColumn Header="{DynamicResource invoiceState}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding InvoiceStateString}"/>
-            <DataGridTextColumn Header="{DynamicResource invoiceDate}"         
+              <DataGridTextColumn Header="{DynamicResource invoiceDate}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding DueDate, StringFormat=\{0:dd. MM. yyyy\}}"/>
-            <DataGridTextColumn Header="{DynamicResource invoiceValue}"         
+              <DataGridTextColumn Header="{DynamicResource invoiceValue}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding TotalValue}"/>
-            <DataGridTextColumn Header="{DynamicResource billReminders}"         
+              <DataGridTextColumn Header="{DynamicResource billReminders}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding BillRemindersString}"/>
-          </DataGrid.Columns>
-        </DataGrid>
-      </Grid>
-    </Border>
-  </Grid>
+            </DataGrid.Columns>
+          </DataGrid>
+        </Grid>
+      </Border>
+    </Grid>
+  </ScrollViewer>
 </UserControl>

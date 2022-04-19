@@ -38,8 +38,8 @@
           <ColumnDefinition Width="0.2*" />
           <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
-        <ContentControl Content="{Binding SideMenuViewModel}" Grid.Column="0"/>
-        <ContentControl Content="{Binding SelectedViewModel}" Grid.Column="1"/>
+        <ContentControl Grid.Column="0" Content="{Binding SideMenuViewModel}" />
+        <ContentControl Grid.Column="1" Content="{Binding SelectedViewModel}"/>
       </Grid>
     </Grid>
   </Grid>

@@ -12,129 +12,131 @@
              d:DesignHeight="650" 
              d:DesignWidth="800"
              TextOptions.TextFormattingMode="Display">
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="1*"/>
-    </Grid.RowDefinitions>
-    <Grid Grid.Row="0">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="1*"/>
-        <ColumnDefinition Width="1*"/>
-      </Grid.ColumnDefinitions>
-      <Grid.Resources>
-        <Style TargetType="TextBlock">
-          <Setter Property="FontFamily"
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="1*"/>
+      </Grid.RowDefinitions>
+      <Grid Grid.Row="0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+          <Style TargetType="TextBlock">
+            <Setter Property="FontFamily"
                   Value="{DynamicResource MaterialDesignFont}"/>
-        </Style>
-      </Grid.Resources>
-      <StackPanel Grid.Column="0">
-        <TextBlock Text="{DynamicResource overviewPropertyObjects}"
+          </Style>
+        </Grid.Resources>
+        <StackPanel Grid.Column="0">
+          <TextBlock Text="{DynamicResource overviewPropertyObjects}"
                    HorizontalAlignment="Left"
                    Padding="10"
                    FontSize="30"
                    FontWeight="Bold"
                    TextWrapping="Wrap"/>
-        <TextBlock Text="{Binding Description}"
+          <TextBlock Text="{Binding Description}"
                    HorizontalAlignment="Left"
                    Padding="10"
                    FontSize="15" 
                    FontWeight="Bold"
                    TextWrapping="Wrap"/>
-      </StackPanel>
-      <StackPanel Grid.Column="1">
-        <TextBlock HorizontalAlignment="Left"
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+          <TextBlock HorizontalAlignment="Left"
                    Padding="10"
                    FontSize="30"
                    FontWeight="Bold"
                    TextWrapping="Wrap">
           <Run Text="{DynamicResource housekeeper}"/>:
-        </TextBlock>
-        
-        <TextBlock Grid.Column="1"
+          </TextBlock>
+
+          <TextBlock Grid.Column="1"
                    Text="{Binding Housekeeper}"
                    HorizontalAlignment="Left"
                    Padding="10" 
                    FontWeight="Bold"
                    FontSize="15"/>
-      </StackPanel>
+        </StackPanel>
 
-    </Grid>
-    <ItemsControl ItemsSource="{Binding PropertyObjectCollection}" Grid.Row="1">
-      <ItemsControl.ItemsPanel>
-        <ItemsPanelTemplate>
-          <StackPanel Orientation="Horizontal"/>
-        </ItemsPanelTemplate>
-      </ItemsControl.ItemsPanel>
-      <ItemsControl.ItemTemplate>
-        <DataTemplate>
-          <StackPanel>
-            <Border CornerRadius="5"
+      </Grid>
+      <ItemsControl ItemsSource="{Binding PropertyObjectCollection}" Grid.Row="1">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel Orientation="Horizontal"/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <StackPanel>
+              <Border CornerRadius="5"
                     Margin="10"
                     Padding="0"
                     MaxWidth="250"
                     Background="{DynamicResource MaterialDesignBackground}">
-              <Border.InputBindings>
-                <MouseBinding Gesture="LeftClick" Command="{Binding PropertyObjectClickCommand}"/>
-              </Border.InputBindings>
-              <Border.Effect>
-                <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="1"/>
-              </Border.Effect>
-              <Grid>
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="auto"/>
-                  <RowDefinition Height="1*"/>
-                  <RowDefinition Height="1*"/>
-                  <RowDefinition Height="1*"/>
-                  <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="auto"/>
-                  <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.Resources>
-                  <Style TargetType="TextBlock">
-                    <Setter Property="Padding"
+                <Border.InputBindings>
+                  <MouseBinding Gesture="LeftClick" Command="{Binding PropertyObjectClickCommand}"/>
+                </Border.InputBindings>
+                <Border.Effect>
+                  <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="1"/>
+                </Border.Effect>
+                <Grid>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="1*"/>
+                  </Grid.ColumnDefinitions>
+                  <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                      <Setter Property="Padding"
                             Value="5,10,5,10" />
-                  </Style>
-                </Grid.Resources>
-                <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+                    </Style>
+                  </Grid.Resources>
+                  <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
                            Text="{Binding Description}" 
                            TextWrapping="Wrap"/>
 
-                <!--typ-->
-                <TextBlock Grid.Column="0" Grid.Row="1" 
-                           Text="{DynamicResource typ}"/>                             
-                <TextBlock Grid.Column="1" Grid.Row="1"
+                  <!--typ-->
+                  <TextBlock Grid.Column="0" Grid.Row="1" 
+                           Text="{DynamicResource typ}"/>
+                  <TextBlock Grid.Column="1" Grid.Row="1"
                            Text="{Binding ObjectTypeName}" />
 
-                <!--Location-->
-                <TextBlock Grid.Column="0" Grid.Row="2"
+                  <!--Location-->
+                  <TextBlock Grid.Column="0" Grid.Row="2"
                            Text="{DynamicResource location}"/>
-                <TextBlock Grid.Column="1" Grid.Row="2"
+                  <TextBlock Grid.Column="1" Grid.Row="2"
                            Text="{Binding Location}"
                            HorizontalAlignment="Left"
                            TextWrapping="Wrap"/>
-                
-                <!--rented to-->
-                <TextBlock Grid.Column="0" Grid.Row="3" 
+
+                  <!--rented to-->
+                  <TextBlock Grid.Column="0" Grid.Row="3" 
                            Text="{DynamicResource rentedTo}"/>
-                <TextBlock Grid.Column="1" Grid.Row="3"
+                  <TextBlock Grid.Column="1" Grid.Row="3"
                            Text="{Binding CurrentRenter}"
                            HorizontalAlignment="Left"
                            TextWrapping="Wrap"/>
-                
-                <!--number of Rooms-->
-                <TextBlock Grid.Column="0" Grid.Row="5"
+
+                  <!--number of Rooms-->
+                  <TextBlock Grid.Column="0" Grid.Row="5"
                            Text="{DynamicResource numberOfRooms}"/>
-                <TextBlock Grid.Column="1" Grid.Row="5"
+                  <TextBlock Grid.Column="1" Grid.Row="5"
                            Text="{Binding NumberOfRooms}"
                            HorizontalAlignment="Left"/>
-              </Grid>
-            </Border>
-          </StackPanel>
-        </DataTemplate>
-      </ItemsControl.ItemTemplate>
-    </ItemsControl>
-  </Grid>
+                </Grid>
+              </Border>
+            </StackPanel>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </Grid>
+  </ScrollViewer>
 </UserControl>

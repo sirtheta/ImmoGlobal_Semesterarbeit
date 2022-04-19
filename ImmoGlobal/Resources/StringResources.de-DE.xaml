@@ -24,7 +24,8 @@
 
   <system:String x:Key="overviewPropertyObjects">Übersicht Objekte in der Liegenschaft</system:String>
   <system:String x:Key="detailView">Details zu</system:String>
-  <system:String x:Key="overviewRentalContracts">Übersicht der Mietverträge zum Objekt</system:String>
+  <system:String x:Key="overviewRentalContractsToObject">Übersicht der Mietverträge zum Objekt</system:String>
+  <system:String x:Key="overviewRentalContracts">Übersicht der Mietverträge</system:String>
   <system:String x:Key="overviewInvoices">Übersicht der Rechnungen zum Objekt</system:String>
   <system:String x:Key="detailToCurrentRenter">Informationen zum aktuellen Mieter</system:String>
   <system:String x:Key="detailToRenter">Informationen zum ausgwählten Mieter</system:String>

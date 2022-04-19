@@ -12,7 +12,74 @@
              d:DesignHeight="650" 
              d:DesignWidth="1500"
              TextOptions.TextFormattingMode="Display">
-    <Grid>
-            
-    </Grid>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="1*"/>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0" 
+                 Text="{DynamicResource overviewRentalContracts}"
+                 HorizontalAlignment="Left"
+                 Padding="10"
+                 FontFamily="{DynamicResource MaterialDesignFont}"
+                 FontSize="30"
+                 FontWeight="Bold"/>
+
+    <!--rental Contracts-->
+    <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="2"
+            Margin="10"
+            Padding="10"
+            Width="auto"
+            MinWidth="820"
+            HorizontalAlignment="Left"
+            Background="{DynamicResource MaterialDesignBackground}">
+      <Border.Effect>
+        <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
+      </Border.Effect>
+      <ScrollViewer VerticalScrollBarVisibility="Auto">
+      <Grid ShowGridLines="false">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto" MinWidth="300"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Row="1" 
+                  ItemsSource="{Binding RentalContractCollection, UpdateSourceTrigger=PropertyChanged}" 
+                  SelectionMode="Extended"
+                  SelectionUnit="FullRow"
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False" 
+                  CanUserDeleteRows="False"
+                  Style="{DynamicResource MaterialDesignDataGrid}">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="{DynamicResource renter}"         
+                                IsReadOnly="True" 
+                                Binding="{Binding RenterFullName}"/>
+            <DataGridTextColumn Header="{DynamicResource activeContract}"         
+                                IsReadOnly="True" 
+                                Binding="{Binding ActivContract}"/>
+            <DataGridTextColumn Header="{DynamicResource propertyObject}"         
+                                IsReadOnly="True" 
+                                Binding="{Binding PropertyObjectName}"/>
+            <DataGridTextColumn Header="{DynamicResource rentStart}"         
+                                IsReadOnly="True" 
+                                Binding="{Binding RentStartDate, StringFormat=\{0:dd. MM. yyyy\}}"/>
+            <DataGridTextColumn Header="{DynamicResource rentEnd}"         
+                                IsReadOnly="True" 
+                                Binding="{Binding RentEndDate, StringFormat=\{0:dd. MM. yyyy\}}"/>
+
+            <DataGridTextColumn Header="{DynamicResource rent}"         
+                                IsReadOnly="True" 
+                                Binding="{Binding Rent}"/>
+            <DataGridTextColumn Header="{DynamicResource deposit}"         
+                                IsReadOnly="True" 
+                                Binding="{Binding DepositString}"/>
+          </DataGrid.Columns>
+        </DataGrid>
+      </Grid>
+      </ScrollViewer>
+    </Border>
+
+  </Grid>
 </UserControl>
