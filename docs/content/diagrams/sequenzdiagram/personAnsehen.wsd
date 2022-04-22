@@ -19,12 +19,12 @@ db --> persona : returnPersonas()
 user -> persona : selectPersona()
 
 alt#Gold #LightBlue renter == true
-persona -> db : getRentalContractsTopersonaFromDb()
+persona -> db : getRentalContractsToPersonaFromDb()
 db --> persona : returnRentalContracts()
 end
 
 
-persona -> db : getInvoicesTopersonaFromDb()
+persona -> db : getInvoicesToPersonaFromDb()
 db --> persona : returnInvoices()
 
 user -> persona : editSelectedPersona()

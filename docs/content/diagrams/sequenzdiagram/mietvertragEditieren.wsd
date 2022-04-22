@@ -1,4 +1,4 @@
-@startuml mietvertrag
+@startuml mietvertragEditieren
 !theme cerulean-outline
 skinparam sequence {
 LifeLineBackgroundColor #8ECBF1
@@ -11,21 +11,26 @@ activate user
 participant RentalContract as rc
 database Database as db
 activate db
-create rc
-user -> rc ++ : create()
+activate rc
+
+user -> rc : selectRentalContract()
+rc -> db : getPersonasFromDb()
+alt#Gold #LightBlue persona != null
+  db--> rc : returnPersonas()
+else #Pink persona == null
+end
+
 rc -> db : getPropertiesFromDb()
-user -> rc : selectProperty()
+user -> rc : changeProperty()
 rc -> db: getPropertyObjectsToSelectedPropertyFromDb()
 alt#Gold #LightBlue PropertyObjects != null && !allInUse
   db --> rc: returnPropertyObjects()
 else #Pink PropertyObjects == null or allInUse
 end
 
-rc -> db : getPersonasFromDb()
-alt#Gold #LightBlue persona != null
-  db--> rc : returnPersonas()
-else #Pink persona == null
-end
-  rc -> rc : setValuesForRentalContract()
-  rc -> db : save()
+rc -> rc : getRenter()
+rc -> rc : getPropertyObjectToRentalContract()
+
+rc -> rc : editRentalContract()
+rc -> db : save()
 @enduml
