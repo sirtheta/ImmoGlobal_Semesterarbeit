@@ -16,7 +16,7 @@ namespace ImmoGlobal.ViewModels
       BtnSave = new RelayCommand<object>(SaveClicked);
       BtnDeleteVisibility = Visibility.Collapsed;
       _personas = new(DbController.GetAllPersonasDB());
-      _formTitel = Application.Current.FindResource("createNewProperty") as string ?? "create new property";
+      FormTitel = Application.Current.FindResource("createNewProperty") as string ?? "create new property";
     }
 
     public UpsertPropertyViewModel(Property property)
@@ -37,7 +37,7 @@ namespace ImmoGlobal.ViewModels
       _personInsurance = property.PersonInsurance;
       _liabilityInsurance = property.LiabilityInsurance;
 
-      _formTitel = (Application.Current.FindResource("property") as string ?? "property") + " " +
+      FormTitel = (Application.Current.FindResource("property") as string ?? "property") + " " +
                    (Application.Current.FindResource("edit") as string ?? "edit");
     }
 
@@ -51,13 +51,7 @@ namespace ImmoGlobal.ViewModels
     private Persona? _housekeeper;
     private ObservableCollection<Persona> _personas;
 
-    // sets the titel of the form
-    private string _formTitel;
-    public string FormTitel
-    {
-      get => _formTitel;
-      set => _formTitel = value;
-    }
+    public string FormTitel { get; set; }
 
     private Property? Property { get; set; }
     private int? PropertyId { get; set; }

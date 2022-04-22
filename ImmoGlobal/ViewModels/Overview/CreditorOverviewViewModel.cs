@@ -13,7 +13,7 @@ namespace ImmoGlobal.ViewModels
 
     public CreditorOverviewViewModel()
     {
-      _creditorCollection = new ObservableCollection<Persona>(DbController.GetAllCreditors());
+      _creditorCollection = new ObservableCollection<Persona>(DbController.GetAllCreditorsDB());
       _selectedCreditorDetailsViewModel = null;
     }
 
@@ -46,7 +46,7 @@ namespace ImmoGlobal.ViewModels
         {
           _selectedCreditor = value;
           SelectedCreditorDetailsViewModel = new CreditorDetailsViewModel(_selectedCreditor);
-          InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetInvoiceToPerson(_selectedCreditor));
+          InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetInvoiceToPersonDB(_selectedCreditor));
           if (MainWindowViewModel.GetInstance != null)
           {
             MainWindowViewModel.GetInstance.SelectedPersona = _selectedCreditor;

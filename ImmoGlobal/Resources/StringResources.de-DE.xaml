@@ -21,6 +21,7 @@
   <system:String x:Key="housekeeper">Hauswartungsperson</system:String>
   <system:String x:Key="selectHousekeeper">Hauswartungsperson auswählen</system:String>
   <system:String x:Key="selectProperty">Liegenschaft auswählen</system:String>
+  <system:String x:Key="selectPropertyObject">Objekt auswählen</system:String>
 
   <system:String x:Key="overviewPropertyObjects">Übersicht Objekte in der Liegenschaft</system:String>
   <system:String x:Key="detailView">Details zu</system:String>
@@ -171,4 +172,17 @@
   <system:String x:Key="successUpdateHousekeeper">Update des Hauswarts erfolgreich!</system:String>
   <system:String x:Key="errorAddHousekeeper">Speichern des Hauswarts fehlgeschlagen!</system:String>
 
+  <system:String x:Key="selectRenter">Mieter:in auswählen</system:String>
+
+  <system:String x:Key="createNewRentalContract">Neuer Mietvertrag hinzufügen</system:String>
+
+  <system:String x:Key="contractState">Vertragsstatus</system:String>
+  <system:String x:Key="notActiveContract">nicht aktiver Vertrag</system:String>
+  <system:String x:Key="singnedContract">unterschriebener Vertrag</system:String>
+  <system:String x:Key="canceledContract">gekündeter Vertrag</system:String>
+
+  <system:String x:Key="successAddRentalContract">Mietvertrag erfolgreich hinzugefügt!</system:String>
+  <system:String x:Key="successUpdateRentalContract">Update des Mietvertrags erfolgreich!</system:String>
+  <system:String x:Key="errorAddRentalContract">Speichern des Mietvertrags fehlgeschlagen!</system:String>
+  <system:String x:Key="errorRent">Bitte eine gültige Miete eingeben!</system:String>
 </ResourceDictionary>

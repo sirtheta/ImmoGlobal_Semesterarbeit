@@ -121,7 +121,7 @@
                   DisplayMemberPath="Value" 
                   SelectedValuePath="Key"
                   SelectedItem="{Binding CivilState, Mode=OneWay}"
-                  SelectedValue="{Binding Path=CivilState, Mode=TwoWay}" />
+                  SelectedValue="{Binding Path=CivilState, Mode=TwoWay}"/>
             </StackPanel>
           </Grid>
           <Grid>

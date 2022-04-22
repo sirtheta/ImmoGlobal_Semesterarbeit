@@ -12,11 +12,9 @@ namespace ImmoGlobal.ViewModels
 
     internal static void ShowNotification(string titel, string message, NotificationType type)
     {
-#pragma warning disable CA1416 // Validate platform compatibility
       var notificationManager = new NotificationManager();
       _ = notificationManager.ShowAsync(new NotificationContent { Title = titel, Message = message, Type = type },
               areaName: "WindowArea", expirationTime: new TimeSpan(0, 0, 4));
-#pragma warning restore CA1416 // Validate platform compatibility
     }
 
     internal static bool ShowMessageBox(string messageStr, MessageType type, MessageButtons buttons)

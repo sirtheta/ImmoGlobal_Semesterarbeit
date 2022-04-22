@@ -14,7 +14,7 @@ namespace ImmoGlobal.ViewModels
 
     public RenterOverviewViewModel()
     {
-      _renterCollection = new ObservableCollection<Persona>(DbController.GetAllRenters());
+      _renterCollection = new ObservableCollection<Persona>(DbController.GetAllRentersDB());
       _selectedRenterDetailsViewModel = null;
     }
 
@@ -57,7 +57,7 @@ namespace ImmoGlobal.ViewModels
         {
           _selectedRenter = value;
           SelectedRenterDetailsViewModel = new RenterDetailsViewModel(_selectedRenter);
-          InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetInvoiceToPerson(_selectedRenter));
+          InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetInvoiceToPersonDB(_selectedRenter));
           RentalContractCollection = new ObservableCollection<RentalContract>(DbController.GetRentalContractsToPersonDB(_selectedRenter));
           if (MainWindowViewModel.GetInstance != null)
           {

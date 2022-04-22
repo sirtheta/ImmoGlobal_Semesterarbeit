@@ -16,7 +16,6 @@ namespace ImmoGlobal.MainClasses
     public bool Deposit { get; set; }
     public EContractState ContractState { get; set; }
 
-
     public string RenterFullName
     {
       get => GetRenter()?.FullName ?? "";
@@ -33,19 +32,21 @@ namespace ImmoGlobal.MainClasses
           Application.Current.FindResource("no") as string ?? "no";
 
     }
+    
     public string ActivContract
     {
       get => ContractState == EContractState.Active ? Application.Current.FindResource("yes") as string ?? "yes" :
           Application.Current.FindResource("no") as string ?? "no";
     }
 
-    private PropertyObject? GetPropertyToRentalContract()
+    public PropertyObject? GetPropertyObjectToRentalContract()
     {
       return DbController.GetPropertyObjectToRentalContractDB(this);
     }
+    
     public string PropertyObjectName
     {
-      get => GetPropertyToRentalContract()?.Description ?? "";
+      get => GetPropertyObjectToRentalContract()?.Description ?? "";
     }
   }
 }

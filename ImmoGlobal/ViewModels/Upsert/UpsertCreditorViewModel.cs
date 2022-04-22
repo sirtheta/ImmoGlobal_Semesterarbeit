@@ -16,7 +16,7 @@ namespace ImmoGlobal.ViewModels
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
-      _formTitel = Application.Current.FindResource("addNewCreditor") as string ?? "create new creditor";
+      FormTitel = Application.Current.FindResource("addNewCreditor") as string ?? "create new creditor";
     }
 
     public UpsertCreditorViewModel(Persona selectedCreditor)
@@ -40,7 +40,7 @@ namespace ImmoGlobal.ViewModels
       _creditorCompanyName = selectedCreditor.CreditorCompanyName;
       _creditorContactPerson = selectedCreditor.CreditorContactPerson;
 
-      _formTitel = (Application.Current.FindResource("creditor") as string ?? "creditor") + " " +
+      FormTitel = (Application.Current.FindResource("creditor") as string ?? "creditor") + " " +
              (Application.Current.FindResource("edit") as string ?? "edit");
     }
 
@@ -60,14 +60,7 @@ namespace ImmoGlobal.ViewModels
 
     private int? PersonaId { get; set; }
 
-    // sets the titel of the form
-    private string _formTitel;
-
-    public string FormTitel
-    {
-      get => _formTitel;
-      set => _formTitel = value;
-    }
+    public string FormTitel { get; set; }
 
     public string? LastName
     {

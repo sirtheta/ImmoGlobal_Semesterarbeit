@@ -18,7 +18,7 @@ namespace ImmoGlobal.ViewModels
       BtnDeleteVisibility = Visibility.Collapsed;
 
       _property = selectedProperty;
-      _formTitel =
+      FormTitel =
         (Application.Current.FindResource("newPropertyObjectFor") as string ?? "new property object for") + " " +
         (Application.Current.FindResource("property") as string ?? "property") +
         " " + _property.Description + " " +
@@ -44,7 +44,7 @@ namespace ImmoGlobal.ViewModels
       _oven = propertyObject.Oven;
       _washingMachine = propertyObject.WashingMachine;
       _tumbler = propertyObject.Tumbler;
-      _formTitel =
+      FormTitel =
         (Application.Current.FindResource("propertyObject") as string ?? "object") + " " +
         " " + propertyObject.Description + " " +
         (Application.Current.FindResource("edit") as string ?? "edit");
@@ -64,13 +64,7 @@ namespace ImmoGlobal.ViewModels
     private bool _washingMachine;
     private bool _tumbler;
 
-    // sets the titel of the form
-    private string _formTitel;
-    public string FormTitel
-    {
-      get => _formTitel;
-      set => _formTitel = value;
-    }
+    public string FormTitel { get; set; }
 
     private int? PropertyObjectId { get; set; }
 

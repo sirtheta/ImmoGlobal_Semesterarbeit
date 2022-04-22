@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:conv="clr-namespace:ImmoGlobal.Helpers"
              xmlns:local="clr-namespace:ImmoGlobal.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels" 
@@ -12,7 +13,156 @@
              d:DesignHeight="650" 
              d:DesignWidth="1500"
              TextOptions.TextFormattingMode="Display">
-    <Grid>
-            
+  
+  <UserControl.Resources>
+    <conv:MinusOneConverter x:Key="MinusOneConverter"/>
+  </UserControl.Resources>
+  
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <Grid ShowGridLines="False">
+      <Grid.Resources>
+        <Style TargetType="TextBlock">
+          <Setter Property="FontFamily"
+                Value="{DynamicResource MaterialDesignFont}"/>
+        </Style>
+      </Grid.Resources>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0"
+               Padding="0,5,0,10" 
+               FontSize="30"
+               FontWeight="Bold"
+               TextWrapping="Wrap">
+      <Run Text="{Binding FormTitel}"/>
+      </TextBlock>
+      <Grid Grid.Row="1" ShowGridLines="false">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+
+          <TextBlock Margin="10" Text="{DynamicResource renter}"/>
+          <ComboBox ItemsSource="{Binding PersonaCollection}" 
+                  Margin="10,0,0,0"
+                  DisplayMemberPath="FullName"
+                  SelectedIndex="{Binding SelectedPersona.PersonaId, Converter={StaticResource MinusOneConverter}}"
+                  SelectedItem="{Binding SelectedPersona, Mode=TwoWay}"
+                    materialDesign:HintAssist.Hint="{DynamicResource selectRenter}"/>
+
+          <Grid Margin="10,30,0,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="1*"/>
+              <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="0" 
+                       Text="{DynamicResource property}"/>
+            <ComboBox ItemsSource="{Binding PropertyCollection}" 
+                      Margin="0,30,20,0"
+                      DisplayMemberPath="Description" 
+                      SelectedIndex="{Binding SelectedProperty.PropertyId, Converter={StaticResource MinusOneConverter}}"
+                      SelectedItem="{Binding SelectedProperty}"
+                      materialDesign:HintAssist.Hint="{DynamicResource selectProperty}"/>
+
+            <!--can select after property is selected-->
+            <TextBlock Grid.Column="1" 
+                       Margin="20,0,0,0"
+                       Text="{DynamicResource propertyObject}"/>
+
+            <ComboBox Grid.Column="1" 
+                      ItemsSource="{Binding PropertyObjectCollection}" 
+                      Margin="20,30,0,0"
+                      DisplayMemberPath="Description" 
+                      SelectedIndex="{Binding SelectedPropertyObject.PropertyObjectId, Converter={StaticResource MinusOneConverter}}"
+                      SelectedItem="{Binding SelectedPropertyObject}"
+                      materialDesign:HintAssist.Hint="{DynamicResource selectPropertyObject}"/>
+          </Grid>
+          <Grid Margin="10,30,0,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="1*"/>
+              <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <DatePicker Grid.Column="0" 
+                      SelectedDate="{Binding RentStartDate}" 
+                      Margin="0,0,20,0"
+                      Style="{DynamicResource MaterialDesignDatePicker}"
+                      materialDesign:HintAssist.Hint="{DynamicResource rentStart}"/>
+
+            <DatePicker Grid.Column="1" 
+                        SelectedDate="{Binding RentEndDate}" 
+                      Margin="20,0,0,0"
+                      Style="{DynamicResource MaterialDesignDatePicker}"
+                      materialDesign:HintAssist.Hint="{DynamicResource rentEnd}"/>
+          </Grid>
+          <Grid Margin="10,20,0,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="1*"/>
+              <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" 
+                     Margin="0,0,20,0"
+                     Text="{Binding Rent}" 
+                     materialDesign:HintAssist.Hint="{DynamicResource rent}" 
+                     TextWrapping="Wrap"
+                     Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                     HorizontalAlignment="Stretch"/>
+
+            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+              <TextBlock Margin="10,0,0,0">
+              <Run  Text="{DynamicResource contractState}"/>
+              </TextBlock>
+              <ComboBox ItemsSource="{Binding Path=EContractStateWithCaptions}" 
+                  Margin="10,5,0,0"
+                  DisplayMemberPath="Value" 
+                  SelectedValuePath="Key"
+                  SelectedItem="{Binding ContractState, Mode=OneWay}"
+                  SelectedValue="{Binding Path=ContractState, Mode=TwoWay}"/>
+            </StackPanel>
+          </Grid>
+          <CheckBox Grid.Column="1" Margin="10,30,0,0"
+                      HorizontalAlignment="Left"
+                      IsChecked="{Binding Deposit}">
+            <TextBlock FlowDirection="LeftToRight" Text="{DynamicResource deposit}"/>
+          </CheckBox>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+          </Grid.ColumnDefinitions>
+          <Button Grid.Row="1"
+            Command="{Binding BtnSave}" 
+            Content="{DynamicResource save}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"/>
+
+          <Button Grid.Column="1"
+            Command="{Binding BtnDelete}" 
+            Content="{DynamicResource delete}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnDeleteVisibility}"/>
+        </Grid>
+      </Grid>
     </Grid>
+  </ScrollViewer>
 </UserControl>

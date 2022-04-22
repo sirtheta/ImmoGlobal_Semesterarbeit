@@ -8,7 +8,7 @@ namespace ImmoGlobal.ViewModels
   {
     internal PropertyOverviewViewModel()
     {
-      PropertyCollection = new ObservableCollection<Property>(DbController.GetPropertiesDB());
+      PropertyCollection = new ObservableCollection<Property>(DbController.GetAllPropertiesDB());
     }
 
     public ObservableCollection<Property>? PropertyCollection { get; set; }

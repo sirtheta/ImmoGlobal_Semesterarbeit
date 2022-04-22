@@ -12,5 +12,20 @@ namespace ImmoGlobal.ViewModels
     }
 
     public ObservableCollection<RentalContract> RentalContractCollection { get; set; }
+
+    private RentalContract? _selectedContract;
+    public RentalContract? SelectedContract
+    {
+      get => _selectedContract;
+      set
+      {
+        _selectedContract = value;
+        if (MainWindowViewModel.GetInstance != null)
+        {
+          MainWindowViewModel.GetInstance.SelectedRentalContract = _selectedContract;
+        }
+        OnPropertyChanged();
+      }
+    }
   }
 }

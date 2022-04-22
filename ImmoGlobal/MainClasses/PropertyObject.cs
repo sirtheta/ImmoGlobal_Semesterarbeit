@@ -37,12 +37,12 @@ namespace ImmoGlobal.MainClasses
       return DbController.GetAllRentalContractsToPropertyObjectDB(this);
     }
 
-    private Property? GetPropertyFromDb()
+    public Property? GetPropertyToPropertyObject()
     {
-      return DbController.GetPropertyWithObjectDB(this);
+      return DbController.GetPropertyToPropertyObjectDB(this);
     }
 
-    public string PropertyDescription => GetPropertyFromDb()?.Description ?? "";
+    public string PropertyDescription => GetPropertyToPropertyObject()?.Description ?? "";
 
     public string CurrentRenter
     {

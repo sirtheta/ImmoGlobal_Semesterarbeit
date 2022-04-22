@@ -18,7 +18,7 @@ namespace ImmoGlobal.ViewModels
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
-      _formTitel = Application.Current.FindResource("addNewRenter") as string ?? "create new renter";
+      FormTitel = Application.Current.FindResource("addNewRenter") as string ?? "create new renter";
     }
 
     public UpsertRenterViewModel(Persona selectedRenter)
@@ -36,13 +36,13 @@ namespace ImmoGlobal.ViewModels
       _address = selectedRenter.Address;
       _zip = selectedRenter.Zip.ToString();
       _city = selectedRenter.City;
-      _eCivilState = selectedRenter.CivilState;
+      _civilState = selectedRenter.CivilState;
       _addressBefore = selectedRenter.AddressBefore;
       _accountNumber = selectedRenter.AccountNumber;
       _mobilePhone = selectedRenter.MobileString;
       _officePhone = selectedRenter.OfficePhoneString;
 
-      _formTitel = (Application.Current.FindResource("renter") as string ?? "property") + " " +
+      FormTitel = (Application.Current.FindResource("renter") as string ?? "property") + " " +
              (Application.Current.FindResource("edit") as string ?? "edit");
     }
 
@@ -54,7 +54,7 @@ namespace ImmoGlobal.ViewModels
     private string? _address;
     private string? _zip;
     private string? _city;
-    private ECivilState _eCivilState;
+    private ECivilState _civilState;
     private string? _addressBefore;
     private string? _accountNumber;
     private string? _mobilePhone;
@@ -62,14 +62,7 @@ namespace ImmoGlobal.ViewModels
 
     private int? PersonaId { get; set; }
 
-    // sets the titel of the form
-    private string _formTitel;
-
-    public string FormTitel
-    {
-      get => _formTitel;
-      set => _formTitel = value;
-    }
+    public string FormTitel { get; set; }
 
     public string? LastName
     {
@@ -173,10 +166,10 @@ namespace ImmoGlobal.ViewModels
 
     public ECivilState CivilState
     {
-      get => _eCivilState;
+      get => _civilState;
       set
       {
-        _eCivilState = value;
+        _civilState = value;
         OnPropertyChanged();
       }
     }

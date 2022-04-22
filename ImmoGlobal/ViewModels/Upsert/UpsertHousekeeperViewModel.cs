@@ -16,7 +16,7 @@ namespace ImmoGlobal.ViewModels
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
-      _formTitel = Application.Current.FindResource("addNewHousekeeper") as string ?? "create new housekeeper";
+      FormTitel = Application.Current.FindResource("addNewHousekeeper") as string ?? "create new housekeeper";
     }
 
     public UpsertHousekeeperViewModel(Persona selectedHousekeeper)
@@ -37,7 +37,7 @@ namespace ImmoGlobal.ViewModels
       _accountNumber = selectedHousekeeper.AccountNumber;
 
 
-      _formTitel = (Application.Current.FindResource("housekeeper") as string ?? "housekeeper") + " " +
+      FormTitel = (Application.Current.FindResource("housekeeper") as string ?? "housekeeper") + " " +
              (Application.Current.FindResource("edit") as string ?? "edit");
     }
 
@@ -52,15 +52,7 @@ namespace ImmoGlobal.ViewModels
     private string? _accountNumber;
 
     private int? PersonaId { get; set; }
-
-    // sets the titel of the form
-    private string _formTitel;
-
-    public string FormTitel
-    {
-      get => _formTitel;
-      set => _formTitel = value;
-    }
+    public string FormTitel { get; set; }
 
     public string? LastName
     {

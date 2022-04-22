@@ -211,7 +211,7 @@ namespace ImmoGlobal.ViewModels
             }
             break;
           case RentalContractsOverviewViewModel:
-            if (instance.SelectedInvoice != null)
+            if (instance.SelectedRentalContract != null)
             {
               instance.SelectedViewModel = new UpsertRentalContractViewModel(instance.SelectedRentalContract);
             }
