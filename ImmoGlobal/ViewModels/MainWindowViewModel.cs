@@ -123,7 +123,6 @@ namespace ImmoGlobal.ViewModels
       SideMenuViewModel.BtnNewPropertyVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnNewPropertyObjectVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnNewRenterVisibility = Visibility.Collapsed;
-      SideMenuViewModel.BtnInvoiceVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnNewCreditorVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
@@ -152,11 +151,9 @@ namespace ImmoGlobal.ViewModels
           break;
         case RenterOverviewViewModel:
           SideMenuViewModel.BtnNewRenterVisibility = Visibility.Visible;
-          SideMenuViewModel.BtnInvoiceVisibility = Visibility.Visible;
           SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           break;
         case CreditorOverviewViewModel:
-          SideMenuViewModel.BtnInvoiceVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewCreditorVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
           SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
@@ -165,7 +162,6 @@ namespace ImmoGlobal.ViewModels
           SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
           SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
-          SideMenuViewModel.BtnInvoiceVisibility = Visibility.Visible;
           break;
         case InvoicesOverviewViewModel:
           SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Visible;

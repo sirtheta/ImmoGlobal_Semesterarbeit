@@ -1,5 +1,4 @@
 ﻿using ImmoGlobal.Commands;
-using System;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -24,7 +23,6 @@ namespace ImmoGlobal.ViewModels
         MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyOverviewViewModel();
       }
     }
-
     private void BtnRenterClick(object obj)
     {
       if (MainWindowViewModel.GetInstance != null)
@@ -32,7 +30,6 @@ namespace ImmoGlobal.ViewModels
         MainWindowViewModel.GetInstance.SelectedViewModel = new RenterOverviewViewModel();
       }
     }
-
     private void BtnRentalContractClick(object obj)
     {
       if (MainWindowViewModel.GetInstance != null)
@@ -40,7 +37,6 @@ namespace ImmoGlobal.ViewModels
         MainWindowViewModel.GetInstance.SelectedViewModel = new RentalContractsOverviewViewModel();
       }
     }
-
     private void BtnCreditorsClick(object obj)
     {
       if (MainWindowViewModel.GetInstance != null)
@@ -48,7 +44,6 @@ namespace ImmoGlobal.ViewModels
         MainWindowViewModel.GetInstance.SelectedViewModel = new CreditorOverviewViewModel();
       }
     }
-
     private void BtnInvoiceClick(object obj)
 
     {
@@ -57,7 +52,6 @@ namespace ImmoGlobal.ViewModels
         MainWindowViewModel.GetInstance.SelectedViewModel = new InvoicesOverviewViewModel();
       }
     }
-
     private void BtnAccountClick(object obj)
     {
       if (MainWindowViewModel.GetInstance != null)
@@ -71,36 +65,32 @@ namespace ImmoGlobal.ViewModels
       get;
       private set;
     }
-
     public ICommand BtnRenter
     {
       get;
       private set;
     }
-
     public ICommand BtnCreditor
     {
       get;
       private set;
     }
-
     public ICommand BtnRentalContract
     {
       get;
       private set;
     }
-
     public ICommand BtnInvoice
     {
       get;
       private set;
     }
-
     public ICommand BtnAccount
     {
       get;
       private set;
     }
+
     private Brush? _btnPropertyColor;
     private Brush? _btnRenterColor;
     private Brush? _btnCreditorColor;

@@ -48,19 +48,7 @@
             MinWidth="180"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Visibility="{Binding BtnNewRenterVisibility}"/>
-      
-      <Button Command="{Binding BtnInvoice}" 
-            Content="{DynamicResource invoice}"
-            Style="{DynamicResource MaterialDesignRaisedButton}"
-            FontFamily="{DynamicResource MaterialDesignFont}"
-            FontSize="20"
-            Padding="0"
-            Margin="10,60,0,-30"
-            MinWidth="180"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Visibility="{Binding BtnInvoiceVisibility}"/>
+            Visibility="{Binding BtnNewRenterVisibility}"/>    
       
       <Button Command="{Binding BtnNewInvoice}" 
             Content="{DynamicResource newInvoice}"

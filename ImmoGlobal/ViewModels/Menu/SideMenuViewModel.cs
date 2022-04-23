@@ -14,7 +14,6 @@ namespace ImmoGlobal.ViewModels
       BtnNewProperty = new RelayCommand<object>(BtnNewPropertyClicked);
       BtnNewPropertyObject = new RelayCommand<object>(BtnNewPropertyObjectClicked);
       BtnNewRenter = new RelayCommand<object>(BtnNewRenterClicked);
-      BtnInvoice = new RelayCommand<object>(BtnInvoiceClicked);
       BtnNewInvoice = new RelayCommand<object>(BtnNewInvoiceClicked);
       BtnNewCreditor = new RelayCommand<object>(BtnNewCreditorClicked);
       BtnNewBillReminder = new RelayCommand<object>(BtnNewBillReminderClicked);
@@ -42,43 +41,31 @@ namespace ImmoGlobal.ViewModels
       get;
       private set;
     }
-
-    public ICommand BtnInvoice
-    {
-      get;
-      private set;
-    }
-
     public ICommand BtnNewInvoice
     {
       get;
       private set;
     }
-
     public ICommand BtnNewCreditor
     {
       get;
       private set;
     }
-
     public ICommand BtnNewBillReminder
     {
       get;
       private set;
     }
-
     public ICommand BtnNewRentalContract
     {
       get;
       private set;
     }
-
     public ICommand BtnNewAccount
     {
       get;
       private set;
     }
-
     public ICommand BtnNewPaymentRecord
     {
       get;
@@ -89,13 +76,11 @@ namespace ImmoGlobal.ViewModels
       get;
       private set;
     }
-    
     public ICommand BtnHousekeeper
     {
       get;
       private set;
     }
-
     public ICommand BtnNewHousekeeper
     {
       get;
@@ -122,7 +107,6 @@ namespace ImmoGlobal.ViewModels
     {
       throw new NotImplementedException();
     }
-
     private void BtnNewAccountClicked(object obj)
     {
       if (MainWindowViewModel.GetInstance != null)
@@ -130,7 +114,6 @@ namespace ImmoGlobal.ViewModels
         MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertAccountViewModel();
       }
     }
-
     private void BtnNewRentalContractClicked(object obj)
     {
       if (MainWindowViewModel.GetInstance != null)
@@ -138,12 +121,10 @@ namespace ImmoGlobal.ViewModels
         MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertRentalContractViewModel();
       }
     }
-
     private void BtnNewBillReminderClicked(object obj)
     {
       throw new NotImplementedException();
     }
-
     private void BtnNewCreditorClicked(object obj)
     {
       if (MainWindowViewModel.GetInstance != null)
@@ -151,7 +132,6 @@ namespace ImmoGlobal.ViewModels
         MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertCreditorViewModel();
       };
     }
-
     private void BtnNewInvoiceClicked(object obj)
     {
       if (MainWindowViewModel.GetInstance != null)
@@ -159,12 +139,6 @@ namespace ImmoGlobal.ViewModels
         MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertInvoiceViewModel();
       }
     }
-
-    private void BtnInvoiceClicked(object obj)
-    {
-      throw new NotImplementedException();
-    }
-
     private void BtnNewRenterClicked(object obj)
     {
       if (MainWindowViewModel.GetInstance != null)
@@ -172,7 +146,6 @@ namespace ImmoGlobal.ViewModels
         MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertRenterViewModel();
       }
     }
-
     private void BtnEditClicked(object obj)
     {
       var instance = MainWindowViewModel.GetInstance;
@@ -219,7 +192,6 @@ namespace ImmoGlobal.ViewModels
         }
       };
     }
-
     private void BtnHousekeeperClicked(object obj)
     {
       var instance = MainWindowViewModel.GetInstance;
@@ -228,7 +200,6 @@ namespace ImmoGlobal.ViewModels
         instance.SelectedViewModel = new UpsertHousekeeperViewModel(instance.SelectedPersona);
       }
     }
-
     private void BtnNewHousekeeperClicked(object obj)
     {
       var instance = MainWindowViewModel.GetInstance;
@@ -237,8 +208,8 @@ namespace ImmoGlobal.ViewModels
         instance.SelectedViewModel = new UpsertHousekeeperViewModel();
       }
     }
-
     #endregion
+    
     /// <summary>
     /// Visibilty Properties for all Buttons
     /// </summary>
@@ -246,7 +217,6 @@ namespace ImmoGlobal.ViewModels
     private Visibility _btnNewPropertyVisibility;
     private Visibility _btnNewPropertyObjectVisibility;
     private Visibility _btnNewRenterVisibility;
-    private Visibility _btnInvoiceVisibility;
     private Visibility _btnNewInvoiceVisibility;
     private Visibility _btnNewCreditorVisibility;
     private Visibility _btnNewBillReminderVisibility;
@@ -269,7 +239,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
     public Visibility BtnNewPropertyObjectVisibility
     {
       get
@@ -282,7 +251,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
     public Visibility BtnNewRenterVisibility
     {
       get
@@ -294,21 +262,7 @@ namespace ImmoGlobal.ViewModels
         _btnNewRenterVisibility = value;
         OnPropertyChanged();
       }
-    }
-
-    public Visibility BtnInvoiceVisibility
-    {
-      get
-      {
-        return _btnInvoiceVisibility;
-      }
-      set
-      {
-        _btnInvoiceVisibility = value;
-        OnPropertyChanged();
-      }
-    }
-
+    }        
     public Visibility BtnNewInvoiceVisibility
     {
       get
@@ -321,7 +275,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
     public Visibility BtnNewCreditorVisibility
     {
       get
@@ -334,7 +287,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
     public Visibility BtnNewBillReminderVisibility
     {
       get
@@ -347,7 +299,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
     public Visibility BtnNewRentalContractVisibility
     {
       get
@@ -360,7 +311,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
     public Visibility BtnNewAccountVisibility
     {
       get
@@ -373,7 +323,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
     public Visibility BtnNewPaymentRecordVisibility
     {
       get
@@ -386,7 +335,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
     public Visibility BtnEditVisibility
     {
       get
@@ -399,7 +347,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
     public Visibility BtnHousekeeperVisibility
     {
       get
@@ -412,7 +359,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
     public Visibility BtnNewHousekeeperVisibility
     {
       get
