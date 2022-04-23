@@ -56,22 +56,12 @@
 \newpage
 \subsection{Modellierung der Klassen}
 \subsubsection{Klassendiagramm}
-\vspace*{-0.5cm}
+
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[width=0.9\linewidth]{content/diagrams/out/classdiagram/classdiagram.png}
+    \includegraphics[width=1\linewidth]{content/diagrams/out/classdiagram/classdiagram.png}
     \caption{Klassendiagramm}
     \label{classdiagramm}
-  \end{center}
-\end{figure}
-
-\vspace*{-1cm}
-
-\begin{figure}[H]
-  \begin{center}
-    \includegraphics[width=0.65\linewidth]{content/diagrams/out/classdiagram/Enums.png}
-    \caption{Enum's}
-    \label{enums}
   \end{center}
 \end{figure}
 
@@ -98,13 +88,26 @@
     \hline
     \textbf{Account} & Bildet das Konto zum Verbuchen der Rechnungsposition ab.\\
     \hline 
+    \textbf{Income} & Bildet alle Einnahmen in einem Konto ab.\\
+    \hline
+    \textbf{Expense} & Bildet alle Ausgaben in einem Konto ab.\\
+    \hline
     \textbf{User} & Bildet die User für das Login in der Applikation ab.\\
     \hline
 \end{tabulary}
 \caption{Beschreibung der Fachklassen}
 \end{table}
 
+\newpage
 Zusätzlich zu den Klassen sind in der \fref{enums} auch noch die Enums definiert welche in der Applikation verwendet werden.
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.65\linewidth]{content/diagrams/out/classdiagram/Enums.png}
+    \caption{Enum's}
+    \label{enums}
+  \end{center}
+\end{figure}
 
 \begin{table}[H]
   \centering
@@ -124,14 +127,15 @@ Zusätzlich zu den Klassen sind in der \fref{enums} auch noch die Enums definier
     \hline
     \textbf{ECivilState} & Zivilstand des Mieters\\
     \hline
-    \textbf{EContractState} & Kategroie um den Status des Mietvertrages abzubilden\\
+    \textbf{EContractState} & Kategorie um den Status des Mietvertrages abzubilden\\
     \hline
-    \textbf{ERole} & Userkategorie. Wird für die Zuweisung der Rechte benötigt\\
+    \textbf{ERole} & Userkategorie. Wird für die Zuweisung der Rechte verwendet\\
     \hline
 \end{tabulary}
 \caption{Beschreibung der Enums}
 \end{table}
 
+\newpage
 \subsection{Sequenzdiagramme}
 \input{content/main/sequenzdiagram.tex}
 
@@ -177,6 +181,10 @@ Zusätzlich zu den Klassen sind in der \fref{enums} auch noch die Enums definier
     \textbf{Invoices} & Bildet die Rechnung ab. Die Rechnung beinhaltet N Rechnungspositionen aus deren die Rechnung erstellt wird. Damit die Rechnung einem Mieter oder Kreditor gestellt werden kann, wird der Foreign-Key Persona verwendet.\\
     \hline
     \textbf{Accounts} & Bildet das Konto zum Verbuchen der Rechnung ab und hat somit eine 1:N-Beziehung zur Rechnung\\
+    \hline
+    \textbf{Income} & Bildet alle Einnahmen zu einem Konto ab\\
+    \hline
+    \textbf{Expense} & Bildet alle Ausgaben zu einem Konto ab\\
     \hline
     \textbf{Users} & Bildet die User für das Login in der Applikation ab. Das Passwort wird als HASH gespeichert.\\
     \hline 
