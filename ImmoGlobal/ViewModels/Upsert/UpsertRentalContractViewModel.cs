@@ -18,11 +18,9 @@ namespace ImmoGlobal.ViewModels
   {
     public UpsertRentalContractViewModel()
     {
-      BtnDeleteVisibility = Visibility.Collapsed;
-
       BtnSave = new RelayCommand<object>(SaveClicked);
 
-      _personas = new(DbController.GetAllPersonasDB());
+      _personaCollection = new(DbController.GetAllPersonasDB());
       _propertyCollection = new(DbController.GetAllPropertiesDB());
 
       RentStartDate = DateTime.Now;
@@ -33,14 +31,11 @@ namespace ImmoGlobal.ViewModels
 
     public UpsertRentalContractViewModel(RentalContract selectedRentalContract)
     {
-      BtnDeleteVisibility = Visibility.Visible;
-
       SelectedRentalContract = selectedRentalContract;
       RentalContractId = selectedRentalContract.RentalContractId;
 
       BtnSave = new RelayCommand<object>(SaveClicked);
-      BtnDelete = new RelayCommand<object>(DeleteClicked);
-      _personas = new(DbController.GetAllPersonasDB());
+      _personaCollection = new(DbController.GetAllPersonasDB());
       _propertyCollection = new(DbController.GetAllPropertiesDB());
 
       SelectedPersona = selectedRentalContract.GetRenter();
@@ -58,7 +53,7 @@ namespace ImmoGlobal.ViewModels
 
 
     private Persona? _selectedPersona;
-    private ObservableCollection<Persona> _personas;
+    private ObservableCollection<Persona> _personaCollection;
     private Property? _selectedProperty;
     private ObservableCollection<Property> _propertyCollection;
     private PropertyObject? _selectedPropertyObject;
@@ -86,10 +81,10 @@ namespace ImmoGlobal.ViewModels
     }
     public ObservableCollection<Persona> PersonaCollection
     {
-      get => _personas;
+      get => _personaCollection;
       set
       {
-        _personas = value;
+        _personaCollection = value;
         OnPropertyChanged();
       }
     }
@@ -188,14 +183,6 @@ namespace ImmoGlobal.ViewModels
       private set;
     }
 
-    public ICommand? BtnDelete
-    {
-      get;
-      private set;
-    }
-
-    public Visibility BtnDeleteVisibility { get; set; }
-
     public EContractState ContractState
     {
       get => _contractState;
@@ -214,10 +201,6 @@ namespace ImmoGlobal.ViewModels
                   {EContractState.Active, Application.Current.FindResource("activeContract") as string ?? "active contract"},
                   {EContractState.Canceled, Application.Current.FindResource("canceledContract") as string ?? "canceled contract"},
     };
-
-    private void DeleteClicked(object obj)
-    {
-    }
 
     private void SaveClicked(object obj)
     {

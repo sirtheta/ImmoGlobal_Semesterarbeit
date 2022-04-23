@@ -28,19 +28,19 @@ namespace ImmoGlobal.ViewModels
       SelectedRenter = selectedRenter;
 
       PersonaId = selectedRenter.PersonaId;
-      _lastName = selectedRenter.LastName;
-      _firstName = selectedRenter.FirstName;
-      _phone = selectedRenter.PhoneString;
-      _email = selectedRenter.Email;
-      _dateOfBirth = selectedRenter.DateOfBirth;
-      _address = selectedRenter.Address;
-      _zip = selectedRenter.Zip.ToString();
-      _city = selectedRenter.City;
-      _civilState = selectedRenter.CivilState;
-      _addressBefore = selectedRenter.AddressBefore;
-      _accountNumber = selectedRenter.AccountNumber;
-      _mobilePhone = selectedRenter.MobileString;
-      _officePhone = selectedRenter.OfficePhoneString;
+      LastName = selectedRenter.LastName;
+      FirstName = selectedRenter.FirstName;
+      Phone = selectedRenter.PhoneString;
+      Email = selectedRenter.Email;
+      DateOfBirth = selectedRenter.DateOfBirth;
+      Address = selectedRenter.Address;
+      Zip = selectedRenter.Zip.ToString();
+      City = selectedRenter.City;
+      CivilState = selectedRenter.CivilState;
+      AddressBefore = selectedRenter.AddressBefore;
+      AccountNumber = selectedRenter.AccountNumber;
+      MobilePhone = selectedRenter.MobileString;
+      OfficePhone = selectedRenter.OfficePhoneString;
 
       FormTitel = (Application.Current.FindResource("renter") as string ?? "property") + " " +
              (Application.Current.FindResource("edit") as string ?? "edit");

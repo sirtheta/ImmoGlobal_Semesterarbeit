@@ -29,13 +29,13 @@ namespace ImmoGlobal.ViewModels
       Housekeeper = property.GetHouskeeper();
       Property = property;
       PropertyId = property.PropertyId;
-      _description = property.Description;
-      _address = property.Address;
-      _zipCode = property.ZipCode.ToString();
-      _city = property.City;
-      _propertyInsurance = property.PropertyInsurance;
-      _personInsurance = property.PersonInsurance;
-      _liabilityInsurance = property.LiabilityInsurance;
+      Description = property.Description;
+      Address = property.Address;
+      ZipCode = property.ZipCode.ToString();
+      City = property.City;
+      PropertyInsurance = property.PropertyInsurance;
+      PersonInsurance = property.PersonInsurance;
+      LiabilityInsurance = property.LiabilityInsurance;
 
       FormTitel = (Application.Current.FindResource("property") as string ?? "property") + " " +
                    (Application.Current.FindResource("edit") as string ?? "edit");

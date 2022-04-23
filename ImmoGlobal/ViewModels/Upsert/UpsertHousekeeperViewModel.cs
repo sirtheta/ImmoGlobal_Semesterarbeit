@@ -26,15 +26,15 @@ namespace ImmoGlobal.ViewModels
       SelectedHousekeeper = selectedHousekeeper;
 
       PersonaId = selectedHousekeeper.PersonaId;
-      _firstName = selectedHousekeeper.FirstName;
-      _lastName = selectedHousekeeper.LastName;
-      _phone = selectedHousekeeper.PhoneString;
-      _mobilePhone = selectedHousekeeper.MobileString;
-      _email = selectedHousekeeper.Email;
-      _address = selectedHousekeeper.Address;
-      _zip = selectedHousekeeper.Zip.ToString();
-      _city = selectedHousekeeper.City;
-      _accountNumber = selectedHousekeeper.AccountNumber;
+      FirstName = selectedHousekeeper.FirstName;
+      LastName = selectedHousekeeper.LastName;
+      Phone = selectedHousekeeper.PhoneString;
+      MobilePhone = selectedHousekeeper.MobileString;
+      Email = selectedHousekeeper.Email;
+      Address = selectedHousekeeper.Address;
+      Zip = selectedHousekeeper.Zip.ToString();
+      City = selectedHousekeeper.City;
+      AccountNumber = selectedHousekeeper.AccountNumber;
 
 
       FormTitel = (Application.Current.FindResource("housekeeper") as string ?? "housekeeper") + " " +

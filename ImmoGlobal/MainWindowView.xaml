@@ -25,7 +25,7 @@
     <notifications:NotificationArea Panel.ZIndex="10" 
               MaxItems="3"
               x:Name="WindowArea"
-              Position="BottomRight" Margin="0,0,100,100">
+              Position="BottomRight" Margin="0,0,400,200">
     </notifications:NotificationArea>
     <Grid>
       <Grid.RowDefinitions>

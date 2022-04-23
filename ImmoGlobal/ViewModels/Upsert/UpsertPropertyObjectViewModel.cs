@@ -32,18 +32,18 @@ namespace ImmoGlobal.ViewModels
       BtnDeleteVisibility = Visibility.Visible;
       PropertyObjectId = propertyObject.PropertyObjectId;
       _property = selectedProperty;
-      _description = propertyObject.Description;
-      _objectType = propertyObject.ObjectType;
-      _location = propertyObject.Location;
-      _numberOfRooms = propertyObject.NumberOfRooms.ToString();
-      _area = propertyObject.Area.ToString();
-      _numberOfKeys = propertyObject.NumberOfKeys.ToString();
-      _fridge = propertyObject.Fridge;
-      _dishwasher = propertyObject.Dishwasher;
-      _stove = propertyObject.Stove;
-      _oven = propertyObject.Oven;
-      _washingMachine = propertyObject.WashingMachine;
-      _tumbler = propertyObject.Tumbler;
+      Description = propertyObject.Description;
+      ObjectType = propertyObject.ObjectType;
+      Location = propertyObject.Location;
+      NumberOfRooms = propertyObject.NumberOfRooms.ToString();
+      Area = propertyObject.Area.ToString();
+      NumberOfKeys = propertyObject.NumberOfKeys.ToString();
+      Fridge = propertyObject.Fridge;
+      Dishwasher = propertyObject.Dishwasher;
+      Stove = propertyObject.Stove;
+      Oven = propertyObject.Oven;
+      WashingMachine = propertyObject.WashingMachine;
+      Tumbler = propertyObject.Tumbler;
       FormTitel =
         (Application.Current.FindResource("propertyObject") as string ?? "object") + " " +
         " " + propertyObject.Description + " " +

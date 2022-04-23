@@ -26,19 +26,19 @@ namespace ImmoGlobal.ViewModels
       SelectedCreditor = selectedCreditor;
 
       PersonaId = selectedCreditor.PersonaId;
-      _lastName = selectedCreditor.LastName;
-      _firstName = selectedCreditor.FirstName;
-      _phone = selectedCreditor.PhoneString;
-      _mobilePhone = selectedCreditor.MobileString;
-      _officePhone = selectedCreditor.OfficePhoneString;
-      _email = selectedCreditor.Email;
-      _address = selectedCreditor.Address;
-      _zip = selectedCreditor.Zip.ToString();
-      _city = selectedCreditor.City;
-      _creditorIsActive = selectedCreditor.CreditorIsActive;
-      _vatNumber = selectedCreditor.VatNumber;
-      _creditorCompanyName = selectedCreditor.CreditorCompanyName;
-      _creditorContactPerson = selectedCreditor.CreditorContactPerson;
+      LastName = selectedCreditor.LastName;
+      FirstName = selectedCreditor.FirstName;
+      Phone = selectedCreditor.PhoneString;
+      MobilePhone = selectedCreditor.MobileString;
+      OfficePhone = selectedCreditor.OfficePhoneString;
+      Email = selectedCreditor.Email;
+      Address = selectedCreditor.Address;
+      Zip = selectedCreditor.Zip.ToString();
+      City = selectedCreditor.City;
+      CreditorIsActive = selectedCreditor.CreditorIsActive;
+      VatNumber = selectedCreditor.VatNumber;
+      CreditorCompanyName = selectedCreditor.CreditorCompanyName;
+      CreditorContactPerson = selectedCreditor.CreditorContactPerson;
 
       FormTitel = (Application.Current.FindResource("creditor") as string ?? "creditor") + " " +
              (Application.Current.FindResource("edit") as string ?? "edit");
