@@ -36,7 +36,7 @@ namespace ImmoGlobal.ViewModels
       Address = selectedRenter.Address;
       Zip = selectedRenter.Zip.ToString();
       City = selectedRenter.City;
-      CivilState = selectedRenter.CivilState;
+      CivilState = selectedRenter.CivilState ?? ECivilState.Single;
       AddressBefore = selectedRenter.AddressBefore;
       AccountNumber = selectedRenter.AccountNumber;
       MobilePhone = selectedRenter.MobileString;

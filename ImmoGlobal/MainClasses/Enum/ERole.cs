@@ -3,6 +3,7 @@
   internal enum ERole
   {
     Admin,
-    User
+    User,
+    Viewer
   }
 }

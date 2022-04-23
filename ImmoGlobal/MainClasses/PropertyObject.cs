@@ -14,8 +14,8 @@ namespace ImmoGlobal.MainClasses
     public int PropertyObjectId { get; set; }
     public string? Description { get; set; }
     public EPropertyObjectType ObjectType { get; set; }
-    public Property? Property { get; set; }
-    public string? Location { get; set; }
+    public Property Property { get; set; }
+    public string Location { get; set; }
     public double NumberOfRooms { get; set; }
     public double Area { get; set; }
     public int? NumberOfKeys { get; set; }

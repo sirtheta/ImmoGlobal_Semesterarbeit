@@ -185,4 +185,9 @@
   <system:String x:Key="successUpdateRentalContract">Update des Mietvertrags erfolgreich!</system:String>
   <system:String x:Key="errorAddRentalContract">Speichern des Mietvertrags fehlgeschlagen!</system:String>
   <system:String x:Key="errorRent">Bitte eine gültige Miete eingeben!</system:String>
+
+  <system:String x:Key="accountsOverview">Übersicht der Konten</system:String>
+  <system:String x:Key="accountDescription">Kontobeschreibung</system:String>
+  <system:String x:Key="accountBalance">Kontostand</system:String>
+
 </ResourceDictionary>

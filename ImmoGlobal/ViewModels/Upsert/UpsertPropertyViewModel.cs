@@ -29,7 +29,7 @@ namespace ImmoGlobal.ViewModels
       Housekeeper = property.GetHouskeeper();
       Property = property;
       PropertyId = property.PropertyId;
-      Description = property.Description;
+      Description = property.Description ?? "";
       Address = property.Address;
       ZipCode = property.ZipCode.ToString();
       City = property.City;
@@ -41,13 +41,13 @@ namespace ImmoGlobal.ViewModels
                    (Application.Current.FindResource("edit") as string ?? "edit");
     }
 
-    private string? _description;
-    private string? _address;
-    private string? _zipCode;
-    private string? _city;
-    private string? _propertyInsurance;
-    private string? _personInsurance;
-    private string? _liabilityInsurance;
+    private string _description;
+    private string _address;
+    private string _zipCode;
+    private string _city;
+    private string _propertyInsurance;
+    private string _personInsurance;
+    private string _liabilityInsurance;
     private Persona? _housekeeper;
     private ObservableCollection<Persona> _personas;
 
@@ -55,7 +55,7 @@ namespace ImmoGlobal.ViewModels
 
     private Property? Property { get; set; }
     private int? PropertyId { get; set; }
-    public string? Description
+    public string Description
     {
       get => _description;
       set
@@ -64,7 +64,7 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-    public string? Address
+    public string Address
     {
       get => _address;
       set
@@ -73,7 +73,7 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-    public string? ZipCode
+    public string ZipCode
     {
       get => _zipCode;
       set
@@ -82,7 +82,7 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-    public string? City
+    public string City
     {
       get => _city;
       set
@@ -91,7 +91,7 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-    public string? PropertyInsurance
+    public string PropertyInsurance
     {
       get => _propertyInsurance;
       set
@@ -100,7 +100,7 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-    public string? PersonInsurance
+    public string PersonInsurance
     {
       get => _personInsurance;
       set
@@ -109,7 +109,7 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-    public string? LiabilityInsurance
+    public string LiabilityInsurance
     {
       get => _liabilityInsurance;
       set
@@ -263,13 +263,13 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     private void ClearValues()
     {
-      Description = null;
-      Address = null;
-      ZipCode = null;
-      City = null;
-      PropertyInsurance = null;
-      PersonInsurance = null;
-      LiabilityInsurance = null;
+      Description = string.Empty;
+      Address = string.Empty;
+      ZipCode = string.Empty;
+      City = string.Empty;
+      PropertyInsurance = string.Empty;
+      PersonInsurance = string.Empty;
+      LiabilityInsurance = string.Empty;
       Housekeeper = null;
     }
   }

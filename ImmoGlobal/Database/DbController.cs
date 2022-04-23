@@ -22,6 +22,34 @@ namespace ImmoGlobal.Database
     }
 
     /// <summary>
+    /// returns income list of account
+    /// </summary>
+    /// <param name="account"></param>
+    /// <returns></returns>
+    /// <exception></exception>
+    internal static IEnumerable<Income> GetIncomeToAccountDB(Account account)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.Incomes
+              where p.Account == account
+              select p).ToList();
+    }
+
+    /// <summary>
+    /// returns expense list of account
+    /// </summary>
+    /// <param name="account"></param>
+    /// <returns></returns>
+    /// <exception></exception>
+    internal static IEnumerable<Expense> GetExpenseToAccountDB(Account account)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.Expenses
+              where p.Account == account
+              select p).ToList();
+    }
+
+    /// <summary>
     /// returns invoice related to persona
     /// </summary>
     /// <param name="persona"></param>
@@ -228,7 +256,6 @@ namespace ImmoGlobal.Database
       }
     }
 
-
     /// <summary>
     /// update or create a rental contract
     /// </summary>
@@ -421,6 +448,16 @@ namespace ImmoGlobal.Database
       return (from p in db.InvoicePositions
               where p == invoicePosition
               select p.Account).First();
+    }
+
+    /// <summary>
+    /// return all accounts from DB
+    /// </summary>
+    /// <returns></returns>
+    internal static IEnumerable<Account> GetAllAccountsDB()
+    {
+      using var db = new ImmoGlobalContext();
+      return db.Accounts.ToList();
     }
   }
 }

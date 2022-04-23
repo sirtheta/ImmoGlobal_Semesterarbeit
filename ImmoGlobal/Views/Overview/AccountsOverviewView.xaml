@@ -12,7 +12,64 @@
              d:DesignHeight="650" 
              d:DesignWidth="1500"
              TextOptions.TextFormattingMode="Display">
-    <Grid>
-            
-    </Grid>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0" 
+                 Text="{DynamicResource accountsOverview}"
+                 HorizontalAlignment="Left"
+                 Padding="10"
+                 FontFamily="{DynamicResource MaterialDesignFont}"
+                 FontSize="30"
+                 FontWeight="Bold"/>
+
+    <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="2"
+            Margin="10"
+            Padding="10"
+            Width="auto"
+            MinWidth="400"
+            HorizontalAlignment="Left"
+            Background="{DynamicResource MaterialDesignBackground}">
+      <Border.Effect>
+        <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
+      </Border.Effect>
+      <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid ShowGridLines="false">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" MinWidth="300"/>
+          </Grid.ColumnDefinitions>
+          <DataGrid Grid.Row="1" 
+                  ItemsSource="{Binding AccountsCollection, UpdateSourceTrigger=PropertyChanged}" 
+                  SelectedItem="{Binding SelectedAccount}"
+                  SelectionMode="Extended"
+                  SelectionUnit="FullRow"
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False" 
+                  CanUserDeleteRows="False"
+                  Style="{DynamicResource MaterialDesignDataGrid}">
+            <DataGrid.Columns>
+              <DataGridTextColumn Header="{DynamicResource accountDescription}"         
+                                IsReadOnly="True" 
+                                Binding="{Binding AccountDescription}"/>
+              
+              <DataGridTextColumn Header="{DynamicResource accountNumber}"         
+                                IsReadOnly="True" 
+                                Binding="{Binding AccountNumber}"/>
+              
+              <DataGridTextColumn Header="{DynamicResource accountBalance}"         
+                                IsReadOnly="True" 
+                                Binding="{Binding Balance}"/>
+              
+            </DataGrid.Columns>
+          </DataGrid>
+        </Grid>
+      </ScrollViewer>
+    </Border>
+
+  </Grid>
 </UserControl>

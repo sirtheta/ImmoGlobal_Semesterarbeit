@@ -37,7 +37,7 @@ namespace ImmoGlobal.ViewModels
       Location = propertyObject.Location;
       NumberOfRooms = propertyObject.NumberOfRooms.ToString();
       Area = propertyObject.Area.ToString();
-      NumberOfKeys = propertyObject.NumberOfKeys.ToString();
+      NumberOfKeys = propertyObject.NumberOfKeys?.ToString() ?? "";
       Fridge = propertyObject.Fridge;
       Dishwasher = propertyObject.Dishwasher;
       Stove = propertyObject.Stove;
@@ -53,10 +53,10 @@ namespace ImmoGlobal.ViewModels
     private string? _description;
     private EPropertyObjectType _objectType;
     private Property _property;
-    private string? _location;
-    private string? _numberOfRooms;
-    private string? _area;
-    private string? _numberOfKeys;
+    private string _location;
+    private string _numberOfRooms;
+    private string _area;
+    private string _numberOfKeys;
     private bool _fridge;
     private bool _dishwasher;
     private bool _stove;
@@ -109,7 +109,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    public string? Location
+    public string Location
     {
       get => _location;
       set
@@ -119,7 +119,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    public string? NumberOfRooms
+    public string NumberOfRooms
     {
       get => _numberOfRooms;
       set
@@ -129,7 +129,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    public string? Area
+    public string Area
     {
       get => _area;
       set
@@ -139,7 +139,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    public string? NumberOfKeys
+    public string NumberOfKeys
     {
       get => _numberOfKeys;
       set
@@ -349,11 +349,11 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     private void ClearValues()
     {
-      Description = null;
-      Location = null;
-      NumberOfRooms = null;
-      Area = null;
-      NumberOfKeys = null;
+      Description = string.Empty;
+      Location = string.Empty;
+      NumberOfRooms = string.Empty;
+      Area = string.Empty;
+      NumberOfKeys = string.Empty;
       Fridge = false;
       Dishwasher = false;
       Stove = false;

@@ -10,7 +10,7 @@ namespace ImmoGlobal.MainClasses
     public PropertyObject? PropertyObject { get; set; }
     public double Value { get; set; }
     public EAdditionalCosts? AdditionalCostsCategory { get; set; }
-    public Account? Account { get; set; }
+    public Account Account { get; set; }
 
     public Invoice GetInvoiceToInvoicePosition()
     {

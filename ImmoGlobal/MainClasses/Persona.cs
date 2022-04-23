@@ -7,9 +7,7 @@ namespace ImmoGlobal.MainClasses
 {
   internal class Persona
   {
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     private Persona()
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     {
     }
 
@@ -119,16 +117,16 @@ namespace ImmoGlobal.MainClasses
     public long Phone { get; set; }
     public long Mobile { get; set; }
     public long OfficePhone { get; set; }
-    public string Email { get; set; }
+    public string? Email { get; set; }
     public DateTime? DateOfBirth { get; set; }
     public string Address { get; set; }
     public int Zip { get; set; }
     public string City { get; set; }
-    public ECivilState CivilState { get; set; }
+    public ECivilState? CivilState { get; set; }
     public string? AddressBefore { get; set; }
     public string? AccountNumber { get; set; }
     public string? CreditorContactPerson { get; set; }
-    public bool CreditorIsActive { get; set; }
+    public bool? CreditorIsActive { get; set; }
     public bool IsCreditor { get; set; }
     public bool IsRenter { get; set; }
     public string? VatNumber { get; set; }
@@ -157,7 +155,17 @@ namespace ImmoGlobal.MainClasses
 
     public string CreditorIsActiveString
     {
-      get => CreditorIsActive ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
+      get
+      {
+        if (CreditorIsActive != null)
+        {
+          return (bool)CreditorIsActive ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
+        }
+        else
+        {
+          return Application.Current.FindResource("no") as string ?? "no";
+        }
+      }
     }
   }
 }

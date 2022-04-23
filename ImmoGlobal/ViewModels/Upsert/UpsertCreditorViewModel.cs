@@ -35,7 +35,7 @@ namespace ImmoGlobal.ViewModels
       Address = selectedCreditor.Address;
       Zip = selectedCreditor.Zip.ToString();
       City = selectedCreditor.City;
-      CreditorIsActive = selectedCreditor.CreditorIsActive;
+      CreditorIsActive = selectedCreditor.CreditorIsActive ?? false;
       VatNumber = selectedCreditor.VatNumber;
       CreditorCompanyName = selectedCreditor.CreditorCompanyName;
       CreditorContactPerson = selectedCreditor.CreditorContactPerson;
