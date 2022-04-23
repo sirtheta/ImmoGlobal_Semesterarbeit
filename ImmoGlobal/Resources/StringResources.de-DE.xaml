@@ -190,4 +190,10 @@
   <system:String x:Key="accountDescription">Kontobeschreibung</system:String>
   <system:String x:Key="accountBalance">Kontostand</system:String>
 
+  <system:String x:Key="addNewAccount">Neues Konto hinzufügen</system:String>
+  <system:String x:Key="successAddAccount">Konto erfolgreich hinzugefügt!</system:String>
+  <system:String x:Key="successUpdateAccount">Update des Kontos erfolgreich!</system:String>
+  <system:String x:Key="errorAddAccount">Speichern des Kontos fehlgeschlagen!</system:String>
+  
+
 </ResourceDictionary>

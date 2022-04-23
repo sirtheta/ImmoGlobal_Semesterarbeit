@@ -42,7 +42,7 @@ namespace ImmoGlobal.ViewModels
       MobilePhone = selectedRenter.MobileString;
       OfficePhone = selectedRenter.OfficePhoneString;
 
-      FormTitel = (Application.Current.FindResource("renter") as string ?? "property") + " " +
+      FormTitel = (Application.Current.FindResource("renter") as string ?? "renter") + " " +
              (Application.Current.FindResource("edit") as string ?? "edit");
     }
 

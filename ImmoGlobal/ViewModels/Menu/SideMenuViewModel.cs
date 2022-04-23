@@ -178,7 +178,7 @@ namespace ImmoGlobal.ViewModels
             }
             break;
           case AccountsOverviewViewModel:
-            if (instance.SelectedInvoice != null)
+            if (instance.SelectedAccount != null)
             {
               instance.SelectedViewModel = new UpsertAccountViewModel(instance.SelectedAccount);
             }

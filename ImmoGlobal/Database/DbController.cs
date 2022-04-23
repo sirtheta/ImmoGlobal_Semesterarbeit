@@ -22,34 +22,6 @@ namespace ImmoGlobal.Database
     }
 
     /// <summary>
-    /// returns income list of account
-    /// </summary>
-    /// <param name="account"></param>
-    /// <returns></returns>
-    /// <exception></exception>
-    internal static IEnumerable<Income> GetIncomeToAccountDB(Account account)
-    {
-      using var db = new ImmoGlobalContext();
-      return (from p in db.Incomes
-              where p.Account == account
-              select p).ToList();
-    }
-
-    /// <summary>
-    /// returns expense list of account
-    /// </summary>
-    /// <param name="account"></param>
-    /// <returns></returns>
-    /// <exception></exception>
-    internal static IEnumerable<Expense> GetExpenseToAccountDB(Account account)
-    {
-      using var db = new ImmoGlobalContext();
-      return (from p in db.Expenses
-              where p.Account == account
-              select p).ToList();
-    }
-
-    /// <summary>
     /// returns invoice related to persona
     /// </summary>
     /// <param name="persona"></param>
@@ -458,6 +430,61 @@ namespace ImmoGlobal.Database
     {
       using var db = new ImmoGlobalContext();
       return db.Accounts.ToList();
+    }
+
+    /// <summary>
+    /// update or create a new account
+    /// </summary>
+    /// <param name="account"></param>
+    /// <returns></returns>
+    internal static bool UpsertAccountToDB(Account account)
+    {
+      try
+      {
+        using var db = new ImmoGlobalContext();
+        if (account.AccountId == 0)
+        {
+          db.Accounts.Add(account);
+        }
+        else
+        {
+          db.Accounts.Update(account);
+        }
+        db.SaveChanges();
+        return true;
+      }
+      catch (Exception)
+      {
+        return false;
+      }
+    }
+
+    /// <summary>
+    /// returns income list of account
+    /// </summary>
+    /// <param name="account"></param>
+    /// <returns></returns>
+    /// <exception></exception>
+    internal static IEnumerable<Income> GetIncomeToAccountDB(Account account)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.Incomes
+              where p.Account == account
+              select p).ToList();
+    }
+
+    /// <summary>
+    /// returns expense list of account
+    /// </summary>
+    /// <param name="account"></param>
+    /// <returns></returns>
+    /// <exception></exception>
+    internal static IEnumerable<Expense> GetExpenseToAccountDB(Account account)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.Expenses
+              where p.Account == account
+              select p).ToList();
     }
   }
 }
