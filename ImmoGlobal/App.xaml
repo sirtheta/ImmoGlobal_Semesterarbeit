@@ -62,6 +62,9 @@
       <DataTemplate DataType="{x:Type viewmodels:UpsertAccountViewModel}">
         <views:UpsertAccountView/>
       </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:UpsertPaymentRecordViewModel}">
+        <views:UpsertPaymentRecordView/>
+      </DataTemplate>
 
       <DataTemplate DataType="{x:Type viewmodels:RenterDetailsViewModel}">
         <views:RenterDetailsView/>

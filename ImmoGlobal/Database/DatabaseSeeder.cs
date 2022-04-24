@@ -32,13 +32,13 @@ namespace ImmoGlobal.Database
       var _account2 = new Account() { AccountNumber = "23VFYYXX034", AccountDescription = "Konto 2" };
       var _account3 = new Account() { AccountNumber = "DSDD2334445", AccountDescription = "Konto 3" };
 
-      var _income1 = new IncomeExpense() { Account = _account1, IncomeAmount = 345.05, Description = "SeedDescriptonIncome1", ReceiptNumber = 20, Date = DateTime.Now.AddDays(-5) };
-      var _income2 = new IncomeExpense() { Account = _account2, IncomeAmount = 315.10, Description = "SeedDescriptonIncome2", ReceiptNumber = 40, Date = DateTime.Now.AddDays(-10) };
-      var _income3 = new IncomeExpense() { Account = _account3, IncomeAmount = 395.75, Description = "SeedDescriptonIncome3", ReceiptNumber = 60, Date = DateTime.Now.AddDays(-3) };
+      var _income1 = new PaymentRecord() { Account = _account1, IncomeAmount = 345.05, Description = "SeedDescriptonIncome1", ReceiptNumber = 20, Date = DateTime.Now.AddDays(-5) };
+      var _income2 = new PaymentRecord() { Account = _account2, IncomeAmount = 315.10, Description = "SeedDescriptonIncome2", ReceiptNumber = 40, Date = DateTime.Now.AddDays(-10) };
+      var _income3 = new PaymentRecord() { Account = _account3, IncomeAmount = 395.75, Description = "SeedDescriptonIncome3", ReceiptNumber = 60, Date = DateTime.Now.AddDays(-3) };
 
-      var _expense1 = new IncomeExpense() { Account = _account1, ExpenseAmount = 268.65, Description = "SeedDescriptionExpense1", ReceiptNumber = 10, Date = DateTime.Now.AddDays(-25)  };
-      var _expense2 = new IncomeExpense() { Account = _account2, ExpenseAmount = 295.95, Description = "SeedDescriptionExpense2", ReceiptNumber = 30, Date = DateTime.Now.AddDays(-15) };
-      var _expense3 = new IncomeExpense() { Account = _account3, ExpenseAmount = 252.15, Description = "SeedDescriptionExpense3", ReceiptNumber = 50, Date = DateTime.Now.AddDays(-8) };
+      var _expense1 = new PaymentRecord() { Account = _account1, ExpenseAmount = 268.65, Description = "SeedDescriptionExpense1", ReceiptNumber = 10, Date = DateTime.Now.AddDays(-25)  };
+      var _expense2 = new PaymentRecord() { Account = _account2, ExpenseAmount = 295.95, Description = "SeedDescriptionExpense2", ReceiptNumber = 30, Date = DateTime.Now.AddDays(-15) };
+      var _expense3 = new PaymentRecord() { Account = _account3, ExpenseAmount = 252.15, Description = "SeedDescriptionExpense3", ReceiptNumber = 50, Date = DateTime.Now.AddDays(-8) };
 
       //additionalCosts prop 1
       var _invoicePosition1 = new InvoicePosition() { Property = _property1, Value = 1320, AdditionalCostsCategory = EAdditionalCosts.Electricity, Account = _account3 };
@@ -130,12 +130,12 @@ namespace ImmoGlobal.Database
       db.Accounts.Add(_account1);
       db.Accounts.Add(_account2);
       db.Accounts.Add(_account3);
-      db.IncomesExpenses.Add(_income1);
-      db.IncomesExpenses.Add(_income2);
-      db.IncomesExpenses.Add(_income3);
-      db.IncomesExpenses.Add(_expense1);
-      db.IncomesExpenses.Add(_expense2);
-      db.IncomesExpenses.Add(_expense3);
+      db.PaymentRecords.Add(_income1);
+      db.PaymentRecords.Add(_income2);
+      db.PaymentRecords.Add(_income3);
+      db.PaymentRecords.Add(_expense1);
+      db.PaymentRecords.Add(_expense2);
+      db.PaymentRecords.Add(_expense3);
       db.InvoicePositions.Add(_invoicePosition1);
       db.InvoicePositions.Add(_invoicePosition2);
       db.InvoicePositions.Add(_invoicePosition3);

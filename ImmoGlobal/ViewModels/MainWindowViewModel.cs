@@ -73,6 +73,7 @@ namespace ImmoGlobal.ViewModels
     internal Invoice? SelectedInvoice { get; set; }
     internal Account? SelectedAccount { get; set; }
     internal RentalContract? SelectedRentalContract { get; set; }
+    public PaymentRecord? SelectedPaymentRecord { get; set; }
 
     /// <summary>
     /// sets the color of the menu bar icon
@@ -108,6 +109,7 @@ namespace ImmoGlobal.ViewModels
           MenuBarViewModel.BtnInvoiceColor = Brushes.Red;
           break;
         case AccountsOverviewViewModel:
+        case UpsertPaymentRecordViewModel:
         case UpsertAccountViewModel:
           MenuBarViewModel.BtnAccountColor = Brushes.Red;
           break;
@@ -130,6 +132,7 @@ namespace ImmoGlobal.ViewModels
       SideMenuViewModel.BtnNewAccountVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnEditVisibility = Visibility.Collapsed;
+      SideMenuViewModel.BtnEditTwoVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnHousekeeperVisibility = Visibility.Collapsed;
       SideMenuViewModel.BtnNewHousekeeperVisibility = Visibility.Collapsed;
 
@@ -170,10 +173,9 @@ namespace ImmoGlobal.ViewModels
           break;
         case AccountsOverviewViewModel:
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Visible;
-          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
-          break;
-        case UpsertAccountViewModel:
           SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Visible;
+          break;
+        case UpsertAccountViewModel:          
           SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           break;
         default:

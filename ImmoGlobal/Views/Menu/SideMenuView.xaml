@@ -123,7 +123,7 @@
             Visibility="{Binding BtnNewPaymentRecordVisibility}"/>
 
       <Button Command="{Binding BtnEdit}" 
-            Content="{DynamicResource btnEdit}"
+            Content="{Binding BtnEditText}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
             FontFamily="{DynamicResource MaterialDesignFont}"
             FontSize="20"
@@ -133,6 +133,18 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Visibility="{Binding BtnEditVisibility}"/>
+
+      <Button Command="{Binding BtnEditTwo}" 
+            Content="{Binding BtnEditTextTwo}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,-30"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnEditTwoVisibility}"/>
 
       <Button Command="{Binding BtnHousekeeper}" 
             Style="{DynamicResource MaterialDesignRaisedButton}"

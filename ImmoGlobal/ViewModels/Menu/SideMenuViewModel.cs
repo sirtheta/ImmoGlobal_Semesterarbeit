@@ -21,8 +21,33 @@ namespace ImmoGlobal.ViewModels
       BtnNewAccount = new RelayCommand<object>(BtnNewAccountClicked);
       BtnNewPaymentRecord = new RelayCommand<object>(BtnNewPaymentRecordClicked);
       BtnEdit = new RelayCommand<object>(BtnEditClicked);
+      BtnEditTwo = new RelayCommand<object>(BtnEditTwoClicked);      
       BtnHousekeeper = new RelayCommand<object>(BtnHousekeeperClicked);
       BtnNewHousekeeper = new RelayCommand<object>(BtnNewHousekeeperClicked);
+      BtnEditText = Application.Current.FindResource("btnEdit") as string ?? "edit";
+      BtnEditTextTwo = Application.Current.FindResource("btnEdit") as string ?? "edit";
+    }
+    
+    private string _btnEditText;
+    private string _btnEditTextTwo;    
+    public  string BtnEditText
+    {
+      get => _btnEditText;
+      set
+      {
+        _btnEditText = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public string BtnEditTextTwo
+    {
+      get => _btnEditTextTwo;
+      set
+      {
+        _btnEditTextTwo = value;
+        OnPropertyChanged();
+      }
     }
 
     #region Commands
@@ -76,6 +101,11 @@ namespace ImmoGlobal.ViewModels
       get;
       private set;
     }
+    public ICommand BtnEditTwo
+    {
+      get;
+      private set;
+    }
     public ICommand BtnHousekeeper
     {
       get;
@@ -105,7 +135,11 @@ namespace ImmoGlobal.ViewModels
     }
     private void BtnNewPaymentRecordClicked(object obj)
     {
-      throw new NotImplementedException();
+      var instance = MainWindowViewModel.GetInstance;
+      if (instance != null && instance.SelectedAccount != null)
+      {
+        instance.SelectedViewModel = new UpsertPaymentRecordViewModel(instance.SelectedAccount);
+      };
     }
     private void BtnNewAccountClicked(object obj)
     {
@@ -192,6 +226,22 @@ namespace ImmoGlobal.ViewModels
         }
       };
     }
+    private void BtnEditTwoClicked(object obj)
+    {
+      var instance = MainWindowViewModel.GetInstance;
+      if (instance != null)
+      {
+        switch (instance.SelectedViewModel)
+        {
+          case AccountsOverviewViewModel:
+            if (instance.SelectedPaymentRecord != null && instance.SelectedAccount != null)
+            {
+              instance.SelectedViewModel = new UpsertPaymentRecordViewModel(instance.SelectedAccount, instance.SelectedPaymentRecord);
+            }
+            break;
+        }
+      }
+    }
     private void BtnHousekeeperClicked(object obj)
     {
       var instance = MainWindowViewModel.GetInstance;
@@ -224,15 +274,13 @@ namespace ImmoGlobal.ViewModels
     private Visibility _btnNewAccountVisibility;
     private Visibility _btnNewPaymentRecordVisibility;
     private Visibility _btnEditVisibility;
+    private Visibility _btnEditTwoVisibility;
     private Visibility _btnHousekeeperVisibility;
     private Visibility _btnNewHousekeeperVisibility;
 
     public Visibility BtnNewPropertyVisibility
     {
-      get
-      {
-        return _btnNewPropertyVisibility;
-      }
+      get => _btnNewPropertyVisibility;
       set
       {
         _btnNewPropertyVisibility = value;
@@ -241,10 +289,7 @@ namespace ImmoGlobal.ViewModels
     }
     public Visibility BtnNewPropertyObjectVisibility
     {
-      get
-      {
-        return _btnNewPropertyObjectVisibility;
-      }
+      get => _btnNewPropertyObjectVisibility;
       set
       {
         _btnNewPropertyObjectVisibility = value;
@@ -253,10 +298,7 @@ namespace ImmoGlobal.ViewModels
     }
     public Visibility BtnNewRenterVisibility
     {
-      get
-      {
-        return _btnNewRenterVisibility;
-      }
+      get => _btnNewRenterVisibility;
       set
       {
         _btnNewRenterVisibility = value;
@@ -265,10 +307,7 @@ namespace ImmoGlobal.ViewModels
     }        
     public Visibility BtnNewInvoiceVisibility
     {
-      get
-      {
-        return _btnNewInvoiceVisibility;
-      }
+      get => _btnNewInvoiceVisibility;
       set
       {
         _btnNewInvoiceVisibility = value;
@@ -277,10 +316,7 @@ namespace ImmoGlobal.ViewModels
     }
     public Visibility BtnNewCreditorVisibility
     {
-      get
-      {
-        return _btnNewCreditorVisibility;
-      }
+      get => _btnNewCreditorVisibility;
       set
       {
         _btnNewCreditorVisibility = value;
@@ -289,10 +325,7 @@ namespace ImmoGlobal.ViewModels
     }
     public Visibility BtnNewBillReminderVisibility
     {
-      get
-      {
-        return _btnNewBillReminderVisibility;
-      }
+      get => _btnNewBillReminderVisibility;
       set
       {
         _btnNewBillReminderVisibility = value;
@@ -301,10 +334,7 @@ namespace ImmoGlobal.ViewModels
     }
     public Visibility BtnNewRentalContractVisibility
     {
-      get
-      {
-        return _btnNewRentalContractVisibility;
-      }
+      get => _btnNewRentalContractVisibility;
       set
       {
         _btnNewRentalContractVisibility = value;
@@ -313,10 +343,7 @@ namespace ImmoGlobal.ViewModels
     }
     public Visibility BtnNewAccountVisibility
     {
-      get
-      {
-        return _btnNewAccountVisibility;
-      }
+      get => _btnNewAccountVisibility;
       set
       {
         _btnNewAccountVisibility = value;
@@ -325,10 +352,7 @@ namespace ImmoGlobal.ViewModels
     }
     public Visibility BtnNewPaymentRecordVisibility
     {
-      get
-      {
-        return _btnNewPaymentRecordVisibility;
-      }
+      get => _btnNewPaymentRecordVisibility;
       set
       {
         _btnNewPaymentRecordVisibility = value;
@@ -337,22 +361,25 @@ namespace ImmoGlobal.ViewModels
     }
     public Visibility BtnEditVisibility
     {
-      get
-      {
-        return _btnEditVisibility;
-      }
+      get => _btnEditVisibility;
       set
       {
         _btnEditVisibility = value;
         OnPropertyChanged();
       }
     }
+    public Visibility BtnEditTwoVisibility
+    {
+      get => _btnEditTwoVisibility;
+      set
+      {
+        _btnEditTwoVisibility = value;
+        OnPropertyChanged();
+      }
+    }
     public Visibility BtnHousekeeperVisibility
     {
-      get
-      {
-        return _btnHousekeeperVisibility;
-      }
+      get => _btnHousekeeperVisibility;
       set
       {
         _btnHousekeeperVisibility = value;
@@ -361,10 +388,7 @@ namespace ImmoGlobal.ViewModels
     }
     public Visibility BtnNewHousekeeperVisibility
     {
-      get
-      {
-        return _btnNewHousekeeperVisibility;
-      }
+      get => _btnNewHousekeeperVisibility;
       set
       {
         _btnNewHousekeeperVisibility = value;

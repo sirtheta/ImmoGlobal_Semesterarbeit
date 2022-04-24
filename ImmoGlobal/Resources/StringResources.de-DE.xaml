@@ -70,7 +70,7 @@
   <system:String x:Key="billReminder">Mahnung</system:String>
   <system:String x:Key="newRentalContract">Neuer Mietvertrag</system:String>
   <system:String x:Key="newAccount">Neues Konto</system:String>
-  <system:String x:Key="newPaymentRecord">Zahlung Verbuchen</system:String>
+  <system:String x:Key="newPaymentRecord">Zahlung verbuchen</system:String>
 
   <system:String x:Key="rentStart">Mietbeginn</system:String>
   <system:String x:Key="rentEnd">Mietende</system:String>
@@ -200,7 +200,14 @@
   <system:String x:Key="expense">Ausgaben</system:String>
   <system:String x:Key="date">Datum</system:String>
 
-  <system:String x:Key="incomeExpenseToAccount">Einnahmen und Ausgaben zu Konto</system:String>
+  <system:String x:Key="incomeExpenseToAccount">Einnahmen und Ausgaben zu</system:String>
 
-
+  <system:String x:Key="addNewPaymentRecord">Neuer Beleg</system:String>
+  <system:String x:Key="paymentRecord">Beleg</system:String>
+  <system:String x:Key="add">hinzufügen</system:String>
+  <system:String x:Key="successAddPaymentRecord">Beleg erfolgreich hinzugefügt!</system:String>
+  <system:String x:Key="successUpdatePaymentRecord">Update des Belegs erfolgreich!</system:String>
+  <system:String x:Key="errorAddPaymentRecord">Speichern des Belegs fehlgeschlagen!</system:String>
+  <system:String x:Key="errorIncomeExpense">Es muss entweder ein Einnahme- oder eine Ausgabebetrag eingeben werden!</system:String>
+  <system:String x:Key="errorReceiptNumber">Es muss eine Belegnummer eingeben werden</system:String>
 </ResourceDictionary>

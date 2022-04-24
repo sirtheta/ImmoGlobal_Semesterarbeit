@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImmoGlobal.MainClasses
 {
-  internal class IncomeExpense
+  internal class PaymentRecord
   {
 
-    public int IncomeExpenseId { get; set; }
+    public int PaymentRecordId { get; set; }
     public Account Account { get; set; }
     public string Description { get; set; }
     public int ReceiptNumber { get; set; }

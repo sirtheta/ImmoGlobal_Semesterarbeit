@@ -465,10 +465,10 @@ namespace ImmoGlobal.Database
     /// <param name="account"></param>
     /// <returns></returns>
     /// <exception></exception>
-    internal static IEnumerable<IncomeExpense> GetIncomeToAccountDB(Account account)
+    internal static IEnumerable<PaymentRecord> GetIncomeToAccountDB(Account account)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.IncomesExpenses
+      return (from p in db.PaymentRecords
               where p.Account == account
               where p.IncomeAmount != null
               select p).ToList();
@@ -480,13 +480,45 @@ namespace ImmoGlobal.Database
     /// <param name="account"></param>
     /// <returns></returns>
     /// <exception></exception>
-    internal static IEnumerable<IncomeExpense> GetExpenseToAccountDB(Account account)
+    internal static IEnumerable<PaymentRecord> GetExpenseToAccountDB(Account account)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.IncomesExpenses
+      return (from p in db.PaymentRecords
               where p.Account == account
               where p.ExpenseAmount != null
               select p).ToList();
     }
+
+    /// <summary>
+    /// create or update a new payment record
+    /// </summary>
+    /// <param name="paymentRecord"></param>
+    /// <returns></returns>
+    internal static bool UpsertPaymentRecordToDB(PaymentRecord paymentRecord)
+    {
+      try
+      {
+        using var db = new ImmoGlobalContext();
+        if (paymentRecord.Account != null)
+        {
+          db.Entry(paymentRecord.Account).State = EntityState.Modified;
+          db.Attach(paymentRecord.Account);
+        }
+        if (paymentRecord.PaymentRecordId == 0)
+        {
+          db.PaymentRecords.Add(paymentRecord);
+        }
+        else
+        {
+          db.PaymentRecords.Update(paymentRecord);
+        }
+        db.SaveChanges();
+        return true;
+      }
+      catch (Exception)
+      {
+        return false;
+      }
+    }    
   }
 }

@@ -1,0 +1,135 @@
+﻿<UserControl x:Class="ImmoGlobal.Views.UpsertPaymentRecordView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ImmoGlobal.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels" 
+             xmlns:viewHelpers="clr-namespace:ImmoGlobal.Helpers"
+             d:DataContext="{d:DesignInstance Type=viewmodels:UpsertPaymentRecordViewModel}"
+             mc:Ignorable="d" 
+             d:Background="{DynamicResource MaterialDesignPaper}"
+             d:DesignHeight="650" 
+             d:DesignWidth="1500"
+             TextOptions.TextFormattingMode="Display">
+
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <Grid ShowGridLines="false">
+      <Grid.Resources>
+        <Style TargetType="TextBlock">
+          <Setter Property="FontFamily"
+                Value="{DynamicResource MaterialDesignFont}"/>
+        </Style>
+      </Grid.Resources>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0"
+               Grid.RowSpan="2"
+               Padding="0,5,0,10"
+               Margin="10,0,0,0"
+               FontSize="30"
+               FontWeight="Bold"
+               TextWrapping="Wrap">
+      <Run Text="{Binding FormTitel}"/>
+      </TextBlock>
+      <Grid Grid.Row="1" ShowGridLines="false">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" 
+                     Text="{Binding Description}"
+                     Margin="10" 
+                     materialDesign:HintAssist.Hint="{DynamicResource description}" 
+                     TextWrapping="Wrap"
+                     Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                     HorizontalAlignment="Stretch"/>
+
+            <TextBox Grid.Column="1" 
+                     Text="{Binding ReceiptNumber}"
+                     viewHelpers:TextBoxHelper.OnlyNumeric="Uint"
+                     Margin="10" 
+                     materialDesign:HintAssist.Hint="{DynamicResource receiptNumber}" 
+                     TextWrapping="Wrap"
+                     Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                     HorizontalAlignment="Stretch"/>
+          </Grid>
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" 
+                     viewHelpers:TextBoxHelper.OnlyNumeric="Double"
+                     Text="{Binding IncomeAmount, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="10" 
+                     materialDesign:HintAssist.Hint="{DynamicResource income}" 
+                     TextWrapping="Wrap"
+                     IsEnabled="{Binding IncomeEnabled}"
+                     Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                     HorizontalAlignment="Stretch"/>
+
+            <TextBox Grid.Column="1" 
+                     viewHelpers:TextBoxHelper.OnlyNumeric="Double"
+                     Text="{Binding ExpenseAmount, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="10" 
+                     materialDesign:HintAssist.Hint="{DynamicResource expense}" 
+                     IsEnabled="{Binding ExpenseEnabled}"
+                     TextWrapping="Wrap"
+                     Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                     HorizontalAlignment="Stretch"/>
+          </Grid>
+
+          <Grid Margin="10,10,0,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DatePicker Grid.Column="0" 
+                        SelectedDate="{Binding Date}" 
+                      Margin="0,0,20,10"
+                      Style="{DynamicResource MaterialDesignDatePicker}"
+                      materialDesign:HintAssist.Hint="{DynamicResource date}"/>
+          </Grid>
+
+
+
+
+        </StackPanel>
+        <Grid Grid.Row="1" Margin="0,-50,0,10">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+          </Grid.ColumnDefinitions>
+          <Button Grid.Row="1"
+            Command="{Binding BtnSave}" 
+            Content="{DynamicResource save}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,0"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"/>
+        </Grid>
+      </Grid>
+    </Grid>
+  </ScrollViewer>
+</UserControl>

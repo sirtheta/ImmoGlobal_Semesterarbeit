@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace ImmoGlobal.Helpers
 {
@@ -15,6 +16,12 @@ namespace ImmoGlobal.Helpers
       {
         return false;
       }
+    }
+
+    private static readonly Regex _regex = new("[^0-9.]+"); //regex that matches disallowed text
+    internal static bool IsTextAllowed(string text)
+    {
+      return !_regex.IsMatch(text);
     }
   }
 }

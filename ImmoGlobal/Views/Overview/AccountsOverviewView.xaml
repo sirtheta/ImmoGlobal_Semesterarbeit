@@ -22,20 +22,21 @@
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
     <TextBlock Grid.Row="0"
-                 Text="{DynamicResource accountsOverview}"
-                 HorizontalAlignment="Left"
-                 Padding="10"
-                 FontFamily="{DynamicResource MaterialDesignFont}"
-                 FontSize="30"
-                 FontWeight="Bold"/>
+               Text="{DynamicResource accountsOverview}"
+               HorizontalAlignment="Left"
+               Padding="10"
+               FontFamily="{DynamicResource MaterialDesignFont}"
+               FontSize="30"
+               FontWeight="Bold"/>
     
     <TextBlock Grid.Column="1"
-                 Text="{DynamicResource incomeExpenseToAccount}"
-                 HorizontalAlignment="Left"
-                 Padding="10"
-                 FontFamily="{DynamicResource MaterialDesignFont}"
-                 FontSize="30"
-                 FontWeight="Bold"/>
+               Text="{Binding AccountTitel}"
+               TextWrapping="Wrap"               
+               HorizontalAlignment="Left"
+               Padding="10"
+               FontFamily="{DynamicResource MaterialDesignFont}"
+               FontSize="30"
+               FontWeight="Bold"/>
 
     <Border Grid.Column="0" Grid.Row="1" CornerRadius="2"
             Margin="10"
@@ -103,6 +104,9 @@
           </Grid.ColumnDefinitions>
           <DataGrid Grid.Row="1" 
                   ItemsSource="{Binding IncomeExpenseCollection, UpdateSourceTrigger=PropertyChanged}" 
+                  SelectedItem="{Binding SelectedPaymentRecord}"
+                  SelectionMode="Extended"
+                  SelectionUnit="FullRow"
                   AutoGenerateColumns="False" 
                   CanUserAddRows="False" 
                   CanUserDeleteRows="False"
