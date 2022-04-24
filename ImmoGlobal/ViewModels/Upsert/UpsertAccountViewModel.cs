@@ -1,12 +1,8 @@
 ﻿using ImmoGlobal.Commands;
 using ImmoGlobal.Database;
-using ImmoGlobal.Helpers;
 using ImmoGlobal.MainClasses;
-using ImmoGlobal.MainClasses.Enum;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
-using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
@@ -93,12 +89,12 @@ namespace ImmoGlobal.ViewModels
 
     private bool NullFieldCheck()
     {
-      if (string.IsNullOrEmpty(AccountDescription) ||
-          string.IsNullOrEmpty(AccountNumber))
+      if (!string.IsNullOrEmpty(AccountDescription) &&
+          !string.IsNullOrEmpty(AccountNumber))
       {
-        return false;
+        return true;
       }
-      return true;
+      return false;
     }
 
     /// <summary>

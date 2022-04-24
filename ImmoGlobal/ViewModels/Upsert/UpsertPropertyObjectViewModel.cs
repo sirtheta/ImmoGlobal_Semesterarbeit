@@ -237,11 +237,7 @@ namespace ImmoGlobal.ViewModels
 
     private void SaveClicked(object obj)
     {
-      if (string.IsNullOrEmpty(Description) ||
-          string.IsNullOrEmpty(Location) ||
-          string.IsNullOrEmpty(NumberOfRooms) ||
-          string.IsNullOrEmpty(Area) ||
-          string.IsNullOrEmpty(NumberOfKeys))
+      if (!NullFieldCheck())
       {
         ShowMessageBox(Application.Current.FindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
         return;
@@ -278,6 +274,19 @@ namespace ImmoGlobal.ViewModels
       {
         ShowMessageBox(Application.Current.FindResource("errorAddProperty") as string ?? "Error adding property", MessageType.Error, MessageButtons.Ok);
       }
+    }
+
+    private bool NullFieldCheck()
+    {
+      if (!string.IsNullOrEmpty(Description) &&
+          !string.IsNullOrEmpty(Location) &&
+          !string.IsNullOrEmpty(NumberOfRooms) &&
+          !string.IsNullOrEmpty(Area) &&
+          !string.IsNullOrEmpty(NumberOfKeys))
+      {
+        return true;
+      }
+      return false;
     }
 
     /// <summary>

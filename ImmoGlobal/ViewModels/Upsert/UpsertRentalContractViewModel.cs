@@ -234,14 +234,14 @@ namespace ImmoGlobal.ViewModels
 
     private bool NullFieldCheck()
     {
-      if (SelectedPersona == null ||
-        SelectedProperty == null ||
-        SelectedPropertyObject == null ||
-        Rent == null)
+      if (SelectedPersona != null &&
+        SelectedProperty != null &&
+        SelectedPropertyObject != null &&
+        !string.IsNullOrEmpty(Rent))
       {
-        return false;
+        return true;
       }
-      return true;
+      return false;
     }
 
     /// <summary>

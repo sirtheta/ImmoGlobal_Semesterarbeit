@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ImmoGlobal.Views"
+             xmlns:viewHelpers="clr-namespace:ImmoGlobal.Helpers"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:UpsertPropertyObjectViewModel}"
@@ -57,19 +58,25 @@
                TextWrapping="Wrap"
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
+          
           <TextBox Text="{Binding NumberOfRooms}" 
                  Margin="10" 
                materialDesign:HintAssist.Hint="{DynamicResource numberOfRooms}" 
+                   viewHelpers:TextBoxHelper.OnlyNumeric="Double"
                TextWrapping="Wrap"
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
+          
           <TextBox Text="{Binding Area}" 
                  Margin="10" 
                materialDesign:HintAssist.Hint="{DynamicResource area}" 
+                   viewHelpers:TextBoxHelper.OnlyNumeric="Double"
                TextWrapping="Wrap"
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
+          
           <TextBox Text="{Binding NumberOfKeys}" 
+                   viewHelpers:TextBoxHelper.OnlyNumeric="Uint"
                  Margin="10" 
                materialDesign:HintAssist.Hint="{DynamicResource numberOfKeys}" 
                TextWrapping="Wrap"

@@ -264,22 +264,19 @@ namespace ImmoGlobal.ViewModels
 
     private bool NullFieldCheck()
     {
-      if (string.IsNullOrEmpty(FirstName) ||
-          string.IsNullOrEmpty(LastName) &&
-          (string.IsNullOrEmpty(Phone) ||
-          string.IsNullOrEmpty(MobilePhone) ||
-          string.IsNullOrEmpty(OfficePhone)) ||
-          string.IsNullOrEmpty(Email) ||
-          string.IsNullOrEmpty(Address) ||
-          string.IsNullOrEmpty(Zip) ||
-          string.IsNullOrEmpty(City) ||
-          string.IsNullOrEmpty(VatNumber) ||
-          string.IsNullOrEmpty(CreditorCompanyName) ||
-          string.IsNullOrEmpty(CreditorContactPerson))
+      if (!string.IsNullOrEmpty(FirstName) &&
+          !string.IsNullOrEmpty(LastName) &&
+          !string.IsNullOrEmpty(Email) &&
+          !string.IsNullOrEmpty(Address) &&
+          !string.IsNullOrEmpty(Zip) &&
+          !string.IsNullOrEmpty(City) &&
+          !string.IsNullOrEmpty(VatNumber) &&
+          !string.IsNullOrEmpty(CreditorCompanyName) &&
+          !string.IsNullOrEmpty(CreditorContactPerson))
       {
-        return false;
+        return true;
       }
-      return true;
+      return false;
     }
 
     /// <summary>

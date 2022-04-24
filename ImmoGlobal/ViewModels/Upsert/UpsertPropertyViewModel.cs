@@ -195,17 +195,17 @@ namespace ImmoGlobal.ViewModels
 
     private bool NullFieldCheck()
     {
-      if (string.IsNullOrEmpty(Description) ||
-          string.IsNullOrEmpty(Address) ||
-          string.IsNullOrEmpty(City) ||
-          string.IsNullOrEmpty(PropertyInsurance) ||
-          string.IsNullOrEmpty(PersonInsurance) ||
-          string.IsNullOrEmpty(LiabilityInsurance) ||
-          Housekeeper == null)
+      if (!string.IsNullOrEmpty(Description) &&
+          !string.IsNullOrEmpty(Address) &&
+          !string.IsNullOrEmpty(City) &&
+          !string.IsNullOrEmpty(PropertyInsurance) &&
+          !string.IsNullOrEmpty(PersonInsurance) &&
+          !string.IsNullOrEmpty(LiabilityInsurance) &&
+          Housekeeper != null)
       {
-        return false;
+        return true;
       }
-      return true;
+      return false;
     }
 
     /// <summary>

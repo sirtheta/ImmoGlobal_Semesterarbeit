@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:conv="clr-namespace:ImmoGlobal.Helpers"
              xmlns:local="clr-namespace:ImmoGlobal.Views"
+             xmlns:viewHelpers="clr-namespace:ImmoGlobal.Helpers"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:UpsertRentalContractViewModel}"
@@ -15,7 +15,7 @@
              TextOptions.TextFormattingMode="Display">
   
   <UserControl.Resources>
-    <conv:MinusOneConverter x:Key="MinusOneConverter"/>
+    <viewHelpers:MinusOneConverter x:Key="MinusOneConverter"/>
   </UserControl.Resources>
   
   <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -107,7 +107,8 @@
             </Grid.ColumnDefinitions>
             <TextBox Grid.Column="0" 
                      Margin="0,0,20,0"
-                     Text="{Binding Rent}" 
+                     Text="{Binding Rent}"
+                     viewHelpers:TextBoxHelper.OnlyNumeric="Double"
                      materialDesign:HintAssist.Hint="{DynamicResource rent}" 
                      TextWrapping="Wrap"
                      Style="{DynamicResource MaterialDesignOutlinedTextBox}"
