@@ -303,7 +303,7 @@ namespace ImmoGlobal.ViewModels
       SelectedPropertyObject = null;
       RentStartDate = DateTime.Now;
       RentEndDate = RentStartDate.AddDays(30);
-      Rent = null;
+      Rent = string.Empty;
       Deposit = false;
       ContractState = EContractState.NotActive;
     }

@@ -319,18 +319,18 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     private void ClearValues()
     {
-      FirstName = null;
-      LastName = null;
-      Phone = null;
-      MobilePhone = null;
-      OfficePhone = null;
-      Email = null;
-      Address = null;
-      Zip = null;
-      City = null;
-      VatNumber = null;
-      CreditorCompanyName = null;
-      CreditorContactPerson = null;
+      FirstName = string.Empty;
+      LastName = string.Empty;
+      Phone = string.Empty;
+      MobilePhone = string.Empty;
+      OfficePhone = string.Empty;
+      Email = string.Empty;
+      Address = string.Empty;
+      Zip = string.Empty;
+      City = string.Empty;
+      VatNumber = string.Empty;
+      CreditorCompanyName = string.Empty;
+      CreditorContactPerson = string.Empty;
       CreditorIsActive = false;
     }
   }

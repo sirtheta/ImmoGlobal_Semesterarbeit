@@ -333,17 +333,17 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     private void ClearValues()
     {
-      FirstName = null;
-      LastName = null;
-      Phone = null;
-      MobilePhone = null;
-      OfficePhone = null;
-      Email = null;
-      Address = null;
-      Zip = null;
-      City = null;
-      AddressBefore = null;
-      AccountNumber = null;
+      FirstName = string.Empty;
+      LastName = string.Empty;
+      Phone = string.Empty;
+      MobilePhone = string.Empty;
+      OfficePhone = string.Empty;
+      Email = string.Empty;
+      Address = string.Empty;
+      Zip = string.Empty;
+      City = string.Empty;
+      AddressBefore = string.Empty;
+      AccountNumber = string.Empty;
       DateOfBirth = null;
       CivilState = ECivilState.Single;
     }
