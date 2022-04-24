@@ -1,0 +1,20 @@
+@startuml KontoErstellen
+!theme cerulean-outline
+
+skinparam sequence {
+LifeLineBackgroundColor #8ECBF1
+ParticipantPadding 2
+}
+skinparam dpi 300
+
+actor User as user
+activate user
+participant Account as acc
+database Database as db
+activate db
+create acc
+user -> acc : create()
+activate acc
+acc ->acc : setValuesForAccount()  
+acc ->db : save()
+@enduml
