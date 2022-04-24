@@ -9,7 +9,7 @@ namespace ImmoGlobal.MainClasses
     public int AccountId { get; set; }
     public string AccountNumber { get; set; }
     public string? AccountDescription { get; set; }
-    public ICollection<PaymentRecord>? Expense { get; set; }
+    public ICollection<PaymentRecord>? PaymentRecord { get; set; }
 
     public string Balance
     {

@@ -61,8 +61,6 @@ namespace ImmoGlobal.ViewModels
       set
       {
         _selectedViewModel = value;
-        SetMenuBarIconColor();
-        SetSideMenuButtons();
         OnPropertyChanged(nameof(SelectedViewModel));
       }
     }
@@ -90,6 +88,11 @@ namespace ImmoGlobal.ViewModels
       switch (_selectedViewModel)
       {
         case PropertyOverviewViewModel:
+        case PropertyObjectOverviewViewModel:
+        case PropertyObjectViewModel:
+        case UpsertPropertyObjectViewModel:
+        case UpsertPropertyViewModel:
+        case UpsertHousekeeperViewModel: 
           MenuBarViewModel.BtnPropertyColor = Brushes.Red;
           break;
         case RenterOverviewViewModel:
@@ -154,29 +157,25 @@ namespace ImmoGlobal.ViewModels
           break;
         case RenterOverviewViewModel:
           SideMenuViewModel.BtnNewRenterVisibility = Visibility.Visible;
-          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           break;
         case CreditorOverviewViewModel:
           SideMenuViewModel.BtnNewCreditorVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
-          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           break;
         case RentalContractsOverviewViewModel:
           SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
-          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           break;
         case InvoicesOverviewViewModel:
           SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
-          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           break;
         case AccountsOverviewViewModel:
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Visible;
           break;
         case UpsertAccountViewModel:          
-          SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
+          
           break;
         default:
           break;

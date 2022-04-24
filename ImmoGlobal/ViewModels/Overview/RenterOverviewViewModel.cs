@@ -1,6 +1,7 @@
 ﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace ImmoGlobal.ViewModels
 {
@@ -16,8 +17,10 @@ namespace ImmoGlobal.ViewModels
     {
       _renterCollection = new ObservableCollection<Persona>(DbController.GetAllRentersDB());
       _selectedRenterDetailsViewModel = null;
+      MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
 
+    private MainWindowViewModel? MainWindowViewModelInstance { get; set; }    
     public ObservableCollection<Persona> RenterCollection
     {
       get => _renterCollection;
@@ -59,11 +62,12 @@ namespace ImmoGlobal.ViewModels
           SelectedRenterDetailsViewModel = new RenterDetailsViewModel(_selectedRenter);
           InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetInvoiceToPersonDB(_selectedRenter));
           RentalContractCollection = new ObservableCollection<RentalContract>(DbController.GetRentalContractsToPersonDB(_selectedRenter));
-          if (MainWindowViewModel.GetInstance != null)
+          if (MainWindowViewModelInstance != null)
           {
-            MainWindowViewModel.GetInstance.SelectedPersona = _selectedRenter;
+            MainWindowViewModelInstance.SelectedPersona = _selectedRenter;
+            MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           }
-          OnPropertyChanged();
+            OnPropertyChanged();
         }
       }
     }
