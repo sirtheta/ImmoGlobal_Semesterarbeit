@@ -9,8 +9,7 @@ namespace ImmoGlobal.MainClasses
     public int AccountId { get; set; }
     public string AccountNumber { get; set; }
     public string? AccountDescription { get; set; }
-    public ICollection<Income>? Income { get; set; }
-    public ICollection<Expense>? Expense { get; set; }
+    public ICollection<IncomeExpense>? Expense { get; set; }
 
     public string Balance
     {
@@ -24,7 +23,7 @@ namespace ImmoGlobal.MainClasses
         double income = 0;
         foreach (var item in DbController.GetIncomeToAccountDB(this))
         {
-          income += item.IncomeAmount;
+          income += item.IncomeAmount?? 0;
         }
         return income;
       }
@@ -37,7 +36,7 @@ namespace ImmoGlobal.MainClasses
         double income = 0;
         foreach (var item in DbController.GetExpenseToAccountDB(this))
         {
-          income += item.ExpenseAmount;
+          income += item.ExpenseAmount?? 0;
         }
         return income;
       }

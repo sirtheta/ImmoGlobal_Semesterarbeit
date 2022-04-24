@@ -194,6 +194,13 @@
   <system:String x:Key="successAddAccount">Konto erfolgreich hinzugefügt!</system:String>
   <system:String x:Key="successUpdateAccount">Update des Kontos erfolgreich!</system:String>
   <system:String x:Key="errorAddAccount">Speichern des Kontos fehlgeschlagen!</system:String>
-  
+
+  <system:String x:Key="receiptNumber">Belegnummer</system:String>
+  <system:String x:Key="income">Einnahmen</system:String>
+  <system:String x:Key="expense">Ausgaben</system:String>
+  <system:String x:Key="date">Datum</system:String>
+
+  <system:String x:Key="incomeExpenseToAccount">Einnahmen und Ausgaben zu Konto</system:String>
+
 
 </ResourceDictionary>

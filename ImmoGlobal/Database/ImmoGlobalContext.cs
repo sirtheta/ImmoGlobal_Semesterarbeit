@@ -39,8 +39,7 @@ namespace ImmoGlobal
     public DbSet<Invoice> Invoices { get; set; }
     public DbSet<InvoicePosition> InvoicePositions { get; set; }
     public DbSet<Account> Accounts { get; set; }
-    public DbSet<Income> Incomes { get; set; }
-    public DbSet<Expense> Expenses { get; set; }
+    public DbSet<IncomeExpense> IncomesExpenses { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<AuditTrail> AuditTrail { get; set; }
   }

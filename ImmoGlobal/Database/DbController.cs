@@ -465,11 +465,12 @@ namespace ImmoGlobal.Database
     /// <param name="account"></param>
     /// <returns></returns>
     /// <exception></exception>
-    internal static IEnumerable<Income> GetIncomeToAccountDB(Account account)
+    internal static IEnumerable<IncomeExpense> GetIncomeToAccountDB(Account account)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.Incomes
+      return (from p in db.IncomesExpenses
               where p.Account == account
+              where p.IncomeAmount != null
               select p).ToList();
     }
 
@@ -479,11 +480,12 @@ namespace ImmoGlobal.Database
     /// <param name="account"></param>
     /// <returns></returns>
     /// <exception></exception>
-    internal static IEnumerable<Expense> GetExpenseToAccountDB(Account account)
+    internal static IEnumerable<IncomeExpense> GetExpenseToAccountDB(Account account)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.Expenses
+      return (from p in db.IncomesExpenses
               where p.Account == account
+              where p.ExpenseAmount != null
               select p).ToList();
     }
   }
