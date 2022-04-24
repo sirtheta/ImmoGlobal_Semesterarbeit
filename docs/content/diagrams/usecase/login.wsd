@@ -1,11 +1,11 @@
 @startuml Login
 !theme cerulean-outline
 skinparam dpi 300
-actor "User" as fc
+actor "User" as user
 rectangle Login {
   usecase "Login" as UC1
   usecase "Verifizieren der\n Login Credentials" as UC2
 }
-fc -- UC1
+user -- UC1
 UC1 .> UC2 : <<include>>
 @enduml

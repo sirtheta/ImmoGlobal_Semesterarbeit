@@ -2,12 +2,13 @@
 !theme cerulean-outline
 skinparam dpi 300
 left to right direction
-actor "User" as fc
+actor "User" as user
 rectangle "Mahnung erstellen" {
-  usecase "Mahnung für den \nMieter/Kreditor erstellen" as UC1
-  usecase "betreffenden Mieter/Kreditor \nauswählen"as inc1
+  usecase "betreffenden Rechnung auswählen"as UC1
+  usecase "Mahnungsbetrag eingeben" as UC2
 
 } 
-fc -- UC1
-UC1 .left.> inc1 : <<include>>
+user -- UC1
+user -- UC2
+
 @enduml

@@ -2,13 +2,13 @@
 !theme cerulean-outline
 skinparam dpi 300
 left to right direction
-actor "User" as fc
+actor "User" as user
 rectangle "Konto erstellen" {
   usecase "neues Konto erstellen" as UC1
   usecase "Kontobezeichnung eingeben" as UC2
   usecase "Kontonummer eingeben" as UC3
 }  
-fc -- UC1
-fc -- UC2
-fc -- UC3
+user -- UC1
+user -- UC2
+user -- UC3
 @enduml

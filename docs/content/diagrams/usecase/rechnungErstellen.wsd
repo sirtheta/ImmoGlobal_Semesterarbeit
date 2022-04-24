@@ -2,7 +2,7 @@
 !theme cerulean-outline
 skinparam dpi 300
 left to right direction
-actor "User" as fc
+actor "User" as user
 rectangle "Rechnung erstellen" {
   usecase "Konto für \n Einzahlung angeben" as UC1
   usecase "Auswahl eines vorhandenen \nKontos" as inc1
@@ -18,17 +18,17 @@ rectangle "Rechnung erstellen" {
   usecase "Kategorie angeben" as UC8
   usecase "Kategorie auswählen" as inc5
 } 
-fc -- UC1
+user -- UC1
 UC1 ..> inc1 : <<include>>
-fc -- UC2
+user -- UC2
 UC2 ..> inc2 : <<include>>
-fc -- UC3
-fc -- UC4
-fc -- UC5
-fc -- UC6
+user -- UC3
+user -- UC4
+user -- UC5
+user -- UC6
 UC6 ..> inc3 : <<include>>
 UC6 ..> inc4 : <<include>>
-fc -- UC7
-fc -- UC8
+user -- UC7
+user -- UC8
 UC8 ..> inc5 : <<include>>
 @enduml

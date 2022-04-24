@@ -179,6 +179,7 @@
   \end{center}
 \end{figure}
 
+\vspace*{-0.8cm}
 \begin{table}[H]
   \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
   \centering
@@ -204,7 +205,7 @@
   \caption{UC-Mietzins kontrollieren}
 \end{table}
 
-\newpage
+\vspace*{-0.8cm}
 
 \begin{figure}[H]
   \begin{center}
@@ -214,6 +215,7 @@
   \end{center}
 \end{figure}
 
+\vspace*{-0.8cm}
 \begin{table}[H]
   \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
   \centering
@@ -225,7 +227,7 @@
     \hline
     \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
     \hline 
-    \textbf{Beschreibung} & Fällt die Prüfung der Mietzins-oder Nebenkostenzahlung negativ aus, kann der Benutzer eine Mahnung für den Mieter erstellen \\
+    \textbf{Beschreibung} & Fällt die Prüfung der Mietzins-oder Nebenkostenzahlung bzw. Rechnung negativ aus, kann der Benutzer eine Mahnung für die ausgewählte, überfällige Rechnung erstellen \\
     \hline
     \textbf{Daten} & Rechnungsbetrag\\
     \hline
@@ -233,7 +235,7 @@
     \hline
     \textbf{Antwort} & Bestätigung, dass die Mahnung erfolgreich erstellt wurde und jetzt ausgedruckt werden kann\\
     \hline
-    \textbf{Kommentare} & Normalerweise ist der zuständige Mitarbeiter:in in der Applikation schon eingeloggt da er die Prüfung der Zahlung vorgenommen hatte. Das erstellen der Mahnung wird dann direkt von dort aus ausgelöst\\
+    \textbf{Kommentare} & \\
     \hline
   \end{tabulary}
   \caption{UC-Mahnung erstellen}
@@ -277,40 +279,6 @@
   \caption{UC-Rechnung erstellen}
 \end{table}
 
-\begin{figure}[H]
-  \begin{center}
-      \includegraphics[width=0.5\linewidth]{content/diagrams/out/usecase/verbuchenAufKonto/ZahlungseingangaufKontoverbuchen.png}
-    \caption{UC-Zahlungseingang auf Konto verbuchen}
-    \label{ZahlungaufKonto}
-  \end{center}
-\end{figure}
-
-\begin{table}[H]
-  \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
-  \centering
-  \settowidth\tymin{\textbf{Kurzbeschreibung}}
-  \setlength\extrarowheight{2pt}
-  \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
-    \hline
-    \textbf{Name}& Zahlungsein- und Ausgang auf Konto verbuchen\\
-    \hline
-    \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
-    \hline 
-    \textbf{Beschreibung} & Bei einem Zahlungseingang, muss dieser auf ein entsprechendes Konto verbucht werden. Normalerweise gibt es aufgrund einer gestellten Rechnung einen Zahlungseingang. Wenn die Rechnung als bezahlt markiert wird, wird der Zahlungseingang auf das mit der Rechnung verknüpfte Konto verbucht \newline
-    Falls es einen Zahlungsein- oder Ausgang gibt der nicht aufgrund einer Rechnung geschieht, muss dieser Eintrag manuell für das entsprechende Konto erstellt werden\\
-    \hline
-    \textbf{Daten} & Rechnungsnummer oder Zahlungsbetrag und Konto\\
-    \hline
-    \textbf{Auslöser} & Zahlungseingang\\
-    \hline
-    \textbf{Antwort} & Bestätigung, dass der Zahlungseingang verbucht wurde\\
-    \hline
-    \textbf{Kommentare} & Wenn das Konto zu dem der Zahlungsein- oder Ausgang erfasst werden soll noch nicht besteht, muss dies noch erstellt werden. Siehe \hyperref[kontoErstellen]{Konto erstellen \fref{kontoErstellen}}\\
-    \hline
-  \end{tabulary}
-  \caption{UC-Zahlungsein- und Ausgang auf Konto verbuchen}
-\end{table}
-
 \newpage
 \begin{figure}[H]
   \begin{center}
@@ -345,6 +313,42 @@
   \caption{UC-Konto erstellen}
 \end{table}
 
+\newpage
+\begin{figure}[H]
+  \begin{center}
+      \includegraphics[width=0.5\linewidth]{content/diagrams/out/usecase/verbuchenAufKonto/ZahlungseingangaufKontoverbuchen.png}
+    \caption{UC-Zahlungseingang auf Konto verbuchen}
+    \label{ZahlungaufKonto}
+  \end{center}
+\end{figure}
+
+\begin{table}[H]
+  \newcolumntype{a}{>{\columncolor[HTML]{4473C5}}L}
+  \centering
+  \settowidth\tymin{\textbf{Kurzbeschreibung}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|a|m{14cm}|}
+    \hline
+    \textbf{Name}& Zahlungsein- und Ausgang auf Konto verbuchen\\
+    \hline
+    \textbf{Akteur}& Mitarbeiter:in der Liegenschaftsverwaltung\\
+    \hline 
+    \textbf{Beschreibung} & Bei einem Zahlungseingang, muss dieser auf ein entsprechendes Konto verbucht werden. Normalerweise gibt es aufgrund einer gestellten Rechnung einen Zahlungseingang. Wenn die Rechnung als bezahlt markiert wird, wird der Zahlungseingang auf das mit der Rechnung verknüpfte Konto verbucht \newline
+    Falls es einen Zahlungsein- oder Ausgang gibt der nicht aufgrund einer Rechnung geschieht, muss dieser Eintrag manuell für das entsprechende Konto erstellt werden\\
+    \hline
+    \textbf{Daten} & Belegnummer, Datum, Beschreibung, Zahlungsbetrag und Konto\\
+    \hline
+    \textbf{Auslöser} & Zahlungs- Eingang / Ausgang\\
+    \hline
+    \textbf{Antwort} & Bestätigung, dass der Eintrag erfolgreich verbucht wurde\\
+    \hline
+    \textbf{Kommentare} & Wenn das Konto zu dem der Zahlungsein- oder Ausgang erfasst werden soll noch nicht besteht, muss dies vorher noch erstellt werden. Siehe \hyperref[kontoErstellen]{Konto erstellen \fref{kontoErstellen}}\\
+    \hline
+  \end{tabulary}
+  \caption{UC-Zahlungsein- und Ausgang auf Konto verbuchen}
+\end{table}
+
+\newpage
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.5\linewidth]{content/diagrams/out/usecase/kreditorErfassen/Kreditor erfassen.png}

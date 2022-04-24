@@ -2,12 +2,12 @@
 !theme cerulean-outline
 skinparam dpi 300
 left to right direction
-actor "User" as fc
+actor "User" as user
 rectangle "Mietzinskontrolle" {
   usecase "Mietzinskontrolle" as UC1
   usecase "betreffendes Objekt\n auswählen"as inc1
 
 } 
-fc -- UC1
+user -- UC1
 UC1 .left.> inc1 : <<include>>
 @enduml

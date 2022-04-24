@@ -2,7 +2,7 @@
 !theme cerulean-outline
 skinparam dpi 300
 left to right direction
-actor "User" as fc
+actor "User" as user
 rectangle "Kreditor erfassen" {
   usecase "Name eingeben" as UC1
   usecase "Adresse eingeben" as UC2
@@ -10,9 +10,9 @@ rectangle "Kreditor erfassen" {
   usecase "Telefonnummer eingeben" as UC4
   usecase "Kontakpersonendaten \n eingeben" as UC5
 } 
-fc -- UC1
-fc -- UC2
-fc -- UC3
-fc -- UC4
-fc -- UC5
+user -- UC1
+user -- UC2
+user -- UC3
+user -- UC4
+user -- UC5
 @enduml

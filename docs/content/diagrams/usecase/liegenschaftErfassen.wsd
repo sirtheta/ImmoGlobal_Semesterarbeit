@@ -2,15 +2,15 @@
 !theme cerulean-outline
 'skinparam dpi 300
 left to right direction
-actor "User" as fc
+actor "User" as user
 rectangle "Liegenschaft erfassen" {
   usecase "Bezeichnung angeben" as UC3
   usecase "Adresse angeben" as UC4
   usecase "Versicherungen erfassen" as UC5
   usecase "Hauswartungsperson \n auswählen" as UC6
 } 
-fc -- UC3
-fc -- UC4
-fc -- UC5
-fc -- UC6
+user -- UC3
+user -- UC4
+user -- UC5
+user -- UC6
 @enduml

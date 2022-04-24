@@ -2,11 +2,17 @@
 !theme cerulean-outline
 skinparam dpi 300
 left to right direction
-actor "User" as fc
+actor "User" as user
 rectangle "Zahlungsein- und Ausgang \nauf Konto verbuchen" {
-  usecase "Konto zum verbuchen \n auswählen" as UC1
-  usecase "Auswahl der \nvorhandenen Konten" as inc1
+  usecase "Konto zum verbuchen" as UC1
+  usecase "Konto" as inc1
+  usecase "Datum eingeben" as UC2
+  usecase "Eingabe- oder Ausgabebetrag \n eingeben" as UC3
+  usecase "Beschreibung eingeben" as UC4
 } 
-fc -- UC1
+user -- UC1
 UC1 .left.> inc1 : <<include>>
+user -- UC2
+user -- UC3
+user -- UC4
 @enduml

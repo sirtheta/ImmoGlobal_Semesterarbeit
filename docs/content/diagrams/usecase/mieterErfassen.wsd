@@ -2,7 +2,7 @@
 !theme cerulean-outline
 skinparam dpi 300
 left to right direction
-actor "User" as fc
+actor "User" as user
 rectangle "Mieter erfassen" {
   usecase "Name/Vorname eingeben" as UC1
   usecase "Geburtsdatum eingeben" as UC2
@@ -13,12 +13,12 @@ rectangle "Mieter erfassen" {
   usecase "Email-Adresse Privat \n & Beruflich eingeben" as UC7
   usecase "Bankverbindung eingeben" as UC8
 } 
-fc -- UC1
-fc -- UC2
-fc -- UC3
-fc -- UC4
-fc -- UC5
-fc -- UC6
-fc -- UC7
-fc -- UC8
+user -- UC1
+user -- UC2
+user -- UC3
+user -- UC4
+user -- UC5
+user -- UC6
+user -- UC7
+user -- UC8
 @enduml
