@@ -1,4 +1,5 @@
-﻿using ImmoGlobal.MainClasses.Enum;
+﻿using ImmoGlobal.Database;
+using ImmoGlobal.MainClasses.Enum;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -14,11 +15,31 @@ namespace ImmoGlobal.MainClasses
     public string InvoicePurpose { get; set; }
     public EInvoiceCategory InvoiceCategory { get; set; }
     public EInvoiceState InvoiceState { get; set; }
-    public double TotalValue { get; set; }
     public ICollection<InvoicePosition>? InvoicePositions { get; set; }
     public int? BillReminders { get; set; }
 
 
+    public string PersonaFullName
+    {
+    get
+      {
+        return DbController.GetPersonaToInvoiceDB(this).FullName;
+      }
+    }
+    
+    public double TotalValue 
+    { 
+      get
+      {
+        var value = 0.0;
+        foreach (var invoicePosition in DbController.GetInvoicePositionsToInvoiceDB(this))
+        {
+          value += invoicePosition.Value;
+        }
+        return value;
+      }
+    }
+    
     public string InvoiceCategoryString
     {
       get

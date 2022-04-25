@@ -36,44 +36,10 @@ namespace ImmoGlobal.Database
       var _income2 = new PaymentRecord() { Account = _account2, IncomeAmount = 315.10, Description = "SeedDescriptonIncome2", ReceiptNumber = 40, Date = DateTime.Now.AddDays(-10) };
       var _income3 = new PaymentRecord() { Account = _account3, IncomeAmount = 395.75, Description = "SeedDescriptonIncome3", ReceiptNumber = 60, Date = DateTime.Now.AddDays(-3) };
 
-      var _expense1 = new PaymentRecord() { Account = _account1, ExpenseAmount = 268.65, Description = "SeedDescriptionExpense1", ReceiptNumber = 10, Date = DateTime.Now.AddDays(-25)  };
+      var _expense1 = new PaymentRecord() { Account = _account1, ExpenseAmount = 268.65, Description = "SeedDescriptionExpense1", ReceiptNumber = 10, Date = DateTime.Now.AddDays(-25) };
       var _expense2 = new PaymentRecord() { Account = _account2, ExpenseAmount = 295.95, Description = "SeedDescriptionExpense2", ReceiptNumber = 30, Date = DateTime.Now.AddDays(-15) };
       var _expense3 = new PaymentRecord() { Account = _account3, ExpenseAmount = 252.15, Description = "SeedDescriptionExpense3", ReceiptNumber = 50, Date = DateTime.Now.AddDays(-8) };
 
-      //additionalCosts prop 1
-      var _invoicePosition1 = new InvoicePosition() { Property = _property1, Value = 1320, AdditionalCostsCategory = EAdditionalCosts.Electricity, Account = _account3 };
-      var _invoicePosition2 = new InvoicePosition() { Property = _property1, Value = 45.23, AdditionalCostsCategory = EAdditionalCosts.Gas, Account = _account3 };
-      //rent
-      var _invoicePosition3 = new InvoicePosition() { PropertyObject = _objectHouse, Value = _rentalContract1.Rent, Account = _account2 };
-      //additionalCosts object 1
-      var _invoicePosition4 = new InvoicePosition()
-      {
-        PropertyObject = _objectHouse,
-        Value = 320,
-        AdditionalCostsCategory = EAdditionalCosts.Lift,
-        Account = _account1
-      };
-      var _invoicePosition5 = new InvoicePosition()
-      {
-        PropertyObject = _objectHouse,
-        Value = 50,
-        AdditionalCostsCategory = EAdditionalCosts.Gas,
-        Account = _account1
-      };
-      var _invoicePosition6 = new InvoicePosition()
-      {
-        PropertyObject = _objectHouse,
-        Value = 25,
-        AdditionalCostsCategory = EAdditionalCosts.Sewer,
-        Account = _account1
-      };
-      var _invoicePosition7 = new InvoicePosition()
-      {
-        PropertyObject = _objectHouse,
-        Value = 39.50,
-        AdditionalCostsCategory = EAdditionalCosts.Gardening,
-        Account = _account1
-      };
 
       var _invoice1 = new Invoice()
       {
@@ -82,10 +48,9 @@ namespace ImmoGlobal.Database
         DueDate = DateTime.Parse("01.04.2022"),
         InvoicePurpose = "Ihre Miete",
         InvoiceState = EInvoiceState.OverDue,
-        InvoiceCategory = EInvoiceCategory.Rent,
-        TotalValue = _invoicePosition3.Value,
-        InvoicePositions = new List<InvoicePosition>() { _invoicePosition3 }
+        InvoiceCategory = EInvoiceCategory.Rent
       };
+
       var _invoice2 = new Invoice()
       {
         Persona = _renter,
@@ -93,10 +58,9 @@ namespace ImmoGlobal.Database
         DueDate = DateTime.Parse("28.02.2022"),
         InvoicePurpose = "Nebenkostenabrechnung",
         InvoiceState = EInvoiceState.Paid,
-        InvoiceCategory = EInvoiceCategory.AdditionalCosts,
-        TotalValue = _invoicePosition4.Value + _invoicePosition5.Value + _invoicePosition6.Value + _invoicePosition7.Value,
-        InvoicePositions = new List<InvoicePosition>() { _invoicePosition4, _invoicePosition5, _invoicePosition6, _invoicePosition7 }
+        InvoiceCategory = EInvoiceCategory.AdditionalCosts
       };
+
       var _invoice3 = new Invoice()
       {
         Persona = _creditor,
@@ -104,10 +68,79 @@ namespace ImmoGlobal.Database
         DueDate = DateTime.Parse("15.05.2022"),
         InvoicePurpose = "Rechnung zu Liegenschaft",
         InvoiceState = EInvoiceState.Released,
-        InvoiceCategory = EInvoiceCategory.Property,
-        TotalValue = _invoicePosition1.Value + _invoicePosition2.Value,
-        InvoicePositions = new List<InvoicePosition>() { _invoicePosition1, _invoicePosition2 },
+        InvoiceCategory = EInvoiceCategory.Property
       };
+
+
+      //additionalCosts prop 1
+      var _invoicePosition1 = new InvoicePosition()
+      {
+        Property = _property1,
+        Value = 1320,
+        AdditionalCostsCategory = EAdditionalCosts.Electricity,
+        Account = _account3,
+        Invoice = _invoice3
+      };
+
+      var _invoicePosition2 = new InvoicePosition()
+      {
+        Property = _property1,
+        Value = 45.23,
+        AdditionalCostsCategory = EAdditionalCosts.Gas,
+        Account = _account3,
+        Invoice = _invoice3
+      };
+
+      //rent
+      var _invoicePosition3 = new InvoicePosition()
+      {
+        PropertyObject = _objectHouse,
+        Value = _rentalContract1.Rent,
+        Account = _account2,
+        Invoice = _invoice1
+      };
+
+      //additionalCosts object 1
+      var _invoicePosition4 = new InvoicePosition()
+      {
+        PropertyObject = _objectHouse,
+        Value = 320,
+        AdditionalCostsCategory = EAdditionalCosts.Lift,
+        Account = _account1,
+        Invoice = _invoice2
+      };
+
+      var _invoicePosition5 = new InvoicePosition()
+      {
+        PropertyObject = _objectHouse,
+        Value = 50,
+        AdditionalCostsCategory = EAdditionalCosts.Gas,
+        Account = _account1,
+        Invoice = _invoice2
+      };
+
+      var _invoicePosition6 = new InvoicePosition()
+      {
+        PropertyObject = _objectHouse,
+        Value = 25,
+        AdditionalCostsCategory = EAdditionalCosts.Sewer,
+        Account = _account1,
+        Invoice = _invoice2
+      };
+
+      var _invoicePosition7 = new InvoicePosition()
+      {
+        PropertyObject = _objectHouse,
+        Value = 39.50,
+        AdditionalCostsCategory = EAdditionalCosts.Gardening,
+        Account = _account1,
+        Invoice = _invoice2
+      };
+
+      _invoice1.InvoicePositions = new List<InvoicePosition>() { _invoicePosition3 };
+      _invoice2.InvoicePositions = new List<InvoicePosition>() { _invoicePosition4, _invoicePosition5, _invoicePosition6, _invoicePosition7 };
+      _invoice3.InvoicePositions = new List<InvoicePosition>() { _invoicePosition1, _invoicePosition2 };
+
 
       var _user1 = new User() { Name = "Admin", Surname = "Tester", Email = "user1@immoglogbal.ch", Password = "password", Role = ERole.Admin };
       var _user2 = new User() { Name = "User", Surname = "Tester", Email = "user2@immoglogbal.ch", Password = "password", Role = ERole.User };

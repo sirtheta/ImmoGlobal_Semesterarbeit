@@ -49,7 +49,7 @@ namespace ImmoGlobal.ViewModels
         {
           _selectedCreditor = value;
           SelectedCreditorDetailsViewModel = new CreditorDetailsViewModel(_selectedCreditor);
-          InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetInvoiceToPersonDB(_selectedCreditor));
+          InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetInvoiceToPersonaDB(_selectedCreditor));
           if (MainWindowViewModelInstance != null)
           {
             MainWindowViewModelInstance.SelectedPersona = _selectedCreditor;

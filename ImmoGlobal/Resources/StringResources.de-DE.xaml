@@ -50,11 +50,15 @@
   <system:String x:Key="washingMachine">Waschmaschine</system:String>
   <system:String x:Key="tumbler">Tumbler</system:String>
 
-
   <system:String x:Key="heating">Heizung</system:String>
   <system:String x:Key="electricity">Elektrizität</system:String>
   <system:String x:Key="water">Wasser</system:String>
   <system:String x:Key="garbage">Müll</system:String>
+  <system:String x:Key="gardening">Gärtnerarbeiten</system:String>
+  <system:String x:Key="gas">Gas</system:String>
+  <system:String x:Key="lift">Lift</system:String>
+  <system:String x:Key="tv">TV</system:String>
+  <system:String x:Key="sewer">Abwasser</system:String>
 
   <system:String x:Key="yes">Ja</system:String>
   <system:String x:Key="no">Nein</system:String>
@@ -113,6 +117,7 @@
   <system:String x:Key="invoiceState">Rechnungsstatus</system:String>
   <system:String x:Key="invoiceCategory">Rechnungskategorie</system:String>
   <system:String x:Key="additionalCosts">Nebenkosten</system:String>
+  <system:String x:Key="additionalCostsCategory">Nebenkostenkategorie</system:String>
   <system:String x:Key="notReleased">Nicht Freigegeben</system:String>
   <system:String x:Key="released">Freigegeben</system:String>
   <system:String x:Key="overDue">Überfällig</system:String>
@@ -210,4 +215,10 @@
   <system:String x:Key="errorAddPaymentRecord">Speichern des Belegs fehlgeschlagen!</system:String>
   <system:String x:Key="errorIncomeExpense">Es muss entweder ein Einnahme- oder eine Ausgabebetrag eingeben werden!</system:String>
   <system:String x:Key="errorReceiptNumber">Es muss eine Belegnummer eingeben werden</system:String>
+
+  <system:String x:Key="invoicesOverview">Übersicht der Rechnungen</system:String>
+  <system:String x:Key="invoicePositionTo">Rechnungspotionen zu Rechnung</system:String>
+  <system:String x:Key="assignment">Zuordnung</system:String>
+  <system:String x:Key="value">Betrag</system:String>
+
 </ResourceDictionary>

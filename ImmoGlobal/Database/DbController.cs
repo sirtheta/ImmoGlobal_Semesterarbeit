@@ -26,7 +26,7 @@ namespace ImmoGlobal.Database
     /// </summary>
     /// <param name="persona"></param>
     /// <returns></returns>
-    internal static ICollection<Invoice> GetInvoiceToPersonDB(Persona persona)
+    internal static ICollection<Invoice> GetInvoiceToPersonaDB(Persona persona)
     {
       using var db = new ImmoGlobalContext();
       return (from p in db.Invoices
@@ -57,6 +57,43 @@ namespace ImmoGlobal.Database
       using var db = new ImmoGlobalContext();
       return (from p in db.InvoicePositions
               where p.Property == property
+              select p).ToList();
+    }
+
+    /// <summary>
+    /// returns all Invoice Positions to an given invoice
+    /// </summary>
+    /// <param name="invoice"></param>
+    /// <returns></returns>
+    internal static ICollection<InvoicePosition> GetInvoicePositionsToInvoiceDB(Invoice invoice)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.InvoicePositions
+              where p.Invoice == invoice
+              select p).ToList();
+    }
+
+    /// <summary>
+    /// returns persona related to invoice
+    /// </summary>
+    /// <param name="invoice"></param>
+    /// <returns></returns>
+    internal static Persona GetPersonaToInvoiceDB(Invoice invoice)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.Invoices
+              where p == invoice
+              select p.Persona).First();
+    }
+
+    /// <summary>
+    /// returns all invoices
+    /// </summary>
+    /// <returns></returns>
+    internal static ICollection<Invoice> GetAllInvoicesDB()
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.Invoices
               select p).ToList();
     }
 
@@ -95,6 +132,19 @@ namespace ImmoGlobal.Database
       return (from p in db.PropertyObjects
               where p.RentalContracts.Contains(contract)
               select p).FirstOrDefault();
+    }
+
+    /// <summary>
+    /// retruns property object to InvoicePosition
+    /// </summary>
+    /// <param name="invoicePosition"></param>
+    /// <returns></returns>
+    internal static PropertyObject? GetPropertyObjectToInvoice(InvoicePosition invoicePosition)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.InvoicePositions
+              where p == invoicePosition
+              select p.PropertyObject).FirstOrDefault();
     }
 
     /// <summary>
@@ -146,6 +196,19 @@ namespace ImmoGlobal.Database
       {
         return false;
       }
+    }
+
+    /// <summary>
+    /// retruns property to InvoicePosition
+    /// </summary>
+    /// <param name="invoicePosition"></param>
+    /// <returns></returns>
+    internal static Property? GetPropertyToInvoice(InvoicePosition invoicePosition)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.InvoicePositions
+              where p == invoicePosition
+              select p.Property).FirstOrDefault();
     }
 
     /// <summary>
@@ -414,7 +477,7 @@ namespace ImmoGlobal.Database
     /// </summary>
     /// <param name="invoicePosition"></param>
     /// <returns></returns>
-    internal static Account GetAccountToPositionDB(InvoicePosition invoicePosition)
+    internal static Account GetAccountToInvoicePositionDB(InvoicePosition invoicePosition)
     {
       using var db = new ImmoGlobalContext();
       return (from p in db.InvoicePositions

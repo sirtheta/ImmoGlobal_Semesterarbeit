@@ -176,9 +176,6 @@ namespace ImmoGlobal.ViewModels
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Visible;
           break;
-        case UpsertAccountViewModel:          
-          
-          break;
         default:
           break;
       }
