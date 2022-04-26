@@ -76,7 +76,7 @@
 
               <DataGridTextColumn Header="{DynamicResource accountBalance}"         
                                 IsReadOnly="True" 
-                                Binding="{Binding Balance}"/>
+                                Binding="{Binding Balance, StringFormat={}{0:0.00}}"/>
 
             </DataGrid.Columns>
           </DataGrid>
@@ -127,11 +127,11 @@
 
               <DataGridTextColumn Header="{DynamicResource expense}"         
                                   IsReadOnly="True" 
-                                  Binding="{Binding ExpenseAmount}"/>
+                                  Binding="{Binding ExpenseAmount, StringFormat={}{0:0.00}}"/>
 
               <DataGridTextColumn Header="{DynamicResource income}"         
                                   IsReadOnly="True" 
-                                  Binding="{Binding IncomeAmount}"/>
+                                  Binding="{Binding IncomeAmount, StringFormat={}{0:0.00}}"/>
 
 
             </DataGrid.Columns>

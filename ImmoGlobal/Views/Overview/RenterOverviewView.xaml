@@ -134,7 +134,7 @@
                                 Binding="{Binding DueDate, StringFormat=\{0:dd. MM. yyyy\}}"/>
               <DataGridTextColumn Header="{DynamicResource invoiceValue}"         
                                 IsReadOnly="True" 
-                                Binding="{Binding TotalValue}"/>
+                                Binding="{Binding TotalValue, StringFormat={}{0:0.00}}"/>
               <DataGridTextColumn Header="{DynamicResource billReminders}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding BillRemindersString}"/>
