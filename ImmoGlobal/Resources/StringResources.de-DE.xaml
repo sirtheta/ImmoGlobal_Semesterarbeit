@@ -112,6 +112,7 @@
   <system:String x:Key="creditorCompanyName">Geschäftsname</system:String>
 
   <system:String x:Key="invoiceDate">Rechnungsdatum</system:String>
+  <system:String x:Key="invoiceDueDate">Fälligkeitsdatum</system:String>
   <system:String x:Key="invoiceValue">Rechnungsbetrag</system:String>
   <system:String x:Key="invoicePurpose">Rechnungsgrund</system:String>
   <system:String x:Key="invoiceState">Rechnungsstatus</system:String>
@@ -178,6 +179,7 @@
   <system:String x:Key="errorAddHousekeeper">Speichern des Hauswarts fehlgeschlagen!</system:String>
 
   <system:String x:Key="selectRenter">Mieter:in auswählen</system:String>
+  <system:String x:Key="selectCreditor">Kreditor auswählen</system:String>
 
   <system:String x:Key="createNewRentalContract">Neuer Mietvertrag hinzufügen</system:String>
 
@@ -210,6 +212,7 @@
   <system:String x:Key="addNewPaymentRecord">Neuer Beleg</system:String>
   <system:String x:Key="paymentRecord">Beleg</system:String>
   <system:String x:Key="add">hinzufügen</system:String>
+  
   <system:String x:Key="successAddPaymentRecord">Beleg erfolgreich hinzugefügt!</system:String>
   <system:String x:Key="successUpdatePaymentRecord">Update des Belegs erfolgreich!</system:String>
   <system:String x:Key="errorAddPaymentRecord">Speichern des Belegs fehlgeschlagen!</system:String>
@@ -217,8 +220,14 @@
   <system:String x:Key="errorReceiptNumber">Es muss eine Belegnummer eingeben werden</system:String>
 
   <system:String x:Key="invoicesOverview">Übersicht der Rechnungen</system:String>
-  <system:String x:Key="invoicePositionTo">Rechnungspotionen zu Rechnung</system:String>
+  <system:String x:Key="invoicePositionTo">Rechnungspositionen zu Rechnung</system:String>
   <system:String x:Key="assignment">Zuordnung</system:String>
   <system:String x:Key="value">Betrag</system:String>
+
+  <system:String x:Key="successAddInvoice">Rechnung erfolgreich erstellt!</system:String>
+  <system:String x:Key="successUpdateInvoice">Update der Rechnung erfolgreich!</system:String>
+  <system:String x:Key="errorAddInvoice">Speichern der Rechnung fehlgeschlagen!</system:String>
+  <system:String x:Key="errorInvoicePosition">Es muss eine Rechnungsposition eingeben werden!</system:String>
+  <system:String x:Key="createNewInvoice">Neue Rechnung erstellen</system:String>
 
 </ResourceDictionary>

@@ -21,10 +21,12 @@ namespace ImmoGlobal.MainClasses
 
     public string PersonaFullName
     {
-    get
-      {
-        return DbController.GetPersonaToInvoiceDB(this).FullName;
-      }
+    get => GetPersonaToInvoice().FullName;
+    }
+
+    public Persona GetPersonaToInvoice()
+    {
+      return DbController.GetPersonaToInvoiceDB(this);
     }
     
     public double TotalValue 
@@ -51,6 +53,7 @@ namespace ImmoGlobal.MainClasses
           EInvoiceCategory.Rent => Application.Current.FindResource("rent") as string ?? "Rent",
           EInvoiceCategory.AdditionalCosts => Application.Current.FindResource("additionalCosts") as string ?? "Additional Costs",
           EInvoiceCategory.BillReminder => Application.Current.FindResource("billReminder") as string ?? "Bill Reminder",
+          EInvoiceCategory.None => Application.Current.FindResource("none") as string ?? "none",
           _ => "",
         };
       }

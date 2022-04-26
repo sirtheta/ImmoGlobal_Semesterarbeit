@@ -12,16 +12,17 @@
              d:DesignHeight="650" 
              d:DesignWidth="1200"
              TextOptions.TextFormattingMode="Display">
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="auto"/>
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="auto"/>
-      <ColumnDefinition Width="*"/>
-    </Grid.ColumnDefinitions>
-    <TextBlock Grid.Row="0"
+  <ScrollViewer HorizontalScrollBarVisibility="Auto">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="auto"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <TextBlock Grid.Row="0"
                Text="{DynamicResource invoicesOverview}"
                HorizontalAlignment="Left"
                Padding="10"
@@ -29,7 +30,7 @@
                FontSize="30"
                FontWeight="Bold"/>
 
-    <TextBlock Grid.Column="1"
+      <TextBlock Grid.Column="1"
                Text="{Binding InvoicePositionTitel}"
                TextWrapping="Wrap"               
                HorizontalAlignment="Left"
@@ -38,25 +39,25 @@
                FontSize="30"
                FontWeight="Bold"/>
 
-    <Border Grid.Column="0" Grid.Row="1" CornerRadius="2"
+      <Border Grid.Column="0" Grid.Row="1" CornerRadius="2"
             Margin="10"
             Padding="10"
             Width="auto"
             MinWidth="400"
             HorizontalAlignment="Left"
             Background="{DynamicResource MaterialDesignBackground}">
-      <Border.Effect>
-        <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
-      </Border.Effect>
-      <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid ShowGridLines="false">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-          </Grid.RowDefinitions>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" MinWidth="300"/>
-          </Grid.ColumnDefinitions>
-          <DataGrid Grid.Row="1" 
+        <Border.Effect>
+          <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
+        </Border.Effect>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <Grid ShowGridLines="false">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="auto" MinWidth="300"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Row="1" 
                   ItemsSource="{Binding InvoiceCollection, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedInvoice}"
                   SelectionMode="Extended"
@@ -65,51 +66,51 @@
                   CanUserAddRows="False" 
                   CanUserDeleteRows="False" 
                   Style="{DynamicResource MaterialDesignDataGrid}">
-            <DataGrid.Columns>
-              <DataGridTextColumn Header="{DynamicResource invoice}"         
+              <DataGrid.Columns>
+                <DataGridTextColumn Header="{DynamicResource invoice}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding InvoicePurpose}"/>
-              
-              <DataGridTextColumn Header="{DynamicResource invoiceState}"         
+
+                <DataGridTextColumn Header="{DynamicResource invoiceState}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding InvoiceStateString}"/>
-              
-              <DataGridTextColumn Header="{DynamicResource invoiceDate}"         
+
+                <DataGridTextColumn Header="{DynamicResource invoiceDate}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding DueDate, StringFormat=\{0:dd. MM. yyyy\}}"/>
-              
-              <DataGridTextColumn Header="{DynamicResource invoiceValue}"         
+
+                <DataGridTextColumn Header="{DynamicResource invoiceValue}"         
                                 IsReadOnly="True" 
-                                Binding="{Binding TotalValue, StringFormat={}{0:0.00}}"/>             
-              
-              <DataGridTextColumn Header="{DynamicResource creditor}"         
+                                Binding="{Binding TotalValue, StringFormat={}{0:0.00}}"/>
+
+                <DataGridTextColumn Header="{DynamicResource creditor}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding PersonaFullName}"/>
-            </DataGrid.Columns>
-          </DataGrid>
-        </Grid>
-      </ScrollViewer>
-    </Border>
+              </DataGrid.Columns>
+            </DataGrid>
+          </Grid>
+        </ScrollViewer>
+      </Border>
 
-    <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="2"
+      <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="2"
             Margin="10"
             Padding="10"
             Width="auto"
             MinWidth="400"
             HorizontalAlignment="Left"
             Background="{DynamicResource MaterialDesignBackground}">
-      <Border.Effect>
-        <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
-      </Border.Effect>
-      <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid ShowGridLines="false">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-          </Grid.RowDefinitions>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" MinWidth="300"/>
-          </Grid.ColumnDefinitions>
-          <DataGrid Grid.Row="1" 
+        <Border.Effect>
+          <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
+        </Border.Effect>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <Grid ShowGridLines="false">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="auto" MinWidth="300"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Row="1" 
                   ItemsSource="{Binding InvoicePositionCollection, UpdateSourceTrigger=PropertyChanged}" 
                   SelectedItem="{Binding SelectedInvoicePosition}"
                   SelectionMode="Extended"
@@ -118,27 +119,28 @@
                   CanUserAddRows="False" 
                   CanUserDeleteRows="False"
                   Style="{DynamicResource MaterialDesignDataGrid}">
-            <DataGrid.Columns>
-              <DataGridTextColumn Header="{DynamicResource assignment}"         
+              <DataGrid.Columns>
+                <DataGridTextColumn Header="{DynamicResource assignment}"         
                                   IsReadOnly="True" 
                                   Binding="{Binding Assignment}"/>
-              
-              <DataGridTextColumn Header="{DynamicResource account}"         
+
+                <DataGridTextColumn Header="{DynamicResource account}"         
                                   IsReadOnly="True" 
                                   Binding="{Binding AccountDescription}"/>
 
-              <DataGridTextColumn Header="{DynamicResource value}"         
+                <DataGridTextColumn Header="{DynamicResource value}"         
                                   IsReadOnly="True" 
                                   Binding="{Binding Value, StringFormat={}{0:0.00}}"/>
 
-              <DataGridTextColumn Header="{DynamicResource additionalCostsCategory}"         
+                <DataGridTextColumn Header="{DynamicResource additionalCostsCategory}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding AdditionalCostsCategoryString}"/>
-            </DataGrid.Columns>
-          </DataGrid>
-        </Grid>
-      </ScrollViewer>
-    </Border>
+              </DataGrid.Columns>
+            </DataGrid>
+          </Grid>
+        </ScrollViewer>
+      </Border>
 
-  </Grid>
+    </Grid>
+  </ScrollViewer>
 </UserControl>

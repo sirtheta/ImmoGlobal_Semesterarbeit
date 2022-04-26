@@ -153,7 +153,6 @@ namespace ImmoGlobal.ViewModels
           SideMenuViewModel.BtnNewHousekeeperVisibility = Visibility.Visible;
           break;
         case PropertyObjectViewModel:
-          SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Visible;
           SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Visible;
           SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           break;

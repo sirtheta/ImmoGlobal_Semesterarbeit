@@ -9,6 +9,7 @@
     Object,
     Rent,
     AdditionalCosts,
-    BillReminder
+    BillReminder,
+    None
   }
 }

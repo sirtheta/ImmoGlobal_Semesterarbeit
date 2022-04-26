@@ -20,8 +20,8 @@ namespace ImmoGlobal.ViewModels
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
-      _personaCollection = new(DbController.GetAllPersonasDB());
-      _propertyCollection = new(DbController.GetAllPropertiesDB());
+      PersonaCollection = new(DbController.GetAllPersonasDB());
+      PropertyCollection = new(DbController.GetAllPropertiesDB());
 
       RentStartDate = DateTime.Now;
       RentEndDate = RentStartDate.AddDays(30);
@@ -35,8 +35,8 @@ namespace ImmoGlobal.ViewModels
       RentalContractId = selectedRentalContract.RentalContractId;
 
       BtnSave = new RelayCommand<object>(SaveClicked);
-      _personaCollection = new(DbController.GetAllPersonasDB());
-      _propertyCollection = new(DbController.GetAllPropertiesDB());
+      PersonaCollection = new(DbController.GetAllPersonasDB());
+      PropertyCollection = new(DbController.GetAllPropertiesDB());
 
       SelectedPersona = selectedRentalContract.GetRenter();
       SelectedProperty = selectedRentalContract.GetPropertyObjectToRentalContract().GetPropertyToPropertyObject();
@@ -108,7 +108,7 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-    
+
     public Property? SelectedProperty
     {
       get => _selectedProperty;
@@ -193,13 +193,12 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    public Dictionary<EContractState, string> EContractStateWithCaptions { get; } =
-    new Dictionary<EContractState, string>()
+    public Dictionary<EContractState, string> EContractStateWithCaptions { get; } = new Dictionary<EContractState, string>()
     {
-                  {EContractState.NotActive, Application.Current.FindResource("notActiveContract") as string ?? "not active contract" },
-                  {EContractState.Singend, Application.Current.FindResource("singnedContract") as string ?? "singned contract"},
-                  {EContractState.Active, Application.Current.FindResource("activeContract") as string ?? "active contract"},
-                  {EContractState.Canceled, Application.Current.FindResource("canceledContract") as string ?? "canceled contract"},
+      {EContractState.NotActive, Application.Current.FindResource("notActiveContract") as string ?? "not active contract" },
+      {EContractState.Singend, Application.Current.FindResource("singnedContract") as string ?? "singned contract"},
+      {EContractState.Active, Application.Current.FindResource("activeContract") as string ?? "active contract"},
+      {EContractState.Canceled, Application.Current.FindResource("canceledContract") as string ?? "canceled contract"},
     };
 
     private void SaveClicked(object obj)
@@ -224,7 +223,7 @@ namespace ImmoGlobal.ViewModels
       // Update Property
       else if (RentalContractId != null && UpdateRentalContract(rent, (int)RentalContractId))
       {
-        ShowNotification("Success", Application.Current.FindResource("successUpdateRentalContract") as string ?? "Rental Contract added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.FindResource("successUpdateRentalContract") as string ?? "Rental Contract updated successfully", NotificationType.Success);
       }
       else
       {

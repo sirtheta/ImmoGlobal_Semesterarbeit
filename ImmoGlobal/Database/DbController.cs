@@ -35,6 +35,35 @@ namespace ImmoGlobal.Database
     }
 
     /// <summary>
+    /// save or update invoice
+    /// </summary>
+    /// <param name="invoice"></param>
+    /// <returns></returns>
+    internal static bool UpsertInvoiceToDB(Invoice invoice)
+    {
+      try
+      {
+        using var db = new ImmoGlobalContext();
+        if (invoice.Persona != null)
+          db.Attach(invoice.Persona);
+        if (invoice.InvoiceId == 0)
+        {
+          db.Invoices.Add(invoice);
+        }
+        else
+        {
+          db.Invoices.Update(invoice);
+        }
+        db.SaveChanges();
+        return true;
+      }
+      catch (Exception)
+      {
+        return false;
+      }
+    }
+
+    /// <summary>
     /// Return invoice positions to propertyObject
     /// </summary>
     /// <param name="propertyObject"></param>
