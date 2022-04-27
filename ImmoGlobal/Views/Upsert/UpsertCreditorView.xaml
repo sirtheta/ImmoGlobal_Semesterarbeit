@@ -154,6 +154,12 @@
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
           </Grid>
+          <TextBox Grid.Column="1" Text="{Binding CreditorContactPerson}" 
+                 Margin="10" 
+               materialDesign:HintAssist.Hint="{DynamicResource creditorContactPerson}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+               HorizontalAlignment="Stretch"/>
           <CheckBox IsChecked="{Binding CreditorIsActive}" 
                   Margin="10">
             <TextBlock FlowDirection="LeftToRight" Text="{DynamicResource creditorActiv}"/>
