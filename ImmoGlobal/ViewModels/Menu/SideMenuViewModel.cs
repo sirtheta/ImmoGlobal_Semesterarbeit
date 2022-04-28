@@ -206,9 +206,9 @@ namespace ImmoGlobal.ViewModels
             }
             break;
           case InvoicesOverviewViewModel:
-            if (instance.SelectedInvoice != null)
+            if (instance.SelectedInvoice != null && instance.InvoicePositions != null)
             {
-              instance.SelectedViewModel = new UpsertInvoiceViewModel(instance.SelectedInvoice);
+              instance.SelectedViewModel = new UpsertInvoiceViewModel(instance.SelectedInvoice, instance.InvoicePositions);
             }
             break;
           case AccountsOverviewViewModel:

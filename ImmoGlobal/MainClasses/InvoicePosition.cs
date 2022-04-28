@@ -27,6 +27,16 @@ namespace ImmoGlobal.MainClasses
       return DbController.GetAccountToInvoicePositionDB(this);
     }
 
+    public Property? GetPropertyToInvoicePosition()
+    {
+      return DbController.GetPropertyToInvoicePosition(this);
+    }
+
+    public PropertyObject? GetPropertyObjectToInvoicePosition()
+    {
+      return DbController.GetPropertyObjectToInvoicePosition(this);
+    }
+
     public string AdditionalCostsCategoryString
     {
       get
@@ -52,8 +62,8 @@ namespace ImmoGlobal.MainClasses
     {
       get
       {
-        var propj = DbController.GetPropertyObjectToInvoice(this);
-        var prop = DbController.GetPropertyToInvoice(this);
+        var propj = GetPropertyObjectToInvoicePosition();
+        var prop = GetPropertyToInvoicePosition();
         if (propj != null)
         {
           return propj.Description ?? "";
@@ -70,7 +80,7 @@ namespace ImmoGlobal.MainClasses
     {
       get
       {
-        return DbController.GetAccountToInvoicePositionDB(this).Description?? "";
+        return GetAccountToInvoicePosition().Description?? "";
       }
     }
   }

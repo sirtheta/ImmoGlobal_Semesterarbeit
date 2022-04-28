@@ -75,8 +75,8 @@
                   Margin="10,5,0,0"
                   DisplayMemberPath="Value" 
                   SelectedValuePath="Key"
-                  SelectedItem="{Binding AdditionalCosts, Mode=OneWay}"
-                  SelectedValue="{Binding AdditionalCosts, Mode=TwoWay}"/>
+                  SelectedItem="{Binding AdditionalCostsCategory, Mode=OneWay}"
+                  SelectedValue="{Binding AdditionalCostsCategory, Mode=TwoWay}"/>
         </StackPanel>
       </Grid>
       <Grid Margin="10,20,0,0">

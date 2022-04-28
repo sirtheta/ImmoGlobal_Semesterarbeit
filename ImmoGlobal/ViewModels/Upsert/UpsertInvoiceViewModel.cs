@@ -27,10 +27,11 @@ namespace ImmoGlobal.ViewModels
       AddOneInvoicePosition();
     }
 
-    public UpsertInvoiceViewModel(Invoice selectedInvoice)
+    public UpsertInvoiceViewModel(Invoice selectedInvoice, ICollection<InvoicePosition> invoicePositions)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
       SelectedInvoiceId = selectedInvoice.InvoiceId;
+      InvoicePositionViewModelCollection = new();
 
       SelectedPersona = selectedInvoice.GetPersonaToInvoice();
       DueDate = selectedInvoice.DueDate;
@@ -39,6 +40,11 @@ namespace ImmoGlobal.ViewModels
       InvoicePurpose = selectedInvoice.InvoicePurpose;
       InvoiceCategory = selectedInvoice.InvoiceCategory;
       InvoiceState = selectedInvoice.InvoiceState;
+
+      foreach (var item in invoicePositions)
+      {
+        InvoicePositionViewModelCollection.Add(new InvoicePositionViewModel(item));
+      }
 
       FormTitel = (Application.Current.FindResource("invoice") as string ?? "invoice") + " " +
                (Application.Current.FindResource("edit") as string ?? "edit");
@@ -265,7 +271,7 @@ namespace ImmoGlobal.ViewModels
             PropertyObject = item.SelectedPropertyObject,
             Invoice = invoice,
             Value = item.Value,
-            AdditionalCostsCategory = item.AdditionalCosts,
+            AdditionalCostsCategory = item.AdditionalCostsCategory,
             Account = item.SelectedAccount
           };
           if (!DbController.UpsertInvoicePositionToDB(invoicePosition))

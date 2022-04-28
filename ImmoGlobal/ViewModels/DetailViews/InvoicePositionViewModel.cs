@@ -18,6 +18,18 @@ namespace ImmoGlobal.ViewModels
       AccountCollection = new(DbController.GetAllAccountsDB());
     }
 
+    public InvoicePositionViewModel(InvoicePosition invoicePosition)
+    {
+      PropertyCollection = new(DbController.GetAllPropertiesDB());
+      AccountCollection = new(DbController.GetAllAccountsDB());     
+
+      Value = invoicePosition.Value;
+      SelectedProperty = invoicePosition.GetPropertyToInvoicePosition();
+      SelectedPropertyObject = invoicePosition.GetPropertyObjectToInvoicePosition();
+      SelectedAccount = invoicePosition.GetAccountToInvoicePosition();
+      AdditionalCostsCategory = invoicePosition.AdditionalCostsCategory;
+
+    }
 
     private Property? _selectedProperty;
     private ObservableCollection<Property> _propertyCollection;
@@ -111,7 +123,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    public EAdditionalCosts? AdditionalCosts
+    public EAdditionalCosts? AdditionalCostsCategory
     {
       get
       {

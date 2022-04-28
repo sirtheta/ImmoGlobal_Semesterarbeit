@@ -219,7 +219,7 @@ namespace ImmoGlobal.Database
     /// </summary>
     /// <param name="invoicePosition"></param>
     /// <returns></returns>
-    internal static PropertyObject? GetPropertyObjectToInvoice(InvoicePosition invoicePosition)
+    internal static PropertyObject? GetPropertyObjectToInvoicePosition(InvoicePosition invoicePosition)
     {
       using var db = new ImmoGlobalContext();
       return (from p in db.InvoicePositions
@@ -283,7 +283,7 @@ namespace ImmoGlobal.Database
     /// </summary>
     /// <param name="invoicePosition"></param>
     /// <returns></returns>
-    internal static Property? GetPropertyToInvoice(InvoicePosition invoicePosition)
+    internal static Property? GetPropertyToInvoicePosition(InvoicePosition invoicePosition)
     {
       using var db = new ImmoGlobalContext();
       return (from p in db.InvoicePositions

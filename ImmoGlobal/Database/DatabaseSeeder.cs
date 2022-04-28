@@ -22,7 +22,7 @@ namespace ImmoGlobal.Database
       var _objectHouse = new PropertyObject() { Property = _property1, ObjectType = EPropertyObjectType.House, Description = "Wohnung 1", Location = "TestLocation", NumberOfRooms = 4.5, Area = 100, NumberOfKeys = 5, Fridge = true, Dishwasher = true, Stove = true, Oven = true };
       var _objectGarage = new PropertyObject() { Property = _property1, ObjectType = EPropertyObjectType.Garage, Description = "Garage von Wohnung 1", Location = "irgendwo nebenan", Area = 15 };
       var _objectRoom = new PropertyObject() { Property = _property1, ObjectType = EPropertyObjectType.Room, Description = "Partyraum", Location = "Sous partere", NumberOfRooms = 1, Area = 10, NumberOfKeys = 2 };
-      var _objectOffice = new PropertyObject() { Property = _property1, ObjectType = EPropertyObjectType.Office, Description = "Office in " + _property1.Description, Location = "4 Stock", NumberOfRooms = 2, Area = 35, NumberOfKeys = 3, Fridge = true, Dishwasher = true };
+      var _objectOffice = new PropertyObject() { Property = _property2, ObjectType = EPropertyObjectType.Office, Description = "Office in " + _property1.Description, Location = "4 Stock", NumberOfRooms = 2, Area = 35, NumberOfKeys = 3, Fridge = true, Dishwasher = true };
 
       var _rentalContract1 = new RentalContract() { Renter = _renter, PropertyObject = _objectHouse, RentStartDate = DateTime.Parse("01.04.2022"), RentEndDate = DateTime.Parse("31.10.2030"), Rent = 1650, Deposit = true, ContractState = EContractState.Active };
       var _rentalContract2 = new RentalContract() { Renter = _renter, PropertyObject = _objectGarage, RentStartDate = DateTime.Parse("01.11.2030"), Rent = 1850, Deposit = true, ContractState = EContractState.Singend };
@@ -96,7 +96,8 @@ namespace ImmoGlobal.Database
       //rent
       var _invoicePosition3 = new InvoicePosition()
       {
-        InvoicePositionNumber = 1,        
+        InvoicePositionNumber = 1,
+        Property = _property1,
         PropertyObject = _objectHouse,
         Value = _rentalContract1.Rent,
         Account = _account2,
@@ -107,6 +108,7 @@ namespace ImmoGlobal.Database
       var _invoicePosition4 = new InvoicePosition()
       {
         InvoicePositionNumber = 1,
+        Property = _property1,
         PropertyObject = _objectHouse,
         Value = 320,
         AdditionalCostsCategory = EAdditionalCosts.Lift,
@@ -117,6 +119,7 @@ namespace ImmoGlobal.Database
       var _invoicePosition5 = new InvoicePosition()
       {
         InvoicePositionNumber = 2,
+        Property = _property1,
         PropertyObject = _objectHouse,
         Value = 50,
         AdditionalCostsCategory = EAdditionalCosts.Gas,
@@ -127,6 +130,7 @@ namespace ImmoGlobal.Database
       var _invoicePosition6 = new InvoicePosition()
       {
         InvoicePositionNumber = 3,
+        Property = _property1,
         PropertyObject = _objectHouse,
         Value = 25,
         AdditionalCostsCategory = EAdditionalCosts.Sewer,
@@ -137,6 +141,7 @@ namespace ImmoGlobal.Database
       var _invoicePosition7 = new InvoicePosition()
       {
         InvoicePositionNumber = 4,
+        Property = _property1,
         PropertyObject = _objectHouse,
         Value = 39.50,
         AdditionalCostsCategory = EAdditionalCosts.Gardening,

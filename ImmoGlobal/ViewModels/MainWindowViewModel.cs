@@ -1,4 +1,5 @@
 ﻿using ImmoGlobal.MainClasses;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 
@@ -74,6 +75,7 @@ namespace ImmoGlobal.ViewModels
     internal Account? SelectedAccount { get; set; }
     internal RentalContract? SelectedRentalContract { get; set; }
     public PaymentRecord? SelectedPaymentRecord { get; set; }
+    public ICollection<InvoicePosition> InvoicePositions { get; internal set; }
 
     /// <summary>
     /// sets the color of the menu bar icon

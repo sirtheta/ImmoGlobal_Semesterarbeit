@@ -43,6 +43,8 @@ namespace ImmoGlobal.ViewModels
         if (MainWindowViewModelInstance != null)
         {
           MainWindowViewModelInstance.SelectedInvoice = _selectedInvoice;
+          MainWindowViewModelInstance.InvoicePositions = InvoicePositionCollection;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
         }
         OnPropertyChanged();
       }
