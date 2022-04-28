@@ -22,6 +22,7 @@
   <system:String x:Key="selectHousekeeper">Hauswartungsperson auswählen</system:String>
   <system:String x:Key="selectProperty">Liegenschaft auswählen</system:String>
   <system:String x:Key="selectPropertyObject">Objekt auswählen</system:String>
+  <system:String x:Key="selectAccount">Konto auswählen</system:String>
 
   <system:String x:Key="overviewPropertyObjects">Übersicht Objekte in der Liegenschaft</system:String>
   <system:String x:Key="detailView">Details zu</system:String>
@@ -54,6 +55,7 @@
   <system:String x:Key="electricity">Elektrizität</system:String>
   <system:String x:Key="water">Wasser</system:String>
   <system:String x:Key="garbage">Müll</system:String>
+  <system:String x:Key="cleaning">Reinigung</system:String>
   <system:String x:Key="gardening">Gärtnerarbeiten</system:String>
   <system:String x:Key="gas">Gas</system:String>
   <system:String x:Key="lift">Lift</system:String>
@@ -229,5 +231,6 @@
   <system:String x:Key="errorAddInvoice">Speichern der Rechnung fehlgeschlagen!</system:String>
   <system:String x:Key="errorInvoicePosition">Es muss eine Rechnungsposition eingeben werden!</system:String>
   <system:String x:Key="createNewInvoice">Neue Rechnung erstellen</system:String>
+  <system:String x:Key="invoicePosition">Rechnungsposition</system:String>
 
 </ResourceDictionary>

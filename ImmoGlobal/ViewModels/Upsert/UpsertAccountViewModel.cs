@@ -21,7 +21,7 @@ namespace ImmoGlobal.ViewModels
       BtnSave = new RelayCommand<object>(SaveClicked);
 
       AccountId = selectedAccount.AccountId;
-      AccountDescription = selectedAccount.AccountDescription;
+      AccountDescription = selectedAccount.Description;
       AccountNumber = selectedAccount.AccountNumber;
 
 
@@ -105,7 +105,7 @@ namespace ImmoGlobal.ViewModels
     {
       if (DbController.UpsertAccountToDB(new Account()
       {
-        AccountDescription = AccountDescription,
+        Description = AccountDescription,
         AccountNumber = AccountNumber
       }))
       {
@@ -124,7 +124,7 @@ namespace ImmoGlobal.ViewModels
       if (DbController.UpsertAccountToDB(new Account()
       {
         AccountId = accountId,
-        AccountDescription = AccountDescription,
+        Description = AccountDescription,
         AccountNumber = AccountNumber
       }))
       {

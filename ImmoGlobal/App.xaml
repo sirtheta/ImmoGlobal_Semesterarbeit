@@ -71,7 +71,10 @@
       </DataTemplate>
       <DataTemplate DataType="{x:Type viewmodels:CreditorDetailsViewModel}">
         <views:CreditorDetailsView/>
-      </DataTemplate>      
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:InvoicePositionViewModel}">
+        <views:InvoicePositionView/>
+      </DataTemplate>
 
       <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Resources/StringResources.de-DE.xaml"/>

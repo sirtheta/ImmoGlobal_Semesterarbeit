@@ -1,4 +1,5 @@
-﻿using ImmoGlobal.MainClasses;
+﻿using ImmoGlobal.Helpers;
+using ImmoGlobal.MainClasses;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,56 @@ namespace ImmoGlobal.Database
           db.Invoices.Update(invoice);
         }
         db.SaveChanges();
+        return true;
+      }
+      catch (Exception)
+      {
+        return false;
+      }
+    }
+
+    internal static bool UpsertInvoicePositionToDB(InvoicePosition invoicePositions)
+    {
+      var track1 = false;
+      var track2 = false;
+      var track3 = false;
+      var track4 = false;
+
+      try
+      {
+        using var db = new ImmoGlobalContext();
+          if (invoicePositions.Invoice != null && !track1)
+          {
+            db.Entry(invoicePositions.Invoice).State = EntityState.Modified;
+            db.Attach(invoicePositions.Invoice);
+
+          }
+          if (invoicePositions.Property != null && !track2)
+          {
+            db.Entry(invoicePositions.Property).State = EntityState.Modified;
+            db.Attach(invoicePositions.Property);
+
+          }
+          if (invoicePositions.PropertyObject != null && !track3)
+          {
+            db.Entry(invoicePositions.PropertyObject).State = EntityState.Modified;
+            db.Attach(invoicePositions.PropertyObject);
+
+          }
+          if (invoicePositions.Account != null && !track4)
+          {
+            db.Entry(invoicePositions.Account).State = EntityState.Modified;
+            db.Attach(invoicePositions.Account);
+          db.InvoicePositions.Add(invoicePositions);
+        }
+        db.SaveChanges();
+        //db.InvoicePositions.AddRange(invoicePositions);
+
+        //}
+        //  else
+        //{
+        //  db.InvoicePositions.UpdateRange(invoicePositions);
+        //}
         return true;
       }
       catch (Exception)
@@ -611,6 +662,6 @@ namespace ImmoGlobal.Database
       {
         return false;
       }
-    }    
+    }
   }
 }

@@ -16,18 +16,22 @@ namespace ImmoGlobal.ViewModels
   {
     public UpsertInvoiceViewModel()
     {
+      BtnAddOnePosition = new RelayCommand<object>(AddOneInvoicePosition);
+      BtnRemoveOnePosition = new RelayCommand<object>(RemoveOneInvoicePosition);
       BtnSave = new RelayCommand<object>(SaveClicked);
       DueDate = DateTime.Now.AddDays(30);
       PersonaCollection = new(DbController.GetAllPersonasDB());
       InvoiceDate = DateTime.Now;
       FormTitel = Application.Current.FindResource("createNewInvoice") as string ?? "create new invoioce";
+      InvoicePositionViewModelCollection = new();
+      AddOneInvoicePosition();
     }
 
     public UpsertInvoiceViewModel(Invoice selectedInvoice)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
       SelectedInvoiceId = selectedInvoice.InvoiceId;
-      
+
       SelectedPersona = selectedInvoice.GetPersonaToInvoice();
       DueDate = selectedInvoice.DueDate;
       InvoiceDate = selectedInvoice.InvoiceDate;
@@ -46,13 +50,25 @@ namespace ImmoGlobal.ViewModels
     private Persona _persona;
     private Persona _selectedPersona;
     private ObservableCollection<Persona> _personaCollection;
+    private ObservableCollection<InvoicePositionViewModel> _invoicePositionViewModelCollection;
     private DateTime _invoiceDate;
     private DateTime _dueDate;
     private string _invoicePurpose;
     private EInvoiceCategory _invoiceCategory;
     private EInvoiceState _invoiceState;
-    
+    private int _invoicePositionNumber;
+
     public int? SelectedInvoiceId { get; set; }
+    public ObservableCollection<InvoicePositionViewModel> InvoicePositionViewModelCollection
+    {
+      get => _invoicePositionViewModelCollection;
+      set
+      {
+        _invoicePositionViewModelCollection = value;
+        OnPropertyChanged();
+      }
+    }
+
     public Persona? Persona
     {
       get => _persona;
@@ -154,6 +170,40 @@ namespace ImmoGlobal.ViewModels
       private set;
     }
 
+    public ICommand BtnAddOnePosition
+    {
+      get;
+      private set;
+    }
+
+    public ICommand BtnRemoveOnePosition
+    {
+      get;
+      private set;
+    }
+
+    /// <summary>
+    /// Add one invoice position to the invoice
+    /// </summary>
+    /// <param name="parameter"></param>
+    private void AddOneInvoicePosition(object? parameter = null)
+    {
+      _invoicePositionNumber++;
+      InvoicePositionViewModelCollection.Add(new InvoicePositionViewModel() { InvoicePositionNumber = _invoicePositionNumber });
+    }
+
+    /// <summary>
+    /// Remove one invoice position from the invoice
+    /// </summary>
+    /// <param name="obj"></param>
+    private void RemoveOneInvoicePosition(object obj)
+    {
+      if (InvoicePositionViewModelCollection.Count > 1)
+      {
+        _invoicePositionNumber--;
+        InvoicePositionViewModelCollection.RemoveAt(InvoicePositionViewModelCollection.Count - 1);
+      }
+    }
     private void SaveClicked(object obj)
     {
       if (!NullFieldCheck())
@@ -181,9 +231,9 @@ namespace ImmoGlobal.ViewModels
 
     private bool NullFieldCheck()
     {
-      if (SelectedPersona != null && 
-        InvoicePurpose != null && 
-        InvoiceCategory != 
+      if (SelectedPersona != null &&
+        InvoicePurpose != null &&
+        InvoiceCategory !=
         EInvoiceCategory.None)
       {
         return true;
@@ -191,17 +241,44 @@ namespace ImmoGlobal.ViewModels
       return false;
     }
 
+
     private bool CreateInvoice()
     {
-      if (DbController.UpsertInvoiceToDB(new Invoice()
+      var success = true;
+      var invoice = new Invoice()
       {
         Persona = SelectedPersona,
         InvoiceDate = InvoiceDate,
         DueDate = DueDate,
         InvoicePurpose = InvoicePurpose,
         InvoiceCategory = InvoiceCategory,
-        InvoiceState = InvoiceState        
-      }))
+        InvoiceState = InvoiceState
+      };
+      if (DbController.UpsertInvoiceToDB(invoice))
+      {
+        foreach (var item in InvoicePositionViewModelCollection)
+        {
+          var invoicePosition = new InvoicePosition()
+          {
+            InvoicePositionNumber = item.InvoicePositionNumber,
+            Property = item.SelectedProperty,
+            PropertyObject = item.SelectedPropertyObject,
+            Invoice = invoice,
+            Value = item.Value,
+            AdditionalCostsCategory = item.AdditionalCosts,
+            Account = item.SelectedAccount
+          };
+          if (!DbController.UpsertInvoicePositionToDB(invoicePosition))
+          {
+            success = false;
+          }
+        }
+      }
+      else
+      {
+        success = false;
+      }
+      if (success)
       {
         return true;
       }
@@ -239,6 +316,8 @@ namespace ImmoGlobal.ViewModels
       InvoicePurpose = string.Empty;
       InvoiceCategory = EInvoiceCategory.None;
       InvoiceState = EInvoiceState.NotReleased;
+      InvoicePositionViewModelCollection.Clear();
+      AddOneInvoicePosition();
     }
   }
 }

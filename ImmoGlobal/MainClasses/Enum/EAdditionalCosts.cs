@@ -11,6 +11,7 @@
     Lift,
     TV,
     Sewer,
-    Garbage
+    Garbage,
+    None
   }
 }

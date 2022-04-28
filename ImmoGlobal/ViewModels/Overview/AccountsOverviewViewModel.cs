@@ -50,7 +50,7 @@ namespace ImmoGlobal.ViewModels
         Concat(DbController.GetExpenseToAccountDB(_selectedAccount)).ToList());
 
         AccountTitel = (Application.Current.FindResource("incomeExpenseToAccount") as string ?? "income and expenses for") 
-                        + " " + _selectedAccount?.AccountDescription;
+                        + " " + _selectedAccount?.Description;
 
         OnPropertyChanged();
       }

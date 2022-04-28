@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="ImmoGlobal.Views.InvoicePositionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ImmoGlobal.Views"
+             xmlns:viewHelpers="clr-namespace:ImmoGlobal.Helpers"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:InvoicePositionViewModel}"
+             mc:Ignorable="d" 
+             d:Background="{DynamicResource MaterialDesignPaper}"
+             d:DesignHeight="250" 
+             d:DesignWidth="800"
+             TextOptions.TextFormattingMode="Display">
+  <UserControl.Resources>
+    <viewHelpers:MinusOneConverter x:Key="MinusOneConverter"/>
+  </UserControl.Resources>
+
+  <Grid ShowGridLines="false">
+    <Grid.Resources>
+      <Style TargetType="TextBlock">
+        <Setter Property="FontFamily"
+                Value="{DynamicResource MaterialDesignFont}"/>
+      </Style>
+    </Grid.Resources>
+    <StackPanel Grid.Row="0">
+      <Grid Margin="10,0,0,0" ShowGridLines="false">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Margin="0" 
+                       Text="{DynamicResource property}"/>
+        <ComboBox ItemsSource="{Binding PropertyCollection}" 
+                      Margin="0,30,20,0"
+                      DisplayMemberPath="Description" 
+                      SelectedIndex="{Binding SelectedProperty.PropertyId, Converter={StaticResource MinusOneConverter}}"
+                      SelectedItem="{Binding SelectedProperty}"
+                      materialDesign:HintAssist.Hint="{DynamicResource selectProperty}"/>
+
+        <!--can select after property is selected-->
+        <TextBlock Grid.Column="1" 
+                       Margin="20,0,0,0"
+                       Text="{DynamicResource propertyObject}"/>
+
+        <ComboBox Grid.Column="1" 
+                      ItemsSource="{Binding PropertyObjectCollection}" 
+                      Margin="20,30,0,0"
+                      DisplayMemberPath="Description" 
+                      SelectedIndex="{Binding SelectedPropertyObject.PropertyObjectId, Converter={StaticResource MinusOneConverter}}"
+                      SelectedItem="{Binding SelectedPropertyObject}"
+                      materialDesign:HintAssist.Hint="{DynamicResource selectPropertyObject}"/>
+      </Grid>
+
+      <Grid Margin="10,20,0,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Column="0" 
+                     Margin="0,0,20,0"
+                     Text="{Binding Value}"
+                     viewHelpers:TextBoxHelper.OnlyNumeric="Double"
+                     materialDesign:HintAssist.Hint="{DynamicResource value}" 
+                     TextWrapping="Wrap"
+                     Style="{DynamicResource MaterialDesignOutlinedTextBox}"
+                     HorizontalAlignment="Stretch"/>
+
+        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+          <TextBlock Margin="10,0,0,0">
+              <Run  Text="{DynamicResource additionalCostsCategory}"/>
+          </TextBlock>
+          <ComboBox ItemsSource="{Binding EAdditionalCostsWithCaptions}" 
+                  Margin="10,5,0,0"
+                  DisplayMemberPath="Value" 
+                  SelectedValuePath="Key"
+                  SelectedItem="{Binding AdditionalCosts, Mode=OneWay}"
+                  SelectedValue="{Binding AdditionalCosts, Mode=TwoWay}"/>
+        </StackPanel>
+      </Grid>
+      <Grid Margin="10,20,0,0">
+
+        <TextBlock Margin="0" 
+                       Text="{DynamicResource account}"/>
+        <ComboBox ItemsSource="{Binding AccountCollection}" 
+                      Margin="0,30,0,50"
+                      DisplayMemberPath="Description" 
+                      SelectedIndex="{Binding SelectedAccount.AccountId, Converter={StaticResource MinusOneConverter}}"
+                      SelectedItem="{Binding SelectedAccount}"
+                      materialDesign:HintAssist.Hint="{DynamicResource selectAccount}"/>
+      </Grid>
+    </StackPanel>
+  </Grid>
+</UserControl>

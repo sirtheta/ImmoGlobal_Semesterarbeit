@@ -21,7 +21,7 @@ namespace ImmoGlobal.ViewModels
       Date = DateTime.Now;
 
       FormTitel = (Application.Current.FindResource("addNewPaymentRecord") as string ?? "create new payment record") + " " +
-                  (Application.Current.FindResource("for") as string ?? "for") + " " + SelectedAccount.AccountDescription + " " +
+                  (Application.Current.FindResource("for") as string ?? "for") + " " + SelectedAccount.Description + " " +
                   (Application.Current.FindResource("add") as string ?? "add");
     }
     public UpsertPaymentRecordViewModel(Account selectedAccount, PaymentRecord selectedPaymentRecord)

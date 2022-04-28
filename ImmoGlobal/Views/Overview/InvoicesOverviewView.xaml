@@ -120,6 +120,10 @@
                   CanUserDeleteRows="False"
                   Style="{DynamicResource MaterialDesignDataGrid}">
               <DataGrid.Columns>
+                <DataGridTextColumn Header="{DynamicResource invoicePosition}"         
+                                  IsReadOnly="True" 
+                                  Binding="{Binding InvoicePositionNumber}"/>
+                
                 <DataGridTextColumn Header="{DynamicResource assignment}"         
                                   IsReadOnly="True" 
                                   Binding="{Binding Assignment}"/>

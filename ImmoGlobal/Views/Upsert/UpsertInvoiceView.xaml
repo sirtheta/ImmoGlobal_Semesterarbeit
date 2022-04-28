@@ -17,26 +17,24 @@
   <UserControl.Resources>
     <viewHelpers:MinusOneConverter x:Key="MinusOneConverter"/>
   </UserControl.Resources>
-
-  <ScrollViewer VerticalScrollBarVisibility="Auto">
-    <Grid ShowGridLines="true">
-      <Grid.Resources>
-        <Style TargetType="TextBlock">
-          <Setter Property="FontFamily"
+  <Grid ShowGridLines="false">
+    <Grid.Resources>
+      <Style TargetType="TextBlock">
+        <Setter Property="FontFamily"
                 Value="{DynamicResource MaterialDesignFont}"/>
-        </Style>
-      </Grid.Resources>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition/>
-        <ColumnDefinition Width="*"/>
-      </Grid.ColumnDefinitions>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="50"/>
-        <RowDefinition Height="auto"/>
-        <RowDefinition Height="auto"/>
-        <RowDefinition Height="auto"/>
-      </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0"
+      </Style>
+    </Grid.Resources>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="1*"/>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0"
                Grid.RowSpan="2"
                Padding="0,5,0,10"
                Margin="10,0,0,0"
@@ -44,82 +42,79 @@
                FontWeight="Bold"
                TextWrapping="Wrap"
                Text="{Binding FormTitel}"/>
-      <Grid Grid.Row="1" ShowGridLines="false">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="auto"/>
-          <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <StackPanel>
+    <Grid Grid.Row="1" ShowGridLines="false">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="1*"/>
+      </Grid.RowDefinitions>
+      <StackPanel>
 
-          <Grid>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition/>
-              <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" Text="{Binding InvoicePurpose}"
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <TextBox Grid.Column="0" Text="{Binding InvoicePurpose}"
                Margin="10" 
                materialDesign:HintAssist.Hint="{DynamicResource invoicePurpose}" 
                TextWrapping="Wrap"
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
 
-            <TextBlock Grid.Column="1" 
+          <TextBlock Grid.Column="1" 
                        Margin="30,10,0,0" 
                        Text="{DynamicResource creditor}"/>
 
-            <ComboBox Grid.Column="1" 
+          <ComboBox Grid.Column="1" 
                       ItemsSource="{Binding PersonaCollection}" 
                       Margin="30,20,0,0"
                       DisplayMemberPath="FullName"
                       SelectedIndex="{Binding SelectedPersona.PersonaId, Converter={StaticResource MinusOneConverter}}"
                       SelectedItem="{Binding SelectedPersona, Mode=TwoWay}"
                       materialDesign:HintAssist.Hint="{DynamicResource selectCreditor}"/>
-          </Grid>
+        </Grid>
 
-          <Grid Margin="10,10,0,0">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="1*"/>
-              <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
+        <Grid Margin="10,10,0,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+          </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" 
+          <TextBlock Grid.Column="0" 
                        Text="{DynamicResource invoiceDate}"/>
 
-            <DatePicker Grid.Column="0" 
+          <DatePicker Grid.Column="0" 
                         SelectedDate="{Binding InvoiceDate}" 
                         Margin="0,20,20,0"
                         IsEnabled="False"
                         Style="{DynamicResource MaterialDesignDatePicker}"/>
 
-            <TextBlock Grid.Column="1" 
+          <TextBlock Grid.Column="1" 
                        Margin="20,0,0,0"  
                        Text="{DynamicResource invoiceDueDate}"/>
-            <DatePicker Grid.Column="1" 
+          <DatePicker Grid.Column="1" 
                         SelectedDate="{Binding DueDate}" 
                         Margin="20,20,0,0"
                         Style="{DynamicResource MaterialDesignDatePicker}"/>
-          </Grid>
+        </Grid>
 
-          <Grid Margin="10,25,0,0">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition/>
-              <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <Grid Margin="10,25,0,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
 
-            <TextBlock Margin="0,0,0,0">
-              <Run  Text="{DynamicResource invoiceCategory}"/>
-            </TextBlock>
-            <ComboBox ItemsSource="{Binding Path=EInvoiceCategoryWithCaptions}" 
+          <TextBlock Margin="0,0,0,0" Text="{DynamicResource invoiceCategory}"/>
+
+          <ComboBox ItemsSource="{Binding Path=EInvoiceCategoryWithCaptions}" 
                       Margin="0,25,20,0"
                       DisplayMemberPath="Value" 
                       SelectedValuePath="Key"
                       SelectedItem="{Binding InvoiceCategory, Mode=OneWay}"
                       SelectedValue="{Binding Path=InvoiceCategory, Mode=TwoWay}"/>
 
-            <TextBlock Grid.Column="1" Margin="20,0,0,0">
-              <Run  Text="{DynamicResource invoiceState}"/>
-            </TextBlock>
-            <ComboBox Grid.Column="1" 
+          <TextBlock Grid.Column="1" Margin="20,0,0,0" Text="{DynamicResource invoiceState}"/>
+          <ComboBox Grid.Column="1" 
                       ItemsSource="{Binding Path=EInvoiceStateWithCaptions}" 
                       Margin="20,25,0,0"
                       DisplayMemberPath="Value" 
@@ -127,44 +122,44 @@
                       SelectedItem="{Binding InvoiceState, Mode=OneWay}"
                       SelectedValue="{Binding Path=InvoiceState, Mode=TwoWay}"/>
 
-          </Grid>
-        </StackPanel>
-      </Grid>
-      <TextBlock Grid.Row="2" 
+        </Grid>
+      </StackPanel>
+    </Grid>
+    <TextBlock Grid.Row="2" 
                Padding="0,5,0,10"
-               Margin="10,0,0,0"
+               Margin="10,20,0,0"
                FontSize="30"
                FontWeight="Bold"
                TextWrapping="Wrap"
                Text="{DynamicResource invoicePositionTo}"/>
-      <Grid Grid.Row="3">
-        <ScrollViewer>
-          <StackPanel Margin="0,20,0,0">
-            <ItemsControl ItemsSource="{Binding InvoicePositionCollection}" DataContext="">
-              <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                  <Grid Margin="0,20,0,0">
-                    <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="*"></ColumnDefinition>
-                      <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0">
-                      <ContentControl Content="{Binding InvoicePositionViewModel}"/>
-                    </StackPanel>
-                  </Grid>
-                </DataTemplate>
-              </ItemsControl.ItemTemplate>
-            </ItemsControl>
-          </StackPanel>
-        </ScrollViewer>
-      </Grid>
+    <Grid Grid.Row="3" Margin="0,-30,0,0">
+      <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <StackPanel Margin="0,20,10,0">
+          <ItemsControl ItemsSource="{Binding InvoicePositionViewModelCollection}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Grid Margin="0,20,0,0">
+                  <StackPanel Grid.Column="0">
+                    <TextBlock Margin="10,0,0,20" FontSize="18" FontWeight="Bold">
+                      <Run Text="{DynamicResource invoicePosition}"/>
+                        <Run Text="{Binding InvoicePositionNumber}"/>
+                    </TextBlock>
+                    <ContentControl Content="{Binding InvoicePositionViewModelContent}"/>
+                  </StackPanel>
+                </Grid>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </ScrollViewer>
+    </Grid>
 
-      <Grid Grid.Row="1" Grid.Column="1" Margin="0,-30,0,10">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Button Grid.Row="1"
+    <Grid Grid.Row="1" Grid.Column="1" Margin="20,-30,0,10">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="1*"/>
+      </Grid.ColumnDefinitions>
+      <Button Grid.Row="1"
             Command="{Binding BtnSave}" 
             Content="{DynamicResource save}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
@@ -175,7 +170,28 @@
             MinWidth="180"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"/>
-      </Grid>
     </Grid>
-  </ScrollViewer>
+    <Grid Grid.Row="2" Grid.Column="1" Margin="20,0,0,10">
+      <StackPanel>
+        <Button Content="{materialDesign:PackIcon Kind=Plus,Size=30}"   
+                  Command="{Binding BtnAddOnePosition}"    
+                  Margin="10" 
+                  FontSize="25" 
+                  Height="30" 
+                  Width="30" 
+                  Padding="0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"/>
+        <Button Content="{materialDesign:PackIcon Kind=Minus,Size=30}"    
+                  Command="{Binding BtnRemoveOnePosition}" 
+                  Margin="10" 
+                  FontSize="25" 
+                  Height="30" 
+                  Width="30" 
+                  Padding="0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"/>
+      </StackPanel>
+    </Grid>
+  </Grid>
 </UserControl>

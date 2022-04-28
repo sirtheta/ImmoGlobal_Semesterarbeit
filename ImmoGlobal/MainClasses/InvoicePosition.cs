@@ -7,8 +7,10 @@ namespace ImmoGlobal.MainClasses
   internal class InvoicePosition
   {
     public int InvoicePositionId { get; set; }
+    public int InvoicePositionNumber { get; set; }
     public Property? Property { get; set; }
     public PropertyObject? PropertyObject { get; set; }
+    public int InvoiceId { get; set; }
     public Invoice Invoice { get; set; }
     public double Value { get; set; }
     public EAdditionalCosts? AdditionalCostsCategory { get; set; }
@@ -68,7 +70,7 @@ namespace ImmoGlobal.MainClasses
     {
       get
       {
-        return DbController.GetAccountToInvoicePositionDB(this).AccountDescription?? "";
+        return DbController.GetAccountToInvoicePositionDB(this).Description?? "";
       }
     }
   }

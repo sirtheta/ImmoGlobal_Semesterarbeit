@@ -28,9 +28,9 @@ namespace ImmoGlobal.Database
       var _rentalContract2 = new RentalContract() { Renter = _renter, PropertyObject = _objectGarage, RentStartDate = DateTime.Parse("01.11.2030"), Rent = 1850, Deposit = true, ContractState = EContractState.Singend };
       var _rentalContract3 = new RentalContract() { Renter = _renter, PropertyObject = _objectOffice, RentStartDate = DateTime.Parse("01.04.2018"), RentEndDate = DateTime.Parse("31.03.2022"), Rent = 1450, Deposit = true, ContractState = EContractState.Canceled };
 
-      var _account1 = new Account() { AccountNumber = "5634RE56034", AccountDescription = "Konto 1" };
-      var _account2 = new Account() { AccountNumber = "23VFYYXX034", AccountDescription = "Konto 2" };
-      var _account3 = new Account() { AccountNumber = "DSDD2334445", AccountDescription = "Konto 3" };
+      var _account1 = new Account() { AccountNumber = "5634RE56034", Description = "Konto 1" };
+      var _account2 = new Account() { AccountNumber = "23VFYYXX034", Description = "Konto 2" };
+      var _account3 = new Account() { AccountNumber = "DSDD2334445", Description = "Konto 3" };
 
       var _income1 = new PaymentRecord() { Account = _account1, IncomeAmount = 345.05, Description = "SeedDescriptonIncome1", ReceiptNumber = 20, Date = DateTime.Now.AddDays(-5) };
       var _income2 = new PaymentRecord() { Account = _account2, IncomeAmount = 315.10, Description = "SeedDescriptonIncome2", ReceiptNumber = 40, Date = DateTime.Now.AddDays(-10) };
@@ -75,6 +75,7 @@ namespace ImmoGlobal.Database
       //additionalCosts prop 1
       var _invoicePosition1 = new InvoicePosition()
       {
+        InvoicePositionNumber = 1,
         Property = _property1,
         Value = 1320,
         AdditionalCostsCategory = EAdditionalCosts.Electricity,
@@ -84,6 +85,7 @@ namespace ImmoGlobal.Database
 
       var _invoicePosition2 = new InvoicePosition()
       {
+        InvoicePositionNumber = 2,
         Property = _property1,
         Value = 45.23,
         AdditionalCostsCategory = EAdditionalCosts.Gas,
@@ -94,6 +96,7 @@ namespace ImmoGlobal.Database
       //rent
       var _invoicePosition3 = new InvoicePosition()
       {
+        InvoicePositionNumber = 1,        
         PropertyObject = _objectHouse,
         Value = _rentalContract1.Rent,
         Account = _account2,
@@ -103,6 +106,7 @@ namespace ImmoGlobal.Database
       //additionalCosts object 1
       var _invoicePosition4 = new InvoicePosition()
       {
+        InvoicePositionNumber = 1,
         PropertyObject = _objectHouse,
         Value = 320,
         AdditionalCostsCategory = EAdditionalCosts.Lift,
@@ -112,6 +116,7 @@ namespace ImmoGlobal.Database
 
       var _invoicePosition5 = new InvoicePosition()
       {
+        InvoicePositionNumber = 2,
         PropertyObject = _objectHouse,
         Value = 50,
         AdditionalCostsCategory = EAdditionalCosts.Gas,
@@ -121,6 +126,7 @@ namespace ImmoGlobal.Database
 
       var _invoicePosition6 = new InvoicePosition()
       {
+        InvoicePositionNumber = 3,
         PropertyObject = _objectHouse,
         Value = 25,
         AdditionalCostsCategory = EAdditionalCosts.Sewer,
@@ -130,6 +136,7 @@ namespace ImmoGlobal.Database
 
       var _invoicePosition7 = new InvoicePosition()
       {
+        InvoicePositionNumber = 4,
         PropertyObject = _objectHouse,
         Value = 39.50,
         AdditionalCostsCategory = EAdditionalCosts.Gardening,
@@ -153,6 +160,7 @@ namespace ImmoGlobal.Database
       db.Personas.Add(_creditor);
       db.Personas.Add(_housekeeper);
       db.Personas.Add(_housekeeper2);
+      db.SaveChanges();
       db.PropertyObjects.Add(_objectHouse);
       db.PropertyObjects.Add(_objectGarage);
       db.PropertyObjects.Add(_objectRoom);
@@ -169,6 +177,9 @@ namespace ImmoGlobal.Database
       db.PaymentRecords.Add(_expense1);
       db.PaymentRecords.Add(_expense2);
       db.PaymentRecords.Add(_expense3);
+      db.Invoices.Add(_invoice1);
+      db.Invoices.Add(_invoice2);
+      db.Invoices.Add(_invoice3);
       db.InvoicePositions.Add(_invoicePosition1);
       db.InvoicePositions.Add(_invoicePosition2);
       db.InvoicePositions.Add(_invoicePosition3);
@@ -176,12 +187,8 @@ namespace ImmoGlobal.Database
       db.InvoicePositions.Add(_invoicePosition5);
       db.InvoicePositions.Add(_invoicePosition6);
       db.InvoicePositions.Add(_invoicePosition7);
-      db.Invoices.Add(_invoice1);
-      db.Invoices.Add(_invoice2);
-      db.Invoices.Add(_invoice3);
       db.Users.Add(_user1);
       db.Users.Add(_user2);
-
       db.SaveChanges();
     }
   }
