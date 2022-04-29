@@ -64,48 +64,43 @@ namespace ImmoGlobal.Database
       }
     }
 
-    internal static bool UpsertInvoicePositionToDB(InvoicePosition invoicePositions)
+    internal static bool UpsertInvoicePositionToDB(InvoicePosition invoicePosition)
     {
-      var track1 = false;
-      var track2 = false;
-      var track3 = false;
-      var track4 = false;
-
       try
       {
         using var db = new ImmoGlobalContext();
-          if (invoicePositions.Invoice != null && !track1)
-          {
-            db.Entry(invoicePositions.Invoice).State = EntityState.Modified;
-            db.Attach(invoicePositions.Invoice);
+        if (invoicePosition.Invoice != null)
+        {
+          db.Entry(invoicePosition.Invoice).State = EntityState.Modified;
+          db.Attach(invoicePosition.Invoice);
 
-          }
-          if (invoicePositions.Property != null && !track2)
-          {
-            db.Entry(invoicePositions.Property).State = EntityState.Modified;
-            db.Attach(invoicePositions.Property);
+        }
+        if (invoicePosition.Property != null)
+        {
+          db.Entry(invoicePosition.Property).State = EntityState.Modified;
+          db.Attach(invoicePosition.Property);
 
-          }
-          if (invoicePositions.PropertyObject != null && !track3)
-          {
-            db.Entry(invoicePositions.PropertyObject).State = EntityState.Modified;
-            db.Attach(invoicePositions.PropertyObject);
+        }
+        if (invoicePosition.PropertyObject != null)
+        {
+          db.Entry(invoicePosition.PropertyObject).State = EntityState.Modified;
+          db.Attach(invoicePosition.PropertyObject);
 
-          }
-          if (invoicePositions.Account != null && !track4)
-          {
-            db.Entry(invoicePositions.Account).State = EntityState.Modified;
-            db.Attach(invoicePositions.Account);
-          db.InvoicePositions.Add(invoicePositions);
+        }
+        if (invoicePosition.Account != null)
+        {
+          db.Entry(invoicePosition.Account).State = EntityState.Modified;
+          db.Attach(invoicePosition.Account);
+        }
+        if (invoicePosition.InvoicePositionId == 0)
+        {
+          db.InvoicePositions.Add(invoicePosition);
+        }
+        else
+        {
+          db.InvoicePositions.Update(invoicePosition);
         }
         db.SaveChanges();
-        //db.InvoicePositions.AddRange(invoicePositions);
-
-        //}
-        //  else
-        //{
-        //  db.InvoicePositions.UpdateRange(invoicePositions);
-        //}
         return true;
       }
       catch (Exception)

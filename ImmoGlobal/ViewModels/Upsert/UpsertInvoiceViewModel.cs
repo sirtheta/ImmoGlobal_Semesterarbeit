@@ -43,7 +43,8 @@ namespace ImmoGlobal.ViewModels
 
       foreach (var item in invoicePositions)
       {
-        InvoicePositionViewModelCollection.Add(new InvoicePositionViewModel(item));
+        _invoicePositionNumber++;
+        InvoicePositionViewModelCollection.Add(new InvoicePositionViewModel(item) { InvoicePositionNumber = _invoicePositionNumber });
       }
 
       FormTitel = (Application.Current.FindResource("invoice") as string ?? "invoice") + " " +
@@ -294,7 +295,8 @@ namespace ImmoGlobal.ViewModels
 
     private bool UpdateInvoice(int invoiceId)
     {
-      if (DbController.UpsertInvoiceToDB(new Invoice()
+      var success = true;
+      var invoice = new Invoice()
       {
         InvoiceId = invoiceId,
         Persona = SelectedPersona,
@@ -303,8 +305,37 @@ namespace ImmoGlobal.ViewModels
         InvoicePurpose = InvoicePurpose,
         InvoiceCategory = InvoiceCategory,
         InvoiceState = InvoiceState
+      };
+      if (DbController.UpsertInvoiceToDB(invoice))
+      {
+        foreach (var item in InvoicePositionViewModelCollection)
+        {
+          if (item.SelectedInvoicePositionId != null)
+          {
+            var invoicePosition = new InvoicePosition()
+            {
+              InvoicePositionId = (int)item.SelectedInvoicePositionId,
+              InvoicePositionNumber = item.InvoicePositionNumber,
+              Property = item.SelectedProperty,
+              PropertyObject = item.SelectedPropertyObject,
+              Invoice = invoice,
+              Value = item.Value,
+              AdditionalCostsCategory = item.AdditionalCostsCategory,
+              Account = item.SelectedAccount
+            };
+            if (!DbController.UpsertInvoicePositionToDB(invoicePosition))
+            {
+              success = false;
+            }
 
-      }))
+          }
+        }
+      }
+      else
+      {
+        success = false;
+      }
+      if (success)
       {
         return true;
       }

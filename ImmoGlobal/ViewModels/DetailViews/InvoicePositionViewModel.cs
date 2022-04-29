@@ -21,11 +21,12 @@ namespace ImmoGlobal.ViewModels
     public InvoicePositionViewModel(InvoicePosition invoicePosition)
     {
       PropertyCollection = new(DbController.GetAllPropertiesDB());
-      AccountCollection = new(DbController.GetAllAccountsDB());     
+      AccountCollection = new(DbController.GetAllAccountsDB());
 
-      Value = invoicePosition.Value;
+      SelectedInvoicePositionId = invoicePosition.InvoicePositionId;
       SelectedProperty = invoicePosition.GetPropertyToInvoicePosition();
       SelectedPropertyObject = invoicePosition.GetPropertyObjectToInvoicePosition();
+      Value = invoicePosition.Value;
       SelectedAccount = invoicePosition.GetAccountToInvoicePosition();
       AdditionalCostsCategory = invoicePosition.AdditionalCostsCategory;
 
@@ -52,6 +53,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
+    public int? SelectedInvoicePositionId { get; set; }
     public double Value
     {
       get => _value;
