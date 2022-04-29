@@ -84,11 +84,13 @@
     \hline
     \textbf{InvoicePosition} & Bildet die Rechnungsposition ab. Zum erstellen einer Rechnung können verschiedene Rechnungspositionen definiert werden. Jede Rechnungsposition wird entweder mit einem Mietvertrag, Liegenschaft oder einem Objekt verknüpft. Zusätzlich wird ein Konto angegeben. So können die Kosten eindeutig verbucht werden.\\
     \hline
-    \textbf{Invoice} & Bildet die Rechnung mit ihren Eigenschaften ab. Jede Rechnung besteht aus mindestens einer Rechnungsposition. Über die Eigenschaft ''Persona'' wird dann die Rechnung entweder einem Mieter oder einem Kreditor zugeordnet. Der Status der Rechnung wird mit dem Enum \textbf{EInvoiceState} abgebildet.\\
+    \textbf{Invoice} & Bildet die Rechnung mit ihren Eigenschaften ab. Jede Rechnung besteht aus mindestens einer Rechnungsposition. Über die Eigenschaft ''Persona'' wird dann die Rechnung entweder einem Mieter oder einem Kreditor zugeordnet. Der Status der Rechnung wird mit dem Enum \textbf{EInvoiceState} abgebildet. Wenn die Rechnung überfällig ist, kann für diese Rechnung eine Mahnung erstellt werden.\\
+    \hline
+    \textbf{BillReminder} & Bildet die Mahnung ab. Jede Rechnung kann N Mahnungen enthalten.\\
     \hline
     \textbf{Account} & Bildet das Konto zum Verbuchen der Rechnungsposition ab.\\
     \hline 
-    \textbf{IncomeExpense} & Bildet alle Einnahmen und Ausgaben in einem Konto ab.\\
+    \textbf{PaymentRecord} & Bildet alle Einnahmen und Ausgaben in einem Konto ab. Jedes Konto kann N Einnahmen und Ausgaben enthalten.\\
     \hline
     \textbf{User} & Bildet die User für das Login in der Applikation ab.\\
     \hline
@@ -178,9 +180,11 @@ Zusätzlich zu den Klassen sind in der \fref{enums} auch noch die Enums definier
     \hline
     \textbf{Invoices} & Bildet die Rechnung ab. Die Rechnung beinhaltet N Rechnungspositionen aus deren die Rechnung erstellt wird. Damit die Rechnung einem Mieter oder Kreditor gestellt werden kann, wird der Foreign-Key Persona verwendet.\\
     \hline
+    \textbf{BillReminders} & Bildet die Mahnung ab. Jede Rechnung kann N Mahnungen haben, sobald diese überfällig ist \\
+    \hline
     \textbf{Accounts} & Bildet das Konto zum Verbuchen der Rechnung ab und hat somit eine 1:N-Beziehung zur Rechnung\\
     \hline
-    \textbf{IncomesExpenses} & Bildet alle Einnahmen und Ausgaben zu einem Konto ab\\
+    \textbf{PaymentRecords} & Bildet alle Einnahmen und Ausgaben zu einem Konto ab\\
     \hline
     \textbf{Users} & Bildet die User für das Login in der Applikation ab. Das Passwort wird als HASH gespeichert.\\
     \hline 
