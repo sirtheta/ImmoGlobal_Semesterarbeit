@@ -65,6 +65,9 @@
       <DataTemplate DataType="{x:Type viewmodels:UpsertPaymentRecordViewModel}">
         <views:UpsertPaymentRecordView/>
       </DataTemplate>
+      <DataTemplate DataType="{x:Type viewmodels:UpsertBillReminderViewModel}">
+        <views:UpsertBillReminderView/>
+      </DataTemplate>
 
       <DataTemplate DataType="{x:Type viewmodels:RenterDetailsViewModel}">
         <views:RenterDetailsView/>

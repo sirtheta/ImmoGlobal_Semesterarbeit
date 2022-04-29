@@ -233,4 +233,14 @@
   <system:String x:Key="createNewInvoice">Neue Rechnung erstellen</system:String>
   <system:String x:Key="invoicePosition">Rechnungsposition</system:String>
 
+  <system:String x:Key="reminderAmount">Mahnungsgebür</system:String>
+  <system:String x:Key="reminderText">Text zur Mahnung</system:String>
+  <system:String x:Key="reminderDate">Mahnungsdatum</system:String>
+
+  <system:String x:Key="successAddBillReminder">Mahnung erfolgreich erstellt!</system:String>
+  <system:String x:Key="successUpdateBillReminder">Update der Mahnung erfolgreich!</system:String>
+  <system:String x:Key="errorAddBillReminder">Speichern der Mahnung fehlgeschlagen!</system:String>
+  <system:String x:Key="errorReminderAmount">Es muss eine gültige Mahngebür eingegeben werden!</system:String>
+  <system:String x:Key="addNewBillReminder">Neue Mahnung erstellen</system:String>
+
 </ResourceDictionary>

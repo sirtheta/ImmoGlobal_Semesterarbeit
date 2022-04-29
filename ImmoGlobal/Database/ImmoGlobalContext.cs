@@ -38,6 +38,7 @@ namespace ImmoGlobal
     internal DbSet<RentalContract> RentalContracts { get; set; }
     internal DbSet<Invoice> Invoices { get; set; }
     internal DbSet<InvoicePosition> InvoicePositions { get; set; }
+    internal DbSet<BillReminder> BillReminders { get; set; }
     internal DbSet<Account> Accounts { get; set; }
     internal DbSet<PaymentRecord> PaymentRecords { get; set; }
     internal DbSet<User> Users { get; set; }

@@ -86,6 +86,10 @@
                 <DataGridTextColumn Header="{DynamicResource creditor}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding PersonaFullName}"/>
+
+                <DataGridTextColumn Header="{DynamicResource billReminders}"         
+                                IsReadOnly="True" 
+                                Binding="{Binding BillRemindersString}"/>
               </DataGrid.Columns>
             </DataGrid>
           </Grid>

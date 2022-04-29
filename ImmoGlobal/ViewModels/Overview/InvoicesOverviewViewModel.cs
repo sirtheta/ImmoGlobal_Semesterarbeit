@@ -1,5 +1,6 @@
 ﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
+using ImmoGlobal.MainClasses.Enum;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -44,6 +45,14 @@ namespace ImmoGlobal.ViewModels
           MainWindowViewModelInstance.SelectedInvoice = _selectedInvoice;
           MainWindowViewModelInstance.InvoicePositions = InvoicePositionCollection;
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
+          if (_selectedInvoice.InvoiceState == EInvoiceState.OverDue)
+          {
+            MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
+          }
+          else
+          {
+            MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
+          }
         }
         OnPropertyChanged();
       }

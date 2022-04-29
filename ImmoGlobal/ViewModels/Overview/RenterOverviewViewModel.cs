@@ -13,7 +13,7 @@ namespace ImmoGlobal.ViewModels
       _selectedRenterDetailsViewModel = null;
       MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
-    
+
     private ObservableCollection<Persona> _renterCollection;
     private ObservableCollection<Invoice>? _invoiceCollection;
     private ObservableCollection<RentalContract>? _rentalContractCollection;

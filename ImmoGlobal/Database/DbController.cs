@@ -109,6 +109,48 @@ namespace ImmoGlobal.Database
     }
 
     /// <summary>
+    /// create or update bill reminder
+    /// </summary>
+    /// <param name="billReminder"></param>
+    /// <returns></returns>
+    internal static bool UpsertBillReminderToDB(BillReminder billReminder)
+    {
+      try
+      {
+        using var db = new ImmoGlobalContext();
+        if (billReminder.Invoice != null)
+          db.Attach(billReminder.Invoice);
+        if (billReminder.BillReminderId == 0)
+        {
+          db.BillReminders.Add(billReminder);
+        }
+        else
+        {
+          db.BillReminders.Update(billReminder);
+        }
+        db.SaveChanges();
+        return true;
+      }
+      catch (Exception)
+      {
+        return false;
+      }
+    }
+
+    /// <summary>
+    /// returns bill reminders related to invoice
+    /// </summary>
+    /// <param name="invoice"></param>
+    /// <returns></returns>
+    internal static ICollection<BillReminder>? GetBillRemindersToInvoiceDB(Invoice invoice)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.BillReminders
+              where p.Invoice == invoice
+              select p).ToList();
+    }
+
+    /// <summary>
     /// Return invoice positions to propertyObject
     /// </summary>
     /// <param name="propertyObject"></param>

@@ -18,7 +18,7 @@ namespace ImmoGlobal.ViewModels
     private ObservableCollection<PropertyObject>? _propertyObjectCollection;
     private string _housekeeper;
     private string _description;
-    
+
     public ObservableCollection<PropertyObject>? PropertyObjectCollection
     {
       get

@@ -60,8 +60,8 @@
             MinWidth="180"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Visibility="{Binding BtnNewInvoiceVisibility}"/>    
-      
+            Visibility="{Binding BtnNewInvoiceVisibility}"/>
+
       <Button Command="{Binding BtnNewCreditor}" 
             Content="{DynamicResource newCreditor}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
@@ -73,18 +73,6 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Visibility="{Binding BtnNewCreditorVisibility}"/>
-
-      <Button Command="{Binding BtnNewBillReminder}" 
-            Content="{DynamicResource newBillReminder}"
-            Style="{DynamicResource MaterialDesignRaisedButton}"
-            FontFamily="{DynamicResource MaterialDesignFont}"
-            FontSize="20"
-            Padding="0"
-            Margin="10,60,0,-30"
-            MinWidth="180"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Visibility="{Binding BtnNewBillReminderVisibility}"/>
 
       <Button Command="{Binding BtnNewRentalContract}" 
             Content="{DynamicResource newRentalContract}"
@@ -170,8 +158,20 @@
             MinWidth="180"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Visibility="{Binding BtnHousekeeperVisibility}">
-      </Button>
+            Visibility="{Binding BtnHousekeeperVisibility}"/>
+
+
+        <Button Command="{Binding BtnNewBillReminder}" 
+            Content="{DynamicResource newBillReminder}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,-30"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnNewBillReminderVisibility}"/>
     </StackPanel>
   </Grid>
 </UserControl>

@@ -1,5 +1,4 @@
 ﻿using ImmoGlobal.Commands;
-using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -156,7 +155,11 @@ namespace ImmoGlobal.ViewModels
     }
     private void BtnNewBillReminderClicked(object obj)
     {
-      throw new NotImplementedException();
+      var instance = MainWindowViewModel.GetInstance;
+      if (instance != null && instance.SelectedInvoice != null)
+      {
+        instance.SelectedViewModel = new UpsertBillReminderViewModel(instance.SelectedInvoice);
+      }
     }
     private void BtnNewCreditorClicked(object obj)
     {

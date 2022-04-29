@@ -1,4 +1,4 @@
-using ImmoGlobal.Database;
+﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses.Enum;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace ImmoGlobal.MainClasses
     public EInvoiceCategory InvoiceCategory { get; set; }
     public EInvoiceState InvoiceState { get; set; }
     public ICollection<InvoicePosition>? InvoicePositions { get; set; }
-    public int? BillReminders { get; set; }
+    public ICollection<BillReminder>? BillReminders { get; set; }
 
 
     public string PersonaFullName
@@ -77,7 +77,22 @@ namespace ImmoGlobal.MainClasses
 
     public string BillRemindersString
     {
-      get => BillReminders?.ToString() ?? Application.Current.FindResource("none") as string ?? "none";
+      get
+      {
+        int reminders = 0;
+        var reminderCollection = GetBillReminders();
+        if (reminderCollection != null)
+        {
+          reminders = reminderCollection.Count;
+        }
+
+        return reminders == 0 ? Application.Current.FindResource("none") as string ?? "none" : reminders.ToString();
+      }
+    }
+
+    internal ICollection<BillReminder>? GetBillReminders()
+    {
+      return DbController.GetBillRemindersToInvoiceDB(this);
     }
   }
 }
