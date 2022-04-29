@@ -5,7 +5,7 @@ namespace ImmoGlobal.MainClasses
 {
   internal class Account
   {
-    
+
     public int AccountId { get; set; }
     public string AccountNumber { get; set; }
     public string? Description { get; set; }
@@ -23,7 +23,7 @@ namespace ImmoGlobal.MainClasses
         double income = 0;
         foreach (var item in DbController.GetIncomeToAccountDB(this))
         {
-          income += item.IncomeAmount?? 0;
+          income += item.IncomeAmount ?? 0;
         }
         return income;
       }
@@ -36,7 +36,7 @@ namespace ImmoGlobal.MainClasses
         double income = 0;
         foreach (var item in DbController.GetExpenseToAccountDB(this))
         {
-          income += item.ExpenseAmount?? 0;
+          income += item.ExpenseAmount ?? 0;
         }
         return income;
       }

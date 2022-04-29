@@ -1,7 +1,6 @@
 ﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 
 namespace ImmoGlobal.ViewModels

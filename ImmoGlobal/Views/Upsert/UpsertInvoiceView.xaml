@@ -49,7 +49,7 @@
       </Grid.RowDefinitions>
       <StackPanel>
 
-        <Grid>
+        <Grid IsEnabled="{Binding IsEnabled}">
           <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="*"/>
@@ -74,7 +74,7 @@
                       materialDesign:HintAssist.Hint="{DynamicResource selectCreditor}"/>
         </Grid>
 
-        <Grid Margin="10,10,0,0">
+        <Grid Margin="10,10,0,0" IsEnabled="{Binding IsEnabled}">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -106,24 +106,25 @@
 
           <TextBlock Margin="0,0,0,0" Text="{DynamicResource invoiceCategory}"/>
 
-          <ComboBox ItemsSource="{Binding Path=EInvoiceCategoryWithCaptions}" 
-                      Margin="0,25,20,0"
-                      DisplayMemberPath="Value" 
-                      SelectedValuePath="Key"
-                      SelectedItem="{Binding InvoiceCategory, Mode=OneWay}"
-                      SelectedValue="{Binding Path=InvoiceCategory, Mode=TwoWay}"/>
+          <ComboBox IsEnabled="{Binding IsEnabled}" 
+                    ItemsSource="{Binding Path=EInvoiceCategoryWithCaptions}" 
+                    Margin="0,25,20,0"
+                    DisplayMemberPath="Value" 
+                    SelectedValuePath="Key"
+                    SelectedItem="{Binding InvoiceCategory, Mode=OneWay}"
+                    SelectedValue="{Binding Path=InvoiceCategory, Mode=TwoWay}"/>
 
           <TextBlock Grid.Column="1" Margin="20,0,0,0" Text="{DynamicResource invoiceState}"/>
-          <ComboBox Grid.Column="1" 
-                      ItemsSource="{Binding Path=EInvoiceStateWithCaptions}" 
-                      Margin="20,25,0,0"
-                      DisplayMemberPath="Value" 
-                      SelectedValuePath="Key"
-                      SelectedItem="{Binding InvoiceState, Mode=OneWay}"
-                      SelectedValue="{Binding Path=InvoiceState, Mode=TwoWay}"/>
-
+          <ComboBox Grid.Column="1" IsEnabled="{Binding StateIsEnabled}"
+                    ItemsSource="{Binding Path=EInvoiceStateWithCaptions}" 
+                    Margin="20,25,0,0"
+                    DisplayMemberPath="Value" 
+                    SelectedValuePath="Key"
+                    SelectedItem="{Binding InvoiceState, Mode=OneWay}"
+                    SelectedValue="{Binding Path=InvoiceState, Mode=TwoWay}"/>
         </Grid>
       </StackPanel>
+      
     </Grid>
     <TextBlock Grid.Row="2" 
                Padding="0,5,0,10"
@@ -134,7 +135,7 @@
                Text="{DynamicResource invoicePositionTo}"/>
     <Grid Grid.Row="3" Margin="0,-30,0,0">
       <ScrollViewer VerticalScrollBarVisibility="Visible">
-        <StackPanel Margin="0,20,10,0">
+        <StackPanel IsEnabled="{Binding IsEnabled}" Margin="0,20,10,0">
           <ItemsControl ItemsSource="{Binding InvoicePositionViewModelCollection}">
             <ItemsControl.ItemTemplate>
               <DataTemplate>
@@ -160,37 +161,40 @@
         <ColumnDefinition Width="1*"/>
       </Grid.ColumnDefinitions>
       <Button Grid.Row="1"
-            Command="{Binding BtnSave}" 
-            Content="{DynamicResource save}"
-            Style="{DynamicResource MaterialDesignRaisedButton}"
-            FontFamily="{DynamicResource MaterialDesignFont}"
-            FontSize="20"
-            Padding="0"
-            Margin="10,60,0,0"
-            MinWidth="180"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"/>
+              Command="{Binding BtnSave}" 
+              Content="{DynamicResource save}"
+              Style="{DynamicResource MaterialDesignRaisedButton}"
+              FontFamily="{DynamicResource MaterialDesignFont}"
+              IsEnabled="{Binding StateIsEnabled}"
+              FontSize="20"
+              Padding="0"
+              Margin="10,60,0,0"
+              MinWidth="180"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"/>
     </Grid>
     <Grid Grid.Row="2" Grid.Column="1" Margin="20,0,0,10">
       <StackPanel>
         <Button Content="{materialDesign:PackIcon Kind=Plus,Size=30}"   
-                  Command="{Binding BtnAddOnePosition}"    
-                  Margin="10" 
-                  FontSize="25" 
-                  Height="30" 
-                  Width="30" 
-                  Padding="0"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Top"/>
+                Command="{Binding BtnAddOnePosition}" 
+                IsEnabled="{Binding IsEnabled}"
+                Margin="10" 
+                FontSize="25" 
+                Height="30" 
+                Width="30" 
+                Padding="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"/>
         <Button Content="{materialDesign:PackIcon Kind=Minus,Size=30}"    
-                  Command="{Binding BtnRemoveOnePosition}" 
-                  Margin="10" 
-                  FontSize="25" 
-                  Height="30" 
-                  Width="30" 
-                  Padding="0"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Top"/>
+                Command="{Binding BtnRemoveOnePosition}"
+                IsEnabled="{Binding IsEnabled}"
+                Margin="10" 
+                FontSize="25" 
+                Height="30" 
+                Width="30" 
+                Padding="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"/>
       </StackPanel>
     </Grid>
   </Grid>

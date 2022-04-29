@@ -14,13 +14,21 @@ namespace ImmoGlobal.ViewModels
 {
   internal class UpsertRenterViewModel : BaseViewModel
   {
+    /// <summary>
+    /// c'tor to create a new renter
+    /// </summary>
     public UpsertRenterViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
+      //set the title of the form
       FormTitel = Application.Current.FindResource("addNewRenter") as string ?? "create new renter";
     }
 
+    /// <summary>
+    /// c'tor to edit an existing renter
+    /// </summary>
+    /// <param name="selectedRenter"></param>
     public UpsertRenterViewModel(Persona selectedRenter)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
@@ -42,6 +50,7 @@ namespace ImmoGlobal.ViewModels
       MobilePhone = selectedRenter.MobileString;
       OfficePhone = selectedRenter.OfficePhoneString;
 
+      //set the title of the form
       FormTitel = (Application.Current.FindResource("renter") as string ?? "renter") + " " +
              (Application.Current.FindResource("edit") as string ?? "edit");
     }

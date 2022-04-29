@@ -20,7 +20,7 @@ namespace ImmoGlobal.ViewModels
       MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
 
-    private MainWindowViewModel? MainWindowViewModelInstance { get; set; }    
+    private MainWindowViewModel? MainWindowViewModelInstance { get; set; }
     public ObservableCollection<Persona> RenterCollection
     {
       get => _renterCollection;
@@ -67,7 +67,7 @@ namespace ImmoGlobal.ViewModels
             MainWindowViewModelInstance.SelectedPersona = _selectedRenter;
             MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           }
-            OnPropertyChanged();
+          OnPropertyChanged();
         }
       }
     }

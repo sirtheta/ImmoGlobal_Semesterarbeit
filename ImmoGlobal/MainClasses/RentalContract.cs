@@ -32,7 +32,7 @@ namespace ImmoGlobal.MainClasses
           Application.Current.FindResource("no") as string ?? "no";
 
     }
-    
+
     public string ActivContract
     {
       get => ContractState == EContractState.Active ? Application.Current.FindResource("yes") as string ?? "yes" :
@@ -43,7 +43,7 @@ namespace ImmoGlobal.MainClasses
     {
       return DbController.GetPropertyObjectToRentalContractDB(this);
     }
-    
+
     public string PropertyObjectName
     {
       get => GetPropertyObjectToRentalContract()?.Description ?? "";

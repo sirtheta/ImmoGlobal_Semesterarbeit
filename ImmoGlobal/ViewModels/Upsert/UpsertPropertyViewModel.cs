@@ -11,14 +11,23 @@ namespace ImmoGlobal.ViewModels
 {
   internal class UpsertPropertyViewModel : BaseViewModel
   {
+    /// <summary>
+    /// c'tor to create a new property
+    /// </summary>
     public UpsertPropertyViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
       BtnDeleteVisibility = Visibility.Collapsed;
       _personas = new(DbController.GetAllPersonasDB());
+
+      //set the title of the form
       FormTitel = Application.Current.FindResource("createNewProperty") as string ?? "create new property";
     }
 
+    /// <summary>
+    /// c'tor to edit an existing property
+    /// </summary>
+    /// <param name="property"></param>
     public UpsertPropertyViewModel(Property property)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
@@ -37,6 +46,7 @@ namespace ImmoGlobal.ViewModels
       PersonInsurance = property.PersonInsurance;
       LiabilityInsurance = property.LiabilityInsurance;
 
+      //set the title of the form
       FormTitel = (Application.Current.FindResource("property") as string ?? "property") + " " +
                    (Application.Current.FindResource("edit") as string ?? "edit");
     }

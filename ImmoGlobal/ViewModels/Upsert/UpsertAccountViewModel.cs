@@ -10,12 +10,21 @@ namespace ImmoGlobal.ViewModels
 {
   internal class UpsertAccountViewModel : BaseViewModel
   {
+    /// <summary>
+    /// c'tor to create a new account
+    /// </summary>
     public UpsertAccountViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
+
+      //set the title of the form
       FormTitel = Application.Current.FindResource("addNewAccount") as string ?? "create new account";
     }
 
+    /// <summary>
+    /// c'tor for updating an existing account
+    /// </summary>
+    /// <param name="selectedAccount"></param>
     public UpsertAccountViewModel(Account selectedAccount)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
@@ -24,7 +33,7 @@ namespace ImmoGlobal.ViewModels
       AccountDescription = selectedAccount.Description;
       AccountNumber = selectedAccount.AccountNumber;
 
-
+      //set the title of the form
       FormTitel = (Application.Current.FindResource("account") as string ?? "account") + " " +
        (Application.Current.FindResource("edit") as string ?? "edit");
     }
@@ -77,7 +86,7 @@ namespace ImmoGlobal.ViewModels
         ClearValues();
       }
       // Update account
-      else if (AccountId != null && UpdateAccount((int) AccountId))
+      else if (AccountId != null && UpdateAccount((int)AccountId))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateAccount") as string ?? "Account updated successfully", NotificationType.Success);
       }

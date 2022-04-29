@@ -21,16 +21,16 @@ namespace ImmoGlobal.MainClasses
 
     public string PersonaFullName
     {
-    get => GetPersonaToInvoice().FullName;
+      get => GetPersonaToInvoice().FullName;
     }
 
     public Persona GetPersonaToInvoice()
     {
       return DbController.GetPersonaToInvoiceDB(this);
     }
-    
-    public double TotalValue 
-    { 
+
+    public double TotalValue
+    {
       get
       {
         var value = 0.0;
@@ -41,7 +41,7 @@ namespace ImmoGlobal.MainClasses
         return value;
       }
     }
-    
+
     public string InvoiceCategoryString
     {
       get

@@ -10,15 +10,22 @@ using System.Windows.Input;
 namespace ImmoGlobal.ViewModels
 {
   internal class UpsertCreditorViewModel : BaseViewModel
-
   {
+    /// <summary>
+    /// c'tor to create a new creditor
+    /// </summary>
     public UpsertCreditorViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
+      //set the title of the form
       FormTitel = Application.Current.FindResource("addNewCreditor") as string ?? "create new creditor";
     }
 
+    /// <summary>
+    /// c'tor to edit an existing creditor
+    /// </summary>
+    /// <param name="selectedCreditor"></param>
     public UpsertCreditorViewModel(Persona selectedCreditor)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
@@ -40,6 +47,7 @@ namespace ImmoGlobal.ViewModels
       CreditorCompanyName = selectedCreditor.CreditorCompanyName;
       CreditorContactPerson = selectedCreditor.CreditorContactPerson;
 
+      //set the title of the form
       FormTitel = (Application.Current.FindResource("creditor") as string ?? "creditor") + " " +
              (Application.Current.FindResource("edit") as string ?? "edit");
     }

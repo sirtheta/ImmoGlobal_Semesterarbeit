@@ -49,13 +49,13 @@ namespace ImmoGlobal.ViewModels
         IncomeExpenseCollection = new(DbController.GetIncomeToAccountDB(_selectedAccount).
         Concat(DbController.GetExpenseToAccountDB(_selectedAccount)).ToList());
 
-        AccountTitel = (Application.Current.FindResource("incomeExpenseToAccount") as string ?? "income and expenses for") 
+        AccountTitel = (Application.Current.FindResource("incomeExpenseToAccount") as string ?? "income and expenses for")
                         + " " + _selectedAccount?.Description;
 
         OnPropertyChanged();
       }
     }
-    
+
     public ObservableCollection<PaymentRecord> IncomeExpenseCollection
     {
       get => _icomeExpenseCollection;

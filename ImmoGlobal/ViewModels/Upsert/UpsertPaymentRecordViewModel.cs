@@ -6,36 +6,47 @@ using Notifications.Wpf.Core;
 using System;
 using System.Windows;
 using System.Windows.Input;
-using ImmoGlobal.Helpers;
 
 namespace ImmoGlobal.ViewModels
 {
   internal class UpsertPaymentRecordViewModel : BaseViewModel
   {
+    /// <summary>
+    /// c'tor to create a new payment record
+    /// </summary>
+    /// <param name="selectedAccount"></param>
     public UpsertPaymentRecordViewModel(Account selectedAccount)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
-      
+
       SelectedAccount = selectedAccount;
-      
+
       Date = DateTime.Now;
 
+      //set the title of the form
       FormTitel = (Application.Current.FindResource("addNewPaymentRecord") as string ?? "create new payment record") + " " +
                   (Application.Current.FindResource("for") as string ?? "for") + " " + SelectedAccount.Description + " " +
                   (Application.Current.FindResource("add") as string ?? "add");
     }
+
+    /// <summary>
+    /// c'tor to edit an existing payment record
+    /// </summary>
+    /// <param name="selectedAccount"></param>
+    /// <param name="selectedPaymentRecord"></param>
     public UpsertPaymentRecordViewModel(Account selectedAccount, PaymentRecord selectedPaymentRecord)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
       PaymentRecordId = selectedPaymentRecord.PaymentRecordId;
       SelectedAccount = selectedAccount;
-      
+
       ReceiptNumber = selectedPaymentRecord.ReceiptNumber.ToString();
       Description = selectedPaymentRecord.Description;
       IncomeAmount = selectedPaymentRecord.IncomeAmount.ToString();
       ExpenseAmount = selectedPaymentRecord.ExpenseAmount.ToString();
       Date = selectedPaymentRecord.Date;
-      
+
+      //set the title of the form
       FormTitel = (Application.Current.FindResource("paymentRecord") as string ?? "payment record") + " " +
                   (Application.Current.FindResource("edit") as string ?? "edit");
     }

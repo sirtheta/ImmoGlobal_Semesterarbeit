@@ -16,6 +16,9 @@ namespace ImmoGlobal.ViewModels
 {
   internal class UpsertRentalContractViewModel : BaseViewModel
   {
+    /// <summary>
+    /// c'tor to create a new rental contract
+    /// </summary>
     public UpsertRentalContractViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
@@ -26,9 +29,14 @@ namespace ImmoGlobal.ViewModels
       RentStartDate = DateTime.Now;
       RentEndDate = RentStartDate.AddDays(30);
 
+      //set the title of the form
       FormTitel = Application.Current.FindResource("createNewRentalContract") as string ?? "create new rental contract";
     }
 
+    /// <summary>
+    /// c'tor to edit an existing rental contract
+    /// </summary>
+    /// <param name="selectedRentalContract"></param>
     public UpsertRentalContractViewModel(RentalContract selectedRentalContract)
     {
       SelectedRentalContract = selectedRentalContract;
@@ -47,6 +55,7 @@ namespace ImmoGlobal.ViewModels
       Deposit = selectedRentalContract.Deposit;
       ContractState = selectedRentalContract.ContractState;
 
+      //set the title of the form
       FormTitel = (Application.Current.FindResource("rentalContract") as string ?? "rental contract") + " " +
                      (Application.Current.FindResource("edit") as string ?? "edit");
     }
@@ -64,7 +73,7 @@ namespace ImmoGlobal.ViewModels
     private bool _deposit;
     private EContractState _contractState;
 
-    // sets the titel of the form
+
     public string FormTitel { get; set; }
 
     private int? RentalContractId { get; set; }

@@ -10,15 +10,22 @@ using System.Windows.Input;
 namespace ImmoGlobal.ViewModels
 {
   internal class UpsertHousekeeperViewModel : BaseViewModel
-
   {
+    /// <summary>
+    /// c'tor to create a new housekeeper
+    /// </summary>
     public UpsertHousekeeperViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
+      //set the title of the form
       FormTitel = Application.Current.FindResource("addNewHousekeeper") as string ?? "create new housekeeper";
     }
 
+    /// <summary>
+    /// c'tor to edit an existing housekeeper
+    /// </summary>
+    /// <param name="selectedHousekeeper"></param>
     public UpsertHousekeeperViewModel(Persona selectedHousekeeper)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
@@ -36,7 +43,7 @@ namespace ImmoGlobal.ViewModels
       City = selectedHousekeeper.City;
       AccountNumber = selectedHousekeeper.AccountNumber;
 
-
+      //set the title of the form
       FormTitel = (Application.Current.FindResource("housekeeper") as string ?? "housekeeper") + " " +
              (Application.Current.FindResource("edit") as string ?? "edit");
     }
@@ -211,7 +218,7 @@ namespace ImmoGlobal.ViewModels
     private bool NullFieldCheck()
     {
       if (!string.IsNullOrEmpty(FirstName) &&
-          !string.IsNullOrEmpty(LastName) &&       
+          !string.IsNullOrEmpty(LastName) &&
           !string.IsNullOrEmpty(Email) &&
           !string.IsNullOrEmpty(Address) &&
           !string.IsNullOrEmpty(Zip) &&

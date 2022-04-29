@@ -1,7 +1,6 @@
 ﻿using ImmoGlobal.MainClasses;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
-using System.Linq;
 
 namespace ImmoGlobal
 {

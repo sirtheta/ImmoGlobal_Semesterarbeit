@@ -1,12 +1,9 @@
 ﻿using ImmoGlobal.Database;
-using ImmoGlobal.MainClasses.Enum;
 using ImmoGlobal.MainClasses;
-using System;
+using ImmoGlobal.MainClasses.Enum;
 using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Input;
-using ImmoGlobal.Commands;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace ImmoGlobal.ViewModels
 {
@@ -137,7 +134,7 @@ namespace ImmoGlobal.ViewModels
         {
           return null;
         }
-        
+
       }
       set
       {

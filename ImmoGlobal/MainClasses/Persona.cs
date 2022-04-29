@@ -1,6 +1,5 @@
 ﻿using ImmoGlobal.MainClasses.Enum;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace ImmoGlobal.MainClasses

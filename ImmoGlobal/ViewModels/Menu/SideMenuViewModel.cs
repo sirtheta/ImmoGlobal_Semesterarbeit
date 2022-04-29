@@ -1,5 +1,4 @@
 ﻿using ImmoGlobal.Commands;
-using ImmoGlobal.MainClasses;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -21,16 +20,16 @@ namespace ImmoGlobal.ViewModels
       BtnNewAccount = new RelayCommand<object>(BtnNewAccountClicked);
       BtnNewPaymentRecord = new RelayCommand<object>(BtnNewPaymentRecordClicked);
       BtnEdit = new RelayCommand<object>(BtnEditClicked);
-      BtnEditTwo = new RelayCommand<object>(BtnEditTwoClicked);      
+      BtnEditTwo = new RelayCommand<object>(BtnEditTwoClicked);
       BtnHousekeeper = new RelayCommand<object>(BtnHousekeeperClicked);
       BtnNewHousekeeper = new RelayCommand<object>(BtnNewHousekeeperClicked);
       BtnEditText = Application.Current.FindResource("btnEdit") as string ?? "edit";
       BtnEditTextTwo = Application.Current.FindResource("btnEdit") as string ?? "edit";
     }
-    
+
     private string _btnEditText;
-    private string _btnEditTextTwo;    
-    public  string BtnEditText
+    private string _btnEditTextTwo;
+    public string BtnEditText
     {
       get => _btnEditText;
       set
@@ -259,7 +258,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
     #endregion
-    
+
     /// <summary>
     /// Visibilty Properties for all Buttons
     /// </summary>
@@ -304,7 +303,7 @@ namespace ImmoGlobal.ViewModels
         _btnNewRenterVisibility = value;
         OnPropertyChanged();
       }
-    }        
+    }
     public Visibility BtnNewInvoiceVisibility
     {
       get => _btnNewInvoiceVisibility;

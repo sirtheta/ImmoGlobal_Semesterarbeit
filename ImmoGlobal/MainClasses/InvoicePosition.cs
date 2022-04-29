@@ -80,7 +80,7 @@ namespace ImmoGlobal.MainClasses
     {
       get
       {
-        return GetAccountToInvoicePosition().Description?? "";
+        return GetAccountToInvoicePosition().Description ?? "";
       }
     }
   }

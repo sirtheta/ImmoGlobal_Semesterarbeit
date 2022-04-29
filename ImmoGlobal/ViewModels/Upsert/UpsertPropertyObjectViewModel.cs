@@ -12,12 +12,18 @@ namespace ImmoGlobal.ViewModels
 {
   internal class UpsertPropertyObjectViewModel : BaseViewModel
   {
+    /// <summary>
+    /// c'tor to create a new property object
+    /// </summary>
+    /// <param name="selectedProperty"></param>
     public UpsertPropertyObjectViewModel(Property selectedProperty)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
       BtnDeleteVisibility = Visibility.Collapsed;
 
-      _property = selectedProperty;
+      Property = selectedProperty;
+
+      //set the title of the form
       FormTitel =
         (Application.Current.FindResource("newPropertyObjectFor") as string ?? "new property object for") + " " +
         (Application.Current.FindResource("property") as string ?? "property") +
@@ -25,13 +31,18 @@ namespace ImmoGlobal.ViewModels
         (Application.Current.FindResource("create") as string ?? "create");
     }
 
+    /// <summary>
+    /// c'tor to edit an existing property object
+    /// </summary>
+    /// <param name="selectedProperty"></param>
+    /// <param name="propertyObject"></param>
     public UpsertPropertyObjectViewModel(Property selectedProperty, PropertyObject propertyObject)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
       BtnDelete = new RelayCommand<object>(DeleteClicked);
       BtnDeleteVisibility = Visibility.Visible;
       PropertyObjectId = propertyObject.PropertyObjectId;
-      _property = selectedProperty;
+      Property = selectedProperty;
       Description = propertyObject.Description;
       ObjectType = propertyObject.ObjectType;
       Location = propertyObject.Location;
@@ -44,6 +55,8 @@ namespace ImmoGlobal.ViewModels
       Oven = propertyObject.Oven;
       WashingMachine = propertyObject.WashingMachine;
       Tumbler = propertyObject.Tumbler;
+
+      //set the title of the form
       FormTitel =
         (Application.Current.FindResource("propertyObject") as string ?? "object") + " " +
         " " + propertyObject.Description + " " +

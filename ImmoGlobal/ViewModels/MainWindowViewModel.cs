@@ -67,7 +67,7 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged(nameof(SelectedViewModel));
       }
     }
-    
+
     internal Property? SelectedProperty { get; set; }
     internal PropertyObject? SelectedPropertyObject { get; set; }
     internal Persona? SelectedPersona { get; set; }
@@ -96,7 +96,7 @@ namespace ImmoGlobal.ViewModels
         case PropertyObjectViewModel:
         case UpsertPropertyObjectViewModel:
         case UpsertPropertyViewModel:
-        case UpsertHousekeeperViewModel: 
+        case UpsertHousekeeperViewModel:
           MenuBarViewModel.BtnPropertyColor = Brushes.Red;
           break;
         case RenterOverviewViewModel:
