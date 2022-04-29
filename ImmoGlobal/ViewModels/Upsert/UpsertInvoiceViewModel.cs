@@ -1,19 +1,22 @@
-﻿using ImmoGlobal.Database;
-using ImmoGlobal.MainClasses.Enum;
+﻿using ImmoGlobal.Commands;
+using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Input;
-using ImmoGlobal.Commands;
+using ImmoGlobal.MainClasses.Enum;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Input;
 
 namespace ImmoGlobal.ViewModels
 {
   internal class UpsertInvoiceViewModel : BaseViewModel
   {
+    /// <summary>
+    /// c'tor to create a new invoice
+    /// </summary>
     public UpsertInvoiceViewModel()
     {
       BtnAddOnePosition = new RelayCommand<object>(AddOneInvoicePosition);
@@ -22,14 +25,33 @@ namespace ImmoGlobal.ViewModels
       DueDate = DateTime.Now.AddDays(30);
       PersonaCollection = new(DbController.GetAllPersonasDB());
       InvoiceDate = DateTime.Now;
+
+      // sets the titel of the form      
       FormTitel = Application.Current.FindResource("createNewInvoice") as string ?? "create new invoioce";
       InvoicePositionViewModelCollection = new();
+
       AddOneInvoicePosition();
     }
 
+
+    /// <summary>
+    /// C'tor for editing an existing invoice
+    /// </summary>
+    /// <param name="selectedInvoice"></param>
+    /// <param name="invoicePositions"></param>
     public UpsertInvoiceViewModel(Invoice selectedInvoice, ICollection<InvoicePosition> invoicePositions)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
+      PersonaCollection = new(DbController.GetAllPersonasDB());
+      // Enable only the Invoice state field if the invoice is not NotReleased
+      if (selectedInvoice.InvoiceState != EInvoiceState.NotReleased)
+      {
+        IsEnabled = false;
+      }
+      if (selectedInvoice.InvoiceState == EInvoiceState.Paid)
+      {
+        StateIsEnabled = false;
+      }
       SelectedInvoiceId = selectedInvoice.InvoiceId;
       InvoicePositionViewModelCollection = new();
 
@@ -41,17 +63,18 @@ namespace ImmoGlobal.ViewModels
       InvoiceCategory = selectedInvoice.InvoiceCategory;
       InvoiceState = selectedInvoice.InvoiceState;
 
+      //add every invoice position to the collection
       foreach (var item in invoicePositions)
       {
         _invoicePositionNumber++;
         InvoicePositionViewModelCollection.Add(new InvoicePositionViewModel(item) { InvoicePositionNumber = _invoicePositionNumber });
       }
 
+      // sets the titel of the form
       FormTitel = (Application.Current.FindResource("invoice") as string ?? "invoice") + " " +
                (Application.Current.FindResource("edit") as string ?? "edit");
     }
 
-    // sets the titel of the form
     public string FormTitel { get; set; }
 
     private Persona _persona;
@@ -66,6 +89,8 @@ namespace ImmoGlobal.ViewModels
     private int _invoicePositionNumber;
 
     public int? SelectedInvoiceId { get; set; }
+    public bool IsEnabled { get; set; } = true;
+    public bool StateIsEnabled { get; set; } = true;
     public ObservableCollection<InvoicePositionViewModel> InvoicePositionViewModelCollection
     {
       get => _invoicePositionViewModelCollection;
@@ -143,6 +168,9 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
+    /// <summary>
+    /// converts the invoice category enum to a string related to the enum 
+    /// </summary>
     public Dictionary<EInvoiceCategory, string> EInvoiceCategoryWithCaptions { get; } = new Dictionary<EInvoiceCategory, string>
     {
           {EInvoiceCategory.Property,Application.Current.FindResource("property") as string ?? "Property" },
@@ -162,15 +190,38 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-    public Dictionary<EInvoiceState, string> EInvoiceStateWithCaptions { get; } = new Dictionary<EInvoiceState, string>
+    /// <summary>
+    /// converts the invoice state enum to a string related to the enum
+    /// if the invoice is != NotReleased, the user can only select all other states
+    /// if the invoice state is Paid, the user cant select anything, see property StatIsEnabled
+    /// </summary>
+    public Dictionary<EInvoiceState, string> EInvoiceStateWithCaptions
     {
-      {EInvoiceState.NotReleased, Application.Current.FindResource("notReleased") as string ?? "not Released" },
-      {EInvoiceState.Released,Application.Current.FindResource("released") as string ?? "Released" },
-      {EInvoiceState.OverDue, Application.Current.FindResource("overDue") as string ?? "Over Due" },
-      {EInvoiceState.Paid, Application.Current.FindResource("paid") as string ?? "Paid" },
-      {EInvoiceState.Canceled, Application.Current.FindResource("canceled") as string ?? "Canceled" },
-    };
-
+      get
+      {
+        if (IsEnabled)
+        {
+          return new Dictionary<EInvoiceState, string>
+          {
+            {EInvoiceState.NotReleased, Application.Current.FindResource("notReleased") as string ?? "not Released" },
+            {EInvoiceState.Released,Application.Current.FindResource("released") as string ?? "Released" },
+            {EInvoiceState.OverDue, Application.Current.FindResource("overDue") as string ?? "Over Due" },
+            {EInvoiceState.Paid, Application.Current.FindResource("paid") as string ?? "Paid" },
+            {EInvoiceState.Canceled, Application.Current.FindResource("canceled") as string ?? "Canceled" },
+          };
+        }
+        else
+        {
+          return new Dictionary<EInvoiceState, string>
+          {
+            {EInvoiceState.Released,Application.Current.FindResource("released") as string ?? "Released" },
+            {EInvoiceState.OverDue, Application.Current.FindResource("overDue") as string ?? "Over Due" },
+            {EInvoiceState.Paid, Application.Current.FindResource("paid") as string ?? "Paid" },
+            {EInvoiceState.Canceled, Application.Current.FindResource("canceled") as string ?? "Canceled" },
+          };
+        }
+      }
+    }
     public ICommand BtnSave
     {
       get;
@@ -211,6 +262,7 @@ namespace ImmoGlobal.ViewModels
         InvoicePositionViewModelCollection.RemoveAt(InvoicePositionViewModelCollection.Count - 1);
       }
     }
+
     private void SaveClicked(object obj)
     {
       if (!NullFieldCheck())
@@ -219,13 +271,13 @@ namespace ImmoGlobal.ViewModels
         return;
       }
 
-      //Create RentalContract
+      //Create invoice
       if (SelectedInvoiceId == null && CreateInvoice())
       {
         ShowNotification("Success", Application.Current.FindResource("successAddInvoice") as string ?? "Invoice added successfully", NotificationType.Success);
         ClearValues();
       }
-      // Update Property
+      // Update invoice
       else if (SelectedInvoiceId != null && UpdateInvoice((int)SelectedInvoiceId))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateInvoice") as string ?? "Invoice updated successfully", NotificationType.Success);
