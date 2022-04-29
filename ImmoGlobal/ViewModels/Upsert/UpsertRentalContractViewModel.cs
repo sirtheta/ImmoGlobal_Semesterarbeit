@@ -47,8 +47,8 @@ namespace ImmoGlobal.ViewModels
       PropertyCollection = new(DbController.GetAllPropertiesDB());
 
       SelectedPersona = selectedRentalContract.GetRenter();
-      SelectedProperty = selectedRentalContract.GetPropertyObjectToRentalContract().GetPropertyToPropertyObject();
       SelectedPropertyObject = selectedRentalContract.GetPropertyObjectToRentalContract();
+      SelectedProperty = SelectedPropertyObject.GetPropertyToPropertyObject();
       RentStartDate = selectedRentalContract.RentStartDate;
       RentEndDate = selectedRentalContract.RentEndDate;
       Rent = selectedRentalContract.Rent.ToString();

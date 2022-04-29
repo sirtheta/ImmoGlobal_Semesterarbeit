@@ -68,7 +68,7 @@
             <DataGrid.Columns>
               <DataGridTextColumn Header="{DynamicResource accountDescription}"         
                                 IsReadOnly="True" 
-                                Binding="{Binding AccountDescription}"/>
+                                Binding="{Binding Description}"/>
 
               <DataGridTextColumn Header="{DynamicResource accountNumber}"         
                                 IsReadOnly="True" 

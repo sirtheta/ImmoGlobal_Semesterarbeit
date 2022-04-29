@@ -42,7 +42,7 @@ namespace ImmoGlobal.ViewModels
     public UpsertInvoiceViewModel(Invoice selectedInvoice, ICollection<InvoicePosition> invoicePositions)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
-      PersonaCollection = new(DbController.GetAllPersonasDB());
+      
       // Enable only the Invoice state field if the invoice is not NotReleased
       if (selectedInvoice.InvoiceState != EInvoiceState.NotReleased)
       {
@@ -52,6 +52,8 @@ namespace ImmoGlobal.ViewModels
       {
         StateIsEnabled = false;
       }
+     
+      PersonaCollection = new(DbController.GetAllPersonasDB());
       SelectedInvoiceId = selectedInvoice.InvoiceId;
       InvoicePositionViewModelCollection = new();
 

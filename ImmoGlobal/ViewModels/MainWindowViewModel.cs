@@ -163,15 +163,12 @@ namespace ImmoGlobal.ViewModels
           break;
         case CreditorOverviewViewModel:
           SideMenuViewModel.BtnNewCreditorVisibility = Visibility.Visible;
-          SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
           break;
         case RentalContractsOverviewViewModel:
           SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Visible;
-          SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
           break;
         case InvoicesOverviewViewModel:
           SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Visible;
-          SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
           break;
         case AccountsOverviewViewModel:
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Visible;
