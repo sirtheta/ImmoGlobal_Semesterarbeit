@@ -17,7 +17,7 @@ namespace ImmoGlobal.ViewModels
     /// <summary>
     /// returns instance of class MainViewModel
     /// </summary>
-    public static MainWindowViewModel? GetInstance
+    internal static MainWindowViewModel? GetInstance
     {
       get
       {
@@ -25,7 +25,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    public MainWindowViewModel(BaseViewModel viewModel)
+    internal MainWindowViewModel(BaseViewModel viewModel)
     {
       _selectedViewModel = viewModel;
       _menuBarViewModel = new MenuBarViewModel();

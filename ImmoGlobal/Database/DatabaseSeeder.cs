@@ -8,7 +8,7 @@ namespace ImmoGlobal.Database
   internal static class DatabaseSeeder
   {
 
-    public static void CreateTestEntries()
+    internal static void CreateTestEntries()
     {
 
       var _renter = new Persona("Musterman", "Max", 0334328978, "mail@mail.de", DateTime.Parse("25.10.1988"), "Barstreet 5", 3612, "Steffisburg", ECivilState.Married, "Thunstr. 15, 3600 Bern", "12ET34UI56789", 0791234567);

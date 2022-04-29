@@ -8,7 +8,7 @@ namespace ImmoGlobal.ViewModels
   internal class InvoicesOverviewViewModel : BaseViewModel
   {
 
-    public InvoicesOverviewViewModel()
+    internal InvoicesOverviewViewModel()
     {
       InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetAllInvoicesDB());
       InvoicePositionTitel = Application.Current.FindResource("invoicePositionTo") as string ?? "invoice psoition to";

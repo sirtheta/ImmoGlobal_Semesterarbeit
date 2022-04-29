@@ -4,7 +4,7 @@ namespace ImmoGlobal.ViewModels
 {
   internal class RenterDetailsViewModel : BaseViewModel
   {
-    public RenterDetailsViewModel(Persona renter)
+    internal RenterDetailsViewModel(Persona renter)
     {
       Renter = renter;
     }

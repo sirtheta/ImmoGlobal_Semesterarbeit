@@ -7,7 +7,7 @@ namespace ImmoGlobal.ViewModels
 {
   internal class RentalContractsOverviewViewModel : BaseViewModel
   {
-    public RentalContractsOverviewViewModel()
+    internal RentalContractsOverviewViewModel()
     {
       RentalContractCollection = new ObservableCollection<RentalContract>(DbController.GetAllRentalContractsDB());
       MainWindowViewModelInstance = MainWindowViewModel.GetInstance;

@@ -38,7 +38,7 @@ namespace ImmoGlobal.MainClasses
       return new(DbController.GetPropertyObjectsToPropertyDB(this));
     }
 
-    public ICollection<InvoicePosition> GetInvoicePositions()
+    internal ICollection<InvoicePosition> GetInvoicePositions()
     {
       return DbController.GetInvoicePositionsToPropertyDB(this);
     }

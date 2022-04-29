@@ -14,7 +14,7 @@ namespace ImmoGlobal.ViewModels
     /// <summary>
     /// c'tor to create a new housekeeper
     /// </summary>
-    public UpsertHousekeeperViewModel()
+    internal UpsertHousekeeperViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
@@ -26,7 +26,7 @@ namespace ImmoGlobal.ViewModels
     /// c'tor to edit an existing housekeeper
     /// </summary>
     /// <param name="selectedHousekeeper"></param>
-    public UpsertHousekeeperViewModel(Persona selectedHousekeeper)
+    internal UpsertHousekeeperViewModel(Persona selectedHousekeeper)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 

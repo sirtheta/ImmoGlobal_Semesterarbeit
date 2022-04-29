@@ -27,17 +27,17 @@ namespace ImmoGlobal.MainClasses
     public bool Tumbler { get; set; }
     public ICollection<RentalContract>? RentalContracts { get; set; }
 
-    public ICollection<InvoicePosition> GetInvoicePositions()
+    internal ICollection<InvoicePosition> GetInvoicePositions()
     {
       return DbController.GetInvoicePositionsToPropertyObjectDB(this);
     }
 
-    public ICollection<RentalContract> GetRentalContractToObject()
+    internal ICollection<RentalContract> GetRentalContractToObject()
     {
       return DbController.GetAllRentalContractsToPropertyObjectDB(this);
     }
 
-    public Property? GetPropertyToPropertyObject()
+    internal Property? GetPropertyToPropertyObject()
     {
       return DbController.GetPropertyToPropertyObjectDB(this);
     }

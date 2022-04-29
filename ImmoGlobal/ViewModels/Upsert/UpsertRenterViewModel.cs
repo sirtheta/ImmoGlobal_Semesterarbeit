@@ -17,7 +17,7 @@ namespace ImmoGlobal.ViewModels
     /// <summary>
     /// c'tor to create a new renter
     /// </summary>
-    public UpsertRenterViewModel()
+    internal UpsertRenterViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
@@ -29,7 +29,7 @@ namespace ImmoGlobal.ViewModels
     /// c'tor to edit an existing renter
     /// </summary>
     /// <param name="selectedRenter"></param>
-    public UpsertRenterViewModel(Persona selectedRenter)
+    internal UpsertRenterViewModel(Persona selectedRenter)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 

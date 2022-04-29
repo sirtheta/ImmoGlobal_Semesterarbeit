@@ -7,18 +7,18 @@ namespace ImmoGlobal.ViewModels
 {
   internal class RenterOverviewViewModel : BaseViewModel
   {
-    private ObservableCollection<Persona> _renterCollection;
-    private ObservableCollection<Invoice>? _invoiceCollection;
-    private ObservableCollection<RentalContract>? _rentalContractCollection;
-    private Persona? _selectedRenter;
-    private RenterDetailsViewModel? _selectedRenterDetailsViewModel;
-
-    public RenterOverviewViewModel()
+    internal RenterOverviewViewModel()
     {
       _renterCollection = new ObservableCollection<Persona>(DbController.GetAllRentersDB());
       _selectedRenterDetailsViewModel = null;
       MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
+    
+    private ObservableCollection<Persona> _renterCollection;
+    private ObservableCollection<Invoice>? _invoiceCollection;
+    private ObservableCollection<RentalContract>? _rentalContractCollection;
+    private Persona? _selectedRenter;
+    private RenterDetailsViewModel? _selectedRenterDetailsViewModel;
 
     private MainWindowViewModel? MainWindowViewModelInstance { get; set; }
     public ObservableCollection<Persona> RenterCollection

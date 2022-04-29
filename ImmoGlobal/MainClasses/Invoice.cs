@@ -1,4 +1,4 @@
-﻿using ImmoGlobal.Database;
+using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses.Enum;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace ImmoGlobal.MainClasses
       get => GetPersonaToInvoice().FullName;
     }
 
-    public Persona GetPersonaToInvoice()
+    internal Persona GetPersonaToInvoice()
     {
       return DbController.GetPersonaToInvoiceDB(this);
     }

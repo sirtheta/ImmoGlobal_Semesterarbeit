@@ -1,10 +1,17 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 
 namespace ImmoGlobal.Helpers
 {
+  /// <summary>
+  /// validator class
+  /// </summary>
   internal static class Validator
   {
+    /// <summary>
+    /// checks if an email is valid
+    /// </summary>
+    /// <param name="email"></param>
+    /// <returns></returns>
     internal static bool IsValidEmail(string email)
     {
       try
@@ -16,12 +23,6 @@ namespace ImmoGlobal.Helpers
       {
         return false;
       }
-    }
-
-    private static readonly Regex _regex = new("[^0-9.]+"); //regex that matches disallowed text
-    internal static bool IsTextAllowed(string text)
-    {
-      return !_regex.IsMatch(text);
     }
   }
 }

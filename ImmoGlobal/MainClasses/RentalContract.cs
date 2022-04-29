@@ -21,7 +21,7 @@ namespace ImmoGlobal.MainClasses
       get => GetRenter()?.FullName ?? "";
     }
 
-    public Persona? GetRenter()
+    internal Persona? GetRenter()
     {
       return DbController.GetRenterToRentalContractDB(this);
     }

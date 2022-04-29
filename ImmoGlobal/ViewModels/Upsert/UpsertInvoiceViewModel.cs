@@ -17,7 +17,7 @@ namespace ImmoGlobal.ViewModels
     /// <summary>
     /// c'tor to create a new invoice
     /// </summary>
-    public UpsertInvoiceViewModel()
+    internal UpsertInvoiceViewModel()
     {
       BtnAddOnePosition = new RelayCommand<object>(AddOneInvoicePosition);
       BtnRemoveOnePosition = new RelayCommand<object>(RemoveOneInvoicePosition);
@@ -39,7 +39,7 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     /// <param name="selectedInvoice"></param>
     /// <param name="invoicePositions"></param>
-    public UpsertInvoiceViewModel(Invoice selectedInvoice, ICollection<InvoicePosition> invoicePositions)
+    internal UpsertInvoiceViewModel(Invoice selectedInvoice, ICollection<InvoicePosition> invoicePositions)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
       

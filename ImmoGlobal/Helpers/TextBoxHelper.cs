@@ -6,6 +6,9 @@ using System.Windows.Input;
 namespace ImmoGlobal.Helpers
 {
   //https://code-examples.net/en/q/135b48
+  /// <summary>
+  /// Helper class that provides various checks to restrict textboc input
+  /// </summary>
   public static class TextBoxHelper
   {
     #region Enum Declarations

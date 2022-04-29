@@ -15,7 +15,7 @@ namespace ImmoGlobal.ViewModels
     /// c'tor to create a new payment record
     /// </summary>
     /// <param name="selectedAccount"></param>
-    public UpsertPaymentRecordViewModel(Account selectedAccount)
+    internal UpsertPaymentRecordViewModel(Account selectedAccount)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
@@ -34,7 +34,7 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     /// <param name="selectedAccount"></param>
     /// <param name="selectedPaymentRecord"></param>
-    public UpsertPaymentRecordViewModel(Account selectedAccount, PaymentRecord selectedPaymentRecord)
+    internal UpsertPaymentRecordViewModel(Account selectedAccount, PaymentRecord selectedPaymentRecord)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
       PaymentRecordId = selectedPaymentRecord.PaymentRecordId;

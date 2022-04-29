@@ -8,7 +8,7 @@ namespace ImmoGlobal.ViewModels
   internal class SideMenuViewModel : BaseViewModel
   {
 
-    public SideMenuViewModel()
+    internal SideMenuViewModel()
     {
       BtnNewProperty = new RelayCommand<object>(BtnNewPropertyClicked);
       BtnNewPropertyObject = new RelayCommand<object>(BtnNewPropertyObjectClicked);

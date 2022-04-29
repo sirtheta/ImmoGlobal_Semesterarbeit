@@ -6,7 +6,7 @@ namespace ImmoGlobal.ViewModels
 {
   internal class MenuBarViewModel : BaseViewModel
   {
-    public MenuBarViewModel()
+    internal MenuBarViewModel()
     {
       BtnProperty = new RelayCommand<object>(BtnPropertyClick);
       BtnRenter = new RelayCommand<object>(BtnRenterClick);

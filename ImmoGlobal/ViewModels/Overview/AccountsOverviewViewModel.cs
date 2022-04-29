@@ -8,7 +8,7 @@ namespace ImmoGlobal.ViewModels
 {
   internal class AccountsOverviewViewModel : BaseViewModel
   {
-    public AccountsOverviewViewModel()
+    internal AccountsOverviewViewModel()
     {
       AccountsCollection = new ObservableCollection<Account>(DbController.GetAllAccountsDB());
       AccountTitel = Application.Current.FindResource("incomeExpenseToAccount") as string ?? "income and expenses for";

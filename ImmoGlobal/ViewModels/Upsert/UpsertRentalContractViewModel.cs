@@ -19,7 +19,7 @@ namespace ImmoGlobal.ViewModels
     /// <summary>
     /// c'tor to create a new rental contract
     /// </summary>
-    public UpsertRentalContractViewModel()
+    internal UpsertRentalContractViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
@@ -37,7 +37,7 @@ namespace ImmoGlobal.ViewModels
     /// c'tor to edit an existing rental contract
     /// </summary>
     /// <param name="selectedRentalContract"></param>
-    public UpsertRentalContractViewModel(RentalContract selectedRentalContract)
+    internal UpsertRentalContractViewModel(RentalContract selectedRentalContract)
     {
       SelectedRentalContract = selectedRentalContract;
       RentalContractId = selectedRentalContract.RentalContractId;

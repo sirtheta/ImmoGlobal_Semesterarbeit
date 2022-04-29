@@ -6,13 +6,13 @@ namespace ImmoGlobal
 {
   class ImmoGlobalContext : DbContext
   {
-    public ImmoGlobalContext() : base(new DbContextOptionsBuilder<ImmoGlobalContext>()
+    internal ImmoGlobalContext() : base(new DbContextOptionsBuilder<ImmoGlobalContext>()
 
     .UseSqlServer(ConnectionString).Options)
     {
     }
     private static string? _connectionString;
-    public static string ConnectionString
+    internal static string ConnectionString
     {
       get
       {
@@ -32,15 +32,15 @@ namespace ImmoGlobal
       }
     }
 
-    public DbSet<Persona> Personas { get; set; }
-    public DbSet<Property> Properties { get; set; }
-    public DbSet<PropertyObject> PropertyObjects { get; set; }
-    public DbSet<RentalContract> RentalContracts { get; set; }
-    public DbSet<Invoice> Invoices { get; set; }
-    public DbSet<InvoicePosition> InvoicePositions { get; set; }
-    public DbSet<Account> Accounts { get; set; }
-    public DbSet<PaymentRecord> PaymentRecords { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<AuditTrail> AuditTrail { get; set; }
+    internal DbSet<Persona> Personas { get; set; }
+    internal DbSet<Property> Properties { get; set; }
+    internal DbSet<PropertyObject> PropertyObjects { get; set; }
+    internal DbSet<RentalContract> RentalContracts { get; set; }
+    internal DbSet<Invoice> Invoices { get; set; }
+    internal DbSet<InvoicePosition> InvoicePositions { get; set; }
+    internal DbSet<Account> Accounts { get; set; }
+    internal DbSet<PaymentRecord> PaymentRecords { get; set; }
+    internal DbSet<User> Users { get; set; }
+    internal DbSet<AuditTrail> AuditTrail { get; set; }
   }
 }

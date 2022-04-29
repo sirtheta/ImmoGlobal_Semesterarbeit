@@ -9,7 +9,7 @@ namespace ImmoGlobal.ViewModels
   internal class PropertyObjectViewModel : BaseViewModel
   {
 
-    public PropertyObjectViewModel(PropertyObject propertyObject)
+    internal PropertyObjectViewModel(PropertyObject propertyObject)
     {
       PropertyObject = propertyObject;
       RenterDetailsViewModel = new RenterDetailsViewModel(Renter);

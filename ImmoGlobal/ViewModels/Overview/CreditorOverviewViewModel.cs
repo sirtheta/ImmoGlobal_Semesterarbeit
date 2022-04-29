@@ -12,7 +12,7 @@ namespace ImmoGlobal.ViewModels
     private Persona? _selectedCreditor;
     private CreditorDetailsViewModel? _selectedCreditorDetailsViewModel;
 
-    public CreditorOverviewViewModel()
+    internal CreditorOverviewViewModel()
     {
       _creditorCollection = new ObservableCollection<Persona>(DbController.GetAllCreditorsDB());
       _selectedCreditorDetailsViewModel = null;

@@ -13,7 +13,7 @@ namespace ImmoGlobal.ViewModels
     /// <summary>
     /// c'tor to create a new account
     /// </summary>
-    public UpsertAccountViewModel()
+    internal UpsertAccountViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
@@ -25,7 +25,7 @@ namespace ImmoGlobal.ViewModels
     /// c'tor for updating an existing account
     /// </summary>
     /// <param name="selectedAccount"></param>
-    public UpsertAccountViewModel(Account selectedAccount)
+    internal UpsertAccountViewModel(Account selectedAccount)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 

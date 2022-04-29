@@ -14,7 +14,7 @@ namespace ImmoGlobal.ViewModels
     /// <summary>
     /// c'tor to create a new creditor
     /// </summary>
-    public UpsertCreditorViewModel()
+    internal UpsertCreditorViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
@@ -26,7 +26,7 @@ namespace ImmoGlobal.ViewModels
     /// c'tor to edit an existing creditor
     /// </summary>
     /// <param name="selectedCreditor"></param>
-    public UpsertCreditorViewModel(Persona selectedCreditor)
+    internal UpsertCreditorViewModel(Persona selectedCreditor)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 

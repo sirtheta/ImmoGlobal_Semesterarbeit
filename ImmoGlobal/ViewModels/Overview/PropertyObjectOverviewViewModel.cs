@@ -6,11 +6,7 @@ namespace ImmoGlobal.ViewModels
 {
   internal class PropertyObjectOverviewViewModel : BaseViewModel
   {
-    private ObservableCollection<PropertyObject>? _propertyObjectCollection;
-    private string _housekeeper;
-    private string _description;
-
-    public PropertyObjectOverviewViewModel(List<PropertyObject> propertyObjects, Persona persona, string description)
+    internal PropertyObjectOverviewViewModel(List<PropertyObject> propertyObjects, Persona persona, string description)
     {
       _propertyObjectCollection = new ObservableCollection<PropertyObject>();
       propertyObjects.ForEach(po => _propertyObjectCollection.Add(po));
@@ -19,6 +15,10 @@ namespace ImmoGlobal.ViewModels
       MainWindowViewModel.GetInstance.SelectedPersona = persona;
     }
 
+    private ObservableCollection<PropertyObject>? _propertyObjectCollection;
+    private string _housekeeper;
+    private string _description;
+    
     public ObservableCollection<PropertyObject>? PropertyObjectCollection
     {
       get

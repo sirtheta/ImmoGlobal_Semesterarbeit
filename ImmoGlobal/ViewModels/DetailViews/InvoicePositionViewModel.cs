@@ -9,13 +9,13 @@ namespace ImmoGlobal.ViewModels
 {
   internal class InvoicePositionViewModel : BaseViewModel
   {
-    public InvoicePositionViewModel()
+    internal InvoicePositionViewModel()
     {
       PropertyCollection = new(DbController.GetAllPropertiesDB());
       AccountCollection = new(DbController.GetAllAccountsDB());
     }
 
-    public InvoicePositionViewModel(InvoicePosition invoicePosition)
+    internal InvoicePositionViewModel(InvoicePosition invoicePosition)
     {
       PropertyCollection = new(DbController.GetAllPropertiesDB());
       AccountCollection = new(DbController.GetAllAccountsDB());

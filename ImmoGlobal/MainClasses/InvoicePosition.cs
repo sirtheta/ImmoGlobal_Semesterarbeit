@@ -17,22 +17,22 @@ namespace ImmoGlobal.MainClasses
     public Account Account { get; set; }
 
 
-    public Invoice GetInvoiceToInvoicePosition()
+    internal Invoice GetInvoiceToInvoicePosition()
     {
       return DbController.GetInvoiceToPositionDB(this);
     }
 
-    public Account GetAccountToInvoicePosition()
+    internal Account GetAccountToInvoicePosition()
     {
       return DbController.GetAccountToInvoicePositionDB(this);
     }
 
-    public Property? GetPropertyToInvoicePosition()
+    internal Property? GetPropertyToInvoicePosition()
     {
       return DbController.GetPropertyToInvoicePosition(this);
     }
 
-    public PropertyObject? GetPropertyObjectToInvoicePosition()
+    internal PropertyObject? GetPropertyObjectToInvoicePosition()
     {
       return DbController.GetPropertyObjectToInvoicePosition(this);
     }

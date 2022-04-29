@@ -14,7 +14,7 @@ namespace ImmoGlobal.ViewModels
     /// <summary>
     /// c'tor to create a new property
     /// </summary>
-    public UpsertPropertyViewModel()
+    internal UpsertPropertyViewModel()
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
       BtnDeleteVisibility = Visibility.Collapsed;
@@ -28,7 +28,7 @@ namespace ImmoGlobal.ViewModels
     /// c'tor to edit an existing property
     /// </summary>
     /// <param name="property"></param>
-    public UpsertPropertyViewModel(Property property)
+    internal UpsertPropertyViewModel(Property property)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
       BtnDelete = new RelayCommand<object>(DeleteClicked);
