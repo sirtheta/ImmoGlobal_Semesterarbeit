@@ -1,0 +1,54 @@
+@startuml RechnungAnsehenBearbeiten
+!theme cerulean-outline
+
+skinparam sequence {
+LifeLineBackgroundColor #8ECBF1
+ParticipantPadding 2
+}
+skinparam dpi 300
+
+actor User as user
+activate user
+participant Invoice as inv
+participant InvoicePosition as invp
+database Database as db
+activate db
+activate inv
+activate invp
+user -> inv : loadSelectedInvoice()
+
+alt#Gold #LightGreen State == NotReleased
+  inv -> inv : enableFields()
+loop#Gold #LightBlue 
+  inv -> invp : loadInvoicePositionsToInvoice()
+  invp -> db : loadInvoicePositionsToInvoiceDb()
+end
+
+inv -> db : getPersonasFromDb()
+db --> inv :returnPersonas()
+
+user -> inv : editInvoiceValues()
+
+loop#Gold #LightBlue InvoicePosition
+  user -> invp : addOrEditInvoicePosition()
+  invp -> db : getPropertiesFromDb()
+  db --> invp :returnProperties()
+  invp -> db : getAccountsFromDb()
+  db --> invp :returnAccounts()
+  user -> invp :selectProperty()
+  invp -> db : getPropertyObjectsToPropertyFromDb()
+  db --> invp :returnPropertyObjectsToProperty()
+  user -> invp : setValuesForInvoicePosition()
+end
+user -> inv : save()
+inv -> db : updateInvoiceDb()
+
+loop#Gold #LightBlue ForEachInvoicePosition
+  inv -> invp : getInvoicePositionData()
+  invp --> inv : returnInvoicePositionData()
+  inv -> db : updateInvoicePositionDb()
+end
+else #Pink State != NotReleased
+  inv -> inv : disableFields()
+end
+@enduml

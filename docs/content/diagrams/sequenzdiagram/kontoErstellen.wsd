@@ -15,6 +15,6 @@ activate db
 create acc
 user -> acc : create()
 activate acc
-acc ->acc : setValuesForAccount()  
-acc ->db : save()
+user ->acc : saveValuesForAccount()  
+acc ->db : saveDb()
 @enduml

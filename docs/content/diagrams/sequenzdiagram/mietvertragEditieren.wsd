@@ -13,7 +13,7 @@ database Database as db
 activate db
 activate rc
 
-user -> rc : selectRentalContract()
+user -> rc : loadSelectedRentalContract()
 rc -> db : getPersonasFromDb()
 alt#Gold #LightBlue persona != null
   db--> rc : returnPersonas()
@@ -21,6 +21,16 @@ else #Pink persona == null
 end
 
 rc -> db : getPropertiesFromDb()
+alt#Gold #LightBlue
+  db --> rc : returnProperties()
+else #Pink properties == null
+end
+rc -> db : getPersonaToRentalContract()
+db --> rc : returnPersonaToRentalContract()
+rc -> db : getPropertyObjectToRentalContract()
+db --> rc : returnPropertyObjectToRentalContract()
+rc -> db : getPropertyToPropertyObject()
+db --> rc : returnPropertyToPropertyObject()
 user -> rc : changeProperty()
 rc -> db: getPropertyObjectsToSelectedPropertyFromDb()
 alt#Gold #LightBlue PropertyObjects != null && !allInUse
@@ -31,6 +41,6 @@ end
 rc -> rc : getRenter()
 rc -> rc : getPropertyObjectToRentalContract()
 
-rc -> rc : editRentalContract()
-rc -> db : save()
+user -> rc : saveUpdateRentalContract()
+rc -> db : saveDb()
 @enduml

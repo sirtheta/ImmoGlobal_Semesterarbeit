@@ -3,7 +3,7 @@
 
 skinparam sequence {
 LifeLineBackgroundColor #8ECBF1
-'ParticipantPadding 2
+ParticipantPadding 2
 }
 skinparam dpi 300
 
@@ -13,7 +13,7 @@ participant PropertyObject as probj
 database Database as db
 activate db
 activate probj
-user -> probj : load()
+user -> probj : loadSelectetPropertyObject()
 probj -> db : getPropertyObject(id)
 db --> probj : returnPropertyObject()
 probj -> db : getRentalContractsToObjectFromDb()
@@ -28,10 +28,10 @@ else #Pink invoicePositionsToObject == null
 end 
 alt#Gold #LightBlue Edit PropertyObject
 user -> probj : edit()
-probj ->probj : updateValuesPropertyObject()  
-probj ->db : update()
+user ->probj : saveUpdateValuesPropertyObject()  
+probj ->db : updateDb()
 else #Pink delete PropertyObject
 user -> probj : delete()
-probj ->db : deletePropertyObject()
+probj ->db : deletePropertyObjectDb()
 end 
 @enduml

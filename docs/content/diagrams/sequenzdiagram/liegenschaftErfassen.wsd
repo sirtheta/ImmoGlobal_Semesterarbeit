@@ -15,6 +15,6 @@ activate db
 create prop
 user -> prop : create()
 activate prop
-prop ->prop : setValuesForProperty()  
-prop ->db : save()
+user ->prop : saveValuesForProperty()  
+prop ->db : saveDb()
 @enduml

@@ -7,9 +7,9 @@ ungültig --> unterschrieben
 unterschrieben --> gültig
 gültig --> gekündet
 state notValid as "ungültig"
-gekündet --> notValid
-notValid --> [*]
+gekündet --> [*]
 }
+
 state Rechnung {
 state "nicht freigegeben" as nf
 [*] --> nf : neue Rechnung

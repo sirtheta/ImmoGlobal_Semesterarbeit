@@ -13,18 +13,12 @@ participant Account as acc
 database Database as db
 activate db
 activate acc
-user -> acc : load()
-acc -> db : getAccountCollection()
-db --> acc : returnAccountCollection()
-user -> acc : selectAccount()
-acc -> db : getExpensesToSelectedAccount()
-db --> acc : returnExpensesToSelectedAccount()
-acc -> db : getIncomesToSelectedAccount()
-db --> acc : returnIncomesToSelectedAccount()
+user -> acc : loadSelectedAccount()
+acc -> db : getAccountFromDb()
+db --> acc : returnAccount()
 alt#Gold #LightBlue Edit Account
 user -> acc : edit()
-acc ->acc : updateValuesForAccount()  
-acc ->db : update()
+user ->acc : saveUpdateValuesForAccount()  
+acc ->db : updateDb()
 end
-
 @enduml

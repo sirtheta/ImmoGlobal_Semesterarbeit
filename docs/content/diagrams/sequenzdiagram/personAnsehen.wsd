@@ -13,7 +13,7 @@ participant Persona as persona
 database Database as db
 activate db
 activate persona
-user -> persona : load()
+user -> persona : loadSelectedPersona()
 persona -> db : getAllpersonasFromDb()
 db --> persona : returnPersonas()
 user -> persona : selectPersona()
@@ -28,6 +28,6 @@ persona -> db : getInvoicesToPersonaFromDb()
 db --> persona : returnInvoices()
 
 user -> persona : editSelectedPersona()
-persona ->persona : updateValuesForPersona()  
-persona ->db : update()
+user ->persona : saveUpdateValuesForPersona()  
+persona ->db : updateDb()
 @enduml

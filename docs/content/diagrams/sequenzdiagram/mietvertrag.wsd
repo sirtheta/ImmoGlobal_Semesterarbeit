@@ -14,6 +14,7 @@ activate db
 create rc
 user -> rc ++ : create()
 rc -> db : getPropertiesFromDb()
+db --> rc : retunrProperties()
 user -> rc : selectProperty()
 rc -> db: getPropertyObjectsToSelectedPropertyFromDb()
 alt#Gold #LightBlue PropertyObjects != null && !allInUse
@@ -26,6 +27,6 @@ alt#Gold #LightBlue persona != null
   db--> rc : returnPersonas()
 else #Pink persona == null
 end
-  rc -> rc : setValuesForRentalContract()
-  rc -> db : save()
+user -> rc : saveValuesForRentalContract()
+rc -> db : saveDb()
 @enduml

@@ -8,23 +8,29 @@ skinparam dpi 300
 *** Mieter
 *** Mietverträge
 **** neuer Mietvertrag
-**** Mahnung erstellen
-**** Rechnungen
+**** Rechnungen ansehen
+***** Mahnung erstellen
 ** Hauswartungsperson
+
+* Mieter
+** Rechnungen
+*** Mahnung erstellen
+** Mietverträge
+** neuer Mieter
 
 * Kreditoren
 ** neuer Kreditor
 ** Rechnungen
 *** Mahnung erstellen
 
-* Mieter
-** Rechnungen
-*** neue Rechnung
-** Mietverträge
-** neuer Mieter
+* Mietvertrag
+** neuer Mietvertrag
 
 * Rechnungen
-** neue Rechnung
+** neue Rechnung / \n Rechngun Ansehen
+*** neue Rechnungsposition
+** Mahnung erstellen
+
 * Konto
 ** Zahlung verbuchen
 ** neues Konto

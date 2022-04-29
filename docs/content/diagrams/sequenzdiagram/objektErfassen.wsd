@@ -15,6 +15,6 @@ activate db
 create probj
 user -> probj : create()
 activate probj
-probj ->probj : setValuesForProperty()
-probj ->db : save()
+user ->probj : setValuesForProperty()
+probj ->db : saveDb()
 @enduml

@@ -13,20 +13,20 @@ participant Property as prop
 database Database as db
 activate db
 activate prop
-user -> prop : load()
-prop -> db : getProperty(id)
+user -> prop : loadSelectedProperty()
+prop -> db : getPropertyFromDb()
 db --> prop : returnProperty()
 prop -> db : getObjectsToPropertyFromDb()
 alt#Gold #LightBlue PropertyObjects != null
-db --> prop : returnObjects()
+db --> prop : returnPropertyObjects()
 else #Pink PropertyObjects == null
 end 
 alt#Gold #LightBlue Edit Property
 user -> prop : edit()
-prop ->prop : updateValuesForProperty()  
-prop ->db : update()
+user ->prop : saveUpdateValuesForProperty()  
+prop ->db : updateDb()
 else #Pink delete Property
 user -> prop : delete()
-prop ->db : deleteProperty()
+prop ->db : deletePropertyDb()
 end 
 @enduml
