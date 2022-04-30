@@ -153,9 +153,13 @@ namespace ImmoGlobal.Helpers
       _invoice3.InvoicePositions = new List<InvoicePosition>() { _invoicePosition1, _invoicePosition2 };
 
 
-      var _user1 = new User() { FirstName = "Michael", LastName = "Neuhaus", Password = SecurePasswordHasher.Hash("1"), Email = "mi@app.de", Role = ERole.Admin };
-      var _user2 = new User() { FirstName = "Patrick", LastName = "Graber", Password = SecurePasswordHasher.Hash("2"), Email = "pg@app.de", Role = ERole.User };
-      var _user3 = new User() { FirstName = "Test", LastName = "User", Password = SecurePasswordHasher.Hash("3"), Email = "ts@app.de", Role = ERole.Viewer };
+      //var _user1 = new User() { FirstName = "Michael", LastName = "Neuhaus", Password = SecurePasswordHasher.Hash("1"), Email = "mi@app.de", Role = ERole.Admin };
+      //var _user2 = new User() { FirstName = "Patrick", LastName = "Graber", Password = SecurePasswordHasher.Hash("2"), Email = "pg@app.de", Role = ERole.User };
+      //var _user3 = new User() { FirstName = "Test", LastName = "User", Password = SecurePasswordHasher.Hash("3"), Email = "ts@app.de", Role = ERole.Viewer };
+
+      var _user1 = new User() { FirstName = "Michael", LastName = "Neuhaus", Password = SecurePasswordHasher.Hash("1"), Email = "1", Role = ERole.Admin };
+      var _user2 = new User() { FirstName = "Patrick", LastName = "Graber", Password = SecurePasswordHasher.Hash("2"), Email = "2", Role = ERole.User };
+      var _user3 = new User() { FirstName = "Test", LastName = "User", Password = SecurePasswordHasher.Hash("3"), Email = "3", Role = ERole.Viewer };
 
       using var db = new ImmoGlobalContext();
 

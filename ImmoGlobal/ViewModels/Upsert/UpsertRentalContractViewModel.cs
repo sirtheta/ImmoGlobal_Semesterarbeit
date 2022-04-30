@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Input;
 
 
 namespace ImmoGlobal.ViewModels
@@ -184,12 +183,6 @@ namespace ImmoGlobal.ViewModels
         _deposit = value;
         OnPropertyChanged();
       }
-    }
-
-    public ICommand BtnSave
-    {
-      get;
-      private set;
     }
 
     public EContractState ContractState

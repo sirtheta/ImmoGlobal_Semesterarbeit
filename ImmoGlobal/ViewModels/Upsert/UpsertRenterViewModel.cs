@@ -8,7 +8,6 @@ using Notifications.Wpf.Core;
 using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Input;
 
 namespace ImmoGlobal.ViewModels
 {
@@ -214,12 +213,6 @@ namespace ImmoGlobal.ViewModels
 
 
     public Persona? SelectedRenter { get; set; }
-
-    public ICommand BtnSave
-    {
-      get;
-      private set;
-    }
 
 
     private void SaveClicked(object obj)

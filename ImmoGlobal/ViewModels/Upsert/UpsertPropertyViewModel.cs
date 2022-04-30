@@ -5,7 +5,6 @@ using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Input;
 
 namespace ImmoGlobal.ViewModels
 {
@@ -146,19 +145,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
-    public ICommand BtnSave
-    {
-      get;
-      private set;
-    }
-    public ICommand? BtnDelete
-    {
-      get;
-      private set;
-    }
-
-    public Visibility BtnDeleteVisibility { get; set; }
 
     private void DeleteClicked(object obj)
     {

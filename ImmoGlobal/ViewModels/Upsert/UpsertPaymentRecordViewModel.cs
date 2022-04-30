@@ -5,7 +5,6 @@ using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
 using System;
 using System.Windows;
-using System.Windows.Input;
 
 namespace ImmoGlobal.ViewModels
 {
@@ -137,12 +136,6 @@ namespace ImmoGlobal.ViewModels
         _expenseEnabled = value;
         OnPropertyChanged();
       }
-    }
-
-    public ICommand BtnSave
-    {
-      get;
-      private set;
     }
     public DateTime Date
     {

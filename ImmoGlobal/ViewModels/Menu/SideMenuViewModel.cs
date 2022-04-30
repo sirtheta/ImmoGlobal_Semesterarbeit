@@ -28,6 +28,7 @@ namespace ImmoGlobal.ViewModels
 
     private string _btnEditText;
     private string _btnEditTextTwo;
+    private string _btnHousekeeperText;
     public string BtnEditText
     {
       get => _btnEditText;
@@ -37,13 +38,22 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
     public string BtnEditTextTwo
     {
       get => _btnEditTextTwo;
       set
       {
         _btnEditTextTwo = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public string BtnHousekeeperText
+    {
+      get => _btnHousekeeperText;
+      set
+      {
+        _btnHousekeeperText = value;
         OnPropertyChanged();
       }
     }
@@ -395,7 +405,11 @@ namespace ImmoGlobal.ViewModels
       get => _btnEditVisibility;
       set
       {
-        _btnEditVisibility = value;
+        var instance = MainWindowViewModel.GetInstance;
+        if (instance != null && CanEdit)
+        {
+          _btnEditVisibility = value;
+        }
         OnPropertyChanged();
       }
     }
@@ -404,7 +418,11 @@ namespace ImmoGlobal.ViewModels
       get => _btnEditTwoVisibility;
       set
       {
-        _btnEditTwoVisibility = value;
+        var instance = MainWindowViewModel.GetInstance;
+        if (instance != null && CanEdit)
+        {
+          _btnEditTwoVisibility = value;
+        }
         OnPropertyChanged();
       }
     }

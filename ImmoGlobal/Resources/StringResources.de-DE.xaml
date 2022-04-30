@@ -135,7 +135,8 @@
   <system:String x:Key="selectType">Objekttyp wählen:</system:String>
 
   <system:String x:Key="btnEdit">Bearbeiten</system:String>
-  <system:String x:Key="btnHousekeeper">Hauswart ansehen/bearbeiten</system:String>
+  <system:String x:Key="btnHousekeeperExtended">Hauswart ansehen/bearbeiten</system:String>
+  <system:String x:Key="btnHousekeeper">Hauswart ansehen</system:String>
   <system:String x:Key="btnNewHousekeeper">Neuer Hauswart</system:String>
   <system:String x:Key="addNewHousekeeper">Neuer Hauswart erstellen</system:String>
 

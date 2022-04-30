@@ -5,7 +5,7 @@ using ImmoGlobal.MainClasses;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
 using System.Windows;
-using System.Windows.Input;
+
 
 namespace ImmoGlobal.ViewModels
 {
@@ -29,7 +29,6 @@ namespace ImmoGlobal.ViewModels
     internal UpsertHousekeeperViewModel(Persona selectedHousekeeper)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
-
       SelectedHousekeeper = selectedHousekeeper;
 
       PersonaId = selectedHousekeeper.PersonaId;
@@ -153,13 +152,8 @@ namespace ImmoGlobal.ViewModels
 
     public Persona? SelectedHousekeeper { get; set; }
 
-    public ICommand BtnSave
-    {
-      get;
-      private set;
-    }
 
-    private void SaveClicked(object obj)
+    internal void SaveClicked(object obj)
     {
       if (!NullFieldCheck())
       {
@@ -280,5 +274,6 @@ namespace ImmoGlobal.ViewModels
       City = string.Empty;
       AccountNumber = string.Empty;
     }
+
   }
 }

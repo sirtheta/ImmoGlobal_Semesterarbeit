@@ -121,7 +121,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Visibility="{Binding BtnHousekeeperVisibility}">
-        <TextBlock Text="{DynamicResource btnHousekeeper}" TextWrapping="Wrap"/>
+        <TextBlock Text="{Binding BtnHousekeeperText}" TextWrapping="Wrap"/>
       </Button>
 
       <Button Command="{Binding BtnNewHousekeeper}" 

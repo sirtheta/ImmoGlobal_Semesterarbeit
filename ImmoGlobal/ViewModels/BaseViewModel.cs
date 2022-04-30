@@ -1,4 +1,5 @@
-﻿using MaterialDesignMessageBoxSirTheta;
+﻿using ImmoGlobal.MainClasses.Enum;
+using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
 using System;
 using System.ComponentModel;
@@ -6,12 +7,12 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Windows;
+using System.Windows.Input;
 
 namespace ImmoGlobal.ViewModels
 {
   internal abstract class BaseViewModel : DependencyObject, INotifyPropertyChanged
   {
-
     internal static void ShowNotification(string titel, string message, NotificationType type)
     {
       var notificationManager = new NotificationManager();
@@ -57,5 +58,45 @@ namespace ImmoGlobal.ViewModels
         Marshal.ZeroFreeBSTR(strptr);
       }
     }
+
+    private bool _canEdit;
+    public bool CanEdit
+    {
+      get
+      {
+        var instance = MainWindowViewModel.GetInstance;
+        if (instance != null)
+        {
+          if (instance.LogedInUserRole == ERole.User || instance.LogedInUserRole == ERole.Admin)
+          {
+            _canEdit = true;
+          }
+          else
+          {
+            _canEdit = false;
+          }
+        }
+        return _canEdit;
+      }
+      set
+      {
+        _canEdit = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public ICommand BtnSave
+    {
+      get;
+      internal set;
+    }
+
+    public ICommand? BtnDelete
+    {
+      get;
+      internal set;
+    }
+
+    public Visibility BtnDeleteVisibility { get; set; }
   }
 }

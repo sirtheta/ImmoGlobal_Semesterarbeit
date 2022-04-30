@@ -66,20 +66,20 @@ namespace ImmoGlobal.ViewModels
       var instance = MainWindowViewModel.GetInstance;
       if (instance != null)
       {
-        instance.SelectedViewModel       = new LoginViewModel();
-        instance.SelectedProperty        = null;
-        instance.SelectedPropertyObject  = null;
-        instance.SelectedPersona         = null;
-        instance.SelectedInvoice         = null;
-        instance.SelectedRentalContract  = null;
-        instance.SelectedPaymentRecord   = null;
-        instance.SelectedBillReminder    = null;
-        instance.MenuBarViewModel.LogedInUserFullName     = null;
-        instance.LogedInUserRole         = MainClasses.Enum.ERole.None;
+        instance.SelectedViewModel = new LoginViewModel();
+        instance.SelectedProperty = null;
+        instance.SelectedPropertyObject = null;
+        instance.SelectedPersona = null;
+        instance.SelectedInvoice = null;
+        instance.SelectedRentalContract = null;
+        instance.SelectedPaymentRecord = null;
+        instance.SelectedBillReminder = null;
+        instance.MenuBarViewModel.LogedInUserFullName = null;
+        instance.LogedInUserRole = MainClasses.Enum.ERole.None;
         IsEnabled = false;
-        
+
       }
-    }    
+    }
 
     private bool _isEnabled;
     private string? _logedInUserFullName;

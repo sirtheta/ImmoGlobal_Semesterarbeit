@@ -74,6 +74,12 @@ namespace ImmoGlobal.ViewModels
         StateIsEnabled = false;
       }
 
+      if (!CanEdit)
+      {
+        IsEnabled = false;
+        StateIsEnabled = false;
+      }
+
       PersonaCollection = new(DbController.GetAllPersonasDB());
       SelectedInvoiceId = selectedInvoice.InvoiceId;
       InvoicePositionViewModelCollection = new();
@@ -246,12 +252,6 @@ namespace ImmoGlobal.ViewModels
         }
       }
     }
-    public ICommand BtnSave
-    {
-      get;
-      private set;
-    }
-
     public ICommand BtnAddOnePosition
     {
       get;

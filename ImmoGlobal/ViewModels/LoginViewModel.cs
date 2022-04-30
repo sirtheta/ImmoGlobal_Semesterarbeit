@@ -75,7 +75,7 @@ namespace ImmoGlobal.ViewModels
     /// this is called when the user is successfull verified
     /// </summary>
     /// <param name="user"></param>
-    internal static void Verified(User user)
+    internal void Verified(User user)
     {
       var instance = MainWindowViewModel.GetInstance;
       if (instance != null)
@@ -84,6 +84,15 @@ namespace ImmoGlobal.ViewModels
         instance.LogedInUserRole = user.Role;
         instance.SelectedViewModel = new PropertyOverviewViewModel();
         instance.MenuBarViewModel.IsEnabled = true;
+
+        if (CanEdit)
+        {
+          instance.SideMenuViewModel.BtnHousekeeperText = Application.Current.FindResource("btnHousekeeperExtended") as string ?? "edit";
+        }
+        else
+        {
+          instance.SideMenuViewModel.BtnHousekeeperText = Application.Current.FindResource("btnHousekeeper") as string ?? "edit";
+        }
       }
     }
   }

@@ -4,7 +4,6 @@ using ImmoGlobal.MainClasses;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
 using System.Windows;
-using System.Windows.Input;
 
 namespace ImmoGlobal.ViewModels
 {
@@ -63,14 +62,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
-
-    public ICommand BtnSave
-    {
-      get;
-      private set;
-    }
-
     private void SaveClicked(object obj)
     {
       if (!NullFieldCheck())

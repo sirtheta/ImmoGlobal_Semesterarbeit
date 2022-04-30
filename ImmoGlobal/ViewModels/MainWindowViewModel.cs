@@ -19,23 +19,20 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     internal static MainWindowViewModel? GetInstance
     {
-      get
-      {
-        return instance;
-      }
+      get => instance;
     }
 
     internal MainWindowViewModel(BaseViewModel viewModel)
     {
-      _selectedViewModel = viewModel;
-      _menuBarViewModel = new MenuBarViewModel();
-      _sideMenuViewModel = new SideMenuViewModel();
+      SelectedViewModel = viewModel;
+      MenuBarViewModel = new MenuBarViewModel();
+      SideMenuViewModel = new SideMenuViewModel();
       instance = this;
     }
 
     public MenuBarViewModel MenuBarViewModel
     {
-      get { return _menuBarViewModel; }
+      get => _menuBarViewModel;
       set
       {
         _menuBarViewModel = value;
@@ -44,7 +41,7 @@ namespace ImmoGlobal.ViewModels
 
     public SideMenuViewModel SideMenuViewModel
     {
-      get { return _sideMenuViewModel; }
+      get => _sideMenuViewModel;
       set
       {
         _sideMenuViewModel = value;
@@ -57,6 +54,7 @@ namespace ImmoGlobal.ViewModels
       {
         SetMenuBarIconColor();
         SetSideMenuButtons();
+
         //set side menu edit button to standard text, it can be changed in the viewmodel as needed
         SideMenuViewModel.BtnEditText = Application.Current.FindResource("btnEdit") as string ?? "edit";
         return _selectedViewModel;

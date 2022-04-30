@@ -5,7 +5,6 @@ using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
 using System;
 using System.Windows;
-using System.Windows.Input;
 
 namespace ImmoGlobal.ViewModels
 {
@@ -71,12 +70,6 @@ namespace ImmoGlobal.ViewModels
 
     internal Invoice SelectedInvoice { get; set; }
     internal int? BillReminderId { get; set; }
-
-    public ICommand BtnSave
-    {
-      get;
-      private set;
-    }
 
     private void SaveClicked(object obj)
     {

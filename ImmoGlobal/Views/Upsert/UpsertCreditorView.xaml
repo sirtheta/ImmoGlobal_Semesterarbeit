@@ -176,6 +176,7 @@
             Content="{DynamicResource save}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
             FontFamily="{DynamicResource MaterialDesignFont}"
+                  IsEnabled="{Binding CanEdit}"
             FontSize="20"
             Padding="0"
             Margin="10,60,0,0"
