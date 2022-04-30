@@ -45,20 +45,26 @@ namespace ImmoGlobal.ViewModels
       get => _selectedCreditor;
       set
       {
-        if (_selectedCreditor != value)
+        if (_selectedCreditor != value && MainWindowViewModelInstance != null)
         {
           _selectedCreditor = value;
           SelectedCreditorDetailsViewModel = new CreditorDetailsViewModel(_selectedCreditor);
           InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetInvoiceToPersonaDB(_selectedCreditor));
-          if (MainWindowViewModelInstance != null)
-          {
-            MainWindowViewModelInstance.SelectedPersona = _selectedCreditor;
-            MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
-          }
-          OnPropertyChanged();
+          MainWindowViewModelInstance.SelectedPersona = _selectedCreditor;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Visible;
         }
+        else
+        {
+          MainWindowViewModelInstance.SelectedPersona = _selectedCreditor;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Collapsed;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Collapsed;
+
+        }
+        OnPropertyChanged();
       }
     }
+    
     public CreditorDetailsViewModel? SelectedCreditorDetailsViewModel
     {
       get => _selectedCreditorDetailsViewModel;

@@ -56,19 +56,22 @@ namespace ImmoGlobal.ViewModels
       get => _selectedRenter;
       set
       {
-        if (_selectedRenter != value)
+        if (_selectedRenter != value && MainWindowViewModelInstance != null)
         {
           _selectedRenter = value;
           SelectedRenterDetailsViewModel = new RenterDetailsViewModel(_selectedRenter);
           InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetInvoiceToPersonaDB(_selectedRenter));
           RentalContractCollection = new ObservableCollection<RentalContract>(DbController.GetRentalContractsToPersonDB(_selectedRenter));
-          if (MainWindowViewModelInstance != null)
-          {
-            MainWindowViewModelInstance.SelectedPersona = _selectedRenter;
-            MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
-          }
-          OnPropertyChanged();
+          MainWindowViewModelInstance.SelectedPersona = _selectedRenter;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Visible;
         }
+        else
+        {
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Collapsed;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Collapsed;
+        }
+        OnPropertyChanged();
       }
     }
     public RenterDetailsViewModel? SelectedRenterDetailsViewModel

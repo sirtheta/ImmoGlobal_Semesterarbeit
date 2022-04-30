@@ -12,27 +12,22 @@ namespace ImmoGlobal.ViewModels
     internal InvoicesOverviewViewModel()
     {
       InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetAllInvoicesDB());
-      InvoicePositionTitel = Application.Current.FindResource("invoicePositionTo") as string ?? "invoice psoition to";
-
+      
+      IsOverDueInvoiceSelected = Visibility.Collapsed;
       MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
 
-    private string _invoicePositionTitel;
+    private Visibility _isOverDueInvoiceSelected;
     private Invoice _selectedInvoice;
     private InvoicePosition? _selectedInvoicePosition;
+    private BillReminder? _selectedBillReminder;
     private ObservableCollection<InvoicePosition> _invoicePositionCollection;
+    private ObservableCollection<BillReminder> _billReminderCollection;
+
+    
     private MainWindowViewModel? MainWindowViewModelInstance { get; set; }
     public ObservableCollection<Invoice> InvoiceCollection { get; set; }
 
-    public string InvoicePositionTitel
-    {
-      get => _invoicePositionTitel;
-      set
-      {
-        _invoicePositionTitel = value;
-        OnPropertyChanged();
-      }
-    }
     public Invoice SelectedInvoice
     {
       get => _selectedInvoice;
@@ -40,18 +35,24 @@ namespace ImmoGlobal.ViewModels
       {
         _selectedInvoice = value;
         InvoicePositionCollection = new(DbController.GetInvoicePositionsToInvoiceDB(_selectedInvoice));
+        BillReminderCollection = new();        
         if (MainWindowViewModelInstance != null)
         {
           MainWindowViewModelInstance.SelectedInvoice = _selectedInvoice;
           MainWindowViewModelInstance.InvoicePositions = InvoicePositionCollection;
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoVisibility = Visibility.Collapsed;
           if (_selectedInvoice.InvoiceState == EInvoiceState.OverDue)
           {
             MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
+            BillReminderCollection = new(DbController.GetBillRemindersToInvoiceDB(_selectedInvoice));
+            IsOverDueInvoiceSelected = Visibility.Visible;            
           }
           else
           {
             MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
+            BillReminderCollection.Clear();
+            IsOverDueInvoiceSelected = Visibility.Collapsed;
           }
         }
         OnPropertyChanged();
@@ -76,6 +77,44 @@ namespace ImmoGlobal.ViewModels
         {
         }
 
+        OnPropertyChanged();
+      }
+    }
+
+    public ObservableCollection<BillReminder> BillReminderCollection
+    {
+      get => _billReminderCollection;
+      set
+      {
+        _billReminderCollection = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public BillReminder? SelectedBillReminder
+    {
+      get => _selectedBillReminder;
+      set
+      {
+        _selectedBillReminder = value;
+        if (MainWindowViewModelInstance != null)
+        {
+          MainWindowViewModelInstance.SelectedBillReminder = _selectedBillReminder;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoVisibility = Visibility.Visible;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoWidth = 195;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTextTwo =
+            (Application.Current.FindResource("editBillReminder") as string ?? "edit bill reminder");
+        }
+        OnPropertyChanged();
+      }
+    }
+
+    public Visibility IsOverDueInvoiceSelected
+    {
+      get => _isOverDueInvoiceSelected;
+      set
+      {
+        _isOverDueInvoiceSelected = value;
         OnPropertyChanged();
       }
     }

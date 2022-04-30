@@ -283,7 +283,7 @@
                    FontSize="20"
                    TextWrapping="Wrap"/>
             <DataGrid Grid.Row="1" 
-                  ItemsSource="{Binding InvoicesOfPropertyObject, UpdateSourceTrigger=PropertyChanged}" 
+                  ItemsSource="{Binding InvoicesOfPropertyObject, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" 
                   CanUserAddRows="False" 
                   CanUserDeleteRows="False" 

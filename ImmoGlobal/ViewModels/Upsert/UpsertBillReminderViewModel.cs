@@ -25,6 +25,10 @@ namespace ImmoGlobal.ViewModels
       BtnSave = new RelayCommand<object>(SaveClicked);
       BillReminderId = billReminder.BillReminderId;
 
+      ReminderDate = billReminder.ReminderDate;
+      ReminderAmount = billReminder.ReminderAmount.ToString();
+      ReminderText = billReminder.ReminderText;
+
       //set the title of the form
       FormTitel = (Application.Current.FindResource("account") as string ?? "Bill Reminder") + " " +
        (Application.Current.FindResource("edit") as string ?? "edit");

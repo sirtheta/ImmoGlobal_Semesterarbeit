@@ -33,6 +33,27 @@ namespace ImmoGlobal.ViewModels
       AddOneInvoicePosition();
     }
 
+    internal UpsertInvoiceViewModel(Persona selectedPersona)
+    {
+      BtnAddOnePosition = new RelayCommand<object>(AddOneInvoicePosition);
+      BtnRemoveOnePosition = new RelayCommand<object>(RemoveOneInvoicePosition);
+      BtnSave = new RelayCommand<object>(SaveClicked);
+      
+      PersonaCollection = new(DbController.GetAllPersonasDB());
+      SelectedPersona = selectedPersona;
+
+      InvoicePositionViewModelCollection = new();
+
+      InvoiceDate = DateTime.Now;
+      DueDate = DateTime.Now.AddDays(30);
+
+      // sets the titel of the form      
+      FormTitel = Application.Current.FindResource("createNewInvoice") as string ?? "create new invoioce";
+      InvoicePositionViewModelCollection = new();
+
+      AddOneInvoicePosition();
+    }
+
 
     /// <summary>
     /// C'tor for editing an existing invoice

@@ -110,30 +110,6 @@
             VerticalAlignment="Top"
             Visibility="{Binding BtnNewPaymentRecordVisibility}"/>
 
-      <Button Command="{Binding BtnEdit}" 
-            Content="{Binding BtnEditText}"
-            Style="{DynamicResource MaterialDesignRaisedButton}"
-            FontFamily="{DynamicResource MaterialDesignFont}"
-            FontSize="20"
-            Padding="0"
-            Margin="10,60,0,-30"
-            MinWidth="180"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Visibility="{Binding BtnEditVisibility}"/>
-
-      <Button Command="{Binding BtnEditTwo}" 
-            Content="{Binding BtnEditTextTwo}"
-            Style="{DynamicResource MaterialDesignRaisedButton}"
-            FontFamily="{DynamicResource MaterialDesignFont}"
-            FontSize="20"
-            Padding="0"
-            Margin="10,60,0,-30"
-            MinWidth="180"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Visibility="{Binding BtnEditTwoVisibility}"/>
-
       <Button Command="{Binding BtnHousekeeper}" 
             Style="{DynamicResource MaterialDesignRaisedButton}"
             FontFamily="{DynamicResource MaterialDesignFont}"
@@ -172,6 +148,31 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Visibility="{Binding BtnNewBillReminderVisibility}"/>
+
+      <Button Command="{Binding BtnEdit}" 
+            Content="{Binding BtnEditText}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,-30"
+            MinWidth="180"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnEditVisibility}"/>
+
+      <Button Command="{Binding BtnEditTwo}" 
+            Content="{Binding BtnEditTextTwo}"
+            Style="{DynamicResource MaterialDesignRaisedButton}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+            FontSize="20"
+            Padding="0"
+            Margin="10,60,0,-30"
+            MinWidth="180"
+              Width="{Binding BtnEditTwoWidth}"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding BtnEditTwoVisibility}"/>
     </StackPanel>
   </Grid>
 </UserControl>

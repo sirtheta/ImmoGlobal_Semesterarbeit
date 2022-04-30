@@ -23,7 +23,7 @@ namespace ImmoGlobal.ViewModels
       set
       {
         _selectedContract = value;
-        if (MainWindowViewModelInstance != null)
+        if (_selectedContract != value && MainWindowViewModelInstance != null)
         {
           MainWindowViewModelInstance.SelectedRentalContract = _selectedContract;
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;

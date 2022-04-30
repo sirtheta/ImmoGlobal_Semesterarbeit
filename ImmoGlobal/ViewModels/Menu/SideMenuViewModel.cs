@@ -170,9 +170,24 @@ namespace ImmoGlobal.ViewModels
     }
     private void BtnNewInvoiceClicked(object obj)
     {
-      if (MainWindowViewModel.GetInstance != null)
+      var instance = MainWindowViewModel.GetInstance;
+      if (instance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertInvoiceViewModel();
+        switch (instance.SelectedViewModel)
+        {
+          case RenterOverviewViewModel:
+          case CreditorOverviewViewModel:
+            if (instance.SelectedPersona != null)
+            {
+              instance.SelectedViewModel = new UpsertInvoiceViewModel(instance.SelectedPersona);
+            }
+            break;
+          default:
+            instance.SelectedViewModel = new UpsertInvoiceViewModel();
+            break;
+
+        }
+
       }
     }
     private void BtnNewRenterClicked(object obj)
@@ -239,6 +254,12 @@ namespace ImmoGlobal.ViewModels
             if (instance.SelectedPaymentRecord != null && instance.SelectedAccount != null)
             {
               instance.SelectedViewModel = new UpsertPaymentRecordViewModel(instance.SelectedAccount, instance.SelectedPaymentRecord);
+            }
+            break;
+          case InvoicesOverviewViewModel:
+            if (instance.SelectedBillReminder != null)
+            {
+              instance.SelectedViewModel = new UpsertBillReminderViewModel(instance.SelectedBillReminder);
             }
             break;
         }
@@ -398,5 +419,16 @@ namespace ImmoGlobal.ViewModels
       }
     }
     #endregion
+
+    private int _btnEditTwoWidth;
+    public int BtnEditTwoWidth
+    {
+      get => _btnEditTwoWidth;
+      set
+      {
+        _btnEditTwoWidth = value;
+        OnPropertyChanged();
+      }
+    }
   }
 }

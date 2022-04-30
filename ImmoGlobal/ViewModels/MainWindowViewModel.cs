@@ -74,8 +74,9 @@ namespace ImmoGlobal.ViewModels
     internal Invoice? SelectedInvoice { get; set; }
     internal Account? SelectedAccount { get; set; }
     internal RentalContract? SelectedRentalContract { get; set; }
-    public PaymentRecord? SelectedPaymentRecord { get; set; }
-    public ICollection<InvoicePosition> InvoicePositions { get; internal set; }
+    internal PaymentRecord? SelectedPaymentRecord { get; set; }
+    internal ICollection<InvoicePosition> InvoicePositions { get; set; }
+    internal BillReminder? SelectedBillReminder { get; set; }
 
     /// <summary>
     /// sets the color of the menu bar icon
@@ -113,6 +114,7 @@ namespace ImmoGlobal.ViewModels
           break;
         case InvoicesOverviewViewModel:
         case UpsertInvoiceViewModel:
+        case UpsertBillReminderViewModel:
           MenuBarViewModel.BtnInvoiceColor = Brushes.Red;
           break;
         case AccountsOverviewViewModel:
@@ -157,6 +159,7 @@ namespace ImmoGlobal.ViewModels
         case PropertyObjectViewModel:
           SideMenuViewModel.BtnNewRentalContractVisibility = Visibility.Visible;
           SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
+          SideMenuViewModel.BtnNewInvoiceVisibility = Visibility.Visible;
           break;
         case RenterOverviewViewModel:
           SideMenuViewModel.BtnNewRenterVisibility = Visibility.Visible;
