@@ -49,7 +49,7 @@
         <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
       </Border.Effect>
       <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid ShowGridLines="false">
+        <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
           </Grid.RowDefinitions>
@@ -95,7 +95,7 @@
         <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
       </Border.Effect>
       <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid ShowGridLines="false">
+        <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
           </Grid.RowDefinitions>

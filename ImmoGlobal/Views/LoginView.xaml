@@ -14,7 +14,7 @@
              TextOptions.TextFormattingMode="Display">
 
   <UserControl.InputBindings>
-    <KeyBinding Command="{Binding BtnLogin}"
+    <KeyBinding Command="{Binding BtnSave}"
               Gesture="Enter" />
   </UserControl.InputBindings>
 

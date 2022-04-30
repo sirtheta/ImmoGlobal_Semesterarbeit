@@ -45,7 +45,7 @@
           <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
         </Border.Effect>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-          <Grid ShowGridLines="false">
+          <Grid>
             <Grid.RowDefinitions>
               <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
@@ -93,9 +93,9 @@
             </DataGrid>
           </Grid>
         </ScrollViewer>
-      </Border>
-
-      <!--InvoicePsoition-->
+      </Border>      
+        
+            <!--InvoicePsoition-->
       <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
         <Grid.RowDefinitions>
           <RowDefinition Height="auto"/>
@@ -135,7 +135,7 @@
             <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
           </Border.Effect>
           <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <Grid ShowGridLines="false">
+            <Grid>
               <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
               </Grid.RowDefinitions>
@@ -191,7 +191,7 @@
             <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
           </Border.Effect>
           <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <Grid ShowGridLines="false">
+            <Grid>
               <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
               </Grid.RowDefinitions>

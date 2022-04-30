@@ -46,7 +46,7 @@
                  FontSize="20"
                  TextWrapping="Wrap"/>
 
-          <Grid Grid.Column="0" Grid.Row="1" ShowGridLines="false">
+          <Grid Grid.Column="0" Grid.Row="1">
             <ContentControl Content="{Binding SelectedRenterDetailsViewModel}"/>
           </Grid>
         </Grid>
@@ -60,7 +60,7 @@
         <Border.Effect>
           <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
         </Border.Effect>
-        <Grid ShowGridLines="false">
+        <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
@@ -100,7 +100,7 @@
         <Border.Effect>
           <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
         </Border.Effect>
-        <Grid ShowGridLines="false">
+        <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
@@ -152,7 +152,7 @@
         <Border.Effect>
           <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
         </Border.Effect>
-        <Grid ShowGridLines="false">
+        <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>

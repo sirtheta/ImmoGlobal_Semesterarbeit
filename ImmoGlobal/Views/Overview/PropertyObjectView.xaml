@@ -14,7 +14,7 @@
              TextOptions.TextFormattingMode="Display">
 
   <ScrollViewer VerticalScrollBarVisibility="Auto">
-    <Grid ShowGridLines="False">
+    <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="auto"/>
         <RowDefinition Height="auto"/>
@@ -201,7 +201,7 @@
                  FontSize="20"
                  TextWrapping="Wrap"/>
 
-            <Grid Grid.Column="0" Grid.Row="1" ShowGridLines="false">
+            <Grid Grid.Column="0" Grid.Row="1">
               <ContentControl Content="{Binding RenterDetailsViewModel}"/>
             </Grid>
           </Grid>
@@ -215,7 +215,7 @@
           <Border.Effect>
             <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
           </Border.Effect>
-          <Grid ShowGridLines="False">
+          <Grid>
             <Grid.RowDefinitions>
               <RowDefinition Height="auto"/>
               <RowDefinition Height="1*"/>
@@ -258,7 +258,7 @@
         </Border>
       </Grid>
 
-      <Grid Grid.Row="2" Grid.Column="1" ShowGridLines="False">
+      <Grid Grid.Row="2" Grid.Column="1">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
@@ -271,7 +271,7 @@
           <Border.Effect>
             <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
           </Border.Effect>
-          <Grid  ShowGridLines="False">
+          <Grid >
             <Grid.RowDefinitions>
               <RowDefinition Height="auto"/>
               <RowDefinition Height="1*"/>

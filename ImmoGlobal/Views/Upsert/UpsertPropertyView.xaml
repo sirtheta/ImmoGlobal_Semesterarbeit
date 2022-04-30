@@ -18,7 +18,7 @@
   </UserControl.Resources>
   
   <ScrollViewer VerticalScrollBarVisibility="Auto">
-    <Grid ShowGridLines="false">
+    <Grid>
       <Grid.Resources>
         <Style TargetType="TextBlock">
           <Setter Property="FontFamily"
@@ -41,7 +41,7 @@
                FontSize="30"
                FontWeight="Bold"
                TextWrapping="Wrap"/>
-      <Grid Grid.Row="1" ShowGridLines="false">
+      <Grid Grid.Row="1">
         <Grid.RowDefinitions>
           <RowDefinition Height="auto"/>
           <RowDefinition Height="1*"/>

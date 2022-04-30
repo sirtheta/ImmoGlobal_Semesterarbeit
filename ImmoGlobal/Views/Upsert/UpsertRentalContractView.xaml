@@ -19,7 +19,7 @@
   </UserControl.Resources>
   
   <ScrollViewer VerticalScrollBarVisibility="Auto">
-    <Grid ShowGridLines="False">
+    <Grid>
       <Grid.Resources>
         <Style TargetType="TextBlock">
           <Setter Property="FontFamily"
@@ -41,7 +41,7 @@
                TextWrapping="Wrap">
       <Run Text="{Binding FormTitel}"/>
       </TextBlock>
-      <Grid Grid.Row="1" ShowGridLines="false">
+      <Grid Grid.Row="1">
         <Grid.RowDefinitions>
           <RowDefinition Height="auto"/>
           <RowDefinition Height="1*"/>

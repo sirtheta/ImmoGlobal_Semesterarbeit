@@ -155,7 +155,7 @@
       </Button.Content>
     </Button>
 
-    <Grid Grid.Column="7" ShowGridLines="True">
+    <Grid Grid.Column="7">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="1*"/>
         <ColumnDefinition Width="1*"/>

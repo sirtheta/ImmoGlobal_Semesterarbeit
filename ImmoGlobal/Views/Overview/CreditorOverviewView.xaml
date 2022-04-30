@@ -13,7 +13,7 @@
              d:DesignWidth="1500"
              TextOptions.TextFormattingMode="Display">
   <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-    <Grid ShowGridLines="false" Margin="10">
+    <Grid Margin="10">
       <Grid.RowDefinitions>
         <RowDefinition Height="auto" MinHeight="440"/>
         <RowDefinition Height="1*"/>
@@ -46,7 +46,7 @@
                  FontSize="20"
                  TextWrapping="Wrap"/>
 
-          <Grid Grid.Column="0" Grid.Row="1" ShowGridLines="false">
+          <Grid Grid.Column="0" Grid.Row="1">
             <ContentControl Content="{Binding SelectedCreditorDetailsViewModel}"/>
           </Grid>
         </Grid>
@@ -60,7 +60,7 @@
         <Border.Effect>
           <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
         </Border.Effect>
-        <Grid ShowGridLines="false">
+        <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
@@ -100,7 +100,7 @@
         <Border.Effect>
           <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
         </Border.Effect>
-        <Grid ShowGridLines="false">
+        <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
