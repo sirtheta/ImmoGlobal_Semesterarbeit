@@ -5,8 +5,9 @@ using System.Windows.Input;
 
 namespace ImmoGlobal.Helpers
 {
-  //https://code-examples.net/en/q/135b48
   /// <summary>
+  /// https://code-examples.net/en/q/135b48
+  ///Source see
   /// Helper class that provides various checks to restrict textboc input
   /// </summary>
   public static class TextBoxHelper
