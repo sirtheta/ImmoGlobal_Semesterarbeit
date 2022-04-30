@@ -14,7 +14,7 @@ namespace ImmoGlobal.ViewModels
       _selectedCreditorDetailsViewModel = null;
       MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
-    
+
     private ObservableCollection<Persona> _creditorCollection;
     private ObservableCollection<Invoice>? _invoiceCollection;
     private Persona? _selectedCreditor;
@@ -66,7 +66,7 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-    
+
     public CreditorDetailsViewModel? SelectedCreditorDetailsViewModel
     {
       get => _selectedCreditorDetailsViewModel;

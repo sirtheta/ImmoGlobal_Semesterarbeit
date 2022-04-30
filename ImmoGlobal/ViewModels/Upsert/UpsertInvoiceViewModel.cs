@@ -38,7 +38,7 @@ namespace ImmoGlobal.ViewModels
       BtnAddOnePosition = new RelayCommand<object>(AddOneInvoicePosition);
       BtnRemoveOnePosition = new RelayCommand<object>(RemoveOneInvoicePosition);
       BtnSave = new RelayCommand<object>(SaveClicked);
-      
+
       PersonaCollection = new(DbController.GetAllPersonasDB());
       SelectedPersona = selectedPersona;
 

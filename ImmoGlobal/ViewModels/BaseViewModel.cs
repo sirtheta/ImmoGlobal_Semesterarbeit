@@ -3,6 +3,8 @@ using Notifications.Wpf.Core;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Security;
 using System.Windows;
 
 namespace ImmoGlobal.ViewModels
@@ -31,5 +33,29 @@ namespace ImmoGlobal.ViewModels
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
+    /// <summary>
+    /// Converts a secure string to a string using safe methods.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    internal protected static string? ToNormalString(SecureString input)
+    {
+      IntPtr strptr = IntPtr.Zero;
+      try
+      {
+        strptr = Marshal.SecureStringToBSTR(input);
+        string normal = Marshal.PtrToStringBSTR(strptr);
+        return normal;
+      }
+      catch
+      {
+        return null;
+      }
+      finally
+      {
+        //Free the pointer holding the SecureString
+        Marshal.ZeroFreeBSTR(strptr);
+      }
+    }
   }
 }

@@ -3,7 +3,7 @@ using ImmoGlobal.MainClasses.Enum;
 using System;
 using System.Collections.Generic;
 
-namespace ImmoGlobal.Database
+namespace ImmoGlobal.Helpers
 {
   internal static class DatabaseSeeder
   {
@@ -39,7 +39,6 @@ namespace ImmoGlobal.Database
       var _expense1 = new PaymentRecord() { Account = _account1, ExpenseAmount = 268.65, Description = "SeedDescriptionExpense1", ReceiptNumber = 10, Date = DateTime.Now.AddDays(-25) };
       var _expense2 = new PaymentRecord() { Account = _account2, ExpenseAmount = 295.95, Description = "SeedDescriptionExpense2", ReceiptNumber = 30, Date = DateTime.Now.AddDays(-15) };
       var _expense3 = new PaymentRecord() { Account = _account3, ExpenseAmount = 252.15, Description = "SeedDescriptionExpense3", ReceiptNumber = 50, Date = DateTime.Now.AddDays(-8) };
-
 
       var _invoice1 = new Invoice()
       {
@@ -154,8 +153,9 @@ namespace ImmoGlobal.Database
       _invoice3.InvoicePositions = new List<InvoicePosition>() { _invoicePosition1, _invoicePosition2 };
 
 
-      var _user1 = new User() { Name = "Admin", Surname = "Tester", Email = "user1@immoglogbal.ch", Password = "password", Role = ERole.Admin };
-      var _user2 = new User() { Name = "User", Surname = "Tester", Email = "user2@immoglogbal.ch", Password = "password", Role = ERole.User };
+      var _user1 = new User() { FirstName = "Michael", LastName = "Neuhaus", Password = SecurePasswordHasher.Hash("1"), Email = "mi@app.de", Role = ERole.Admin };
+      var _user2 = new User() { FirstName = "Patrick", LastName = "Graber", Password = SecurePasswordHasher.Hash("2"), Email = "pg@app.de", Role = ERole.User };
+      var _user3 = new User() { FirstName = "Test", LastName = "User", Password = SecurePasswordHasher.Hash("3"), Email = "ts@app.de", Role = ERole.Viewer };
 
       using var db = new ImmoGlobalContext();
 
@@ -194,6 +194,7 @@ namespace ImmoGlobal.Database
       db.InvoicePositions.Add(_invoicePosition7);
       db.Users.Add(_user1);
       db.Users.Add(_user2);
+      db.Users.Add(_user3);
       db.SaveChanges();
     }
   }

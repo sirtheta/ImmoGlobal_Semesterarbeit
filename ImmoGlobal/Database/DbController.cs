@@ -35,6 +35,19 @@ namespace ImmoGlobal.Database
     }
 
     /// <summary>
+    /// returns user by given email
+    /// </summary>
+    /// <param name="email"></param>
+    /// <returns></returns>
+    internal static User? GetUserFromDb(string email)
+    {
+      using var db = new ImmoGlobalContext();
+      return (from p in db.Users
+              where p.Email == email
+              select p).SingleOrDefault();
+    }
+
+    /// <summary>
     /// save or update invoice
     /// </summary>
     /// <param name="invoice"></param>
@@ -63,6 +76,11 @@ namespace ImmoGlobal.Database
       }
     }
 
+    /// <summary>
+    /// save or update invoice position
+    /// </summary>
+    /// <param name="invoicePosition"></param>
+    /// <returns></returns>
     internal static bool UpsertInvoicePositionToDB(InvoicePosition invoicePosition)
     {
       try

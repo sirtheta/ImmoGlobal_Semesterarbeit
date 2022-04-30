@@ -12,7 +12,11 @@
       <DataTemplate DataType="{x:Type viewmodels:SideMenuViewModel}">
         <views:SideMenuView/>
       </DataTemplate>
-      
+
+      <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
+        <views:LoginView/>
+      </DataTemplate>
+
       <DataTemplate DataType="{x:Type viewmodels:PropertyOverviewViewModel}">
         <views:PropertyOverviewView/>
       </DataTemplate>

@@ -1,0 +1,90 @@
+﻿using ImmoGlobal.Commands;
+using ImmoGlobal.Database;
+using ImmoGlobal.MainClasses;
+using MaterialDesignMessageBoxSirTheta;
+using Notifications.Wpf.Core;
+using System.Security;
+using System.Windows;
+using System.Windows.Input;
+
+namespace ImmoGlobal.ViewModels
+{
+  internal class LoginViewModel : BaseViewModel
+  {
+    internal LoginViewModel()
+    {
+      BtnLogin = new RelayCommand<object>(LoginClicked);
+
+      //set the title of the form
+      FormTitel = "Login";
+    }
+
+    private string _email;
+    public string FormTitel { get; set; }
+    public string Email
+    {
+      get => _email;
+      set
+      {
+        _email = value;
+        OnPropertyChanged();
+      }
+    }
+
+    internal SecureString Password { get; set; }
+
+
+    public ICommand BtnLogin
+    {
+      get;
+      private set;
+    }
+
+    private void LoginClicked(object obj)
+    {
+      if (VerifyUser())
+      {
+        ShowNotification("Success", Application.Current.FindResource("loginSuccessfull") as string ?? "Login successfull", NotificationType.Success);
+      }
+      else
+      {
+        ShowMessageBox(Application.Current.FindResource("loginFailed") as string ?? "Login failed", MessageType.Error, MessageButtons.Ok);
+      }
+    }
+
+    /// <summary>
+    /// Verifies the user by calling the email and password from the database
+    /// the password is then checked with the password hasher
+    /// </summary>
+    /// <returns></returns>
+    internal bool VerifyUser()
+    {
+      var user = DbController.GetUserFromDb(Email);
+      if (user != null)
+      {
+        if (Password != null && SecurePasswordHasher.Verify(ToNormalString(Password), user.Password))
+        {
+          Verified(user);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    /// <summary>
+    /// this is called when the user is successfull verified
+    /// </summary>
+    /// <param name="user"></param>
+    internal static void Verified(User user)
+    {
+      var instance = MainWindowViewModel.GetInstance;
+      if (instance != null)
+      {
+        instance.MenuBarViewModel.LogedInUserFullName = user.FullName;
+        instance.LogedInUserRole = user.Role;
+        instance.SelectedViewModel = new PropertyOverviewViewModel();
+        instance.MenuBarViewModel.IsEnabled = true;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-﻿using ImmoGlobal.Database;
+﻿using ImmoGlobal.Helpers;
 using ImmoGlobal.ViewModels;
 using System;
 using System.Configuration;
@@ -17,11 +17,11 @@ namespace ImmoGlobal
       CheckDatabase();
 
       SetLanguageDictionary();
-      PropertyOverviewViewModel propertyOverviewViewModel = new();
+      LoginViewModel loginViewModel = new();
 
       MainWindow = new MainWindowView()
       {
-        DataContext = new MainWindowViewModel(propertyOverviewViewModel)
+        DataContext = new MainWindowViewModel(loginViewModel)
       };
       MainWindow.Show();
 

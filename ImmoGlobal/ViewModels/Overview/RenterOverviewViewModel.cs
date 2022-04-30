@@ -101,7 +101,8 @@ namespace ImmoGlobal.ViewModels
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoWidth = 200;
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditTextTwo =
              Application.Current.FindResource("editInvoice") as string ?? "Edit Invoice"; ;
-          if (_selectedInvoice.InvoiceState == EInvoiceState.OverDue)          {
+          if (_selectedInvoice.InvoiceState == EInvoiceState.OverDue)
+          {
 
             MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
           }

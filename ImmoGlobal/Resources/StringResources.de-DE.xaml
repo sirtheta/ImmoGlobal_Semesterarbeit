@@ -248,4 +248,7 @@
   <system:String x:Key="editBillReminder">Mahnung bearbeiten</system:String>
 
 
+  <system:String x:Key="loginSuccessfull">Login erfolgreich</system:String>
+  <system:String x:Key="loginFailed">Login fehlgeschlagen! Email oder Passwort nicht gefunden!</system:String>
+  <system:String x:Key="logedInUser">Eingelogter Benutzer</system:String>
 </ResourceDictionary>

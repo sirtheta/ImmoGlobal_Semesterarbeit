@@ -14,6 +14,8 @@ namespace ImmoGlobal.ViewModels
       BtnRentalContract = new RelayCommand<object>(BtnRentalContractClick);
       BtnInvoice = new RelayCommand<object>(BtnInvoiceClick);
       BtnAccount = new RelayCommand<object>(BtnAccountClick);
+      BtnLogout = new RelayCommand<object>(BtnLogoutClick);
+      IsEnabled = false;
     }
 
     private void BtnPropertyClick(object obj)
@@ -59,7 +61,47 @@ namespace ImmoGlobal.ViewModels
         MainWindowViewModel.GetInstance.SelectedViewModel = new AccountsOverviewViewModel();
       }
     }
+    private void BtnLogoutClick(object obj)
+    {
+      var instance = MainWindowViewModel.GetInstance;
+      if (instance != null)
+      {
+        instance.SelectedViewModel       = new LoginViewModel();
+        instance.SelectedProperty        = null;
+        instance.SelectedPropertyObject  = null;
+        instance.SelectedPersona         = null;
+        instance.SelectedInvoice         = null;
+        instance.SelectedRentalContract  = null;
+        instance.SelectedPaymentRecord   = null;
+        instance.SelectedBillReminder    = null;
+        instance.MenuBarViewModel.LogedInUserFullName     = null;
+        instance.LogedInUserRole         = MainClasses.Enum.ERole.None;
+        IsEnabled = false;
+        
+      }
+    }    
 
+    private bool _isEnabled;
+    private string? _logedInUserFullName;
+    public bool IsEnabled
+    {
+      get => _isEnabled;
+      set
+      {
+        _isEnabled = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public string? LogedInUserFullName
+    {
+      get => _logedInUserFullName;
+      set
+      {
+        _logedInUserFullName = value;
+        OnPropertyChanged();
+      }
+    }
     public ICommand BtnProperty
     {
       get;
@@ -90,6 +132,12 @@ namespace ImmoGlobal.ViewModels
       get;
       private set;
     }
+    public ICommand BtnLogout
+    {
+      get;
+      private set;
+    }
+
 
     private Brush? _btnPropertyColor;
     private Brush? _btnRenterColor;

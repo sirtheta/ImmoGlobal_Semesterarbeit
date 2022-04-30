@@ -13,9 +13,9 @@
              d:DesignWidth="1200" 
              d:DesignHeight="150"
              TextOptions.TextFormattingMode="Display">
-  <Grid>
+  
+  <Grid IsEnabled="{Binding IsEnabled}">
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="140"/>
       <ColumnDefinition Width="140"/>
       <ColumnDefinition Width="140"/>
       <ColumnDefinition Width="140"/>
@@ -154,5 +154,59 @@
         </Grid>
       </Button.Content>
     </Button>
+
+    <Grid Grid.Column="7" ShowGridLines="True">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="1*"/>
+      </Grid.ColumnDefinitions>
+
+      <Grid Grid.Column="0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="1*"/>
+          <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Text="{DynamicResource logedInUser}" 
+                   TextWrapping="Wrap"
+                   Style="{DynamicResource MaterialDesignHeadline6TextBlock}">
+          <TextBlock.Visibility>
+            <Binding Path="IsEnabled">
+              <Binding.Converter>
+                <BooleanToVisibilityConverter/>
+              </Binding.Converter>
+            </Binding>
+          </TextBlock.Visibility>
+        </TextBlock>
+
+        <TextBlock Grid.Row="1"
+          HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Text="{Binding LogedInUserFullName}" 
+               TextWrapping="Wrap"
+               Style="{DynamicResource MaterialDesignHeadline4TextBlock}"/>
+      </Grid>
+
+      <Button Grid.Column="1" 
+            Command="{Binding BtnLogout}"              
+            Height="120" 
+            Width="120" 
+            Padding="0">
+        <Button.Content>
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="80"/>
+              <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <fa6:ImageAwesome Icon="Solid_Lock"
+                            Width="100"
+                            PrimaryColor="Black"/>
+            <TextBlock Text="Logout" 
+                     Grid.Row="1"/>
+          </Grid>
+        </Button.Content>
+      </Button>
+    </Grid>
   </Grid>
 </UserControl>
