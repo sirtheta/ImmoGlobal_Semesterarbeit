@@ -1,5 +1,6 @@
 ﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
+using ImmoGlobal.MainClasses.Enum;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -7,17 +8,18 @@ namespace ImmoGlobal.ViewModels
 {
   internal class CreditorOverviewViewModel : BaseViewModel
   {
-    private ObservableCollection<Persona> _creditorCollection;
-    private ObservableCollection<Invoice>? _invoiceCollection;
-    private Persona? _selectedCreditor;
-    private CreditorDetailsViewModel? _selectedCreditorDetailsViewModel;
-
     internal CreditorOverviewViewModel()
     {
       _creditorCollection = new ObservableCollection<Persona>(DbController.GetAllCreditorsDB());
       _selectedCreditorDetailsViewModel = null;
       MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
+    
+    private ObservableCollection<Persona> _creditorCollection;
+    private ObservableCollection<Invoice>? _invoiceCollection;
+    private Persona? _selectedCreditor;
+    private CreditorDetailsViewModel? _selectedCreditorDetailsViewModel;
+    private Invoice? _selectedInvoice;
 
     private MainWindowViewModel? MainWindowViewModelInstance { get; set; }
     public ObservableCollection<Persona> CreditorCollection
@@ -71,6 +73,34 @@ namespace ImmoGlobal.ViewModels
       set
       {
         _selectedCreditorDetailsViewModel = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public Invoice? SelectedInvoice
+    {
+      get => _selectedInvoice;
+      set
+      {
+        if (_selectedInvoice != value && MainWindowViewModelInstance != null)
+        {
+          _selectedInvoice = value;
+          MainWindowViewModelInstance.SelectedInvoice = _selectedInvoice;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoVisibility = Visibility.Visible;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoWidth = 200;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTextTwo =
+             Application.Current.FindResource("editInvoice") as string ?? "Edit Invoice"; ;
+          if (_selectedInvoice.InvoiceState == EInvoiceState.OverDue)
+          {
+
+            MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
+          }
+          else
+          {
+            MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
+          }
+
+        }
         OnPropertyChanged();
       }
     }

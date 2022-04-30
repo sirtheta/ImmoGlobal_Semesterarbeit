@@ -34,12 +34,17 @@ namespace ImmoGlobal.MainClasses
       get
       {
         var value = 0.0;
-        foreach (var invoicePosition in DbController.GetInvoicePositionsToInvoiceDB(this))
+        foreach (var invoicePosition in GetInvoicePositonToInvoice())
         {
           value += invoicePosition.Value;
         }
         return value;
       }
+    }
+
+    internal ICollection<InvoicePosition> GetInvoicePositonToInvoice()
+    {
+      return DbController.GetInvoicePositionsToInvoiceDB(this);
     }
 
     public string InvoiceCategoryString

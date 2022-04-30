@@ -223,9 +223,9 @@ namespace ImmoGlobal.ViewModels
             }
             break;
           case InvoicesOverviewViewModel:
-            if (instance.SelectedInvoice != null && instance.InvoicePositions != null)
+            if (instance.SelectedInvoice != null)
             {
-              instance.SelectedViewModel = new UpsertInvoiceViewModel(instance.SelectedInvoice, instance.InvoicePositions);
+              instance.SelectedViewModel = new UpsertInvoiceViewModel(instance.SelectedInvoice);
             }
             break;
           case AccountsOverviewViewModel:
@@ -260,6 +260,14 @@ namespace ImmoGlobal.ViewModels
             if (instance.SelectedBillReminder != null)
             {
               instance.SelectedViewModel = new UpsertBillReminderViewModel(instance.SelectedBillReminder);
+            }
+            break;
+          case CreditorOverviewViewModel:
+          case PropertyObjectViewModel:
+          case RenterOverviewViewModel:
+            if (instance.SelectedInvoice != null)
+            {
+              instance.SelectedViewModel = new UpsertInvoiceViewModel(instance.SelectedInvoice);
             }
             break;
         }

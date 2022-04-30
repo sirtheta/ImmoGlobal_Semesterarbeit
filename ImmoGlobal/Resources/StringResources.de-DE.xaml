@@ -234,6 +234,8 @@
   <system:String x:Key="invoicePosition">Rechnungsposition</system:String>
   <system:String x:Key="invoicePositions">Rechnungspositionen</system:String>
 
+  <system:String x:Key="editInvoice">Rechnung bearbeiten</system:String>
+
   <system:String x:Key="reminderAmount">Mahngebühr</system:String>
   <system:String x:Key="reminderText">Text zur Mahnung</system:String>
   <system:String x:Key="reminderDate">Mahnungsdatum</system:String>

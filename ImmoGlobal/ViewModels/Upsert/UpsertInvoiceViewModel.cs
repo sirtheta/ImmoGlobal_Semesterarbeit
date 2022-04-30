@@ -60,7 +60,7 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     /// <param name="selectedInvoice"></param>
     /// <param name="invoicePositions"></param>
-    internal UpsertInvoiceViewModel(Invoice selectedInvoice, ICollection<InvoicePosition> invoicePositions)
+    internal UpsertInvoiceViewModel(Invoice selectedInvoice)
     {
       BtnSave = new RelayCommand<object>(SaveClicked);
 
@@ -86,6 +86,7 @@ namespace ImmoGlobal.ViewModels
       InvoiceCategory = selectedInvoice.InvoiceCategory;
       InvoiceState = selectedInvoice.InvoiceState;
 
+      var invoicePositions = selectedInvoice.GetInvoicePositonToInvoice();
       //add every invoice position to the collection
       foreach (var item in invoicePositions)
       {

@@ -116,6 +116,9 @@
                  TextWrapping="Wrap"/>
           <DataGrid Grid.Row="1" 
                   ItemsSource="{Binding InvoiceCollection, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedInvoice}"
+                  SelectionMode="Extended"
+                  SelectionUnit="FullRow"
                   AutoGenerateColumns="False" 
                   CanUserAddRows="False" 
                   CanUserDeleteRows="False" 
