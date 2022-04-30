@@ -12,7 +12,6 @@ namespace ImmoGlobal.ViewModels
     {
       _renterCollection = new ObservableCollection<Persona>(DbController.GetAllRentersDB());
       _selectedRenterDetailsViewModel = null;
-      MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
 
     private ObservableCollection<Persona> _renterCollection;
@@ -22,7 +21,6 @@ namespace ImmoGlobal.ViewModels
     private RenterDetailsViewModel? _selectedRenterDetailsViewModel;
     private Invoice? _selectedInvoice;
 
-    private MainWindowViewModel? MainWindowViewModelInstance { get; set; }
     public ObservableCollection<Persona> RenterCollection
     {
       get => _renterCollection;

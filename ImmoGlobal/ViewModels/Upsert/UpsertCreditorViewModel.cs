@@ -1,5 +1,4 @@
-﻿using ImmoGlobal.Commands;
-using ImmoGlobal.Database;
+﻿using ImmoGlobal.Database;
 using ImmoGlobal.Helpers;
 using ImmoGlobal.MainClasses;
 using MaterialDesignMessageBoxSirTheta;
@@ -15,7 +14,6 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     internal UpsertCreditorViewModel()
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
 
       //set the title of the form
       FormTitel = Application.Current.FindResource("addNewCreditor") as string ?? "create new creditor";
@@ -27,11 +25,10 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedCreditor"></param>
     internal UpsertCreditorViewModel(Persona selectedCreditor)
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
 
       SelectedCreditor = selectedCreditor;
 
-      PersonaId = selectedCreditor.PersonaId;
+      Id = selectedCreditor.PersonaId;
       LastName = selectedCreditor.LastName;
       FirstName = selectedCreditor.FirstName;
       Phone = selectedCreditor.PhoneString;
@@ -64,10 +61,6 @@ namespace ImmoGlobal.ViewModels
     private string? _vatNumber;
     private string? _creditorCompanyName;
     private string? _creditorContactPerson;
-
-    private int? PersonaId { get; set; }
-
-    public string FormTitel { get; set; }
 
     public string? LastName
     {
@@ -201,7 +194,7 @@ namespace ImmoGlobal.ViewModels
 
     public Persona? SelectedCreditor { get; set; }
 
-    private void SaveClicked(object obj)
+    internal override void SaveClicked(object obj)
     {
       if (!NullFieldCheck())
       {
@@ -246,13 +239,13 @@ namespace ImmoGlobal.ViewModels
 
 
       //Create Persona
-      if (PersonaId == null && CreatePersona(phone, mobilePhone, officePhone, zipCode))
+      if (Id == null && CreatePersona(phone, mobilePhone, officePhone, zipCode))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddCreditor") as string ?? "Creditor added successfully", NotificationType.Success);
         ClearValues();
       }
       // Update Perrsona
-      else if (PersonaId != null && UpdatePersona(phone, mobilePhone, officePhone, zipCode, (int)PersonaId))
+      else if (Id != null && UpdatePersona(phone, mobilePhone, officePhone, zipCode, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateCreditor") as string ?? "Creditor updated successfully", NotificationType.Success);
       }

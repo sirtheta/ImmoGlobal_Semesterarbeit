@@ -12,7 +12,6 @@ namespace ImmoGlobal.ViewModels
     {
       _creditorCollection = new ObservableCollection<Persona>(DbController.GetAllCreditorsDB());
       _selectedCreditorDetailsViewModel = null;
-      MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
 
     private ObservableCollection<Persona> _creditorCollection;
@@ -21,7 +20,6 @@ namespace ImmoGlobal.ViewModels
     private CreditorDetailsViewModel? _selectedCreditorDetailsViewModel;
     private Invoice? _selectedInvoice;
 
-    private MainWindowViewModel? MainWindowViewModelInstance { get; set; }
     public ObservableCollection<Persona> CreditorCollection
     {
       get => _creditorCollection;

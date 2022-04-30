@@ -1,5 +1,4 @@
-﻿using ImmoGlobal.Commands;
-using ImmoGlobal.Database;
+﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
@@ -16,7 +15,6 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedAccount"></param>
     internal UpsertPaymentRecordViewModel(Account selectedAccount)
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
 
       SelectedAccount = selectedAccount;
 
@@ -35,8 +33,7 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedPaymentRecord"></param>
     internal UpsertPaymentRecordViewModel(Account selectedAccount, PaymentRecord selectedPaymentRecord)
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
-      PaymentRecordId = selectedPaymentRecord.PaymentRecordId;
+      Id = selectedPaymentRecord.PaymentRecordId;
       SelectedAccount = selectedAccount;
 
       ReceiptNumber = selectedPaymentRecord.ReceiptNumber.ToString();
@@ -59,9 +56,6 @@ namespace ImmoGlobal.ViewModels
     private bool _incomeEnabled = true;
     private bool _expenseEnabled = true;
     private DateTime _date;
-
-    private int? PaymentRecordId { get; set; }
-    public string FormTitel { get; set; }
 
     public string ReceiptNumber
     {
@@ -147,7 +141,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    private void SaveClicked(object obj)
+    internal override void SaveClicked(object obj)
     {
       if (!NullFieldCheck())
       {
@@ -180,13 +174,13 @@ namespace ImmoGlobal.ViewModels
       }
 
       //Create payment record
-      if (PaymentRecordId == null && CreatePaymentRecord(receiptNumber, incomeAmount, expenseAmount))
+      if (Id == null && CreatePaymentRecord(receiptNumber, incomeAmount, expenseAmount))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddPaymentRecord") as string ?? "Payment record added successfully", NotificationType.Success);
         ClearValues();
       }
       // Update payment record
-      else if (PaymentRecordId != null && UpdatePaymentRecord(receiptNumber, (int)PaymentRecordId, incomeAmount, expenseAmount))
+      else if (Id != null && UpdatePaymentRecord(receiptNumber, (int)Id, incomeAmount, expenseAmount))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdatePaymentRecord") as string ?? "Payment record updated successfully", NotificationType.Success);
       }

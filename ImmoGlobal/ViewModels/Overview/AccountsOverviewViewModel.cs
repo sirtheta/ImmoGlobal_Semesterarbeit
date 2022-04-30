@@ -12,8 +12,6 @@ namespace ImmoGlobal.ViewModels
     {
       AccountsCollection = new ObservableCollection<Account>(DbController.GetAllAccountsDB());
       AccountTitel = Application.Current.FindResource("incomeExpenseToAccount") as string ?? "income and expenses for";
-
-      MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
 
     private string _accountTitel;
@@ -27,7 +25,6 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    private MainWindowViewModel? MainWindowViewModelInstance { get; set; }
     public ObservableCollection<Account> AccountsCollection { get; set; }
 
     private ObservableCollection<PaymentRecord> _icomeExpenseCollection;

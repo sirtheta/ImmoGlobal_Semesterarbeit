@@ -1,5 +1,4 @@
-﻿using ImmoGlobal.Commands;
-using ImmoGlobal.Database;
+﻿using ImmoGlobal.Database;
 using ImmoGlobal.Helpers;
 using ImmoGlobal.MainClasses;
 using ImmoGlobal.MainClasses.Enum;
@@ -18,7 +17,6 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     internal UpsertRenterViewModel()
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
 
       //set the title of the form
       FormTitel = Application.Current.FindResource("addNewRenter") as string ?? "create new renter";
@@ -30,11 +28,10 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedRenter"></param>
     internal UpsertRenterViewModel(Persona selectedRenter)
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
 
       SelectedRenter = selectedRenter;
 
-      PersonaId = selectedRenter.PersonaId;
+      Id = selectedRenter.PersonaId;
       LastName = selectedRenter.LastName;
       FirstName = selectedRenter.FirstName;
       Phone = selectedRenter.PhoneString;
@@ -67,10 +64,6 @@ namespace ImmoGlobal.ViewModels
     private string? _accountNumber;
     private string? _mobilePhone;
     private string? _officePhone;
-
-    private int? PersonaId { get; set; }
-
-    public string FormTitel { get; set; }
 
     public string? LastName
     {
@@ -215,7 +208,7 @@ namespace ImmoGlobal.ViewModels
     public Persona? SelectedRenter { get; set; }
 
 
-    private void SaveClicked(object obj)
+    internal override void SaveClicked(object obj)
     {
       if (!NullFieldCheck())
       {
@@ -260,13 +253,13 @@ namespace ImmoGlobal.ViewModels
 
 
       //Create Persona
-      if (PersonaId == null && CreatePersona(phone, mobilePhone, officePhone, zipCode))
+      if (Id == null && CreatePersona(phone, mobilePhone, officePhone, zipCode))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddRenter") as string ?? "Renter added successfully", NotificationType.Success);
         ClearValues();
       }
       // Update Perrsona
-      else if (PersonaId != null && UpdatePersona(phone, mobilePhone, officePhone, zipCode, (int)PersonaId))
+      else if (Id != null && UpdatePersona(phone, mobilePhone, officePhone, zipCode, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateRenter") as string ?? "Renter updated successfully", NotificationType.Success);
       }

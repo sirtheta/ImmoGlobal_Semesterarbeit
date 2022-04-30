@@ -1,5 +1,4 @@
-﻿using ImmoGlobal.Commands;
-using ImmoGlobal.Database;
+﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
@@ -12,7 +11,6 @@ namespace ImmoGlobal.ViewModels
   {
     internal UpsertBillReminderViewModel(Invoice selectedInvoice)
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
       SelectedInvoice = selectedInvoice;
       ReminderDate = DateTime.Now;
 
@@ -21,8 +19,7 @@ namespace ImmoGlobal.ViewModels
 
     internal UpsertBillReminderViewModel(BillReminder billReminder)
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
-      BillReminderId = billReminder.BillReminderId;
+      Id = billReminder.BillReminderId;
 
       ReminderDate = billReminder.ReminderDate;
       ReminderAmount = billReminder.ReminderAmount.ToString();
@@ -37,7 +34,6 @@ namespace ImmoGlobal.ViewModels
     private DateTime _reminderDate;
     private string _reminderText;
 
-    public string FormTitel { get; set; }
     public string ReminderAmount
     {
       get => _reminderAmount;
@@ -69,9 +65,8 @@ namespace ImmoGlobal.ViewModels
     }
 
     internal Invoice SelectedInvoice { get; set; }
-    internal int? BillReminderId { get; set; }
 
-    private void SaveClicked(object obj)
+    internal override void SaveClicked(object obj)
     {
       if (!NullFieldCheck())
       {
@@ -86,13 +81,13 @@ namespace ImmoGlobal.ViewModels
       }
 
       //Create bill reminder
-      if (BillReminderId == null && CreateBillReminder(reminderAmount))
+      if (Id == null && CreateBillReminder(reminderAmount))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddBillReminder") as string ?? "BillReminder added successfully", NotificationType.Success);
         ClearValues();
       }
       // Update bill reminder
-      else if (BillReminderId != null && UpdateBillReminder(reminderAmount, (int)BillReminderId))
+      else if (Id != null && UpdateBillReminder(reminderAmount, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateBillReminder") as string ?? "BillReminder updated successfully", NotificationType.Success);
       }

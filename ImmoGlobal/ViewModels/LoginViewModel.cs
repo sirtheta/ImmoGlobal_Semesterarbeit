@@ -1,11 +1,9 @@
-﻿using ImmoGlobal.Commands;
-using ImmoGlobal.Database;
+﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
 using System.Security;
 using System.Windows;
-using System.Windows.Input;
 
 namespace ImmoGlobal.ViewModels
 {
@@ -13,14 +11,11 @@ namespace ImmoGlobal.ViewModels
   {
     internal LoginViewModel()
     {
-      BtnLogin = new RelayCommand<object>(LoginClicked);
-
       //set the title of the form
       FormTitel = "Login";
     }
 
     private string _email;
-    public string FormTitel { get; set; }
     public string Email
     {
       get => _email;
@@ -33,14 +28,11 @@ namespace ImmoGlobal.ViewModels
 
     internal SecureString Password { get; set; }
 
-
-    public ICommand BtnLogin
-    {
-      get;
-      private set;
-    }
-
-    private void LoginClicked(object obj)
+    /// <summary>
+    /// Command to login, overrides the implemented SaveCklick command from BaseViewModel
+    /// </summary>
+    /// <param name="obj"></param>
+    internal override void SaveClicked(object obj)
     {
       if (VerifyUser())
       {
@@ -77,7 +69,7 @@ namespace ImmoGlobal.ViewModels
     /// <param name="user"></param>
     internal void Verified(User user)
     {
-      var instance = MainWindowViewModel.GetInstance;
+      var instance = MainWindowViewModelInstance;
       if (instance != null)
       {
         instance.MenuBarViewModel.LogedInUserFullName = user.FullName;

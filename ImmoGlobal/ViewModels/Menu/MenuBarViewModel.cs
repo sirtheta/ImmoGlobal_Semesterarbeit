@@ -20,50 +20,50 @@ namespace ImmoGlobal.ViewModels
 
     private void BtnPropertyClick(object obj)
     {
-      if (MainWindowViewModel.GetInstance != null)
+      if (MainWindowViewModelInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyOverviewViewModel();
+        MainWindowViewModelInstance.SelectedViewModel = new PropertyOverviewViewModel();
       }
     }
     private void BtnRenterClick(object obj)
     {
-      if (MainWindowViewModel.GetInstance != null)
+      if (MainWindowViewModelInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new RenterOverviewViewModel();
+        MainWindowViewModelInstance.SelectedViewModel = new RenterOverviewViewModel();
       }
     }
     private void BtnRentalContractClick(object obj)
     {
-      if (MainWindowViewModel.GetInstance != null)
+      if (MainWindowViewModelInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new RentalContractsOverviewViewModel();
+        MainWindowViewModelInstance.SelectedViewModel = new RentalContractsOverviewViewModel();
       }
     }
     private void BtnCreditorsClick(object obj)
     {
-      if (MainWindowViewModel.GetInstance != null)
+      if (MainWindowViewModelInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new CreditorOverviewViewModel();
+        MainWindowViewModelInstance.SelectedViewModel = new CreditorOverviewViewModel();
       }
     }
     private void BtnInvoiceClick(object obj)
 
     {
-      if (MainWindowViewModel.GetInstance != null)
+      if (MainWindowViewModelInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new InvoicesOverviewViewModel();
+        MainWindowViewModelInstance.SelectedViewModel = new InvoicesOverviewViewModel();
       }
     }
     private void BtnAccountClick(object obj)
     {
-      if (MainWindowViewModel.GetInstance != null)
+      if (MainWindowViewModelInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new AccountsOverviewViewModel();
+        MainWindowViewModelInstance.SelectedViewModel = new AccountsOverviewViewModel();
       }
     }
     private void BtnLogoutClick(object obj)
     {
-      var instance = MainWindowViewModel.GetInstance;
+      var instance = MainWindowViewModelInstance;
       if (instance != null)
       {
         instance.SelectedViewModel = new LoginViewModel();

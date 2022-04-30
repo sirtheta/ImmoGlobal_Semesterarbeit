@@ -14,7 +14,6 @@ namespace ImmoGlobal.ViewModels
       InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetAllInvoicesDB());
 
       IsOverDueInvoiceSelected = Visibility.Collapsed;
-      MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
 
     private Visibility _isOverDueInvoiceSelected;
@@ -24,8 +23,6 @@ namespace ImmoGlobal.ViewModels
     private ObservableCollection<InvoicePosition> _invoicePositionCollection;
     private ObservableCollection<BillReminder> _billReminderCollection;
 
-
-    private MainWindowViewModel? MainWindowViewModelInstance { get; set; }
     public ObservableCollection<Invoice> InvoiceCollection { get; set; }
 
     public Invoice SelectedInvoice

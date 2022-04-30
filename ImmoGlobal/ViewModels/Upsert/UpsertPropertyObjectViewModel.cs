@@ -1,5 +1,4 @@
-﻿using ImmoGlobal.Commands;
-using ImmoGlobal.Database;
+﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
 using ImmoGlobal.MainClasses.Enum;
 using MaterialDesignMessageBoxSirTheta;
@@ -17,7 +16,6 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedProperty"></param>
     internal UpsertPropertyObjectViewModel(Property selectedProperty)
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
       BtnDeleteVisibility = Visibility.Collapsed;
 
       Property = selectedProperty;
@@ -37,10 +35,8 @@ namespace ImmoGlobal.ViewModels
     /// <param name="propertyObject"></param>
     internal UpsertPropertyObjectViewModel(Property selectedProperty, PropertyObject propertyObject)
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
-      BtnDelete = new RelayCommand<object>(DeleteClicked);
       BtnDeleteVisibility = Visibility.Visible;
-      PropertyObjectId = propertyObject.PropertyObjectId;
+      Id = propertyObject.PropertyObjectId;
       Property = selectedProperty;
       Description = propertyObject.Description;
       ObjectType = propertyObject.ObjectType;
@@ -75,10 +71,6 @@ namespace ImmoGlobal.ViewModels
     private bool _oven;
     private bool _washingMachine;
     private bool _tumbler;
-
-    public string FormTitel { get; set; }
-
-    private int? PropertyObjectId { get; set; }
 
     public string? Description
     {
@@ -221,9 +213,9 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    private void DeleteClicked(object obj)
+    internal override void DeleteClicked(object obj)
     {
-      if (DbController.DeletePropertyObjcetDB(PropertyObjectId))
+      if (DbController.DeletePropertyObjcetDB(Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successDeletePropertyObject") as string ?? "Property object deleted successfully", NotificationType.Success);
         MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyOverviewViewModel();
@@ -234,7 +226,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    private void SaveClicked(object obj)
+    internal override void SaveClicked(object obj)
     {
       if (!NullFieldCheck())
       {
@@ -260,12 +252,12 @@ namespace ImmoGlobal.ViewModels
         return;
       }
 
-      if (PropertyObjectId == null && CreatePropertyObject(numberOfRooms, area, numberOfKeys))
+      if (Id == null && CreatePropertyObject(numberOfRooms, area, numberOfKeys))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddProperty") as string ?? "Property added successfully", NotificationType.Success);
         ClearValues();
       }
-      else if (PropertyObjectId != null && UpdatePropertyObject(numberOfRooms, area, numberOfKeys, (int)PropertyObjectId))
+      else if (Id != null && UpdatePropertyObject(numberOfRooms, area, numberOfKeys, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdatePropertyObject") as string ?? "Property added successfully", NotificationType.Success);
       }

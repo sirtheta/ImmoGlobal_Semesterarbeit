@@ -12,7 +12,7 @@ namespace ImmoGlobal.ViewModels
       propertyObjects.ForEach(po => _propertyObjectCollection.Add(po));
       _housekeeper = persona.FullName;
       _description = description;
-      MainWindowViewModel.GetInstance.SelectedPersona = persona;
+      MainWindowViewModelInstance.SelectedPersona = persona;
     }
 
     private ObservableCollection<PropertyObject>? _propertyObjectCollection;

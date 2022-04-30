@@ -1,5 +1,4 @@
-﻿using ImmoGlobal.Commands;
-using ImmoGlobal.Database;
+﻿using ImmoGlobal.Database;
 using ImmoGlobal.Helpers;
 using ImmoGlobal.MainClasses;
 using MaterialDesignMessageBoxSirTheta;
@@ -16,7 +15,6 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     internal UpsertHousekeeperViewModel()
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
 
       //set the title of the form
       FormTitel = Application.Current.FindResource("addNewHousekeeper") as string ?? "create new housekeeper";
@@ -28,10 +26,9 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedHousekeeper"></param>
     internal UpsertHousekeeperViewModel(Persona selectedHousekeeper)
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
       SelectedHousekeeper = selectedHousekeeper;
 
-      PersonaId = selectedHousekeeper.PersonaId;
+      Id = selectedHousekeeper.PersonaId;
       FirstName = selectedHousekeeper.FirstName;
       LastName = selectedHousekeeper.LastName;
       Phone = selectedHousekeeper.PhoneString;
@@ -56,9 +53,6 @@ namespace ImmoGlobal.ViewModels
     private string? _zip;
     private string? _city;
     private string? _accountNumber;
-
-    private int? PersonaId { get; set; }
-    public string FormTitel { get; set; }
 
     public string? LastName
     {
@@ -152,8 +146,7 @@ namespace ImmoGlobal.ViewModels
 
     public Persona? SelectedHousekeeper { get; set; }
 
-
-    internal void SaveClicked(object obj)
+    internal override void SaveClicked(object obj)
     {
       if (!NullFieldCheck())
       {
@@ -193,13 +186,13 @@ namespace ImmoGlobal.ViewModels
 
 
       //Create Persona
-      if (PersonaId == null && CreatePersona(phone, mobilePhone, zipCode))
+      if (Id == null && CreatePersona(phone, mobilePhone, zipCode))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddhousekeeperr") as string ?? "Housekeeper added successfully", NotificationType.Success);
         ClearValues();
       }
       // Update Perrsona
-      else if (PersonaId != null && UpdatePersona(phone, mobilePhone, zipCode, (int)PersonaId))
+      else if (Id != null && UpdatePersona(phone, mobilePhone, zipCode, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateHousekeeper") as string ?? "Housekeeper updated successfully", NotificationType.Success);
       }

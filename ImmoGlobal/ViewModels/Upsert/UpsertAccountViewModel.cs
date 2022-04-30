@@ -1,5 +1,4 @@
-﻿using ImmoGlobal.Commands;
-using ImmoGlobal.Database;
+﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
@@ -14,7 +13,6 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     internal UpsertAccountViewModel()
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
 
       //set the title of the form
       FormTitel = Application.Current.FindResource("addNewAccount") as string ?? "create new account";
@@ -26,9 +24,8 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedAccount"></param>
     internal UpsertAccountViewModel(Account selectedAccount)
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
 
-      AccountId = selectedAccount.AccountId;
+      Id = selectedAccount.AccountId;
       AccountDescription = selectedAccount.Description;
       AccountNumber = selectedAccount.AccountNumber;
 
@@ -39,9 +36,6 @@ namespace ImmoGlobal.ViewModels
 
     private string _accountNumber;
     private string _accountDescription;
-
-    private int? AccountId { get; set; }
-    public string FormTitel { get; set; }
 
     public string AccountNumber
     {
@@ -62,7 +56,7 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-    private void SaveClicked(object obj)
+    internal override void SaveClicked(object obj)
     {
       if (!NullFieldCheck())
       {
@@ -71,13 +65,13 @@ namespace ImmoGlobal.ViewModels
       }
 
       //Create account
-      if (AccountId == null && CreateAccount())
+      if (Id == null && CreateAccount())
       {
         ShowNotification("Success", Application.Current.FindResource("successAddAccount") as string ?? "Account added successfully", NotificationType.Success);
         ClearValues();
       }
       // Update account
-      else if (AccountId != null && UpdateAccount((int)AccountId))
+      else if (Id != null && UpdateAccount((int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateAccount") as string ?? "Account updated successfully", NotificationType.Success);
       }

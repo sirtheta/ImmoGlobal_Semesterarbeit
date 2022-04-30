@@ -21,7 +21,6 @@ namespace ImmoGlobal.ViewModels
     {
       BtnAddOnePosition = new RelayCommand<object>(AddOneInvoicePosition);
       BtnRemoveOnePosition = new RelayCommand<object>(RemoveOneInvoicePosition);
-      BtnSave = new RelayCommand<object>(SaveClicked);
       DueDate = DateTime.Now.AddDays(30);
       PersonaCollection = new(DbController.GetAllPersonasDB());
       InvoiceDate = DateTime.Now;
@@ -37,7 +36,6 @@ namespace ImmoGlobal.ViewModels
     {
       BtnAddOnePosition = new RelayCommand<object>(AddOneInvoicePosition);
       BtnRemoveOnePosition = new RelayCommand<object>(RemoveOneInvoicePosition);
-      BtnSave = new RelayCommand<object>(SaveClicked);
 
       PersonaCollection = new(DbController.GetAllPersonasDB());
       SelectedPersona = selectedPersona;
@@ -62,7 +60,7 @@ namespace ImmoGlobal.ViewModels
     /// <param name="invoicePositions"></param>
     internal UpsertInvoiceViewModel(Invoice selectedInvoice)
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
+      //BtnSave = new RelayCommand<object>(SaveClicked);
 
       // Enable only the Invoice state field if the invoice is not NotReleased
       if (selectedInvoice.InvoiceState != EInvoiceState.NotReleased)
@@ -81,7 +79,7 @@ namespace ImmoGlobal.ViewModels
       }
 
       PersonaCollection = new(DbController.GetAllPersonasDB());
-      SelectedInvoiceId = selectedInvoice.InvoiceId;
+      Id = selectedInvoice.InvoiceId;
       InvoicePositionViewModelCollection = new();
 
       SelectedPersona = selectedInvoice.GetPersonaToInvoice();
@@ -105,7 +103,6 @@ namespace ImmoGlobal.ViewModels
                (Application.Current.FindResource("edit") as string ?? "edit");
     }
 
-    public string FormTitel { get; set; }
 
     private Persona _persona;
     private Persona _selectedPersona;
@@ -118,7 +115,6 @@ namespace ImmoGlobal.ViewModels
     private EInvoiceState _invoiceState;
     private int _invoicePositionNumber;
 
-    public int? SelectedInvoiceId { get; set; }
     public bool IsEnabled { get; set; } = true;
     public bool StateIsEnabled { get; set; } = true;
     public ObservableCollection<InvoicePositionViewModel> InvoicePositionViewModelCollection
@@ -287,7 +283,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    private void SaveClicked(object obj)
+    internal override void SaveClicked(object obj)
     {
       if (!NullFieldCheck())
       {
@@ -296,13 +292,13 @@ namespace ImmoGlobal.ViewModels
       }
 
       //Create invoice
-      if (SelectedInvoiceId == null && CreateInvoice())
+      if (Id == null && CreateInvoice())
       {
         ShowNotification("Success", Application.Current.FindResource("successAddInvoice") as string ?? "Invoice added successfully", NotificationType.Success);
         ClearValues();
       }
       // Update invoice
-      else if (SelectedInvoiceId != null && UpdateInvoice((int)SelectedInvoiceId))
+      else if (Id != null && UpdateInvoice((int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateInvoice") as string ?? "Invoice updated successfully", NotificationType.Success);
       }

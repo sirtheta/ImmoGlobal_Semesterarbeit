@@ -1,4 +1,5 @@
-﻿using ImmoGlobal.MainClasses.Enum;
+﻿using ImmoGlobal.Commands;
+using ImmoGlobal.MainClasses.Enum;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
 using System;
@@ -59,6 +60,20 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
+
+    /// <summary>
+    /// Method gets called when the user clicks on the "Save" button.
+    /// </summary>
+    /// <param name="obj"></param>
+    internal virtual void SaveClicked(object obj) { }
+    /// <summary>
+    /// Method gets called when the user clicks on the "Delete" button.
+    /// </summary>
+    /// <param name="obj"></param>
+    internal virtual void DeleteClicked(object obj) { }
+
+    internal MainWindowViewModel? MainWindowViewModelInstance { get => MainWindowViewModel.GetInstance; }
+
     private bool _canEdit;
     public bool CanEdit
     {
@@ -87,16 +102,17 @@ namespace ImmoGlobal.ViewModels
 
     public ICommand BtnSave
     {
-      get;
-      internal set;
+      get => new RelayCommand<object>(SaveClicked);
     }
 
     public ICommand? BtnDelete
     {
-      get;
-      internal set;
+      get => new RelayCommand<object>(SaveClicked);
     }
 
     public Visibility BtnDeleteVisibility { get; set; }
+
+    public string FormTitel { get; set; }
+    internal int? Id { get; set; }
   }
 }

@@ -13,11 +13,8 @@ namespace ImmoGlobal.ViewModels
     {
       PropertyObject = propertyObject;
       RenterDetailsViewModel = new RenterDetailsViewModel(Renter);
-      MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
 
-
-    private MainWindowViewModel? MainWindowViewModelInstance { get; set; }
     private Invoice? _selectedInvoice;
     public PropertyObject PropertyObject { get; set; }
 

@@ -129,21 +129,21 @@ namespace ImmoGlobal.ViewModels
     #region MethodsToCommands
     private void BtnNewPropertyClicked(object obj)
     {
-      if (MainWindowViewModel.GetInstance != null)
+      if (MainWindowViewModelInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertPropertyViewModel();
+        MainWindowViewModelInstance.SelectedViewModel = new UpsertPropertyViewModel();
       };
     }
     private void BtnNewPropertyObjectClicked(object obj)
     {
-      if (MainWindowViewModel.GetInstance != null)
+      if (MainWindowViewModelInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertPropertyObjectViewModel(MainWindowViewModel.GetInstance.SelectedProperty);
+        MainWindowViewModelInstance.SelectedViewModel = new UpsertPropertyObjectViewModel(MainWindowViewModelInstance.SelectedProperty);
       };
     }
     private void BtnNewPaymentRecordClicked(object obj)
     {
-      var instance = MainWindowViewModel.GetInstance;
+      var instance = MainWindowViewModelInstance;
       if (instance != null && instance.SelectedAccount != null)
       {
         instance.SelectedViewModel = new UpsertPaymentRecordViewModel(instance.SelectedAccount);
@@ -151,21 +151,21 @@ namespace ImmoGlobal.ViewModels
     }
     private void BtnNewAccountClicked(object obj)
     {
-      if (MainWindowViewModel.GetInstance != null)
+      if (MainWindowViewModelInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertAccountViewModel();
+        MainWindowViewModelInstance.SelectedViewModel = new UpsertAccountViewModel();
       }
     }
     private void BtnNewRentalContractClicked(object obj)
     {
-      if (MainWindowViewModel.GetInstance != null)
+      if (MainWindowViewModelInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertRentalContractViewModel();
+        MainWindowViewModelInstance.SelectedViewModel = new UpsertRentalContractViewModel();
       }
     }
     private void BtnNewBillReminderClicked(object obj)
     {
-      var instance = MainWindowViewModel.GetInstance;
+      var instance = MainWindowViewModelInstance;
       if (instance != null && instance.SelectedInvoice != null)
       {
         instance.SelectedViewModel = new UpsertBillReminderViewModel(instance.SelectedInvoice);
@@ -173,14 +173,14 @@ namespace ImmoGlobal.ViewModels
     }
     private void BtnNewCreditorClicked(object obj)
     {
-      if (MainWindowViewModel.GetInstance != null)
+      if (MainWindowViewModelInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertCreditorViewModel();
+        MainWindowViewModelInstance.SelectedViewModel = new UpsertCreditorViewModel();
       };
     }
     private void BtnNewInvoiceClicked(object obj)
     {
-      var instance = MainWindowViewModel.GetInstance;
+      var instance = MainWindowViewModelInstance;
       if (instance != null)
       {
         switch (instance.SelectedViewModel)
@@ -202,14 +202,14 @@ namespace ImmoGlobal.ViewModels
     }
     private void BtnNewRenterClicked(object obj)
     {
-      if (MainWindowViewModel.GetInstance != null)
+      if (MainWindowViewModelInstance != null)
       {
-        MainWindowViewModel.GetInstance.SelectedViewModel = new UpsertRenterViewModel();
+        MainWindowViewModelInstance.SelectedViewModel = new UpsertRenterViewModel();
       }
     }
     private void BtnEditClicked(object obj)
     {
-      var instance = MainWindowViewModel.GetInstance;
+      var instance = MainWindowViewModelInstance;
       if (instance != null)
       {
         switch (instance.SelectedViewModel)
@@ -255,7 +255,7 @@ namespace ImmoGlobal.ViewModels
     }
     private void BtnEditTwoClicked(object obj)
     {
-      var instance = MainWindowViewModel.GetInstance;
+      var instance = MainWindowViewModelInstance;
       if (instance != null)
       {
         switch (instance.SelectedViewModel)
@@ -285,7 +285,7 @@ namespace ImmoGlobal.ViewModels
     }
     private void BtnHousekeeperClicked(object obj)
     {
-      var instance = MainWindowViewModel.GetInstance;
+      var instance = MainWindowViewModelInstance;
       if (instance != null && instance.SelectedPersona != null)
       {
         instance.SelectedViewModel = new UpsertHousekeeperViewModel(instance.SelectedPersona);
@@ -293,7 +293,7 @@ namespace ImmoGlobal.ViewModels
     }
     private void BtnNewHousekeeperClicked(object obj)
     {
-      var instance = MainWindowViewModel.GetInstance;
+      var instance = MainWindowViewModelInstance;
       if (instance != null)
       {
         instance.SelectedViewModel = new UpsertHousekeeperViewModel();
@@ -405,7 +405,7 @@ namespace ImmoGlobal.ViewModels
       get => _btnEditVisibility;
       set
       {
-        var instance = MainWindowViewModel.GetInstance;
+        var instance = MainWindowViewModelInstance;
         if (instance != null && CanEdit)
         {
           _btnEditVisibility = value;
@@ -418,7 +418,7 @@ namespace ImmoGlobal.ViewModels
       get => _btnEditTwoVisibility;
       set
       {
-        var instance = MainWindowViewModel.GetInstance;
+        var instance = MainWindowViewModelInstance;
         if (instance != null && CanEdit)
         {
           _btnEditTwoVisibility = value;

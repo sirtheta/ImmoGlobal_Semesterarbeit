@@ -1,5 +1,4 @@
-﻿using ImmoGlobal.Commands;
-using ImmoGlobal.Database;
+﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
 using ImmoGlobal.MainClasses.Enum;
 using MaterialDesignMessageBoxSirTheta;
@@ -20,7 +19,6 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     internal UpsertRentalContractViewModel()
     {
-      BtnSave = new RelayCommand<object>(SaveClicked);
 
       PersonaCollection = new(DbController.GetAllPersonasDB());
       PropertyCollection = new(DbController.GetAllPropertiesDB());
@@ -39,9 +37,8 @@ namespace ImmoGlobal.ViewModels
     internal UpsertRentalContractViewModel(RentalContract selectedRentalContract)
     {
       SelectedRentalContract = selectedRentalContract;
-      RentalContractId = selectedRentalContract.RentalContractId;
+      Id = selectedRentalContract.RentalContractId;
 
-      BtnSave = new RelayCommand<object>(SaveClicked);
       PersonaCollection = new(DbController.GetAllPersonasDB());
       PropertyCollection = new(DbController.GetAllPropertiesDB());
 
@@ -72,10 +69,6 @@ namespace ImmoGlobal.ViewModels
     private bool _deposit;
     private EContractState _contractState;
 
-
-    public string FormTitel { get; set; }
-
-    private int? RentalContractId { get; set; }
     public RentalContract? SelectedRentalContract { get; set; }
 
     public Persona? SelectedPersona
@@ -203,7 +196,7 @@ namespace ImmoGlobal.ViewModels
       {EContractState.Canceled, Application.Current.FindResource("canceledContract") as string ?? "canceled contract"},
     };
 
-    private void SaveClicked(object obj)
+    internal override void SaveClicked(object obj)
     {
       if (!NullFieldCheck())
       {
@@ -217,13 +210,13 @@ namespace ImmoGlobal.ViewModels
         return;
       }
       //Create RentalContract
-      if (RentalContractId == null && CreateRentalContract(rent))
+      if (Id == null && CreateRentalContract(rent))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddRentalContract") as string ?? "Rental Contract added successfully", NotificationType.Success);
         ClearValues();
       }
       // Update Property
-      else if (RentalContractId != null && UpdateRentalContract(rent, (int)RentalContractId))
+      else if (Id != null && UpdateRentalContract(rent, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateRentalContract") as string ?? "Rental Contract updated successfully", NotificationType.Success);
       }

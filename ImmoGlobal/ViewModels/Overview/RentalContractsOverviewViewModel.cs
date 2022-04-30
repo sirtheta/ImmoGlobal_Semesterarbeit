@@ -10,10 +10,8 @@ namespace ImmoGlobal.ViewModels
     internal RentalContractsOverviewViewModel()
     {
       RentalContractCollection = new ObservableCollection<RentalContract>(DbController.GetAllRentalContractsDB());
-      MainWindowViewModelInstance = MainWindowViewModel.GetInstance;
     }
 
-    private MainWindowViewModel? MainWindowViewModelInstance { get; set; }
     public ObservableCollection<RentalContract> RentalContractCollection { get; set; }
 
     private RentalContract? _selectedContract;
