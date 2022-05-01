@@ -399,7 +399,6 @@ namespace ImmoGlobal.ViewModels
             {
               success = false;
             }
-
           }
         }
       }

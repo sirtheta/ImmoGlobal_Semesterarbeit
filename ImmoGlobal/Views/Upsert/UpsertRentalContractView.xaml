@@ -76,7 +76,8 @@
                        Text="{DynamicResource propertyObject}"/>
 
             <ComboBox Grid.Column="1" 
-                      ItemsSource="{Binding PropertyObjectCollection}" 
+                      ItemsSource="{Binding PropertyObjectCollection}"
+                      IsSynchronizedWithCurrentItem="True"
                       Margin="20,30,0,0"
                       DisplayMemberPath="Description" 
                       SelectedIndex="{Binding SelectedPropertyObject.PropertyObjectId, Converter={StaticResource MinusOneConverter}}"

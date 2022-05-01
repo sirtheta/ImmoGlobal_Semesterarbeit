@@ -74,6 +74,7 @@ namespace ImmoGlobal.ViewModels
       else if (Id != null && UpdateAccount((int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateAccount") as string ?? "Account updated successfully", NotificationType.Success);
+        MainWindowViewModelInstance.SelectedViewModel = new AccountsOverviewViewModel();
       }
       else
       {

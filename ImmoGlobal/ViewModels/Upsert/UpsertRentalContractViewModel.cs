@@ -43,8 +43,9 @@ namespace ImmoGlobal.ViewModels
       PropertyCollection = new(DbController.GetAllPropertiesDB());
 
       SelectedPersona = selectedRentalContract.GetRenter();
+      //Load selected property object after the selected property is loaded, otherewise it is set to null!
+      SelectedProperty = selectedRentalContract.GetPropertyObjectToRentalContract().GetPropertyToPropertyObject();
       SelectedPropertyObject = selectedRentalContract.GetPropertyObjectToRentalContract();
-      SelectedProperty = SelectedPropertyObject.GetPropertyToPropertyObject();
       RentStartDate = selectedRentalContract.RentStartDate;
       RentEndDate = selectedRentalContract.RentEndDate;
       Rent = selectedRentalContract.Rent.ToString();
@@ -115,9 +116,16 @@ namespace ImmoGlobal.ViewModels
       get => _selectedProperty;
       set
       {
-        _selectedProperty = value;
+        if (_selectedProperty != value)
+        {
+          _selectedProperty = value;
+          SelectedPropertyObject = null;
+        }
+
+
         if (SelectedRentalContract == null)
         {
+          //for new rental contract, the user can only select property objects that are not already assigned to an active rental contract
           PropertyObjectCollection = new(DbController.GetPropertyObjectsToPropertyDB(_selectedProperty).Where(x => !x.GetRentalContractToObject().Any(y => y.ContractState == EContractState.Active)));
         }
         else

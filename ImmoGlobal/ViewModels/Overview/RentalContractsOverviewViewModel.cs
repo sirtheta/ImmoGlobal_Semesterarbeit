@@ -20,9 +20,9 @@ namespace ImmoGlobal.ViewModels
       get => _selectedContract;
       set
       {
-        _selectedContract = value;
         if (_selectedContract != value && MainWindowViewModelInstance != null)
         {
+          _selectedContract = value;
           MainWindowViewModelInstance.SelectedRentalContract = _selectedContract;
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
         }

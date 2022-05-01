@@ -34,6 +34,7 @@ namespace ImmoGlobal.ViewModels
       get => _selectedAccount;
       set
       {
+        //activate the needed buttons to edit the selected account or to add a payment record
         _selectedAccount = value;
         if (MainWindowViewModelInstance != null)
         {
@@ -42,6 +43,7 @@ namespace ImmoGlobal.ViewModels
             (Application.Current.FindResource("account") as string ?? "account") + " " +
             (Application.Current.FindResource("edit") as string ?? "edit");
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Visible;
         }
         IncomeExpenseCollection = new(DbController.GetIncomeToAccountDB(_selectedAccount).
         Concat(DbController.GetExpenseToAccountDB(_selectedAccount)).ToList());
