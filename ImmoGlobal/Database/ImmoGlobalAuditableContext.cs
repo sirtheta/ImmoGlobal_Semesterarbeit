@@ -42,8 +42,9 @@ namespace ImmoGlobal.Database
           PrimaryKey = entry.Metadata.FindPrimaryKey().Properties.Select(p => entry.Property(p.Name).CurrentValue).First().ToString(),
           OldValue = property.OriginalValue.ToString(),
           NewValue = property.CurrentValue.ToString(),
-          User = instance.LogedInUser.FullName,
-          Date = DateTime.Now
+          UserFullName = instance.LogedInUser.FullName,
+          Date = DateTime.Now,
+          UserId = instance.LogedInUser.UserId
         };
 
         if (AuditTrail != null)
