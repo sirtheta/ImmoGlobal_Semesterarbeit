@@ -10,7 +10,6 @@ namespace ImmoGlobal.MainClasses
     public int InvoicePositionNumber { get; set; }
     public Property? Property { get; set; }
     public PropertyObject? PropertyObject { get; set; }
-    public int InvoiceId { get; set; }
     public Invoice Invoice { get; set; }
     public double Value { get; set; }
     public EAdditionalCosts? AdditionalCostsCategory { get; set; }

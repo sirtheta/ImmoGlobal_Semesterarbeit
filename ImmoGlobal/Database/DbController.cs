@@ -1,4 +1,5 @@
-﻿using ImmoGlobal.MainClasses;
+﻿using ImmoGlobal.Helpers;
+using ImmoGlobal.MainClasses;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -56,7 +57,7 @@ namespace ImmoGlobal.Database
     {
       try
       {
-        using var db = new ImmoGlobalContext();
+        using var db = new ImmoGlobalAuditableContext();
         if (invoice.Persona != null)
           db.Attach(invoice.Persona);
         if (invoice.InvoiceId == 0)
@@ -65,7 +66,9 @@ namespace ImmoGlobal.Database
         }
         else
         {
-          db.Invoices.Update(invoice);
+          var inv = db.Invoices.Find(invoice.InvoiceId);
+          ClassMapper.CopyValues(inv, invoice);
+          db.Invoices.Update(inv);
         }
         db.SaveChanges();
         return true;
@@ -85,7 +88,7 @@ namespace ImmoGlobal.Database
     {
       try
       {
-        using var db = new ImmoGlobalContext();
+        using var db = new ImmoGlobalAuditableContext();
         if (invoicePosition.Invoice != null)
         {
           db.Entry(invoicePosition.Invoice).State = EntityState.Modified;
@@ -115,7 +118,9 @@ namespace ImmoGlobal.Database
         }
         else
         {
-          db.InvoicePositions.Update(invoicePosition);
+          var invp = db.InvoicePositions.Find(invoicePosition.InvoicePositionId);
+          ClassMapper.CopyValues(invp, invoicePosition);
+          db.InvoicePositions.Update(invp);
         }
         db.SaveChanges();
         return true;
@@ -135,7 +140,7 @@ namespace ImmoGlobal.Database
     {
       try
       {
-        using var db = new ImmoGlobalContext();
+        using var db = new ImmoGlobalAuditableContext();
         if (billReminder.Invoice != null)
           db.Attach(billReminder.Invoice);
         if (billReminder.BillReminderId == 0)
@@ -144,7 +149,9 @@ namespace ImmoGlobal.Database
         }
         else
         {
-          db.BillReminders.Update(billReminder);
+          var br = db.BillReminders.Find(billReminder.BillReminderId);
+          ClassMapper.CopyValues(br, billReminder);
+          db.BillReminders.Update(br);
         }
         db.SaveChanges();
         return true;
@@ -290,7 +297,7 @@ namespace ImmoGlobal.Database
     {
       try
       {
-        using var db = new ImmoGlobalContext();
+        using var db = new ImmoGlobalAuditableContext();
         var propertyObject = db.PropertyObjects.Find(propertyObjectId);
         db.PropertyObjects.Remove(propertyObject);
         db.SaveChanges();
@@ -312,7 +319,7 @@ namespace ImmoGlobal.Database
     {
       try
       {
-        using var db = new ImmoGlobalContext();
+        using var db = new ImmoGlobalAuditableContext();
         if (propertyObject.Property != null)
           db.Attach(propertyObject.Property);
         if (propertyObject.PropertyObjectId == 0)
@@ -321,7 +328,9 @@ namespace ImmoGlobal.Database
         }
         else
         {
-          db.PropertyObjects.Update(propertyObject);
+          var proObj = db.PropertyObjects.Find(propertyObject.PropertyObjectId);
+          ClassMapper.CopyValues(proObj, propertyObject);
+          db.PropertyObjects.Update(proObj);
         }
         db.SaveChanges();
         return true;
@@ -379,10 +388,9 @@ namespace ImmoGlobal.Database
     {
       try
       {
-        using var db = new ImmoGlobalContext();
+        using var db = new ImmoGlobalAuditableContext();
         if (property.Housekeeper != null)
         {
-          db.Entry(property.Housekeeper).State = EntityState.Modified;
           db.Attach(property.Housekeeper);
         }
 
@@ -392,7 +400,9 @@ namespace ImmoGlobal.Database
         }
         else
         {
-          db.Properties.Update(property);
+          var prop = db.Properties.Find(property.PropertyId);
+          ClassMapper.CopyValues(prop, property);
+          db.Properties.Update(prop);
         }
         db.SaveChanges();
         return true;
@@ -412,7 +422,7 @@ namespace ImmoGlobal.Database
     {
       try
       {
-        using var db = new ImmoGlobalContext();
+        using var db = new ImmoGlobalAuditableContext();
         var property = db.Properties.Find(propertyId);
         db.Properties.Remove(property);
         db.SaveChanges();
@@ -434,15 +444,13 @@ namespace ImmoGlobal.Database
     {
       try
       {
-        using var db = new ImmoGlobalContext();
+        using var db = new ImmoGlobalAuditableContext();
         if (rentalContract.Renter != null)
         {
-          db.Entry(rentalContract.Renter).State = EntityState.Modified;
           db.Attach(rentalContract.Renter);
         }
         if (rentalContract.PropertyObject != null)
         {
-          db.Entry(rentalContract.PropertyObject).State = EntityState.Modified;
           db.Attach(rentalContract.PropertyObject);
         }
         if (rentalContract.RentalContractId == 0)
@@ -451,7 +459,9 @@ namespace ImmoGlobal.Database
         }
         else
         {
-          db.RentalContracts.Update(rentalContract);
+          var rc = db.RentalContracts.Find(rentalContract.RentalContractId);
+          ClassMapper.CopyValues(rc, rentalContract);
+          db.RentalContracts.Update(rc);
         }
         db.SaveChanges();
         return true;
@@ -534,14 +544,16 @@ namespace ImmoGlobal.Database
     {
       try
       {
-        using var db = new ImmoGlobalContext();
+        using var db = new ImmoGlobalAuditableContext();
         if (persona.PersonaId == 0)
         {
           db.Personas.Add(persona);
         }
         else
         {
-          db.Personas.Update(persona);
+          var per = db.Personas.Find(persona.PersonaId);
+          ClassMapper.CopyValues(per, persona);
+          db.Personas.Update(per);
         }
         db.SaveChanges();
         return true;
@@ -587,26 +599,6 @@ namespace ImmoGlobal.Database
     }
 
     /// <summary>
-    /// delete Persona
-    /// </summary>
-    /// <param name="selectedRenter"></param>
-    /// <returns></returns>
-    internal static bool DeletePersonaDB(Persona selectedRenter)
-    {
-      try
-      {
-        using var db = new ImmoGlobalContext();
-        db.Personas.Remove(selectedRenter);
-        db.SaveChanges();
-        return true;
-      }
-      catch (Exception)
-      {
-        return false;
-      }
-    }
-
-    /// <summary>
     /// return account to invoice position
     /// </summary>
     /// <param name="invoicePosition"></param>
@@ -638,14 +630,16 @@ namespace ImmoGlobal.Database
     {
       try
       {
-        using var db = new ImmoGlobalContext();
+        using var db = new ImmoGlobalAuditableContext();
         if (account.AccountId == 0)
         {
           db.Accounts.Add(account);
         }
         else
         {
-          db.Accounts.Update(account);
+          var acc = db.Accounts.Find(account.AccountId);
+          ClassMapper.CopyValues(acc, account);
+          db.Accounts.Update(acc);
         }
         db.SaveChanges();
         return true;
@@ -695,10 +689,9 @@ namespace ImmoGlobal.Database
     {
       try
       {
-        using var db = new ImmoGlobalContext();
+        using var db = new ImmoGlobalAuditableContext();
         if (paymentRecord.Account != null)
         {
-          db.Entry(paymentRecord.Account).State = EntityState.Modified;
           db.Attach(paymentRecord.Account);
         }
         if (paymentRecord.PaymentRecordId == 0)
@@ -707,6 +700,8 @@ namespace ImmoGlobal.Database
         }
         else
         {
+          var pay = db.PaymentRecords.Find(paymentRecord.PaymentRecordId);
+          ClassMapper.CopyValues(pay, paymentRecord);
           db.PaymentRecords.Update(paymentRecord);
         }
         db.SaveChanges();

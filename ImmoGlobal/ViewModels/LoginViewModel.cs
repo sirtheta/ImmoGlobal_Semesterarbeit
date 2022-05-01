@@ -74,6 +74,7 @@ namespace ImmoGlobal.ViewModels
       {
         instance.MenuBarViewModel.LogedInUserFullName = user.FullName;
         instance.LogedInUserRole = user.Role;
+        instance.LogedInUser = user;
         instance.SelectedViewModel = new PropertyOverviewViewModel();
         instance.MenuBarViewModel.IsEnabled = true;
 

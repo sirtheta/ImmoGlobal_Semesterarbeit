@@ -75,6 +75,7 @@ namespace ImmoGlobal.ViewModels
     internal PaymentRecord? SelectedPaymentRecord { get; set; }
     internal BillReminder? SelectedBillReminder { get; set; }
     internal ERole LogedInUserRole { get; set; }
+    internal User LogedInUser { get; set; }
 
     /// <summary>
     /// sets the color of the menu bar icon
@@ -173,7 +174,6 @@ namespace ImmoGlobal.ViewModels
           break;
         case AccountsOverviewViewModel:
           SideMenuViewModel.BtnNewAccountVisibility = Visibility.Visible;
-          SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Visible;
           break;
         default:
           break;

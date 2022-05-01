@@ -1,4 +1,6 @@
 ﻿using ImmoGlobal.MainClasses;
+using ImmoGlobal.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Linq;
@@ -9,7 +11,7 @@ namespace ImmoGlobal.Database
   {
     public override int SaveChanges()
     {
-      ChangeTracker.Entries().ToList().ForEach(entry =>
+      ChangeTracker.Entries().Where(p => p.State == EntityState.Modified).ToList().ForEach(entry =>
       {
         Audit(entry);
       });
@@ -17,21 +19,31 @@ namespace ImmoGlobal.Database
       return base.SaveChanges();
     }
 
+    /// <summary>
+    /// writes the audit information to the database if the 
+    /// property of the entity has changed
+    /// </summary>
+    /// <param name="entry"></param>
+    /// <exception cref="Exception"></exception>
     private void Audit(EntityEntry entry)
     {
+      var instance = MainWindowViewModel.GetInstance;
       foreach (var property in entry.Properties)
       {
-        if (property.IsModified)
+        if (property.OriginalValue == null)
+          continue;
+        if (property.OriginalValue.ToString() == property.CurrentValue.ToString())
           continue;
 
         var auditEntry = new AuditTrail
         {
-          //Table = entry.Entity.GetType().Name,
-          //Column = property.Metadata.Name,
-          //OldValue = property.OriginalValue.ToString(),
-          //NewValue = property.CurrentValue.ToString(),
-          ////EditedUser = GetCurrentUser(),
-          //Date = DateTime.Now
+          Table = entry.Entity.GetType().Name,
+          Column = property.Metadata.Name,
+          PrimaryKey = entry.Metadata.FindPrimaryKey().Properties.Select(p => entry.Property(p.Name).CurrentValue).First().ToString(),
+          OldValue = property.OriginalValue.ToString(),
+          NewValue = property.CurrentValue.ToString(),
+          User = instance.LogedInUser.FullName,
+          Date = DateTime.Now
         };
 
         if (AuditTrail != null)
@@ -42,12 +54,8 @@ namespace ImmoGlobal.Database
         {
           throw new Exception("AuditTrail is null");
         }
-      }
-    }
 
-    private User GetCurrentUser()
-    {
-      throw new NotImplementedException();
+      }
     }
   }
 }
