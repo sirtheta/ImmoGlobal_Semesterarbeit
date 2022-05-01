@@ -14,7 +14,7 @@ Als Programmierumgebung wird Visual Studio 2022 verwendet. Die App basiert auf d
     \hline
     \textbf{MaterialDesignMessageBox.SirTheta V1.1.3} & Eine Messagebox welche das Material Design Theme verwendet. Die Standard Messagebox passt nicht zu der sonst nach Material-Design aufgebauten Applikation. Dieses NuGet-Paket wurde von mir selber erstellt. Der Sourcecode dazu ist auf GitHub unter \href{https://github.com/sirtheta/MaterialDesignMessageBox}{https://github.com/sirtheta/MaterialDesignMessageBox} verfügbar und kann frei verwendet werden.\\
     \hline
-    \textbf{MaterialDesignTheme V4.4.0} & Wird für die GUI-Darstellung verwendet. Enthält Material Design Templates und Styles für WPF Controls in .NET\\
+    \textbf{MaterialDesignTheme V4.5.0} & Wird für die GUI-Darstellung verwendet. Enthält Material Design Templates und Styles für WPF Controls in .NET\\
     \hline
     \textbf{Microsoft.EntityFrameWorkCore V6.0.4} & Database-Mapper mit LINQ-Query Support. Wird für die Datenbankverwaltung verwendet\\
     \hline
@@ -64,6 +64,16 @@ Für das GUI werden verschieden Namen verwendet welche hier beschrieben werden.
   \item \textbf{Upsert:} Definiert die Views für Update und Insert, z.B wird ein View zum erstellen eines Mieters (Insert) und zum anpassen eines Mieters verwendet.
 \end{itemize}
 
-
+\newpage
 \subsection{Datenbankimplementierung und –anbindung}
+\subsubsection{Generelles}
+Die Datenbank wird mit dem Entity Framework Core mittels der Code-First Methode erstellt. In der \textbf{App.config} wird der Connection String für die Verbindung zur Datenbank festgelegt. Zum Testen und Vorführen der Applikation ist dieser auf die \verb+localdb+ eingestellt. Auch in der \textbf{App.config} Datei kann festgelegt werden, ob die Datenbank beim Start der Applikation gelöscht und mit Dummy-Einträgen gefüllt werden soll. So ist ein Vorführen und Testen der Applikation problemlos möglich.
+
+\subsubsection{EF Core Datacontext}
+Über die Klasse \verb+ImmoGlobalContext+  wird der Datacontext für Entity FrameWork Core erstellt. Jede Fachklasse wird mit dem \verb+DbSet+ implementiert und so werden die Tabellen dann von EF Core automatisch erzeugt und dann kann mittels des DbContext darauf zugegriffen werden. (EF Code First Methode)
+
+\subsubsection{Audit Trail}
+Um jede Änderung über die Applikation zu tracken, wurde ein Audit Trail implementiert. Jede Upsert-Methode verwendet anstelle des ImmoGlobalContext, den ImmoGlobalAuditableContext, welcher die \verb+SaveChanges()+ Methode des Entity Frameworks überschreibt und dann für jede veränderte Eigenschaft einen Eintrag in der AuditTrail Tabelle anlegt mit dem aktuell eingeloggten User und dem Datum und der Zeit.
+
+
 \subsection{Testprotokoll}

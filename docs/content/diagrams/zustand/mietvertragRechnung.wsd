@@ -1,12 +1,12 @@
 @startuml mietvertragRechnung
 skinparam dpi 300
 hide empty description
+
 state Mietvertrag {
 [*] --> ungültig : neuer Mietvertrag
 ungültig --> unterschrieben
 unterschrieben --> gültig
 gültig --> gekündet
-state notValid as "ungültig"
 gekündet --> [*]
 }
 
