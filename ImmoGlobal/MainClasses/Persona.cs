@@ -4,6 +4,10 @@ using System.Windows;
 
 namespace ImmoGlobal.MainClasses
 {
+  /// <summary>
+  /// model for all the personas
+  /// Creditor, renter or houskeeper are managed with this class
+  /// </summary>
   internal class Persona
   {
     private Persona()

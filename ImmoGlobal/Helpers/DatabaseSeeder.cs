@@ -7,7 +7,9 @@ namespace ImmoGlobal.Helpers
 {
   internal static class DatabaseSeeder
   {
-
+    /// <summary>
+    /// Database seeder for test entries
+    /// </summary>
     internal static void CreateTestEntries()
     {
 

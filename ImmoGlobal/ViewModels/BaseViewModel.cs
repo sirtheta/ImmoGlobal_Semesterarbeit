@@ -14,6 +14,12 @@ namespace ImmoGlobal.ViewModels
 {
   internal abstract class BaseViewModel : DependencyObject, INotifyPropertyChanged
   {
+    /// <summary>
+    /// mehtod to show a notification toast
+    /// </summary>
+    /// <param name="titel"></param>
+    /// <param name="message"></param>
+    /// <param name="type"></param>
     internal static void ShowNotification(string titel, string message, NotificationType type)
     {
       var notificationManager = new NotificationManager();
@@ -21,6 +27,13 @@ namespace ImmoGlobal.ViewModels
               areaName: "WindowArea", expirationTime: new TimeSpan(0, 0, 4));
     }
 
+    /// <summary>
+    /// method to show the material Design messagebox
+    /// </summary>
+    /// <param name="messageStr"></param>
+    /// <param name="type"></param>
+    /// <param name="buttons"></param>
+    /// <returns></returns>
     internal static bool ShowMessageBox(string messageStr, MessageType type, MessageButtons buttons)
     {
 #pragma warning disable CS8629 // Nullable value type may be null.
@@ -66,23 +79,23 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     /// <param name="obj"></param>
     internal virtual void SaveClicked(object obj) { }
+    
     /// <summary>
     /// Method gets called when the user clicks on the "Delete" button.
     /// </summary>
     /// <param name="obj"></param>
     internal virtual void DeleteClicked(object obj) { }
 
-    internal MainWindowViewModel? MainWindowViewModelInstance { get => MainWindowViewModel.GetInstance; }
+    internal static MainWindowViewModel? MainWindowViewModelInstance { get => MainWindowViewModel.GetInstance; }
 
     private bool _canEdit;
     public bool CanEdit
     {
       get
       {
-        var instance = MainWindowViewModel.GetInstance;
-        if (instance != null)
+        if (MainWindowViewModelInstance.LogedInUser != null)
         {
-          if (instance.LogedInUserRole == ERole.User || instance.LogedInUserRole == ERole.Admin)
+          if (MainWindowViewModelInstance.LogedInUser.Role == ERole.User || MainWindowViewModelInstance.LogedInUser.Role == ERole.Admin)
           {
             _canEdit = true;
           }

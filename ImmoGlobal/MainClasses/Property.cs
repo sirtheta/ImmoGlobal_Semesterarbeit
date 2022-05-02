@@ -8,6 +8,9 @@ using System.Windows.Input;
 
 namespace ImmoGlobal.MainClasses
 {
+  /// <summary>
+  /// model for the property
+  /// </summary>
   internal class Property
   {
     public int PropertyId { get; set; }

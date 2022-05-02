@@ -4,6 +4,9 @@ namespace ImmoGlobal.MainClasses
 {
   internal class User
   {
+    /// <summary>
+    /// model for the user. (Login)
+    /// </summary>
     public int UserId { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }

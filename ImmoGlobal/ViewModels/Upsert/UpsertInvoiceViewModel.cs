@@ -32,6 +32,10 @@ namespace ImmoGlobal.ViewModels
       AddOneInvoicePosition();
     }
 
+    /// <summary>
+    /// c'tor to update an existing invoice
+    /// </summary>
+    /// <param name="selectedPersona"></param>
     internal UpsertInvoiceViewModel(Persona selectedPersona)
     {
       BtnAddOnePosition = new RelayCommand<object>(AddOneInvoicePosition);

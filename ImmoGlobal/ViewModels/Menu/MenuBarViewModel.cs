@@ -75,7 +75,6 @@ namespace ImmoGlobal.ViewModels
         instance.SelectedPaymentRecord = null;
         instance.SelectedBillReminder = null;
         instance.MenuBarViewModel.LogedInUserFullName = null;
-        instance.LogedInUserRole = MainClasses.Enum.ERole.None;
         IsEnabled = false;
 
       }

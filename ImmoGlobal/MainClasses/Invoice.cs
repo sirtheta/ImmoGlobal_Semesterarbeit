@@ -6,6 +6,9 @@ using System.Windows;
 
 namespace ImmoGlobal.MainClasses
 {
+  /// <summary>
+  /// model for the invoice
+  /// </summary>
   internal class Invoice
   {
     public int InvoiceId { get; set; }

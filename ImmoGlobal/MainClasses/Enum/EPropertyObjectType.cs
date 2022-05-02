@@ -1,7 +1,7 @@
 ﻿namespace ImmoGlobal.MainClasses.Enum
 {
   /// <summary>
-  /// represents the Object Type
+  /// represents the Propertyobject Type
   /// </summary>
   internal enum EPropertyObjectType
   {

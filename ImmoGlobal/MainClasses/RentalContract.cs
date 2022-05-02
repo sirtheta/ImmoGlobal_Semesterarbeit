@@ -7,6 +7,9 @@ namespace ImmoGlobal.MainClasses
 {
   internal class RentalContract
   {
+    /// <summary>
+    /// model for the rental contract
+    /// </summary>
     public int RentalContractId { get; set; }
     public Persona? Renter { get; set; }
     public PropertyObject? PropertyObject { get; set; }

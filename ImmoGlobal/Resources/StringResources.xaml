@@ -2,172 +2,254 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-  <system:String x:Key="property">Liegenschaft</system:String>
-  <system:String x:Key="propertyObject">Objekt</system:String>
-  <system:String x:Key="renter">Mieter:in</system:String>
-  <system:String x:Key="creditor">Kreditor</system:String>
-  <system:String x:Key="rentalContract">Mietvertrag</system:String>
-  <system:String x:Key="rentalContracts">Mietverträge</system:String>
-  <system:String x:Key="invoice">Rechnung</system:String>
-  <system:String x:Key="invoices">Rechnungen</system:String>
-  <system:String x:Key="account">Konto</system:String>
-  <system:String x:Key="description">Beschreibung</system:String>
+    <system:String x:Key="property">Liegenschaft</system:String>
+    <system:String x:Key="propertyObject">Objekt</system:String>
+    <system:String x:Key="renter">Mieter:in</system:String>
+    <system:String x:Key="creditor">Kreditor</system:String>
+    <system:String x:Key="rentalContract">Mietvertrag</system:String>
+    <system:String x:Key="rentalContracts">Mietverträge</system:String>
+    <system:String x:Key="invoice">Rechnung</system:String>
+    <system:String x:Key="invoices">Rechnungen</system:String>
+    <system:String x:Key="account">Konto</system:String>
+    <system:String x:Key="description">Beschreibung</system:String>
 
-  <system:String x:Key="newProperty">Neue Liegenschaft</system:String>
-  <system:String x:Key="propertyOverview">Übersicht Liegenschaften</system:String>
-  <system:String x:Key="propertyInsurance">Liegenschaftsversicherung</system:String>
-  <system:String x:Key="personInsurance">Personenversicherung</system:String>
-  <system:String x:Key="liabilityInsurance">Haftpflichtversicherung</system:String>
-  <system:String x:Key="housekeeper">Hauswartungsperson</system:String>
-  <system:String x:Key="selectHousekeeper">Hauswartungsperson auswählen</system:String>
-  <system:String x:Key="selectProperty">Liegenschaft auswählen</system:String>
+    <system:String x:Key="newProperty">Neue Liegenschaft</system:String>
+    <system:String x:Key="propertyOverview">Übersicht Liegenschaften</system:String>
+    <system:String x:Key="propertyInsurance">Liegenschaftsversicherung</system:String>
+    <system:String x:Key="personInsurance">Personenversicherung</system:String>
+    <system:String x:Key="liabilityInsurance">Haftpflichtversicherung</system:String>
+    <system:String x:Key="housekeeper">Hauswartungsperson</system:String>
+    <system:String x:Key="selectHousekeeper">Hauswartungsperson auswählen</system:String>
+    <system:String x:Key="selectProperty">Liegenschaft auswählen</system:String>
+    <system:String x:Key="selectPropertyObject">Objekt auswählen</system:String>
+    <system:String x:Key="selectAccount">Konto auswählen</system:String>
 
-  <system:String x:Key="overviewPropertyObjects">Übersicht Objekte in der Liegenschaft</system:String>
-  <system:String x:Key="detailView">Details zu</system:String>
-  <system:String x:Key="overviewRentalContracts">Übersicht der Mietverträge zum Objekt</system:String>
-  <system:String x:Key="overviewInvoices">Übersicht der Rechnungen zum Objekt</system:String>
-  <system:String x:Key="detailToCurrentRenter">Informationen zum aktuellen Mieter</system:String>
-  <system:String x:Key="detailToRenter">Informationen zum ausgwählten Mieter</system:String>
-  <system:String x:Key="detailToCreditor">Informationen zum ausgwählten Kreditor</system:String>
-  <system:String x:Key="detailToObject">Informationen zum Objekt</system:String>
+    <system:String x:Key="overviewPropertyObjects">Übersicht Objekte in der Liegenschaft</system:String>
+    <system:String x:Key="detailView">Details zu</system:String>
+    <system:String x:Key="overviewRentalContractsToObject">Übersicht der Mietverträge zum Objekt</system:String>
+    <system:String x:Key="overviewRentalContracts">Übersicht der Mietverträge</system:String>
+    <system:String x:Key="overviewInvoices">Übersicht der Rechnungen zum Objekt</system:String>
+    <system:String x:Key="detailToCurrentRenter">Informationen zum aktuellen Mieter</system:String>
+    <system:String x:Key="detailToRenter">Informationen zum ausgwählten Mieter</system:String>
+    <system:String x:Key="detailToCreditor">Informationen zum ausgwählten Kreditor</system:String>
+    <system:String x:Key="detailToObject">Informationen zum Objekt</system:String>
 
-  <system:String x:Key="numberOfPropertyObjects">Anzahl Objekte:</system:String>
-  <system:String x:Key="notRented">Nicht vermietete:</system:String>
-  <system:String x:Key="notRented2">Nicht vermietet</system:String>
-  <system:String x:Key="rented">Vermietete:</system:String>
-  <system:String x:Key="typ">Typ:</system:String>
-  <system:String x:Key="location">Lage:</system:String>
-  <system:String x:Key="rentedTo">Vermietet an:</system:String>
-  <system:String x:Key="numberOfRooms">Anzahl Zimmer:</system:String>
-  <system:String x:Key="area">Fläche</system:String>
-  <system:String x:Key="numberOfKeys">Anzahl Schlüssel</system:String>
-  <system:String x:Key="fridge">Kühlschrank</system:String>
-  <system:String x:Key="dishwasher">Geschirrspüler</system:String>
-  <system:String x:Key="stove">Kochherd</system:String>
-  <system:String x:Key="oven">Backofen</system:String>
-  <system:String x:Key="washingMachine">Waschmaschine</system:String>
-  <system:String x:Key="tumbler">Tumbler</system:String>
+    <system:String x:Key="numberOfPropertyObjects">Anzahl Objekte:</system:String>
+    <system:String x:Key="notRented">Nicht vermietete:</system:String>
+    <system:String x:Key="notRented2">Nicht vermietet</system:String>
+    <system:String x:Key="rented">Vermietete:</system:String>
+    <system:String x:Key="typ">Typ:</system:String>
+    <system:String x:Key="location">Lage:</system:String>
+    <system:String x:Key="rentedTo">Vermietet an:</system:String>
+    <system:String x:Key="numberOfRooms">Anzahl Zimmer:</system:String>
+    <system:String x:Key="area">Fläche</system:String>
+    <system:String x:Key="numberOfKeys">Anzahl Schlüssel</system:String>
+    <system:String x:Key="fridge">Kühlschrank</system:String>
+    <system:String x:Key="dishwasher">Geschirrspüler</system:String>
+    <system:String x:Key="stove">Kochherd</system:String>
+    <system:String x:Key="oven">Backofen</system:String>
+    <system:String x:Key="washingMachine">Waschmaschine</system:String>
+    <system:String x:Key="tumbler">Tumbler</system:String>
 
+    <system:String x:Key="heating">Heizung</system:String>
+    <system:String x:Key="electricity">Elektrizität</system:String>
+    <system:String x:Key="water">Wasser</system:String>
+    <system:String x:Key="garbage">Müll</system:String>
+    <system:String x:Key="cleaning">Reinigung</system:String>
+    <system:String x:Key="gardening">Gärtnerarbeiten</system:String>
+    <system:String x:Key="gas">Gas</system:String>
+    <system:String x:Key="lift">Lift</system:String>
+    <system:String x:Key="tv">TV</system:String>
+    <system:String x:Key="sewer">Abwasser</system:String>
 
-  <system:String x:Key="heating">Heizung</system:String>
-  <system:String x:Key="electricity">Elektrizität</system:String>
-  <system:String x:Key="water">Wasser</system:String>
-  <system:String x:Key="garbage">Müll</system:String>
+    <system:String x:Key="yes">Ja</system:String>
+    <system:String x:Key="no">Nein</system:String>
+    <system:String x:Key="none">keine</system:String>
 
-  <system:String x:Key="yes">Ja</system:String>
-  <system:String x:Key="no">Nein</system:String>
-  <system:String x:Key="none">keine</system:String>
+    <system:String x:Key="newPropertyObject">Neues Objekt</system:String>
+    <system:String x:Key="newRenter">Neuer Mieter</system:String>
+    <system:String x:Key="addNewRenter">Neuen Mieter:in hinzufügen</system:String>
+    <system:String x:Key="newCreditor">Neuer Kreditor</system:String>
+    <system:String x:Key="addNewCreditor">Neuer Kreditor hinzufügen</system:String>
+    <system:String x:Key="newInvoice">Neue Rechnung</system:String>
+    <system:String x:Key="newBillReminder">Neue Mahnung</system:String>
+    <system:String x:Key="billReminder">Mahnung</system:String>
+    <system:String x:Key="newRentalContract">Neuer Mietvertrag</system:String>
+    <system:String x:Key="newAccount">Neues Konto</system:String>
+    <system:String x:Key="newPaymentRecord">Zahlung verbuchen</system:String>
 
-  <system:String x:Key="newPropertyObject">Neues Objekt</system:String>
-  <system:String x:Key="newRenter">Neuer Mieter</system:String>
-  <system:String x:Key="addNewRenter">Neuen Mieter:in hinzufügen</system:String>
-  <system:String x:Key="newCreditor">Neuer Kreditor</system:String>
-  <system:String x:Key="addNewCreditor">Neuer Kreditor hinzufügen</system:String>
-  <system:String x:Key="newInvoice">Neue Rechnung</system:String>
-  <system:String x:Key="newBillReminder">Neue Mahnung</system:String>
-  <system:String x:Key="billReminder">Mahnung</system:String>
-  <system:String x:Key="newRentalContract">Neuer Mietvertrag</system:String>
-  <system:String x:Key="newAccount">Neues Konto</system:String>
-  <system:String x:Key="newPaymentRecord">Zahlung Verbuchen</system:String>
+    <system:String x:Key="rentStart">Mietbeginn</system:String>
+    <system:String x:Key="rentEnd">Mietende</system:String>
+    <system:String x:Key="activeContract">Aktiver Vertrag</system:String>
+    <system:String x:Key="deposit">Kaution</system:String>
+    <system:String x:Key="rent">Miete</system:String>
 
-  <system:String x:Key="rentStart">Mietbeginn</system:String>
-  <system:String x:Key="rentEnd">Mietende</system:String>
-  <system:String x:Key="activeContract">Aktiver Vertrag</system:String>
-  <system:String x:Key="deposit">Kaution</system:String>
-  <system:String x:Key="rent">Miete</system:String>
+    <system:String x:Key="house">Haus</system:String>
+    <system:String x:Key="apartment">Wohnung</system:String>
+    <system:String x:Key="room">Raum</system:String>
+    <system:String x:Key="garage">Garage</system:String>
+    <system:String x:Key="office">Büro</system:String>
+    <system:String x:Key="parking">Parkplatz</system:String>
 
-  <system:String x:Key="house">Haus</system:String>
-  <system:String x:Key="apartment">Wohnung</system:String>
-  <system:String x:Key="room">Raum</system:String>
-  <system:String x:Key="garage">Garage</system:String>
-  <system:String x:Key="office">Büro</system:String>
-  <system:String x:Key="parking">Parkplatz</system:String>
+    <system:String x:Key="firstName">Vorname</system:String>
+    <system:String x:Key="lastName">Nachname</system:String>
+    <system:String x:Key="phone">Telefon Privat</system:String>
+    <system:String x:Key="mobilePhone">Mobiltelefon</system:String>
+    <system:String x:Key="officePhone">Telefon Büro</system:String>
+    <system:String x:Key="email">E-Mail</system:String>
+    <system:String x:Key="dateOfBirth">Geburtsdatum</system:String>
+    <system:String x:Key="address">Strasse</system:String>
+    <system:String x:Key="zipCode">PLZ</system:String>
+    <system:String x:Key="city">Ort</system:String>
+    <system:String x:Key="civilState">Zivilstatus</system:String>
+    <system:String x:Key="single">Alleinstehend</system:String>
+    <system:String x:Key="married">Verheiratet</system:String>
+    <system:String x:Key="divorced">Geschieden</system:String>
+    <system:String x:Key="widowed">Verwitwet</system:String>
+    <system:String x:Key="addressBefore">Vorherige Adresse</system:String>
+    <system:String x:Key="accountNumber">Kontonummer</system:String>
+    <system:String x:Key="creditorActiv">Aktiver Kreditor</system:String>
+    <system:String x:Key="vatNumber">Mehrwertsteuer Nummer</system:String>
+    <system:String x:Key="creditorContactPerson">Kreditor Kontaktperson</system:String>
+    <system:String x:Key="creditorCompanyName">Geschäftsname</system:String>
 
-  <system:String x:Key="firstName">Vorname</system:String>
-  <system:String x:Key="lastName">Nachname</system:String>
-  <system:String x:Key="phone">Telefon Privat</system:String>
-  <system:String x:Key="mobilePhone">Mobiltelefon</system:String>
-  <system:String x:Key="officePhone">Telefon Büro</system:String>
-  <system:String x:Key="email">E-Mail</system:String>
-  <system:String x:Key="dateOfBirth">Geburtsdatum</system:String>
-  <system:String x:Key="address">Strasse</system:String>
-  <system:String x:Key="zipCode">PLZ</system:String>
-  <system:String x:Key="city">Ort</system:String>
-  <system:String x:Key="civilState">Zivilstatus</system:String>
-  <system:String x:Key="single">Alleinstehend</system:String>
-  <system:String x:Key="married">Verheiratet</system:String>
-  <system:String x:Key="divorced">Geschieden</system:String>
-  <system:String x:Key="widowed">Verwitwet</system:String>
-  <system:String x:Key="addressBefore">Vorherige Adresse</system:String>
-  <system:String x:Key="accountNumber">Kontonummer</system:String>
-  <system:String x:Key="creditorActiv">Aktiver Kreditor</system:String>
-  <system:String x:Key="vatNumber">Mehrwertsteuer Nummer</system:String>
-  <system:String x:Key="creditorContactPerson">Kreditor Kontaktperson</system:String>
-  <system:String x:Key="creditorCompanyName">Geschäftsname</system:String>
+    <system:String x:Key="invoiceDate">Rechnungsdatum</system:String>
+    <system:String x:Key="invoiceDueDate">Fälligkeitsdatum</system:String>
+    <system:String x:Key="invoiceValue">Rechnungsbetrag</system:String>
+    <system:String x:Key="invoicePurpose">Rechnungsgrund</system:String>
+    <system:String x:Key="invoiceState">Rechnungsstatus</system:String>
+    <system:String x:Key="invoiceCategory">Rechnungskategorie</system:String>
+    <system:String x:Key="additionalCosts">Nebenkosten</system:String>
+    <system:String x:Key="additionalCostsCategory">Nebenkostenkategorie</system:String>
+    <system:String x:Key="notReleased">Nicht Freigegeben</system:String>
+    <system:String x:Key="released">Freigegeben</system:String>
+    <system:String x:Key="overDue">Überfällig</system:String>
+    <system:String x:Key="paid">Bezahlt</system:String>
+    <system:String x:Key="canceled">Abgelehnt</system:String>
+    <system:String x:Key="billReminders">Mahnungen</system:String>
 
-  <system:String x:Key="invoiceDate">Rechnungsdatum</system:String>
-  <system:String x:Key="invoiceValue">Rechnungsbetrag</system:String>
-  <system:String x:Key="invoicePurpose">Rechnungsgrund</system:String>
-  <system:String x:Key="invoiceState">Rechnungsstatus</system:String>
-  <system:String x:Key="invoiceCategory">Rechnungskategorie</system:String>
-  <system:String x:Key="additionalCosts">Nebenkosten</system:String>
-  <system:String x:Key="notReleased">Nicht Freigegeben</system:String>
-  <system:String x:Key="released">Freigegeben</system:String>
-  <system:String x:Key="overDue">Überfällig</system:String>
-  <system:String x:Key="paid">Bezahlt</system:String>
-  <system:String x:Key="canceled">Abgelehnt</system:String>
-  <system:String x:Key="billReminders">Mahnungen</system:String>
+    <system:String x:Key="createNewProperty">Neue Liegenschaft erstellen</system:String>
+    <system:String x:Key="edit">bearbeiten</system:String>
+    <system:String x:Key="newPropertyObjectFor">Neues Objekt für</system:String>
+    <system:String x:Key="create">erstellen</system:String>
+    <system:String x:Key="selectType">Objekttyp wählen:</system:String>
 
-  <system:String x:Key="createNewProperty">Neue Liegenschaft erstellen</system:String>
-  <system:String x:Key="edit">bearbeiten</system:String>
-  <system:String x:Key="newPropertyObjectFor">Neues Objekt für</system:String>
-  <system:String x:Key="create">erstellen</system:String>
-  <system:String x:Key="selectType">Objekttyp wählen:</system:String>
-
-  <system:String x:Key="btnEdit">Bearbeiten</system:String>
-  <system:String x:Key="btnHousekeeper">Hauswart ansehen/bearbeiten</system:String>
-  <system:String x:Key="btnNewHousekeeper">Neuer Hauswart</system:String>
-  <system:String x:Key="addNewHousekeeper">Neuer Hauswart erstellen</system:String>
-
-
-  <system:String x:Key="save">Speichern</system:String>
-  <system:String x:Key="delete">Löschen</system:String>
-
-  <system:String x:Key="errorFillAllFields">Bitte alle Felder ausfüllen!</system:String>
-  <system:String x:Key="errorZipCode">Bitte eine gültige PLZ eingeben!</system:String>
-  <system:String x:Key="errorArea">Bitte eine gültige Fläche eingeben!</system:String>
-  <system:String x:Key="errorRooms">Bitte eine gültige anzahl Räume eingeben!</system:String>
-  <system:String x:Key="errorKeys">Bitte eine gültige anzahl Schlüssel eingeben!</system:String>
-
-  <system:String x:Key="successAddProperty">Liegenschat erfolgreich hinzugefügt!</system:String>
-  <system:String x:Key="successUpdateProperty">Update der Liegenschat erfolgreich</system:String>
-  <system:String x:Key="errorAddProperty">Speichern der Liegenschaft fehlgeschlagen!</system:String>
-  <system:String x:Key="errorDeleteProperty">Eine Liegenschaft kann nur gelöscht werden, wenn der Liegenschaft keine Objekte zugeordnet sind.</system:String>
-  <system:String x:Key="successDeleteProperty">Löschen der Liegenschaft erfolgreich!</system:String>
-
-  <system:String x:Key="errorDeletePropertyObject">Fehler beim löschen des Objekts</system:String>
-  <system:String x:Key="successDeletePropertyObject">Löschen des Objekts erfolgreich!</system:String>
+    <system:String x:Key="btnEdit">Bearbeiten</system:String>
+    <system:String x:Key="btnHousekeeperExtended">Hauswart ansehen/bearbeiten</system:String>
+    <system:String x:Key="btnHousekeeper">Hauswart ansehen</system:String>
+    <system:String x:Key="btnNewHousekeeper">Neuer Hauswart</system:String>
+    <system:String x:Key="addNewHousekeeper">Neuer Hauswart erstellen</system:String>
 
 
-  <system:String x:Key="successAddPropertyObject">Objekt erfolgreich hinzugefügt!</system:String>
-  <system:String x:Key="successUpdatePropertyObject">Update des Objekts erfolgreich!</system:String>
-  <system:String x:Key="errorAddPropertyObject">Speichern der Liegenschaft fehlgeschlagen!</system:String>
+    <system:String x:Key="save">Speichern</system:String>
+    <system:String x:Key="delete">Löschen</system:String>
 
-  <system:String x:Key="successAddRenter">Mieter:in erfolgreich hinzugefügt!</system:String>
-  <system:String x:Key="successUpdateRenter">Update des Mieters erfolgreich!</system:String>
-  <system:String x:Key="errorAddRenter">Speichern des Mieters fehlgeschlagen!</system:String>
+    <system:String x:Key="errorFillAllFields">Bitte alle Felder ausfüllen!</system:String>
+    <system:String x:Key="errorZipCode">Bitte eine gültige PLZ eingeben!</system:String>
+    <system:String x:Key="errorArea">Bitte eine gültige Fläche eingeben!</system:String>
+    <system:String x:Key="errorRooms">Bitte eine gültige anzahl Räume eingeben!</system:String>
+    <system:String x:Key="errorKeys">Bitte eine gültige anzahl Schlüssel eingeben!</system:String>
 
-  <system:String x:Key="errorPhone">Bitte mindestens eine Telefonnummer angeben!</system:String>
-  <system:String x:Key="errorMail">Bitte eine gültige Email-Adresse eingeben!</system:String>
+    <system:String x:Key="successAddProperty">Liegenschat erfolgreich hinzugefügt!</system:String>
+    <system:String x:Key="successUpdateProperty">Update der Liegenschat erfolgreich</system:String>
+    <system:String x:Key="errorAddProperty">Speichern der Liegenschaft fehlgeschlagen!</system:String>
+    <system:String x:Key="errorDeleteProperty">Eine Liegenschaft kann nur gelöscht werden, wenn der Liegenschaft keine Objekte zugeordnet sind.</system:String>
+    <system:String x:Key="successDeleteProperty">Löschen der Liegenschaft erfolgreich!</system:String>
 
-  <system:String x:Key="for">für</system:String>
+    <system:String x:Key="errorDeletePropertyObject">Fehler beim löschen des Objekts</system:String>
+    <system:String x:Key="successDeletePropertyObject">Löschen des Objekts erfolgreich!</system:String>
 
-  <system:String x:Key="successAddCreditor">Kreditor erfolgreich hinzugefügt!</system:String>
-  <system:String x:Key="successUpdateCreditor">Update des Kreditors erfolgreich!</system:String>
-  <system:String x:Key="errorAddCreditor">Speichern des Kreditors fehlgeschlagen!</system:String>
 
-  <system:String x:Key="successAddhousekeeperr">Hauswart erfolgreich hinzugefügt!</system:String>
-  <system:String x:Key="successUpdateHousekeeper">Update des Hauswarts erfolgreich!</system:String>
-  <system:String x:Key="errorAddHousekeeper">Speichern des Hauswarts fehlgeschlagen!</system:String>
+    <system:String x:Key="successAddPropertyObject">Objekt erfolgreich hinzugefügt!</system:String>
+    <system:String x:Key="successUpdatePropertyObject">Update des Objekts erfolgreich!</system:String>
+    <system:String x:Key="errorAddPropertyObject">Speichern der Liegenschaft fehlgeschlagen!</system:String>
 
+    <system:String x:Key="successAddRenter">Mieter:in erfolgreich hinzugefügt!</system:String>
+    <system:String x:Key="successUpdateRenter">Update des Mieters erfolgreich!</system:String>
+    <system:String x:Key="errorAddRenter">Speichern des Mieters fehlgeschlagen!</system:String>
+
+    <system:String x:Key="errorPhone">Bitte mindestens eine Telefonnummer angeben!</system:String>
+    <system:String x:Key="errorMail">Bitte eine gültige Email-Adresse eingeben!</system:String>
+
+    <system:String x:Key="for">für</system:String>
+
+    <system:String x:Key="successAddCreditor">Kreditor erfolgreich hinzugefügt!</system:String>
+    <system:String x:Key="successUpdateCreditor">Update des Kreditors erfolgreich!</system:String>
+    <system:String x:Key="errorAddCreditor">Speichern des Kreditors fehlgeschlagen!</system:String>
+
+    <system:String x:Key="successAddhousekeeperr">Hauswart erfolgreich hinzugefügt!</system:String>
+    <system:String x:Key="successUpdateHousekeeper">Update des Hauswarts erfolgreich!</system:String>
+    <system:String x:Key="errorAddHousekeeper">Speichern des Hauswarts fehlgeschlagen!</system:String>
+
+    <system:String x:Key="selectRenter">Mieter:in auswählen</system:String>
+    <system:String x:Key="selectCreditor">Kreditor auswählen</system:String>
+
+    <system:String x:Key="createNewRentalContract">Neuer Mietvertrag hinzufügen</system:String>
+
+    <system:String x:Key="contractState">Vertragsstatus</system:String>
+    <system:String x:Key="notActiveContract">nicht aktiver Vertrag</system:String>
+    <system:String x:Key="singnedContract">unterschriebener Vertrag</system:String>
+    <system:String x:Key="canceledContract">gekündeter Vertrag</system:String>
+
+    <system:String x:Key="successAddRentalContract">Mietvertrag erfolgreich hinzugefügt!</system:String>
+    <system:String x:Key="successUpdateRentalContract">Update des Mietvertrags erfolgreich!</system:String>
+    <system:String x:Key="errorAddRentalContract">Speichern des Mietvertrags fehlgeschlagen!</system:String>
+    <system:String x:Key="errorRent">Bitte eine gültige Miete eingeben!</system:String>
+
+    <system:String x:Key="accountsOverview">Übersicht der Konten</system:String>
+    <system:String x:Key="accountDescription">Kontobeschreibung</system:String>
+    <system:String x:Key="accountBalance">Kontostand</system:String>
+
+    <system:String x:Key="addNewAccount">Neues Konto hinzufügen</system:String>
+    <system:String x:Key="successAddAccount">Konto erfolgreich hinzugefügt!</system:String>
+    <system:String x:Key="successUpdateAccount">Update des Kontos erfolgreich!</system:String>
+    <system:String x:Key="errorAddAccount">Speichern des Kontos fehlgeschlagen!</system:String>
+
+    <system:String x:Key="receiptNumber">Belegnummer</system:String>
+    <system:String x:Key="income">Einnahmen</system:String>
+    <system:String x:Key="expense">Ausgaben</system:String>
+    <system:String x:Key="date">Datum</system:String>
+
+    <system:String x:Key="incomeExpenseToAccount">Einnahmen und Ausgaben zu</system:String>
+
+    <system:String x:Key="addNewPaymentRecord">Neuer Beleg</system:String>
+    <system:String x:Key="paymentRecord">Beleg</system:String>
+    <system:String x:Key="add">hinzufügen</system:String>
+
+    <system:String x:Key="successAddPaymentRecord">Beleg erfolgreich hinzugefügt!</system:String>
+    <system:String x:Key="successUpdatePaymentRecord">Update des Belegs erfolgreich!</system:String>
+    <system:String x:Key="errorAddPaymentRecord">Speichern des Belegs fehlgeschlagen!</system:String>
+    <system:String x:Key="errorIncomeExpense">Es muss entweder ein Einnahme- oder eine Ausgabebetrag eingeben werden!</system:String>
+    <system:String x:Key="errorReceiptNumber">Es muss eine Belegnummer eingeben werden</system:String>
+
+    <system:String x:Key="invoicesOverview">Übersicht der Rechnungen</system:String>
+    <system:String x:Key="invoicePositionTo">Rechnungspositionen zu Rechnung</system:String>
+    <system:String x:Key="assignment">Zuordnung</system:String>
+    <system:String x:Key="value">Betrag</system:String>
+
+    <system:String x:Key="successAddInvoice">Rechnung erfolgreich erstellt!</system:String>
+    <system:String x:Key="successUpdateInvoice">Update der Rechnung erfolgreich!</system:String>
+    <system:String x:Key="errorAddInvoice">Speichern der Rechnung fehlgeschlagen!</system:String>
+    <system:String x:Key="errorInvoicePosition">Es muss eine Rechnungsposition eingeben werden!</system:String>
+    <system:String x:Key="createNewInvoice">Neue Rechnung erstellen</system:String>
+    <system:String x:Key="invoicePosition">Rechnungsposition</system:String>
+    <system:String x:Key="invoicePositions">Rechnungspositionen</system:String>
+
+    <system:String x:Key="editInvoice">Rechnung bearbeiten</system:String>
+
+    <system:String x:Key="reminderAmount">Mahngebühr</system:String>
+    <system:String x:Key="reminderText">Text zur Mahnung</system:String>
+    <system:String x:Key="reminderDate">Mahnungsdatum</system:String>
+
+    <system:String x:Key="successAddBillReminder">Mahnung erfolgreich erstellt!</system:String>
+    <system:String x:Key="successUpdateBillReminder">Update der Mahnung erfolgreich!</system:String>
+    <system:String x:Key="errorAddBillReminder">Speichern der Mahnung fehlgeschlagen!</system:String>
+    <system:String x:Key="errorReminderAmount">Es muss eine gültige Mahngebür eingegeben werden!</system:String>
+    <system:String x:Key="addNewBillReminder">Neue Mahnung erstellen</system:String>
+    <system:String x:Key="editBillReminder">Mahnung bearbeiten</system:String>
+
+
+    <system:String x:Key="loginSuccessfull">Login erfolgreich</system:String>
+    <system:String x:Key="loginFailed">Login fehlgeschlagen! Email oder Passwort nicht gefunden!</system:String>
+    <system:String x:Key="logedInUser">Eingelogter Benutzer</system:String>
 </ResourceDictionary>

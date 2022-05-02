@@ -14,7 +14,6 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     internal UpsertCreditorViewModel()
     {
-
       //set the title of the form
       FormTitel = Application.Current.FindResource("addNewCreditor") as string ?? "create new creditor";
     }
@@ -25,7 +24,6 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedCreditor"></param>
     internal UpsertCreditorViewModel(Persona selectedCreditor)
     {
-
       SelectedCreditor = selectedCreditor;
 
       Id = selectedCreditor.PersonaId;

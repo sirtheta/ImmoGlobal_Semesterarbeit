@@ -1,5 +1,8 @@
 ﻿namespace ImmoGlobal.MainClasses.Enum
 {
+  /// <summary>
+  /// represents the additional cost category for invoices
+  /// </summary>
   internal enum EAdditionalCosts
   {
     Water,

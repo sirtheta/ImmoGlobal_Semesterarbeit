@@ -9,6 +9,10 @@ namespace ImmoGlobal.ViewModels
 {
   internal class UpsertBillReminderViewModel : BaseViewModel
   {
+    /// <summary>
+    /// c'tor to create a new bill reminder
+    /// </summary>
+    /// <param name="selectedInvoice"></param>
     internal UpsertBillReminderViewModel(Invoice selectedInvoice)
     {
       SelectedInvoice = selectedInvoice;
@@ -17,6 +21,10 @@ namespace ImmoGlobal.ViewModels
       FormTitel = Application.Current.FindResource("addNewBillReminder") as string ?? "create new bill reminder";
     }
 
+    /// <summary>
+    /// c'tor ti update an existing bill reminder
+    /// </summary>
+    /// <param name="billReminder"></param>
     internal UpsertBillReminderViewModel(BillReminder billReminder)
     {
       Id = billReminder.BillReminderId;

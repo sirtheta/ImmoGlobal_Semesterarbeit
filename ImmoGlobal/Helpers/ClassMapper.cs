@@ -5,6 +5,13 @@ namespace ImmoGlobal.Helpers
 {
   internal static class ClassMapper
   {
+    /// <summary>
+    /// Maps one instance of a classe into another instance of the same class
+    /// Only the properties wich hase get AND set are mapped
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="target"></param>
+    /// <param name="source"></param>
     public static void CopyValues<T>(T target, T source)
     {
       Type t = typeof(T);

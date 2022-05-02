@@ -17,7 +17,6 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     internal UpsertRenterViewModel()
     {
-
       //set the title of the form
       FormTitel = Application.Current.FindResource("addNewRenter") as string ?? "create new renter";
     }
@@ -28,7 +27,6 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedRenter"></param>
     internal UpsertRenterViewModel(Persona selectedRenter)
     {
-
       SelectedRenter = selectedRenter;
 
       Id = selectedRenter.PersonaId;

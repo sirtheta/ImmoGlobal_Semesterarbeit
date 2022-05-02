@@ -11,6 +11,9 @@ namespace ImmoGlobal.MainClasses
     public string? Description { get; set; }
     public ICollection<PaymentRecord>? PaymentRecord { get; set; }
 
+    /// <summary>
+    /// Calculate the total balance in the account
+    /// </summary>
     public string Balance
     {
       get => (IncomeAmount - ExpenseAmount).ToString("0.00");

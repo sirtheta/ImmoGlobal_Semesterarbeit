@@ -74,7 +74,6 @@ namespace ImmoGlobal.ViewModels
     internal RentalContract? SelectedRentalContract { get; set; }
     internal PaymentRecord? SelectedPaymentRecord { get; set; }
     internal BillReminder? SelectedBillReminder { get; set; }
-    internal ERole LogedInUserRole { get; set; }
     internal User LogedInUser { get; set; }
 
     /// <summary>

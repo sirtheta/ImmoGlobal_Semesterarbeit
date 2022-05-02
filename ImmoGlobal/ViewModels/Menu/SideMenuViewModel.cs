@@ -405,10 +405,14 @@ namespace ImmoGlobal.ViewModels
       get => _btnEditVisibility;
       set
       {
-        var instance = MainWindowViewModelInstance;
-        if (instance != null && CanEdit)
+        // can only be activated, if the loged in user can edit
+        if (value == Visibility.Visible && CanEdit)
         {
-          _btnEditVisibility = value;
+          _btnEditVisibility = Visibility.Visible;
+        }
+        else
+        {
+          _btnEditVisibility = Visibility.Collapsed;
         }
         OnPropertyChanged();
       }
@@ -418,10 +422,14 @@ namespace ImmoGlobal.ViewModels
       get => _btnEditTwoVisibility;
       set
       {
-        var instance = MainWindowViewModelInstance;
-        if (instance != null && CanEdit)
+        // can only be activated, if the loged in user can edit
+        if (value == Visibility.Visible && CanEdit)
         {
-          _btnEditTwoVisibility = value;
+          _btnEditTwoVisibility = Visibility.Visible;
+        }
+        else
+        {
+          _btnEditTwoVisibility = Visibility.Collapsed;
         }
         OnPropertyChanged();
       }

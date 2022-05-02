@@ -4,6 +4,9 @@ using System.Windows;
 
 namespace ImmoGlobal.MainClasses
 {
+  /// <summary>
+  /// model for the invoice positions in the invoice
+  /// </summary>
   internal class InvoicePosition
   {
     public int InvoicePositionId { get; set; }
@@ -36,6 +39,9 @@ namespace ImmoGlobal.MainClasses
       return DbController.GetPropertyObjectToInvoicePosition(this);
     }
 
+    /// <summary>
+    /// maps the Additional cost enum to the string for the combobox
+    /// </summary>
     public string AdditionalCostsCategoryString
     {
       get
@@ -57,6 +63,9 @@ namespace ImmoGlobal.MainClasses
       }
     }
 
+    /// <summary>
+    /// returns the string either of the property or the property object
+    /// </summary>
     public string Assignment
     {
       get

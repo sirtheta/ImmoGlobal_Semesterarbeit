@@ -2,6 +2,9 @@
 
 namespace ImmoGlobal.MainClasses
 {
+  /// <summary>
+  /// model for bill reminders in an invoice
+  /// </summary>
   internal class BillReminder
   {
     public int BillReminderId { get; set; }

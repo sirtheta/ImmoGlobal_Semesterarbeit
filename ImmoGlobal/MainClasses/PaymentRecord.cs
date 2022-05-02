@@ -2,9 +2,11 @@
 
 namespace ImmoGlobal.MainClasses
 {
+  /// <summary>
+  /// Model fot the payment records in the account
+  /// </summary>
   internal class PaymentRecord
   {
-
     public int PaymentRecordId { get; set; }
     public Account Account { get; set; }
     public string Description { get; set; }

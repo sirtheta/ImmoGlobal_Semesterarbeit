@@ -2,9 +2,6 @@
 
 namespace ImmoGlobal.Helpers
 {
-  /// <summary>
-  /// validator class
-  /// </summary>
   internal static class Validator
   {
     /// <summary>
