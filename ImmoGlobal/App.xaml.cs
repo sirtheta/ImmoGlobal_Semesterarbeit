@@ -17,12 +17,13 @@ namespace ImmoGlobal
       CheckDatabase();
 
       SetLanguageDictionary();
-      LoginViewModel loginViewModel = new();
 
       MainWindow = new MainWindowView()
       {
-        DataContext = new MainWindowViewModel(loginViewModel)
+        DataContext = MainWindowViewModel.GetInstance
       };
+      
+      MainWindowViewModel.GetInstance.SelectedViewModel = new LoginViewModel();
       MainWindow.Show();
 
       base.OnStartup(e);

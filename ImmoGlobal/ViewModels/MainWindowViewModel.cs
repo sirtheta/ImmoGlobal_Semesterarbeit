@@ -1,5 +1,4 @@
 ﻿using ImmoGlobal.MainClasses;
-using ImmoGlobal.MainClasses.Enum;
 using System.Windows;
 using System.Windows.Media;
 
@@ -11,20 +10,29 @@ namespace ImmoGlobal.ViewModels
     private MenuBarViewModel _menuBarViewModel;
     private SideMenuViewModel _sideMenuViewModel;
 
-
     private static MainWindowViewModel? instance = null;
+    private readonly static object padlock = new();
 
     /// <summary>
     /// returns instance of class MainViewModel
     /// </summary>
-    internal static MainWindowViewModel? GetInstance
+    public static MainWindowViewModel GetInstance
     {
-      get => instance;
+      get
+      {
+        lock (padlock)
+        {
+          if (instance == null)
+          {
+            instance = new MainWindowViewModel();
+          }
+          return instance;
+        }
+      }
     }
 
-    internal MainWindowViewModel(BaseViewModel viewModel)
+    private MainWindowViewModel()
     {
-      SelectedViewModel = viewModel;
       MenuBarViewModel = new MenuBarViewModel();
       SideMenuViewModel = new SideMenuViewModel();
       instance = this;
