@@ -1,0 +1,38 @@
+@startuml Analyse
+
+language de
+skinparam dpi 300
+'Phase defines
+Project starts 2022-02-15
+[1. Plenum] happens at 2022-02-22
+[1. Review] happens at 2022-03-08
+[Planung erstellen] starts 2022-02-15 
+[Planung erstellen] ends 2022-02-24
+[Projektabgrenzung] starts 2022-02-23
+[Projektabgrenzung] ends 2022-02-26
+[Konfigurationsmanagement] starts 2022-02-26
+[Konfigurationsmanagement] ends 2022-02-28
+[Stakeholderanalyse] starts 2022-02-26
+[Stakeholderanalyse] ends 2022-03-03
+[Ziele definieren] starts 2022-03-02
+[Ziele definieren] ends 2022-03-07
+[Risikoanalyse] starts 2022-03-08
+[Risikoanalyse] ends 2022-03-10
+[Anforderungsanalyse] starts 2022-03-10
+[Anforderungsanalyse] ends 2022-03-15
+[Lösungskonzept] starts 2022-03-10
+[Lösungskonzept] ends 2022-03-15 
+
+'Coloring
+[Planung erstellen] is colored in Fuchsia/Black
+[Projektabgrenzung] is colored in Fuchsia/Black
+[Konfigurationsmanagement] is colored in Fuchsia/Black
+[Ziele definieren] is colored in Fuchsia/Black
+[Stakeholderanalyse] is colored in Fuchsia/Black
+[Risikoanalyse] is colored in Fuchsia/Black
+[Anforderungsanalyse] is colored in Fuchsia/Black
+[Lösungskonzept] is colored in Fuchsia/Black
+
+2022-02-22 is colored in Salmon
+2022-03-08 is colored in Salmon
+@enduml

@@ -1,0 +1,43 @@
+@startuml Design
+
+language de
+skinparam dpi 300
+'Phase defines
+Project starts 2022-03-16
+[Kontextdiagramm] starts 2022-03-16
+[Kontextdiagramm] ends 2022-03-18
+[Geschäftsprozesse] starts 2022-03-19
+[Geschäftsprozesse] ends 2022-03-22
+[UseCase's] starts 2022-03-23
+[UseCase's] ends 2022-03-25
+[Klassendiagramm] starts 2022-03-26
+[Klassendiagramm] ends 2022-03-27
+[Sequenzdiagramme] starts 2022-03-27
+[Sequenzdiagramme] ends 2022-03-31
+[Zustandsdiagramme] starts 2022-03-30
+[Zustandsdiagramme] ends 2022-03-31
+[Testkonzept] starts 2022-03-31
+[Testkonzept] ends 2022-04-01
+[Definition von Testfällen] starts 2022-04-01
+[Definition von Testfällen] ends 2022-04-03
+[GUI-Design]  starts 2022-04-02
+[GUI-Design]  ends 2022-04-05
+[Definition Systemarchitektur] starts 2022-04-05
+[2. Review] happens at 2022-04-05
+
+
+'Coloring
+[Kontextdiagramm] is colored in GreenYellow/Black
+[Geschäftsprozesse] is colored in GreenYellow/Black
+[UseCase's] is colored in GreenYellow/Black
+[Klassendiagramm] is colored in GreenYellow/Black
+[Sequenzdiagramme] is colored in GreenYellow/Black
+[Zustandsdiagramme] is colored in GreenYellow/Black
+[Testkonzept] is colored in GreenYellow/Black
+[Definition von Testfällen] is colored in GreenYellow/Black
+[GUI-Design] is colored in GreenYellow/Black
+[Definition Systemarchitektur] is colored in GreenYellow/Black
+
+2022-04-05 is colored in Salmon   
+
+@enduml

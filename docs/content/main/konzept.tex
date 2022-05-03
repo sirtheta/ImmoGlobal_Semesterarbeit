@@ -272,7 +272,7 @@ Anhand von Szenarien die aus den Use-Case's erstellt werden und dann nach ihrer 
   \label{testanforderungen2}
 \end{table}
 
-\subsubsection{Testfälle}
+\subsubsection{Testfälle}\label{testfaelle}
 
 \begin{table}[H]
   \centering
@@ -290,19 +290,17 @@ Anhand von Szenarien die aus den Use-Case's erstellt werden und dann nach ihrer 
     \hline
     Liegenschaft erfassen & In 10 zu erfassenden Liegenschaften werden 3 Datensätze verwendet die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & Critical\\
     \hline
-    Liegenschaft erfassen & In 10 zu erfassenden Liegenschaften werden 3 Datensätze verwendet die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & Critical\\
-    \hline
     Objekt erfassen & In 10 zu erfassenden Objekten werden 3 Datensätze verwendet die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & Critical\\
     \hline
     Mietverträge verwalten & In 10 zu erfassenden Mietverträgen werden 3 Datensätze verwendet die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & Critical\\
     \hline
-    Mietverträge verwalten & Es werden bei 10 Mietverträgen die Stati von ungültig zu gültig verändert und gespeichert & Bei allen 10 Mietverträgen wird der Status gültig gespeichert & Critical\\
+    Mietverträge verwalten & Es werden bei 10 Mietverträgen die Stati von nicht aktiv zu aktiv verändert und gespeichert & Bei allen 10 Mietverträgen wird der Status aktiv gespeichert & Critical\\
     \hline
-    Mietverträge verwalten & Es werden bei 10 Mietverträgen die Stati von gültig zu ungültig verändert und gespeichert & Bei allen 10 Mietverträgen wird der Status ungültig gespeichert & Critical\\
+    Mietverträge verwalten & Es werden bei 10 Mietverträgen die Stati von aktiv zu nicht aktiv verändert und gespeichert & Bei allen 10 Mietverträgen wird der Status nicht aktiv gespeichert & Critical\\
     \hline
-    Mietzins-kontrolle & In einer Stichprobe werden 10 verschiedenen Objekte von unterschiedlichen Liegenschaften geladen & Es werden bei allen 10 Objekten der aktuelle und korrekte Mietzins und die korrekten Nebenkosten angezeigt & Critical\\
+    Mietzins-kontrolle & In einer Stichprobe werden 10 verschiedenen Objekte von unterschiedlichen Liegenschaften geladen & Es werden bei allen 10 Objekten die korrekten Daten der Mietverträge angezeigt & Critical\\
     \hline
-    Mahnung erstellen & In einer Stichprobe werden 5 Mahnungen für Mieter und 5 Mahnungen für Kreditoren generiert & Es können alle Mahnungen mit gültigen Daten generiert werden & Critical\\
+    Mahnung erstellen & In einer Stichprobe werden 5 Mahnungen für Mieter und 5 Mahnungen für Kreditoren erstellt & Es können alle Mahnungen mit gültigen Daten erstellt werden & Critical\\
     \hline
   \end{tabulary}
   \caption{Testfälle (1)}
@@ -333,6 +331,7 @@ Anhand von Szenarien die aus den Use-Case's erstellt werden und dann nach ihrer 
   \caption{Testfälle (2)}
   \label{Testfälle2}
 \end{table}
+
 \subsection{Einführungskonzept}
  Die Applikation wird in einem einfachen Einführungskonzept eingeführt. Nach dem vorstellen des Prototypen wird die Applikation nach dem Kundenfeedback angepasst und evtl. die Funktionalität erweitert. Sobald die Applikation dann soweit ist dass sie vom Kunden benutzt werden kann, wird sie installiert damit die Mitarbeiter beginnen können die Applikation zu nutzen die Funktionalität zu testen und die Daten zu erfassen. Während diesem Prozess müssen allfällige Fehler sofort behoben werden was einen engen Kundenkontakt während der Einführungszeit erfordert. 
 

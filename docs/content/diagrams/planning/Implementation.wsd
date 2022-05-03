@@ -1,0 +1,55 @@
+@startuml Implementation
+language de
+skinparam dpi 300
+'Phase defines
+
+Project starts 2022-04-07
+[2. Plenum] happens at 2022-04-19
+[Datenbank] starts 2022-04-07
+[Datenbank] ends 2022-04-11
+[GUI Base] starts 2022-04-08
+[GUI Base] ends 2022-04-14
+[GUI Liegenschaft] starts 2022-04-10
+[GUI Liegenschaft] ends 2022-04-12
+[GUI Objekt] starts 2022-04-13
+[GUI Objekt] ends 2022-04-15
+[GUI Mieter] starts 2022-04-16
+[GUI Mieter] ends 2022-04-18
+[GUI Kreditor] starts 2022-04-19
+[GUI Kreditor] ends 2022-04-20
+[GUI Mietvertrag] starts 2022-04-21
+[GUI Mietvertrag] ends 2022-04-22
+[GUI Konto] starts 2022-04-23
+[GUI Konto] ends 2022-04-24
+[GUI Rechnung] starts 2022-04-25
+[GUI Rechnung] ends 2022-04-27
+[GUI Mahnung] starts 2022-04-28
+[GUI Mahnung] ends 2022-04-29
+[GUI Login] starts 2022-04-29
+[GUI Login] ends 2022-04-30
+[Login Logik] starts 2022-04-29
+[Login Logik] ends 2022-04-30
+[GUI Finish] starts 2022-04-30
+[GUI Finish] ends 2022-05-01
+[Logik] starts 2022-04-07
+[Logik] ends 2022-05-01
+
+
+'Coloring
+[Datenbank] is colored in OrangeRed/Black
+[GUI Base] is colored in OrangeRed/Black
+[GUI Liegenschaft] is colored in OrangeRed/Black
+[GUI Objekt] is colored in OrangeRed/Black
+[GUI Mieter] is colored in OrangeRed/Black
+[GUI Kreditor] is colored in OrangeRed/Black
+[GUI Mietvertrag] is colored in OrangeRed/Black
+[GUI Konto] is colored in OrangeRed/Black
+[GUI Rechnung] is colored in OrangeRed/Black
+[GUI Mahnung] is colored in OrangeRed/Black
+[GUI Login] is colored in OrangeRed/Black
+[Login Logik] is colored in OrangeRed/Black
+[GUI Finish] is colored in OrangeRed/Black
+[Logik] is colored in OrangeRed/Black
+
+2022-04-19 is colored in Salmon
+@enduml

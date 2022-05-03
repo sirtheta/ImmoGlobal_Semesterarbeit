@@ -2,25 +2,27 @@
 
 \subsection{Programmierumgebung / Programmierrichtlinien}
 Als Programmierumgebung wird Visual Studio 2022 verwendet. Die App basiert auf dem .net Framework 6.0. Die Programmierrichtlinien sind die Standard-C\#-Richtlinien.
+
 \subsubsection{Verwendete NuGet-Pakete}
 \begin{table}[H]
   \centering
+  \settowidth\tymin{\textbf{Version}}
   \setlength\extrarowheight{2pt}
-    \begin{tabulary}{1.0\textwidth}{|L|m{10cm}|}
+    \begin{tabulary}{1.0\textwidth}{|m{5cm}|C|L|}
       \hline
-      \rowcolor[HTML]{4473C5}\textbf{Paket}& \textbf{Beschreibung}\\
+      \rowcolor[HTML]{4473C5}\textbf{Paket} & \textbf{Version} & \textbf{Beschreibung}\\
     \hline
-    \textbf{FontAwesome6.Svg V1.1.0} & Wird für die Icons in der MenuBar verwendet.\\
+    \textbf{FontAwesome6. Svg} & 1.1.0 & SVG-Icon Bibliothek, wird für die Icons in der MenuBar verwendet.\\
     \hline
-    \textbf{MaterialDesignMessageBox.SirTheta V1.1.3} & Eine Messagebox welche das Material Design Theme verwendet. Die Standard Messagebox passt nicht zu der sonst nach Material-Design aufgebauten Applikation. Dieses NuGet-Paket wurde von mir selber erstellt. Der Sourcecode dazu ist auf GitHub unter \href{https://github.com/sirtheta/MaterialDesignMessageBox}{https://github.com/sirtheta/MaterialDesignMessageBox} verfügbar und kann frei verwendet werden.\\
+    \textbf{MaterialDesign MessageBox.SirTheta} & 1.1.3 & Eine Messagebox welche das Material Design Theme verwendet. Die Standard Messagebox passt nicht zu der sonst nach Material-Design aufgebauten Applikation. Dieses NuGet-Paket wurde von mir selber erstellt. Der Sourcecode dazu ist auf GitHub unter \href{https://github.com/sirtheta/MaterialDesignMessageBox}{https://github.com/sirtheta/MaterialDesignMessageBox} verfügbar und kann frei verwendet werden\\
     \hline
-    \textbf{MaterialDesignTheme V4.5.0} & Wird für die GUI-Darstellung verwendet. Enthält Material Design Templates und Styles für WPF Controls in .NET\\
+    \textbf{MaterialDesignTheme} & 4.5.0 & Wird für die GUI-Darstellung verwendet. Enthält Material Design Templates und Styles für WPF Controls in .NET\\
     \hline
-    \textbf{Microsoft.EntityFrameWorkCore V6.0.4} & Database-Mapper mit LINQ-Query Support. Wird für die Datenbankverwaltung verwendet\\
+    \textbf{Microsoft. EntityFrameWork Core} & 6.0.4 & Datenbank ORM. Wird für die Datenbankverwaltung verwendet\\
     \hline
-    \textbf{Microsoft.EntityFrameWorkCore.SqlServer V6.0.4} & Microsoft SQL Server database provider für Entity Framework Core\\
+    \textbf{Microsoft.EntityFrameWork Core.SqlServer} & 6.0.4 & Microsoft SQL Server database provider für Entity Framework Core\\
     \hline
-    \textbf{Notifications.Wpf.Core V1.4.0} & Toast notifications für WPF apps. Wird zum anzeigen von Toasts in der App verwendet \\
+    \textbf{Notifications. Wpf. Core} & 1.4.0 & Toast notifications für WPF apps. Wird zum anzeigen von Toasts in der App verwendet \\
     \hline
 \end{tabulary}
 \caption{Verwendete NuGet-Pakete}
@@ -73,7 +75,51 @@ Die Datenbank wird mit dem Entity Framework Core mittels der Code-First Methode 
 Über die Klasse \verb+ImmoGlobalContext+  wird der Datacontext für Entity FrameWork Core erstellt. Jede Fachklasse wird mit dem \verb+DbSet+ implementiert und so werden die Tabellen dann von EF Core automatisch erzeugt und dann kann mittels des DbContext darauf zugegriffen werden. (EF Code First Methode)
 
 \subsubsection{Audit Trail}
-Um jede Änderung über die Applikation zu tracken, wurde ein Audit Trail implementiert. Jede Upsert-Methode verwendet anstelle des ImmoGlobalContext, den ImmoGlobalAuditableContext, welcher die \verb+SaveChanges()+ Methode des Entity Frameworks überschreibt und dann für jede veränderte Eigenschaft einen Eintrag in der AuditTrail Tabelle anlegt mit dem aktuell eingeloggten User und dem Datum und der Zeit.
+Um jede Änderung über die Applikation zu tracken, wurde ein Audit Trail implementiert. Jede Upsert-Methode verwendet anstelle des ImmoGlobalContext, den ImmoGlobalAuditableContext, welcher die \verb+SaveChanges()+ Methode des Entity Frameworks überschreibt und dann für jede veränderte Eigenschaft einen Eintrag in der AuditTrail Tabelle anlegt, mit dem aktuell eingeloggten User und dem Datum und der Zeit.
+Aus Performancegründen wäre es bei einer Definitiven Applikation besser, wenn der Audit Trail direkt auf der Datenbank als Trigger erfasst werden würde.
 
-
+\newpage
 \subsection{Testprotokoll}
+Automatisierte Tests wurden im Rahmen dieser Semesterarbeit keine umgesetzt. Für eine Real-World Applikation wären diese aber zwingend notwendig.
+
+Hier werden als Testprotokoll alle in Kapitel \ref{testfaelle} definierten Testfälle mit ihrem Soll-Ergebnis dargestellt.
+
+
+\begin{table}[H]
+  \centering
+  \settowidth\tymin{\textbf{Mietverträge}}
+  \setlength\extrarowheight{2pt}
+  \begin{tabulary}{1.0\textwidth}{|L|L|m{2cm}|}
+    \hline
+    \rowcolor[HTML]{fdebd0}
+    \textbf{Testfall}& 
+    \textbf{Soll} &
+    \textbf{Ist}\\
+    \hline
+    In 10 Loginversuchen haben 3 ein Falsches Passwort und 3 kein Passwort & Alle 6 ungültigen Loginversuche werden erkannt, die 4 korrekten Loginversuche werden korrekt eingeloggt & \cellcolor[HTML]{02ce16} Erfolgreich\\
+    \hline
+    In 10 zu erfassenden Liegenschaften werden 3 Datensätze verwendet die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & \cellcolor[HTML]{02ce16} Erfolgreich\\
+    \hline
+    In 10 zu erfassenden Objekten werden 3 Datensätze verwendet die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & \cellcolor[HTML]{02ce16} Erfolgreich\\
+    \hline
+    In 10 zu erfassenden Mietverträgen werden 3 Datensätze verwendet die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen &\cellcolor[HTML]{02ce16} Erfolgreich\\
+    \hline
+    Es werden bei 10 Mietverträgen die Stati von nicht aktiv zu aktiv verändert und gespeichert & Bei allen 10 Mietverträgen wird der Status gültig gespeichert & \cellcolor[HTML]{02ce16} Erfolgreich\\
+    \hline
+    Es werden bei 10 Mietverträgen die Stati von aktiv zu nicht aktiv verändert und gespeichert & Bei allen 10 Mietverträgen wird der Status nicht aktiv gespeichert & \cellcolor[HTML]{02ce16} Erfolgreich\\
+    \hline
+    In einer Stichprobe werden 10 verschiedenen Objekte von unterschiedlichen Liegenschaften geladen & Es werden bei allen 10 Objekten die korrekten Daten der Mietverträge angezeigt. & \cellcolor[HTML]{02ce16} Erfolgreich\\
+    \hline
+    In einer Stichprobe werden 5 Mahnungen für Mieter und 5 Mahnungen für Kreditoren erstellt & Es können alle Mahnungen mit gültigen Daten erstellt werden &\cellcolor[HTML]{02ce16} Erfolgreich\\
+    \hline
+    Es werden 10 Rechnungen erstellt. Für 3 Rechnungen werden nicht alle Muss-Daten angegeben & Die 7 gültigen Rechnungen werden erfolgreich erstellt und dir 3 ungültigen werden mit einer Fehlermeldung abgewiesen & \cellcolor[HTML]{02ce16} Erfolgreich\\
+    \hline   
+    In einer Stichprobe werden 5 Rechnungen für Mieter und 5 Rechnungen für Kreditoren erstellt & Es können alle Rechnungen mit gültigen Daten erstellt werden & \cellcolor[HTML]{02ce16} Erfolgreich\\
+    \hline
+    Bei 10 zu erfassenden Kreditoren, werden 3 Datensätze verwendet, die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & \cellcolor[HTML]{02ce16} Erfolgreich\\
+    \hline
+    Bei 10 zu erfassenden Mieter:innen, werden 3 Datensätze verwendet, die nicht alle Muss-Daten enthalten & Die 7 korrekten Datensätze werden erfolgreich abgespeichert und die 3 ungültigen Datensätze werden mit einer Fehlermeldung abgewiesen & \cellcolor[HTML]{02ce16} Erfolgreich\\
+    \hline
+  \end{tabulary}
+  \caption{Testprotokoll}
+\end{table}

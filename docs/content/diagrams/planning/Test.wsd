@@ -1,0 +1,21 @@
+@startuml Test
+
+language de
+skinparam dpi 300
+'Phase defines
+Project starts 2022-05-02
+[Programmtests / Bugfixing] starts 2022-05-02
+[Programmtests / Bugfixing] ends 2022-05-07
+[Abschluss Dokumentation] starts 2022-05-03
+[Abschluss Dokumentation] ends 2022-05-10
+[Präsentation] starts 2022-05-09
+[Präsentation] ends 2022-05-10
+
+
+
+'Coloring
+
+[Programmtests / Bugfixing] is colored in BlueViolet/Black
+[Abschluss Dokumentation] is colored in BlueViolet/Black
+[Präsentation] is colored in BlueViolet/Black
+@enduml
