@@ -204,6 +204,19 @@ namespace ImmoGlobal.ViewModels
       {EContractState.Canceled, Application.Current.FindResource("canceledContract") as string ?? "canceled contract"},
     };
 
+    internal override void DeleteClicked(object obj)
+    {
+      if (DbController.DeleteRentalContractDB(Id))
+      {
+        ShowNotification("Success", Application.Current.FindResource("successDeleteRentalContract") as string ?? "Rental Contract deleted successfully", NotificationType.Success);
+        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyOverviewViewModel();
+      }
+      else
+      {
+        ShowMessageBox(Application.Current.FindResource("errorDeleteRentalContract") as string ?? "Error on delete Rental Contract", MessageType.Error, MessageButtons.Ok);
+      }
+    }
+
     internal override void SaveClicked(object obj)
     {
       if (!NullFieldCheck())

@@ -10,7 +10,7 @@ namespace ImmoGlobal.Database
   internal class DbController
   {
     /// <summary>
-    /// returns user by given email
+    /// returns user by given email, needed for login
     /// </summary>
     /// <param name="email"></param>
     /// <returns></returns>
@@ -33,7 +33,7 @@ namespace ImmoGlobal.Database
       return (from p in db.Invoices
               select p).ToList();
     }
-    
+
     /// <summary>
     /// returns invoice to invoice position
     /// </summary>
@@ -308,7 +308,7 @@ namespace ImmoGlobal.Database
     }
     #endregion
 
-    #region account related
+    #region Get account related
     /// <summary>
     /// return account to invoice position
     /// </summary>
@@ -377,7 +377,7 @@ namespace ImmoGlobal.Database
               select p).ToList();
     }
 
-    #region UPSERT
+    #region Insert and Edit
     /// <summary>
     /// Create or update a property in DB
     /// </summary>
@@ -389,9 +389,7 @@ namespace ImmoGlobal.Database
       {
         using var db = new ImmoGlobalAuditableContext();
         if (property.Housekeeper != null)
-        {
           db.Attach(property.Housekeeper);
-        }
 
         if (property.PropertyId == 0)
         {
@@ -424,6 +422,7 @@ namespace ImmoGlobal.Database
         using var db = new ImmoGlobalAuditableContext();
         if (propertyObject.Property != null)
           db.Attach(propertyObject.Property);
+        
         if (propertyObject.PropertyObjectId == 0)
         {
           db.PropertyObjects.Add(propertyObject);
@@ -454,13 +453,11 @@ namespace ImmoGlobal.Database
       {
         using var db = new ImmoGlobalAuditableContext();
         if (rentalContract.Renter != null)
-        {
           db.Attach(rentalContract.Renter);
-        }
+        
         if (rentalContract.PropertyObject != null)
-        {
           db.Attach(rentalContract.PropertyObject);
-        }
+        
         if (rentalContract.RentalContractId == 0)
         {
           db.RentalContracts.Add(rentalContract);
@@ -549,9 +546,8 @@ namespace ImmoGlobal.Database
       {
         using var db = new ImmoGlobalAuditableContext();
         if (paymentRecord.Account != null)
-        {
           db.Attach(paymentRecord.Account);
-        }
+
         if (paymentRecord.PaymentRecordId == 0)
         {
           db.PaymentRecords.Add(paymentRecord);
@@ -583,6 +579,7 @@ namespace ImmoGlobal.Database
         using var db = new ImmoGlobalAuditableContext();
         if (invoice.Persona != null)
           db.Attach(invoice.Persona);
+        
         if (invoice.InvoiceId == 0)
         {
           db.Invoices.Add(invoice);
@@ -616,25 +613,26 @@ namespace ImmoGlobal.Database
         {
           db.Entry(invoicePosition.Invoice).State = EntityState.Modified;
           db.Attach(invoicePosition.Invoice);
-
         }
+
         if (invoicePosition.Property != null)
         {
           db.Entry(invoicePosition.Property).State = EntityState.Modified;
           db.Attach(invoicePosition.Property);
-
         }
+
         if (invoicePosition.PropertyObject != null)
         {
           db.Entry(invoicePosition.PropertyObject).State = EntityState.Modified;
           db.Attach(invoicePosition.PropertyObject);
-
         }
+
         if (invoicePosition.Account != null)
         {
           db.Entry(invoicePosition.Account).State = EntityState.Modified;
           db.Attach(invoicePosition.Account);
         }
+
         if (invoicePosition.InvoicePositionId == 0)
         {
           db.InvoicePositions.Add(invoicePosition);
@@ -645,6 +643,7 @@ namespace ImmoGlobal.Database
           ClassMapper.CopyValues(invp, invoicePosition);
           db.InvoicePositions.Update(invp);
         }
+
         db.SaveChanges();
         return true;
       }
@@ -666,6 +665,7 @@ namespace ImmoGlobal.Database
         using var db = new ImmoGlobalAuditableContext();
         if (billReminder.Invoice != null)
           db.Attach(billReminder.Invoice);
+        
         if (billReminder.BillReminderId == 0)
         {
           db.BillReminders.Add(billReminder);
@@ -685,7 +685,7 @@ namespace ImmoGlobal.Database
       }
     }
     #endregion
-    
+
     #region Delete
     /// <summary>
     /// delete a property with specific id
@@ -698,13 +698,17 @@ namespace ImmoGlobal.Database
       {
         using var db = new ImmoGlobalAuditableContext();
         var property = db.Properties.Find(propertyId);
-        db.Properties.Remove(property);
-        db.SaveChanges();
-        return true;
+        if (property != null)
+        {
+          db.Entry(property).State = EntityState.Deleted;
+          db.Properties.Remove(property);
+          db.SaveChanges();
+          return true;
+        }
+        return false;
       }
       catch (Exception)
       {
-
         return false;
       }
     }
@@ -720,13 +724,43 @@ namespace ImmoGlobal.Database
       {
         using var db = new ImmoGlobalAuditableContext();
         var propertyObject = db.PropertyObjects.Find(propertyObjectId);
-        db.PropertyObjects.Remove(propertyObject);
-        db.SaveChanges();
-        return true;
+        if (propertyObject != null)
+        {
+          db.Entry(propertyObject).State = EntityState.Deleted;
+          db.PropertyObjects.Remove(propertyObject);
+          db.SaveChanges();
+          return true;
+        }
+        return false;
       }
       catch (Exception)
       {
+        return false;
+      }
+    }
 
+    /// <summary>
+    /// delete rental contract
+    /// </summary>
+    /// <param name="rentalContract"></param>
+    /// <returns></returns>
+    internal static bool DeleteRentalContractDB(int? rentalContract)
+    {
+      try
+      {
+        using var db = new ImmoGlobalAuditableContext();
+        var rc = db.RentalContracts.Find(rentalContract);
+        if (rc != null)
+        {
+          db.Entry(rc).State = EntityState.Deleted;
+          db.RentalContracts.Remove(rc);
+          db.SaveChanges();
+          return true;
+        }
+        return false;
+      }
+      catch (Exception)
+      {
         return false;
       }
     }

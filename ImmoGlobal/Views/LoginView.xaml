@@ -62,7 +62,8 @@
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
 
-          <PasswordBox Grid.Column="1" 
+          <PasswordBox x:Name="pwBox" 
+                       Grid.Column="1" 
                        Margin="10" 
                        PasswordChanged="PasswordChanged"
                        materialDesign:HintAssist.Hint="Password" 

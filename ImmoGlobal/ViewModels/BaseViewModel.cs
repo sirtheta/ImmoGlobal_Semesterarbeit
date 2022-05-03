@@ -120,7 +120,7 @@ namespace ImmoGlobal.ViewModels
 
     public ICommand? BtnDelete
     {
-      get => new RelayCommand<object>(SaveClicked);
+      get => new RelayCommand<object>(DeleteClicked);
     }
 
     public Visibility BtnDeleteVisibility { get; set; }
