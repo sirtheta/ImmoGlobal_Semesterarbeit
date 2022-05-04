@@ -15,12 +15,6 @@ steps:
     packageType: 'sdk'
     version: 6.x
 
-- task: MSBuild@1
-  inputs:
-    solution: '**/*.sln'
-    msbuildArguments: '/t:restore;rebuild;publish /p:DeployOnBuild=True /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:SelfContained=true /p:Platform="Any CPU" /p:Configuration=Release /p:RuntimeIdentifier=win-x64'
-    msbuildVersion: latest
-
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
