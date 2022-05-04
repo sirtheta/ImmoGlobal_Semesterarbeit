@@ -28,3 +28,12 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/Output'
     ArtifactName: 'publish'
     publishLocation: 'Container'
+
+- task: Installer@1
+  inputs:
+    version: '6.0.5'
+    
+- task: Build@1
+  inputs:
+    version: '6.0.5'
+    file: 
