@@ -7,7 +7,9 @@
              xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:RenterDetailsViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:Background="{DynamicResource MaterialDesignPaper}"
+             d:DesignHeight="450" 
+             d:DesignWidth="330">
   <Grid>
     <Grid Grid.Column="0" Grid.Row="1" DataContext="{Binding Renter}">
       <Grid.RowDefinitions>

@@ -12,7 +12,7 @@
              d:DesignHeight="650" 
              d:DesignWidth="1500"
              TextOptions.TextFormattingMode="Display">
-  <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+  <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True">
     <Grid Margin="10">
       <Grid.RowDefinitions>
         <RowDefinition Height="auto" MinHeight="440"/>

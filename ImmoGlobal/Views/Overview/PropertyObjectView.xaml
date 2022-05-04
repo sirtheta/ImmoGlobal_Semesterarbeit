@@ -13,7 +13,7 @@
              d:DesignWidth="1200"
              TextOptions.TextFormattingMode="Display">
 
-  <ScrollViewer VerticalScrollBarVisibility="Auto">
+  <ScrollViewer VerticalScrollBarVisibility="Auto" UseLayoutRounding="True">
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="auto"/>

@@ -12,7 +12,8 @@
              d:DesignHeight="650" 
              d:DesignWidth="1200"
              TextOptions.TextFormattingMode="Display">
-  <ScrollViewer HorizontalScrollBarVisibility="Auto">
+  
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True">
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="auto"/>
@@ -130,6 +131,7 @@
             Width="auto"
             MinWidth="400"
             HorizontalAlignment="Stretch"
+                UseLayoutRounding="True"
             Background="{DynamicResource MaterialDesignBackground}">
           <Border.Effect>
             <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="0.1"/>
