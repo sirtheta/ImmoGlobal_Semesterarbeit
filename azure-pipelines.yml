@@ -14,14 +14,22 @@ steps:
   inputs:
     packageType: 'sdk'
     version: 6.x
+
+- task: MSBuild@1
+  inputs:
+    solution: '**/*.sln'
+    msbuildArguments: '/t:restore;rebuild;publish /p:DeployOnBuild=True /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:SelfContained=true /p:Platform="Any CPU" /p:Configuration=Release /p:RuntimeIdentifier=win-x64'
+    msbuildVersion: latest
+
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
-    arguments: '--configuration debug'
-    projects: './ImmoGlobal/ImmoGlobal.csproj'
-    
-- task: DotNetCoreCLI@2
+    command: 'publish'
+    arguments: -c Release --runtime win-x64 /p:PublishSingleFile=true --self-contained --output $(Build.ArtifactStagingDirectory) --no-dependencies
+    projects: $(Build.SourcesDirectory)\ImmoGlobal\ImmoGlobal.csproj
+    zipAfterPublish: false
+
+- task: PublishBuildArtifacts@1
   inputs:
-    command: 'build'
-    arguments: '--configuration release'
-    projects: './ImmoGlobal/ImmoGlobal.csproj'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'publish'
+    publishLocation: 'Container'
