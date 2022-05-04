@@ -2,6 +2,13 @@
 
 \subsection{Programmierumgebung / Programmierrichtlinien}
 Als Programmierumgebung wird Visual Studio 2022 verwendet. Die App basiert auf dem .net Framework 6.0. Die Programmierrichtlinien sind die Standard-C\#-Richtlinien.
+\begin{itemize}
+  \item Klassen, Methodennamen und Properties in Pascal Case
+  \item Argumente von Methoden in Camel Case
+  \item fields von Properties beginnen mit einem Underscore
+  \item Enum und Interface immer mit dem jeweiligen Prefix, E oder I
+  \item Jede Klasse in einer Separaten Datei
+\end{itemize}
 
 \subsubsection{Verwendete NuGet-Pakete}
 \begin{table}[H]
@@ -12,7 +19,7 @@ Als Programmierumgebung wird Visual Studio 2022 verwendet. Die App basiert auf d
       \hline
       \rowcolor[HTML]{4473C5}\textbf{Paket} & \textbf{Version} & \textbf{Beschreibung}\\
     \hline
-    \textbf{FontAwesome6. Svg} & 1.1.0 & SVG-Icon Bibliothek, wird für die Icons in der MenuBar verwendet.\\
+    \textbf{FontAwesome6. Svg} & 2.0.2 & SVG-Icon Bibliothek, wird für die Icons in der MenuBar verwendet.\\
     \hline
     \textbf{MaterialDesign MessageBox.SirTheta} & 1.1.3 & Eine Messagebox welche das Material Design Theme verwendet. Die Standard Messagebox passt nicht zu der sonst nach Material-Design aufgebauten Applikation. Dieses NuGet-Paket wurde von mir selber erstellt. Der Sourcecode dazu ist auf GitHub unter \href{https://github.com/sirtheta/MaterialDesignMessageBox}{https://github.com/sirtheta/MaterialDesignMessageBox} verfügbar und kann frei verwendet werden\\
     \hline
@@ -28,6 +35,7 @@ Als Programmierumgebung wird Visual Studio 2022 verwendet. Die App basiert auf d
 \caption{Verwendete NuGet-Pakete}
 \end{table}
 
+\newpage
 \subsection{Softwareaufbau}
 Die Applikation wird komplett im MVVM-Pattern aufgebaut. MVVM steht für Model-View-ViewModel. Mit diesem Konzept wird das View über DataBinding an das ViewModel gekoppelt, welches dann wiederum mit dem Model kommuniziert. 
 
@@ -40,10 +48,10 @@ Die Applikation wird komplett im MVVM-Pattern aufgebaut. MVVM steht für Model-V
 \end{figure}
 
 Somit besteht in der Applikation für jedes View ein ViewModel mit den entsprechenden Properties zum anbinden an das View.\\
-Um die Applikation Mehrsprachig zu gestalten, wurden alle Texte in einer Ressourcen-Datei erfasst. Für jede Sprache die unterstützt werden soll, muss eine solche Datei angelegt werden. Beim Start der Applikation wird je nach Systemsprache die entsprechende Sprachdatei geladen. Hierzu wurde ein override der ''OnStartup'' Methode gemacht, welches die Sprachdatei lädt. (Siehe App.xaml.cs)
-
-
-
+Um die Applikation Mehrsprachig zu gestalten, wurden alle Texte in einer Ressourcen-Datei erfasst. Für jede Sprache die unterstützt werden soll, muss eine solche Datei angelegt werden. Beim Start der Applikation wird je nach Systemsprache die entsprechende Sprachdatei geladen. Hierzu wurde ein override der ''OnStartup'' Methode gemacht, welches die Sprachdatei lädt. (Siehe App.xaml.cs) Im Aktuellen Stand der Applikation wird nur deutsch oder als Default Englisch genommen.\\
+Für Demonstrationszwecke wurde ein Button im Side Menu Implementiert, welcher es ermöglicht die Sprache zur Laufzeit zwischen Deutsch und Englisch umzuschalten. Für die Demonstration wurden jedoch nur die Sprachschlüssel der Menu Bar auf Englisch übersetzt.
+ 
+\newpage
 \subsection{GUI-Implementierung}
 Das Main-GUI ist in drei Bereiche durch ein Grid aufgeteilt, wie in der Grafik \fref{guiGrid} zu sehen ist.
 
