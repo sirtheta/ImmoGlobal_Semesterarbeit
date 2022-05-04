@@ -10,6 +10,10 @@ pool:
   name: test hosting
 
 steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: latest
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
