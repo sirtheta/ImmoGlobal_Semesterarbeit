@@ -18,8 +18,9 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
-    arguments: -c Release --runtime win-x64 /p:PublishSingleFile=true --self-contained --output ./publish --no-dependencies
+    arguments: -c Release --runtime win-x64 /p:PublishSingleFile=true --self-contained
     projects: './ImmoGlobal/ImmoGlobal.csproj'
+    publishWebProjects: false
     zipAfterPublish: false
 
 - task: PublishBuildArtifacts@1
