@@ -18,12 +18,12 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
-    arguments: -c Release --runtime win-x64 /p:PublishSingleFile=true --self-contained --output $(Build.ArtifactStagingDirectory) --no-dependencies
-    projects: $(Build.SourcesDirectory)\ImmoGlobal\ImmoGlobal.csproj
+    arguments: -c Release --runtime win-x64 /p:PublishSingleFile=true --self-contained --output ./publish --no-dependencies
+    projects: './ImmoGlobal/ImmoGlobal.csproj'
     zipAfterPublish: false
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: './publish'
     ArtifactName: 'publish'
     publishLocation: 'Container'
