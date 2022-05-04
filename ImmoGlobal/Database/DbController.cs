@@ -422,7 +422,7 @@ namespace ImmoGlobal.Database
         using var db = new ImmoGlobalAuditableContext();
         if (propertyObject.Property != null)
           db.Attach(propertyObject.Property);
-        
+
         if (propertyObject.PropertyObjectId == 0)
         {
           db.PropertyObjects.Add(propertyObject);
@@ -454,10 +454,10 @@ namespace ImmoGlobal.Database
         using var db = new ImmoGlobalAuditableContext();
         if (rentalContract.Renter != null)
           db.Attach(rentalContract.Renter);
-        
+
         if (rentalContract.PropertyObject != null)
           db.Attach(rentalContract.PropertyObject);
-        
+
         if (rentalContract.RentalContractId == 0)
         {
           db.RentalContracts.Add(rentalContract);
@@ -579,7 +579,7 @@ namespace ImmoGlobal.Database
         using var db = new ImmoGlobalAuditableContext();
         if (invoice.Persona != null)
           db.Attach(invoice.Persona);
-        
+
         if (invoice.InvoiceId == 0)
         {
           db.Invoices.Add(invoice);
@@ -665,7 +665,7 @@ namespace ImmoGlobal.Database
         using var db = new ImmoGlobalAuditableContext();
         if (billReminder.Invoice != null)
           db.Attach(billReminder.Invoice);
-        
+
         if (billReminder.BillReminderId == 0)
         {
           db.BillReminders.Add(billReminder);

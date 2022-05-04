@@ -1,4 +1,6 @@
 ﻿using ImmoGlobal.MainClasses;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 
@@ -31,13 +33,20 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
+    /// <summary>
+    /// c'tor for the mainWindowViewModel
+    /// </summary>
     private MainWindowViewModel()
     {
+      NavigationStore = new();
       MenuBarViewModel = new MenuBarViewModel();
       SideMenuViewModel = new SideMenuViewModel();
       instance = this;
     }
 
+    /// <summary>
+    /// the selected menubar viewmodel
+    /// </summary>
     public MenuBarViewModel MenuBarViewModel
     {
       get => _menuBarViewModel;
@@ -47,6 +56,9 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
+    /// <summary>
+    /// the selceted side menu view model
+    /// </summary>
     public SideMenuViewModel SideMenuViewModel
     {
       get => _sideMenuViewModel;
@@ -56,24 +68,76 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
+    #region Navigation
+    internal List<BaseViewModel> NavigationStore { get; set; }
+    internal void NavigateBack()
+    {
+      if (NavigationStore.Count > 1)
+      {
+        // do not add the current viewmodel to the navigation store when naivgating back
+        DoNotAddViewModel = true;
+        var lastSelectedViewModel = NavigationStore.Last();
+        SelectedViewModel = lastSelectedViewModel;
+        NavigationStore.Remove(lastSelectedViewModel);
+      }
+      CheckForNavigation();
+    }
+
+    /// <summary>
+    /// check if there is a viewmodel in the store to navigate to
+    /// </summary>
+    private void CheckForNavigation()
+    {
+      if (NavigationStore.Count < 2)
+      {
+        SideMenuViewModel.CanNavigate = false;
+      }
+      else
+      {
+        SideMenuViewModel.CanNavigate = true;
+      }
+    }
+
+    /// <summary>
+    /// adds the last selected viewmodel to the navigation store
+    /// </summary>
+    /// <param name="selectedViewModel"></param>
+    private void AddPageToNavigation(BaseViewModel selectedViewModel)
+    {
+      if (_selectedViewModel is not LoginViewModel && !DoNotAddViewModel)
+      {
+        NavigationStore.Add(selectedViewModel);
+      }
+      // next view can be added to the navigation store
+      DoNotAddViewModel = false;
+    }
+
+    internal bool DoNotAddViewModel { get; set; } = false;
+    #endregion
+
+    /// <summary>
+    /// sets the selected viewmodel
+    /// </summary>
     public BaseViewModel SelectedViewModel
     {
       get
       {
         SetMenuBarIconColor();
         SetSideMenuButtons();
-
         //set side menu edit button to standard text, it can be changed in the viewmodel as needed
         SideMenuViewModel.BtnEditText = Application.Current.FindResource("btnEdit") as string ?? "edit";
         return _selectedViewModel;
       }
       set
       {
+        AddPageToNavigation(_selectedViewModel);
+        CheckForNavigation();
         _selectedViewModel = value;
         OnPropertyChanged(nameof(SelectedViewModel));
       }
     }
 
+    //properties to access in different viewmodels
     internal Property? SelectedProperty { get; set; }
     internal PropertyObject? SelectedPropertyObject { get; set; }
     internal Persona? SelectedPersona { get; set; }
@@ -132,6 +196,7 @@ namespace ImmoGlobal.ViewModels
           break;
       }
     }
+
     /// <summary>
     /// Sets the visibility of the side menu buttons.
     /// </summary>

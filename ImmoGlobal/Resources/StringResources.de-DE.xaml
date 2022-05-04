@@ -250,6 +250,7 @@
   <system:String x:Key="addNewBillReminder">Neue Mahnung erstellen</system:String>
   <system:String x:Key="editBillReminder">Mahnung bearbeiten</system:String>
 
+  <system:String x:Key="back">Zurück</system:String>
 
   <system:String x:Key="loginSuccessfull">Login erfolgreich</system:String>
   <system:String x:Key="loginFailed">Login fehlgeschlagen! Email oder Passwort nicht gefunden!</system:String>

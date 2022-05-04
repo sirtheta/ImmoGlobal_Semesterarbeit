@@ -1,6 +1,5 @@
 ﻿using ImmoGlobal.Commands;
 using System;
-using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 
@@ -11,8 +10,9 @@ namespace ImmoGlobal.ViewModels
 
     internal SideMenuViewModel()
     {
-      BtnGerman = new RelayCommand<object>(BtnGermanClicked);
-      BtnEnglish = new RelayCommand<object>(BtnEnglishClicked);
+      // set all delegate commands
+      BtnLanguage = new RelayCommand<object>(BtnLanguageClicked);
+      BtnBack = new RelayCommand<object>(BtnBackClicked);
       BtnNewProperty = new RelayCommand<object>(BtnNewPropertyClicked);
       BtnNewPropertyObject = new RelayCommand<object>(BtnNewPropertyObjectClicked);
       BtnNewRenter = new RelayCommand<object>(BtnNewRenterClicked);
@@ -26,8 +26,11 @@ namespace ImmoGlobal.ViewModels
       BtnEditTwo = new RelayCommand<object>(BtnEditTwoClicked);
       BtnHousekeeper = new RelayCommand<object>(BtnHousekeeperClicked);
       BtnNewHousekeeper = new RelayCommand<object>(BtnNewHousekeeperClicked);
+
       BtnEditText = Application.Current.FindResource("btnEdit") as string ?? "edit";
       BtnEditTextTwo = Application.Current.FindResource("btnEdit") as string ?? "edit";
+
+      CurrentLanguage = "DE";
     }
 
     private string _btnEditText;
@@ -61,14 +64,14 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-    
+
     #region Commands
-    public ICommand BtnGerman
+    public ICommand BtnLanguage
     {
       get;
       private set;
     }
-    public ICommand BtnEnglish
+    public ICommand BtnBack
     {
       get;
       private set;
@@ -141,18 +144,37 @@ namespace ImmoGlobal.ViewModels
     #endregion
 
     #region MethodsToCommands
-    private void BtnEnglishClicked(object obj)
-    {
-      ResourceDictionary dict = new();
-      dict.Source = new Uri("..\\Resources\\StringResources.xaml", UriKind.Relative);
-      Application.Current.Resources.MergedDictionaries.Add(dict);
-    }
 
-    private void BtnGermanClicked(object obj)
+    // language selection
+    private void BtnLanguageClicked(object obj)
     {
       ResourceDictionary dict = new();
-      dict.Source = new Uri("..\\Resources\\StringResources.de-DE.xaml", UriKind.Relative);
-      Application.Current.Resources.MergedDictionaries.Add(dict);
+      switch (CurrentLanguage)
+      {
+        case "DE":
+          dict.Source = new Uri("..\\Resources\\StringResources.xaml", UriKind.Relative);
+          Application.Current.Resources.MergedDictionaries.Add(dict);
+          CurrentLanguage = "EN";
+          break;
+        case "EN":
+        default:
+          dict.Source = new Uri("..\\Resources\\StringResources.de-DE.xaml", UriKind.Relative);
+          Application.Current.Resources.MergedDictionaries.Add(dict);
+          CurrentLanguage = "DE";
+          break;
+      }
+    }
+    /// <summary>
+    /// Navigate one page back, calls the navigation method 
+    /// in the MainWindowViewModel
+    /// </summary>
+    /// <param name="obj"></param>
+    private void BtnBackClicked(object obj)
+    {
+      if (MainWindowViewModelInstance != null)
+      {
+        MainWindowViewModelInstance.NavigateBack();
+      }
     }
     private void BtnNewPropertyClicked(object obj)
     {
@@ -488,6 +510,29 @@ namespace ImmoGlobal.ViewModels
       set
       {
         _btnEditTwoWidth = value;
+        OnPropertyChanged();
+      }
+    }
+
+    private string _currentLanguage;
+    public string CurrentLanguage
+    {
+      get => _currentLanguage;
+      set
+      {
+        _currentLanguage = value;
+        OnPropertyChanged();
+      }
+    }
+
+    // bool for navigation arrow, gets disabled if the navigation store is empty
+    private bool _canNavigate;
+    public bool CanNavigate
+    {
+      get => _canNavigate;
+      set
+      {
+        _canNavigate = value;
         OnPropertyChanged();
       }
     }

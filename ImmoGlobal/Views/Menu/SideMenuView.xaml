@@ -17,31 +17,36 @@
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="auto"/>
         <ColumnDefinition Width="auto"/>
+        <ColumnDefinition Width="auto"/>
       </Grid.ColumnDefinitions>
-    <Button Grid.Column="0" 
-            Command="{Binding BtnGerman}" 
-            Content="DE"
+      <Button Grid.Column="0" 
+            Command="{Binding BtnLanguage}" 
+            Content="{Binding CurrentLanguage}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
             FontFamily="{DynamicResource MaterialDesignFont}"
             FontSize="20"
             Padding="0"
             Margin="10,0,0,-30"            
-            MinWidth="35"
+            Width="35"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"/>
-      <Button Grid.Column="1" 
-            Command="{Binding BtnEnglish}" 
-            Content="EN"
+
+      <Button Grid.Column="2" 
+            Command="{Binding BtnBack}" 
+            Content="{materialDesign:PackIcon Kind=ArrowBackCircle,Size=30}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
             FontFamily="{DynamicResource MaterialDesignFont}"
+              ToolTip="{DynamicResource back}"
             FontSize="20"
+              IsEnabled="{Binding CanNavigate}"
             Padding="0"
-            Margin="10,0,0,-30"            
+            Margin="100,0,0,-30"            
             MinWidth="35"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"/>
+            VerticalAlignment="Top">
+      </Button>
     </Grid>
-    
+
     <StackPanel>
       <Button Command="{Binding BtnNewProperty}" 
             Content="{DynamicResource newProperty}"
@@ -66,7 +71,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Visibility="{Binding BtnNewPropertyObjectVisibility}"/>
-      
+
       <Button Command="{Binding BtnNewRenter}" 
             Content="{DynamicResource newRenter}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
@@ -77,8 +82,8 @@
             MinWidth="180"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Visibility="{Binding BtnNewRenterVisibility}"/>    
-      
+            Visibility="{Binding BtnNewRenterVisibility}"/>
+
       <Button Command="{Binding BtnNewInvoice}" 
             Content="{DynamicResource newInvoice}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
@@ -166,7 +171,7 @@
             Visibility="{Binding BtnHousekeeperVisibility}"/>
 
 
-        <Button Command="{Binding BtnNewBillReminder}" 
+      <Button Command="{Binding BtnNewBillReminder}" 
             Content="{DynamicResource newBillReminder}"
             Style="{DynamicResource MaterialDesignRaisedButton}"
             FontFamily="{DynamicResource MaterialDesignFont}"

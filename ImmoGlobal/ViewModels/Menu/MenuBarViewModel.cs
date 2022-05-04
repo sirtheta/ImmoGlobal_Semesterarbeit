@@ -75,6 +75,7 @@ namespace ImmoGlobal.ViewModels
         instance.SelectedPaymentRecord = null;
         instance.SelectedBillReminder = null;
         instance.MenuBarViewModel.LogedInUserFullName = null;
+        instance.NavigationStore.Clear();
         IsEnabled = false;
 
       }

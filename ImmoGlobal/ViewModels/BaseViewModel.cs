@@ -79,7 +79,7 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     /// <param name="obj"></param>
     internal virtual void SaveClicked(object obj) { }
-    
+
     /// <summary>
     /// Method gets called when the user clicks on the "Delete" button.
     /// </summary>
@@ -88,6 +88,7 @@ namespace ImmoGlobal.ViewModels
 
     internal static MainWindowViewModel? MainWindowViewModelInstance { get => MainWindowViewModel.GetInstance; }
 
+    // bool for edit button, gets disabled if the user has not enough rights
     private bool _canEdit;
     public bool CanEdit
     {

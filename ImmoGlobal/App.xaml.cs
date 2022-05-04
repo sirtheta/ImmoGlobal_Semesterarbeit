@@ -22,7 +22,7 @@ namespace ImmoGlobal
       {
         DataContext = MainWindowViewModel.GetInstance
       };
-      
+
       MainWindowViewModel.GetInstance.SelectedViewModel = new LoginViewModel();
       MainWindow.Show();
 

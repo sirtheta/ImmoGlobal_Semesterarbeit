@@ -42,7 +42,7 @@ namespace ImmoGlobal.ViewModels
       else
       {
         ShowMessageBox(Application.Current.FindResource("loginFailed") as string ?? "Login failed", MessageType.Error, MessageButtons.Ok);
-        
+
         //Close the app after 3 login failures
         _loginAttempts++;
         if (_loginAttempts > 3)

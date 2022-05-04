@@ -20,6 +20,6 @@ namespace ImmoGlobal.Views
       {
         ((dynamic)DataContext).Password = ((PasswordBox)sender).SecurePassword;
       }
-    } 
+    }
   }
 }
