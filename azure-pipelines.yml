@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: test hosting
+  name: test hosting
 
 steps:
 - task: DotNetCoreCLI@2
