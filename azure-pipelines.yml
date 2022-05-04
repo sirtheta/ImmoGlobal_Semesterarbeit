@@ -17,4 +17,11 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
+    arguments: '--configuration debug'
+    projects: './ImmoGlobal/ImmoGlobal.csproj'
+    
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    arguments: '--configuration release'
     projects: './ImmoGlobal/ImmoGlobal.csproj'
