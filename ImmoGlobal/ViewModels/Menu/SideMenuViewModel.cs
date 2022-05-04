@@ -1,4 +1,6 @@
 ﻿using ImmoGlobal.Commands;
+using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,6 +11,8 @@ namespace ImmoGlobal.ViewModels
 
     internal SideMenuViewModel()
     {
+      BtnGerman = new RelayCommand<object>(BtnGermanClicked);
+      BtnEnglish = new RelayCommand<object>(BtnEnglishClicked);
       BtnNewProperty = new RelayCommand<object>(BtnNewPropertyClicked);
       BtnNewPropertyObject = new RelayCommand<object>(BtnNewPropertyObjectClicked);
       BtnNewRenter = new RelayCommand<object>(BtnNewRenterClicked);
@@ -57,8 +61,18 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
+    
     #region Commands
+    public ICommand BtnGerman
+    {
+      get;
+      private set;
+    }
+    public ICommand BtnEnglish
+    {
+      get;
+      private set;
+    }
     public ICommand BtnNewProperty
     {
       get;
@@ -127,6 +141,19 @@ namespace ImmoGlobal.ViewModels
     #endregion
 
     #region MethodsToCommands
+    private void BtnEnglishClicked(object obj)
+    {
+      ResourceDictionary dict = new();
+      dict.Source = new Uri("..\\Resources\\StringResources.xaml", UriKind.Relative);
+      Application.Current.Resources.MergedDictionaries.Add(dict);
+    }
+
+    private void BtnGermanClicked(object obj)
+    {
+      ResourceDictionary dict = new();
+      dict.Source = new Uri("..\\Resources\\StringResources.de-DE.xaml", UriKind.Relative);
+      Application.Current.Resources.MergedDictionaries.Add(dict);
+    }
     private void BtnNewPropertyClicked(object obj)
     {
       if (MainWindowViewModelInstance != null)

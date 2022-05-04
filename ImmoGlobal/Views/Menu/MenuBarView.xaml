@@ -29,7 +29,7 @@
         <Setter Property="FontFamily"
                 Value="{DynamicResource MaterialDesignFont}"/>
         <Setter Property="FontSize"
-                Value="20"/>
+                Value="17"/>
         <Setter Property="HorizontalAlignment"
                 Value="Center"/>
       </Style>
@@ -103,13 +103,14 @@
       <Button.Content>
         <Grid>
           <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="0.5*"/>
           </Grid.RowDefinitions>
           <fa6:ImageAwesome Icon="Solid_FileContract"
                             Height="80"
                             PrimaryColor="{Binding BtnRentalContractColor}"/>
           <TextBlock Text="{DynamicResource rentalContract}" 
+                     TextWrapping="Wrap"
                      Grid.Row="1"/>
         </Grid>
       </Button.Content>

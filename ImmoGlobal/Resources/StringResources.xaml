@@ -2,16 +2,16 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="property">Liegenschaft</system:String>
-    <system:String x:Key="propertyObject">Objekt</system:String>
-    <system:String x:Key="renter">Mieter:in</system:String>
-    <system:String x:Key="creditor">Kreditor</system:String>
-    <system:String x:Key="rentalContract">Mietvertrag</system:String>
-    <system:String x:Key="rentalContracts">Mietverträge</system:String>
-    <system:String x:Key="invoice">Rechnung</system:String>
-    <system:String x:Key="invoices">Rechnungen</system:String>
-    <system:String x:Key="account">Konto</system:String>
-    <system:String x:Key="description">Beschreibung</system:String>
+    <system:String x:Key="property">Property</system:String>
+    <system:String x:Key="propertyObject">O</system:String>
+    <system:String x:Key="renter">Renter</system:String>
+    <system:String x:Key="creditor">Creditor</system:String>
+    <system:String x:Key="rentalContract">Rental Contract</system:String>
+    <system:String x:Key="rentalContracts">Rental Contracts</system:String>
+    <system:String x:Key="invoice">Invoice</system:String>
+    <system:String x:Key="invoices">Invoices</system:String>
+    <system:String x:Key="account">Account</system:String>
+    <system:String x:Key="description">Description</system:String>
 
     <system:String x:Key="newProperty">Neue Liegenschaft</system:String>
     <system:String x:Key="propertyOverview">Übersicht Liegenschaften</system:String>
