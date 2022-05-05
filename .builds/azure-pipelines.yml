@@ -16,7 +16,6 @@ steps:
     version: 6.x
 
 - task: DotNetCoreCLI@2
-  displayname: Build Application
   inputs:
     command: 'publish'
     arguments: -c Release --runtime win-x64 /p:PublishSingleFile=true /p:PublishReadyToRun=true --no-self-contained -o $(Build.ArtifactStagingDirectory)/Output
@@ -25,19 +24,16 @@ steps:
     zipAfterPublish: false
 
 - task: PublishBuildArtifacts@1
-  displayname: Publish build artifacts
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/Output'
     ArtifactName: 'publish'
     publishLocation: 'Container'
 
 - task: Installer@1
-  displayname: download InnoSetup installer
   inputs:
     version: '6.0.5'
     
 - task: Build@1
-  displayname: Build Setup
   inputs:
     version: '6.0.5'
     file: ./.builds/build setup.iss
