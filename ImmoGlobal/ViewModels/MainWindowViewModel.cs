@@ -86,7 +86,7 @@ namespace ImmoGlobal.ViewModels
     /// <summary>
     /// check if there is a viewmodel in the store to navigate to
     /// </summary>
-    private void CheckForNavigation()
+    internal void CheckForNavigation()
     {
       if (NavigationStore.Count < 2)
       {

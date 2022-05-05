@@ -82,8 +82,10 @@
                   <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="1"/>
                 </Border.Effect>
                 <Grid>
+     
                   <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
@@ -99,36 +101,44 @@
                             Value="5,10,5,10" />
                     </Style>
                   </Grid.Resources>
-                  <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+                  <materialDesign:PackIcon Grid.Column="1" 
+                                           HorizontalAlignment="Right" 
+                                           Kind="{Binding IconKind}" 
+                                           Foreground="{Binding IconColor}" 
+                                           Height="50"
+                                           Width="50" />
+
+                  
+                  <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
                            Text="{Binding Description}" 
                            TextWrapping="Wrap"/>
 
                   <!--typ-->
-                  <TextBlock Grid.Column="0" Grid.Row="1" 
+                  <TextBlock Grid.Column="0" Grid.Row="2" 
                            Text="{DynamicResource typ}"/>
-                  <TextBlock Grid.Column="1" Grid.Row="1"
+                  <TextBlock Grid.Column="1" Grid.Row="2"
                            Text="{Binding ObjectTypeName}" />
 
                   <!--Location-->
-                  <TextBlock Grid.Column="0" Grid.Row="2"
+                  <TextBlock Grid.Column="0" Grid.Row="3"
                            Text="{DynamicResource location}"/>
-                  <TextBlock Grid.Column="1" Grid.Row="2"
+                  <TextBlock Grid.Column="1" Grid.Row="3"
                            Text="{Binding Location}"
                            HorizontalAlignment="Left"
                            TextWrapping="Wrap"/>
 
                   <!--rented to-->
-                  <TextBlock Grid.Column="0" Grid.Row="3" 
+                  <TextBlock Grid.Column="0" Grid.Row="4" 
                            Text="{DynamicResource rentedTo}"/>
-                  <TextBlock Grid.Column="1" Grid.Row="3"
+                  <TextBlock Grid.Column="1" Grid.Row="4"
                            Text="{Binding CurrentRenter}"
                            HorizontalAlignment="Left"
                            TextWrapping="Wrap"/>
 
                   <!--number of Rooms-->
-                  <TextBlock Grid.Column="0" Grid.Row="5"
+                  <TextBlock Grid.Column="0" Grid.Row="6"
                            Text="{DynamicResource numberOfRooms}"/>
-                  <TextBlock Grid.Column="1" Grid.Row="5"
+                  <TextBlock Grid.Column="1" Grid.Row="6"
                            Text="{Binding NumberOfRooms}"
                            HorizontalAlignment="Left"/>
                 </Grid>

@@ -45,18 +45,18 @@ namespace ImmoGlobal.Helpers
       var _invoice1 = new Invoice()
       {
         Persona = _renter,
-        InvoiceDate = DateTime.Parse("01.03.2022"),
-        DueDate = DateTime.Parse("01.04.2022"),
+        InvoiceDate = DateTime.Now.AddDays(-30),
+        DueDate = DateTime.Now.AddDays(-1),
         InvoicePurpose = "Ihre Miete",
-        InvoiceState = EInvoiceState.OverDue,
+        InvoiceState = EInvoiceState.Released,
         InvoiceCategory = EInvoiceCategory.Rent
       };
 
       var _invoice2 = new Invoice()
       {
         Persona = _renter,
-        InvoiceDate = DateTime.Parse("05.01.2022"),
-        DueDate = DateTime.Parse("28.02.2022"),
+        InvoiceDate = DateTime.Now.AddDays(-28),
+        DueDate = DateTime.Now.AddDays(2),
         InvoicePurpose = "Nebenkostenabrechnung",
         InvoiceState = EInvoiceState.Paid,
         InvoiceCategory = EInvoiceCategory.AdditionalCosts
@@ -65,8 +65,8 @@ namespace ImmoGlobal.Helpers
       var _invoice3 = new Invoice()
       {
         Persona = _creditor,
-        InvoiceDate = DateTime.Parse("15.04.2022"),
-        DueDate = DateTime.Parse("15.05.2022"),
+        InvoiceDate = DateTime.Now.AddDays(-25),
+        DueDate = DateTime.Now.AddDays(5),
         InvoicePurpose = "Rechnung zu Liegenschaft",
         InvoiceState = EInvoiceState.Released,
         InvoiceCategory = EInvoiceCategory.Property
@@ -154,6 +154,7 @@ namespace ImmoGlobal.Helpers
       _invoice2.InvoicePositions = new List<InvoicePosition>() { _invoicePosition4, _invoicePosition5, _invoicePosition6, _invoicePosition7 };
       _invoice3.InvoicePositions = new List<InvoicePosition>() { _invoicePosition1, _invoicePosition2 };
 
+      var _billReminder = new BillReminder() { Invoice = _invoice1, ReminderDate = DateTime.Now.AddDays(-1), ReminderText = "Bitte Rechnung bezahlen", ReminderAmount = 10 };
 
       //var _user1 = new User() { FirstName = "Michael", LastName = "Neuhaus", Password = SecurePasswordHasher.Hash("1"), Email = "mi@app.de", Role = ERole.Admin };
       //var _user2 = new User() { FirstName = "Patrick", LastName = "Graber", Password = SecurePasswordHasher.Hash("2"), Email = "pg@app.de", Role = ERole.User };
@@ -198,6 +199,7 @@ namespace ImmoGlobal.Helpers
       db.InvoicePositions.Add(_invoicePosition5);
       db.InvoicePositions.Add(_invoicePosition6);
       db.InvoicePositions.Add(_invoicePosition7);
+      db.BillReminders.Add(_billReminder);
       db.Users.Add(_user1);
       db.Users.Add(_user2);
       db.Users.Add(_user3);

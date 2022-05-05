@@ -8,7 +8,6 @@ namespace ImmoGlobal.ViewModels
 {
   internal class InvoicesOverviewViewModel : BaseViewModel
   {
-
     internal InvoicesOverviewViewModel()
     {
       InvoiceCollection = new ObservableCollection<Invoice>(DbController.GetAllInvoicesDB());
@@ -38,7 +37,7 @@ namespace ImmoGlobal.ViewModels
           MainWindowViewModelInstance.SelectedInvoice = _selectedInvoice;
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoVisibility = Visibility.Collapsed;
-          if (_selectedInvoice.InvoiceState == EInvoiceState.OverDue)
+          if (_selectedInvoice.DueDate < System.DateTime.Now && _selectedInvoice.InvoiceState == EInvoiceState.Released)
           {
             MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
             BillReminderCollection = new(DbController.GetBillRemindersToInvoiceDB(_selectedInvoice));
@@ -54,6 +53,7 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
+
     public ObservableCollection<InvoicePosition> InvoicePositionCollection
     {
       get => _invoicePositionCollection;
@@ -86,7 +86,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
     public BillReminder? SelectedBillReminder
     {
       get => _selectedBillReminder;

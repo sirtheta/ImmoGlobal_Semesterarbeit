@@ -76,8 +76,8 @@ namespace ImmoGlobal.ViewModels
         instance.SelectedBillReminder = null;
         instance.MenuBarViewModel.LogedInUserFullName = null;
         instance.NavigationStore.Clear();
+        instance.CheckForNavigation();
         IsEnabled = false;
-
       }
     }
 

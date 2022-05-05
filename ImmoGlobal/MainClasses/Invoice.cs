@@ -75,7 +75,6 @@ namespace ImmoGlobal.MainClasses
         {
           EInvoiceState.NotReleased => Application.Current.FindResource("notReleased") as string ?? "not Released",
           EInvoiceState.Released => Application.Current.FindResource("released") as string ?? "Released",
-          EInvoiceState.OverDue => Application.Current.FindResource("overDue") as string ?? "Over Due",
           EInvoiceState.Paid => Application.Current.FindResource("paid") as string ?? "Paid",
           EInvoiceState.Canceled => Application.Current.FindResource("canceled") as string ?? "Canceled",
           _ => "",

@@ -7,7 +7,6 @@
   {
     NotReleased,
     Released,
-    OverDue,
     Paid,
     Canceled
   }

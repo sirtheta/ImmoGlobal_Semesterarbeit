@@ -30,6 +30,15 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
+    public ObservableCollection<RentalContract>? RentalContractCollection
+    {
+      get => _rentalContractCollection;
+      set
+      {
+        _rentalContractCollection = value;
+        OnPropertyChanged();
+      }
+    }
 
     public ObservableCollection<Invoice>? InvoiceCollection
     {
@@ -40,13 +49,28 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
-    public ObservableCollection<RentalContract>? RentalContractCollection
+    public Invoice? SelectedInvoice
     {
-      get => _rentalContractCollection;
+      get => _selectedInvoice;
       set
       {
-        _rentalContractCollection = value;
+        if (_selectedInvoice != value && MainWindowViewModelInstance != null)
+        {
+          _selectedInvoice = value;
+          MainWindowViewModelInstance.SelectedInvoice = _selectedInvoice;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoVisibility = Visibility.Visible;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoWidth = 200;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTextTwo =
+             Application.Current.FindResource("editInvoice") as string ?? "Edit Invoice";
+          if (_selectedInvoice.DueDate < System.DateTime.Now && _selectedInvoice.InvoiceState == EInvoiceState.Released)
+          {
+            MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
+          }
+          else
+          {
+            MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
+          }
+        }
         OnPropertyChanged();
       }
     }
@@ -74,42 +98,12 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
-
-
     public RenterDetailsViewModel? SelectedRenterDetailsViewModel
     {
       get => _selectedRenterDetailsViewModel;
       set
       {
         _selectedRenterDetailsViewModel = value;
-        OnPropertyChanged();
-      }
-    }
-
-    public Invoice? SelectedInvoice
-    {
-      get => _selectedInvoice;
-      set
-      {
-        if (_selectedInvoice != value && MainWindowViewModelInstance != null)
-        {
-          _selectedInvoice = value;
-          MainWindowViewModelInstance.SelectedInvoice = _selectedInvoice;
-          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoVisibility = Visibility.Visible;
-          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoWidth = 200;
-          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTextTwo =
-             Application.Current.FindResource("editInvoice") as string ?? "Edit Invoice"; ;
-          if (_selectedInvoice.InvoiceState == EInvoiceState.OverDue)
-          {
-
-            MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
-          }
-          else
-          {
-            MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
-          }
-
-        }
         OnPropertyChanged();
       }
     }

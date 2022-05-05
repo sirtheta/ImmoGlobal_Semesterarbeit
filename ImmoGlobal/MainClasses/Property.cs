@@ -41,10 +41,34 @@ namespace ImmoGlobal.MainClasses
       return new(DbController.GetPropertyObjectsToPropertyDB(this));
     }
 
+    /// <summary>
+    /// get all invoice positions to Property
+    /// </summary>
+    /// <returns></returns>
     internal ICollection<InvoicePosition> GetInvoicePositions()
     {
       return DbController.GetInvoicePositionsToPropertyDB(this);
     }
+
+    /// <summary>
+    /// get a list of all invoices to the property
+    /// </summary>
+    /// <returns></returns>
+    internal List<Invoice>? GetAllInvoicesRelatedToProperty()
+    {
+      List<Invoice> invoices = new();
+      foreach (var item in GetPropertyObjects())
+      {
+        invoices = new(item.GetInvoicesOfPropertyObject());
+      }
+
+      foreach (var item in GetInvoicePositions())
+      {
+        invoices.Add(item.GetInvoiceToInvoicePosition());
+      }
+      return new List<Invoice>(invoices.DistinctBy(p => p.InvoiceId));
+    }
+
 
     private readonly List<RentalContract> _rentalContracts = new();
 
@@ -73,7 +97,7 @@ namespace ImmoGlobal.MainClasses
     }
 
     /// <summary>
-    /// Gets all inactive rental conracts in a prpoerty
+    /// Gets all inactive rental conracts in a property
     /// </summary>
     public int NumberOfInactiveContracts
     {
@@ -105,6 +129,31 @@ namespace ImmoGlobal.MainClasses
       {
         MainWindowViewModel.GetInstance.SelectedProperty = this;
         MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyObjectOverviewViewModel(GetPropertyObjects(), GetHouskeeper(), Description ?? "no description found");
+      }
+    }
+
+    // Set icon type and color if any invoice of the property object is overdue
+    public string IconKind
+    {
+      get
+      {
+        if (GetAllInvoicesRelatedToProperty().Where(x => x.DueDate < System.DateTime.Now && x.InvoiceState == EInvoiceState.Released).Any())
+        {
+          return "Error";
+        }
+        return "TickCircle";
+      }
+    }
+
+    public string IconColor
+    {
+      get
+      {
+        if (GetAllInvoicesRelatedToProperty().Where(x => x.DueDate < System.DateTime.Now && x.InvoiceState == EInvoiceState.Released).Any())
+        {
+          return "Red";
+        }
+        return "Green";
       }
     }
   }

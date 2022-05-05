@@ -45,6 +45,13 @@
                   <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="1"/>
                 </Border.Effect>
                 <StackPanel>
+                <materialDesign:PackIcon Grid.Column="1" 
+                                         HorizontalAlignment="Right" 
+                                         Kind="{Binding IconKind}" 
+                                         Foreground="{Binding IconColor}" 
+                                         Height="50"
+                                         Width="50" />
+                  
                   <TextBlock Text="{Binding Description}" 
                            Margin="10" 
                            FontFamily="{DynamicResource MaterialDesignFont}"/>

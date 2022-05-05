@@ -1,6 +1,5 @@
 ﻿using ImmoGlobal.MainClasses;
 using ImmoGlobal.MainClasses.Enum;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -20,15 +19,7 @@ namespace ImmoGlobal.ViewModels
 
     public ObservableCollection<Invoice>? InvoicesOfPropertyObject
     {
-      get
-      {
-        var invoices = new List<Invoice>();
-        foreach (var item in PropertyObject.GetInvoicePositions())
-        {
-          invoices.Add(item.GetInvoiceToInvoicePosition());
-        }
-        return new ObservableCollection<Invoice>(invoices.DistinctBy(p => p.InvoiceId));
-      }
+      get => new(PropertyObject.GetInvoicesOfPropertyObject());
     }
 
     public ObservableCollection<RentalContract>? RentalContracsOfPropertyObject
@@ -60,7 +51,7 @@ namespace ImmoGlobal.ViewModels
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoWidth = 200;
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditTextTwo =
              Application.Current.FindResource("editInvoice") as string ?? "Edit Invoice"; ;
-          if (_selectedInvoice.InvoiceState == EInvoiceState.OverDue)
+          if (_selectedInvoice.DueDate < System.DateTime.Now && _selectedInvoice.InvoiceState == EInvoiceState.Released)
           {
 
             MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;

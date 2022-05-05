@@ -235,7 +235,6 @@ namespace ImmoGlobal.ViewModels
           {
             {EInvoiceState.NotReleased, Application.Current.FindResource("notReleased") as string ?? "not Released" },
             {EInvoiceState.Released,Application.Current.FindResource("released") as string ?? "Released" },
-            {EInvoiceState.OverDue, Application.Current.FindResource("overDue") as string ?? "Over Due" },
             {EInvoiceState.Paid, Application.Current.FindResource("paid") as string ?? "Paid" },
             {EInvoiceState.Canceled, Application.Current.FindResource("canceled") as string ?? "Canceled" },
           };
@@ -245,7 +244,6 @@ namespace ImmoGlobal.ViewModels
           return new Dictionary<EInvoiceState, string>
           {
             {EInvoiceState.Released,Application.Current.FindResource("released") as string ?? "Released" },
-            {EInvoiceState.OverDue, Application.Current.FindResource("overDue") as string ?? "Over Due" },
             {EInvoiceState.Paid, Application.Current.FindResource("paid") as string ?? "Paid" },
             {EInvoiceState.Canceled, Application.Current.FindResource("canceled") as string ?? "Canceled" },
           };

@@ -35,11 +35,33 @@ namespace ImmoGlobal.MainClasses
       return DbController.GetInvoicePositionsToPropertyObjectDB(this);
     }
 
+    /// <summary>
+    /// returns all invoices related to the property object
+    /// </summary>
+    /// <returns></returns>
+    internal List<Invoice>? GetInvoicesOfPropertyObject()
+    {
+      var invoices = new List<Invoice>();
+      foreach (var item in GetInvoicePositions())
+      {
+        invoices.Add(item.GetInvoiceToInvoicePosition());
+      }
+      return new List<Invoice>(invoices.DistinctBy(p => p.InvoiceId));
+    }
+
+    /// <summary>
+    /// returns a collection of rental contracts related to the property
+    /// </summary>
+    /// <returns></returns>
     internal ICollection<RentalContract> GetRentalContractToObject()
     {
       return DbController.GetAllRentalContractsToPropertyObjectDB(this);
     }
 
+    /// <summary>
+    /// returns property relatet to this property object
+    /// </summary>
+    /// <returns></returns>
     internal Property? GetPropertyToPropertyObject()
     {
       return DbController.GetPropertyToPropertyObjectDB(this);
@@ -92,27 +114,22 @@ namespace ImmoGlobal.MainClasses
     {
       get => Fridge ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
     }
-
     public string DishwasherString
     {
       get => Dishwasher ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
     }
-
     public string StoveString
     {
       get => Stove ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
     }
-
     public string OvenString
     {
       get => Oven ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
     }
-
     public string WashingMachineString
     {
       get => WashingMachine ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
     }
-
     public string TumblerString
     {
       get => Tumbler ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
@@ -120,6 +137,31 @@ namespace ImmoGlobal.MainClasses
     public string? NumberOfKeysString
     {
       get => NumberOfKeys > 0 ? NumberOfKeys.ToString() : Application.Current.FindResource("none") as string ?? "none";
+    }
+
+    // Set icon type and color if any invoice of the property object is overdue
+    public string IconKind
+    {
+      get
+      {
+        if (GetInvoicesOfPropertyObject().Where(x => x.DueDate < System.DateTime.Now && x.InvoiceState == EInvoiceState.Released).Any())
+        {
+          return "Error";
+        }
+        return "TickCircle";
+      }
+    }
+
+    public string IconColor
+    {
+      get
+      {
+        if (GetInvoicesOfPropertyObject().Where(x => x.DueDate < System.DateTime.Now && x.InvoiceState == EInvoiceState.Released).Any())
+        {
+          return "Red";
+        }
+        return "Green";
+      }
     }
   }
 }
