@@ -29,7 +29,7 @@ Als Programmierumgebung wird Visual Studio 2022 verwendet. Die App basiert auf d
     \hline
     \textbf{Microsoft.EntityFrameWork Core.SqlServer} & 6.0.4 & Microsoft SQL Server database provider für Entity Framework Core\\
     \hline
-    \textbf{Notifications. Wpf. Core} & 1.4.0 & Toast notifications für WPF apps. Wird zum anzeigen von Toasts in der App verwendet \\
+    \textbf{Notifications. Wpf. Core} & 1.4.0 & Toast notifications für WPF apps. Wird zum Anzeigen von Toasts in der App verwendet \\
     \hline
 \end{tabulary}
 \caption{Verwendete NuGet-Pakete}
@@ -47,9 +47,9 @@ Die Applikation wird komplett im MVVM-Pattern aufgebaut. MVVM steht für Model-V
   \end{center}
 \end{figure}
 
-Somit besteht in der Applikation für jedes View ein ViewModel mit den entsprechenden Properties zum anbinden an das View.\\
+Somit besteht in der Applikation für jedes View ein ViewModel mit den entsprechenden Properties zum Anbinden an das View.\\
 Um die Applikation Mehrsprachig zu gestalten, wurden alle Texte in einer Ressourcen-Datei erfasst. Für jede Sprache die unterstützt werden soll, muss eine solche Datei angelegt werden. Beim Start der Applikation wird je nach Systemsprache die entsprechende Sprachdatei geladen. Hierzu wurde ein override der ''OnStartup'' Methode gemacht, welches die Sprachdatei lädt. (Siehe App.xaml.cs) Im Aktuellen Stand der Applikation wird nur deutsch oder als Default Englisch genommen.\\
-Für Demonstrationszwecke wurde ein Button im Side Menu Implementiert, welcher es ermöglicht die Sprache zur Laufzeit zwischen Deutsch und Englisch umzuschalten. Für die Demonstration wurden jedoch nur die Sprachschlüssel der Menu Bar auf Englisch übersetzt.
+Für Demonstrationszwecke wurde ein Button im Side Menu implementiert, welcher es ermöglicht die Sprache zur Laufzeit zwischen Deutsch und Englisch umzuschalten. Für die Demonstration wurden jedoch nur die Sprachschlüssel der Menu Bar auf Englisch übersetzt.
  
 \newpage
 \subsection{GUI-Implementierung}
@@ -62,16 +62,16 @@ Das Main-GUI ist in drei Bereiche durch ein Grid aufgeteilt, wie in der Grafik \
     \label{guiGrid}
   \end{center}
 \end{figure}
-Die MenuArea und die SideMenuArea werden beim Start der Applikaton durch das entsprechende ViewModel abgefüllt, und als Singleton-Instanz gehalten, auf welche immer über das MainWindowViewModel zugegriffen werden kann. Im seitlichen Menü werden je nach dem welches ViewModel in der MainArea geladen ist, die Buttons entsprechend angepasst und in der Menu Bar wird das Icon rot eingefärbt wenn das entsprechende ViewModel in der MainArea geladen ist. So kann die Applikation sehr Dynamisch und übersichtlich gestaltet werden.
-Alle Views bis auf das MainWindowView sind als UserControl definiert und können an beliebiger stelle in der Applikation eingebunden werden, was das wiederverwenden der Module deutlich vereinfacht.
+Die MenuArea und die SideMenuArea werden beim Start der Applikation durch das entsprechende ViewModel abgefüllt, und als Singleton-Instanz gehalten, auf welche immer über das MainWindowViewModel zugegriffen werden kann. Im seitlichen Menü werden je nach dem welches ViewModel in der MainArea geladen ist, die Buttons entsprechend angepasst und in der Menu Bar wird das Icon rot eingefärbt, wenn das entsprechende ViewModel in der MainArea geladen ist. So kann die Applikation sehr Dynamisch und übersichtlich gestaltet werden.
+Alle Views bis auf das MainWindowView sind als UserControl definiert und können an beliebiger Stelle in der Applikation eingebunden werden, was das Wiederverwenden der Module deutlich vereinfacht.
 
 \subsubsection{Namenskonzept für GUI-Komponenten}
-Für das GUI werden verschieden Namen verwendet welche hier beschrieben werden.
+Für das GUI werden verschieden Namen verwendet, welche hier beschrieben werden.
 \begin{itemize}
   \item \textbf{DetailsView:} Definiert kleinere Module für Detailanzeigen wie z.B. die Detailanzeige für den Mieter
   \item \textbf{Menu:} Definiert die Menus
   \item \textbf{Overview:} Definiert die Views für die Übersichten
-  \item \textbf{Upsert:} Definiert die Views für Update und Insert, z.B wird ein View zum erstellen eines Mieters (Insert) und zum anpassen eines Mieters verwendet.
+  \item \textbf{Upsert:} Definiert die Views für Update und Insert, z.B wird ein View zum Erstellen eines Mieters (Insert) und zum Anpassen eines Mieters verwendet.
 \end{itemize}
 
 \newpage
@@ -91,7 +91,6 @@ Aus Performancegründen wäre es bei einer Definitiven Applikation besser, wenn 
 Automatisierte Tests wurden im Rahmen dieser Semesterarbeit keine umgesetzt. Für eine Real-World Applikation wären diese aber zwingend notwendig.
 
 Hier werden als Testprotokoll alle in Kapitel \ref{testfaelle} definierten Testfälle mit ihrem Ist-Ergebnis dargestellt. Alle Testfälle wurden manuell durchgeführt
-
 
 \begin{table}[H]
   \centering
@@ -131,3 +130,9 @@ Hier werden als Testprotokoll alle in Kapitel \ref{testfaelle} definierten Testf
   \end{tabulary}
   \caption{Testprotokoll}
 \end{table}
+
+\subsection{Deployment}
+Als versuch für ein Deployment habe ich im DevOps eine BuildPipeline eingerichtet, welche ein Setup erstellt und dann als Artifact published, welches anschliessend heruntergeladen und Installiert werden kann.
+
+\subsubsection{Link zum Repository}
+Die komplette Semesterarbeit ist unter diesem Link abrufbar: \href{https://dev.azure.com/michaelneuhaus/Semesterarbeit/}{Link zum DevOps Projekt}
