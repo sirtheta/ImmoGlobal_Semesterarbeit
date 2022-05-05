@@ -11,7 +11,7 @@ namespace ImmoGlobal.MainClasses
     /// model for the rental contract
     /// </summary>
     public int RentalContractId { get; set; }
-    public Persona? Renter { get; set; }
+    public Persona Renter { get; set; }
     public PropertyObject? PropertyObject { get; set; }
     public DateTime RentStartDate { get; set; }
     public DateTime? RentEndDate { get; set; }
@@ -24,7 +24,7 @@ namespace ImmoGlobal.MainClasses
       get => GetRenter()?.FullName ?? "";
     }
 
-    internal Persona? GetRenter()
+    internal Persona GetRenter()
     {
       return DbController.GetRenterToRentalContractDB(this);
     }

@@ -17,9 +17,7 @@ namespace ImmoGlobal.Database
     internal static User? GetUserFromDb(string email)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.Users
-              where p.Email == email
-              select p).SingleOrDefault();
+      return db.Users.FirstOrDefault(u => u.Email == email);
     }
 
     #region Get Invoice
@@ -30,8 +28,7 @@ namespace ImmoGlobal.Database
     internal static ICollection<Invoice> GetAllInvoicesDB()
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.Invoices
-              select p).ToList();
+      return db.Invoices.ToList();
     }
 
     /// <summary>
@@ -42,9 +39,7 @@ namespace ImmoGlobal.Database
     internal static Invoice GetInvoiceToPositionDB(InvoicePosition invoicePosition)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.Invoices
-              where p.InvoicePositions.Contains(invoicePosition)
-              select p).First();
+      return db.Invoices.First(i => i.InvoicePositions.Contains(invoicePosition));
     }
 
     /// <summary>
@@ -55,9 +50,7 @@ namespace ImmoGlobal.Database
     internal static ICollection<Invoice> GetInvoiceToPersonaDB(Persona persona)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.Invoices
-              where p.Persona == persona
-              select p).ToList();
+      return db.Invoices.Where(i => i.Persona == persona).ToList();
     }
 
     #endregion  
@@ -71,9 +64,7 @@ namespace ImmoGlobal.Database
     internal static ICollection<InvoicePosition> GetInvoicePositionsToPropertyObjectDB(PropertyObject propertyObject)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.InvoicePositions
-              where p.PropertyObject == propertyObject
-              select p).ToList();
+      return db.InvoicePositions.Where(i => i.PropertyObject == propertyObject).ToList();
     }
 
     /// <summary>
@@ -84,9 +75,7 @@ namespace ImmoGlobal.Database
     internal static ICollection<InvoicePosition> GetInvoicePositionsToPropertyDB(Property property)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.InvoicePositions
-              where p.Property == property
-              select p).ToList();
+      return db.InvoicePositions.Where(i => i.Property == property).ToList();
     }
 
     /// <summary>
@@ -97,9 +86,7 @@ namespace ImmoGlobal.Database
     internal static ICollection<InvoicePosition> GetInvoicePositionsToInvoiceDB(Invoice invoice)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.InvoicePositions
-              where p.Invoice == invoice
-              select p).ToList();
+      return db.InvoicePositions.Where(i => i.Invoice == invoice).ToList();
     }
     #endregion
 
@@ -111,8 +98,7 @@ namespace ImmoGlobal.Database
     internal static ICollection<PropertyObject> GetAllPropertyObjectsDB()
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.PropertyObjects
-              select p).ToList();
+      return db.PropertyObjects.ToList();
     }
 
     /// <summary>
@@ -123,9 +109,7 @@ namespace ImmoGlobal.Database
     internal static ICollection<PropertyObject> GetPropertyObjectsToPropertyDB(Property property)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.PropertyObjects
-              where p.Property == property
-              select p).ToList();
+      return db.PropertyObjects.Where(p => p.Property == property).ToList();
     }
 
     /// <summary>
@@ -136,9 +120,7 @@ namespace ImmoGlobal.Database
     internal static PropertyObject? GetPropertyObjectToRentalContractDB(RentalContract contract)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.PropertyObjects
-              where p.RentalContracts.Contains(contract)
-              select p).FirstOrDefault();
+      return db.PropertyObjects.FirstOrDefault(p => p.RentalContracts.Contains(contract));
     }
 
     /// <summary>
@@ -149,9 +131,7 @@ namespace ImmoGlobal.Database
     internal static PropertyObject? GetPropertyObjectToInvoicePosition(InvoicePosition invoicePosition)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.InvoicePositions
-              where p == invoicePosition
-              select p.PropertyObject).FirstOrDefault();
+      return db.InvoicePositions.Where(i => i == invoicePosition).Select(p => p.PropertyObject).FirstOrDefault();
     }
     #endregion
 
@@ -164,9 +144,7 @@ namespace ImmoGlobal.Database
     internal static Property? GetPropertyToInvoicePosition(InvoicePosition invoicePosition)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.InvoicePositions
-              where p == invoicePosition
-              select p.Property).FirstOrDefault();
+      return db.InvoicePositions.Where(i => i == invoicePosition).Select(p => p.Property).FirstOrDefault();
     }
 
     /// <summary>
@@ -177,9 +155,7 @@ namespace ImmoGlobal.Database
     internal static Property GetPropertyToPropertyObjectDB(PropertyObject propertyObject)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.PropertyObjects
-              where p == propertyObject
-              select p.Property).First();
+      return db.PropertyObjects.Where(p => p == propertyObject).Select(p => p.Property).First();
     }
 
     /// <summary>
@@ -203,8 +179,7 @@ namespace ImmoGlobal.Database
     internal static ICollection<RentalContract> GetAllRentalContractsDB()
     {
       using var db = new ImmoGlobalContext();
-      return (from r in db.RentalContracts
-              select r).ToList();
+      return db.RentalContracts.ToList();
     }
 
     /// <summary>
@@ -215,9 +190,7 @@ namespace ImmoGlobal.Database
     internal static ICollection<RentalContract> GetAllRentalContractsToPropertyObjectDB(PropertyObject propertyObject)
     {
       using var db = new ImmoGlobalContext();
-      return (from r in db.RentalContracts
-              where r.PropertyObject == propertyObject
-              select r).ToList();
+      return db.RentalContracts.Where(r => r.PropertyObject == propertyObject).ToList();
     }
 
     /// <summary>
@@ -228,9 +201,7 @@ namespace ImmoGlobal.Database
     internal static ICollection<RentalContract> GetRentalContractsToPersonDB(Persona persona)
     {
       using var db = new ImmoGlobalContext();
-      return (from r in db.RentalContracts
-              where r.Renter == persona
-              select r).ToList();
+      return db.RentalContracts.Where(r => r.Renter == persona).ToList();
     }
     #endregion
 
@@ -243,9 +214,7 @@ namespace ImmoGlobal.Database
     internal static Persona GetRenterToRentalContractDB(RentalContract rentalContract)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.RentalContracts
-              where p == rentalContract
-              select p.Renter).First();
+      return db.RentalContracts.Where(r => r == rentalContract).Select(p => p.Renter).First();
     }
 
     /// <summary>
@@ -256,9 +225,7 @@ namespace ImmoGlobal.Database
     internal static Persona GetPersonaToInvoiceDB(Invoice invoice)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.Invoices
-              where p == invoice
-              select p.Persona).First();
+      return db.Invoices.Where(i => i == invoice).Select(p => p.Persona).First();
     }
 
     /// <summary>
@@ -269,9 +236,7 @@ namespace ImmoGlobal.Database
     internal static Persona GetHouskeeperToPropertyDB(Property property)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.Properties
-              where p == property
-              select p.Housekeeper).First();
+      return db.Properties.Where(p => p == property).Select(h => h.Housekeeper).First();
     }
     /// <summary>
     /// returns all renters from DB
@@ -280,9 +245,7 @@ namespace ImmoGlobal.Database
     internal static ICollection<Persona> GetAllRentersDB()
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.Personas
-              where p.IsRenter
-              select p).ToList();
+      return db.Personas.Where(p => p.IsRenter).ToList();
     }
 
     /// <summary>
@@ -292,9 +255,7 @@ namespace ImmoGlobal.Database
     internal static IEnumerable<Persona> GetAllCreditorsDB()
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.Personas
-              where p.IsCreditor
-              select p).ToList();
+      return db.Personas.Where(p => p.IsCreditor).ToList();
     }
 
     /// <summary>
@@ -317,16 +278,14 @@ namespace ImmoGlobal.Database
     internal static Account GetAccountToInvoicePositionDB(InvoicePosition invoicePosition)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.InvoicePositions
-              where p == invoicePosition
-              select p.Account).First();
+      return db.InvoicePositions.Where(i => i == invoicePosition).Select(a => a.Account).First();
     }
 
     /// <summary>
     /// return all accounts from DB
     /// </summary>
     /// <returns></returns>
-    internal static IEnumerable<Account> GetAllAccountsDB()
+    internal static ICollection<Account> GetAllAccountsDB()
     {
       using var db = new ImmoGlobalContext();
       return db.Accounts.ToList();
@@ -339,13 +298,10 @@ namespace ImmoGlobal.Database
     /// <param name="account"></param>
     /// <returns></returns>
     /// <exception></exception>
-    internal static IEnumerable<PaymentRecord> GetIncomeToAccountDB(Account account)
+    internal static ICollection<PaymentRecord> GetIncomeToAccountDB(Account account)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.PaymentRecords
-              where p.Account == account
-              where p.IncomeAmount != null
-              select p).ToList();
+      return db.PaymentRecords.Where(p => p.Account == account).Where(i => i.IncomeAmount != null).ToList();
     }
 
     /// <summary>
@@ -354,13 +310,10 @@ namespace ImmoGlobal.Database
     /// <param name="account"></param>
     /// <returns></returns>
     /// <exception></exception>
-    internal static IEnumerable<PaymentRecord> GetExpenseToAccountDB(Account account)
+    internal static ICollection<PaymentRecord> GetExpenseToAccountDB(Account account)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.PaymentRecords
-              where p.Account == account
-              where p.ExpenseAmount != null
-              select p).ToList();
+      return db.PaymentRecords.Where(p => p.Account == account).Where(i => i.ExpenseAmount != null).ToList();
     }
     #endregion
 
@@ -372,9 +325,7 @@ namespace ImmoGlobal.Database
     internal static ICollection<BillReminder>? GetBillRemindersToInvoiceDB(Invoice invoice)
     {
       using var db = new ImmoGlobalContext();
-      return (from p in db.BillReminders
-              where p.Invoice == invoice
-              select p).ToList();
+      return db.BillReminders.Where(b => b.Invoice == invoice).ToList();
     }
 
     #region Insert and Edit
