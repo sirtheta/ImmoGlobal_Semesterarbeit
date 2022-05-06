@@ -13,15 +13,15 @@ Als Programmierumgebung wird Visual Studio 2022 verwendet. Die App basiert auf d
 \subsubsection{Verwendete NuGet-Pakete}
 \begin{table}[H]
   \centering
-  \settowidth\tymin{\textbf{Version}}
+  \settowidth\tymin{\textbf{MaterialDesignTheme}}
   \setlength\extrarowheight{2pt}
-    \begin{tabulary}{1.0\textwidth}{|m{5cm}|C|L|}
+    \begin{tabulary}{1.0\textwidth}{|L|C|L|}
       \hline
       \rowcolor[HTML]{4473C5}\textbf{Paket} & \textbf{Version} & \textbf{Beschreibung}\\
     \hline
     \textbf{FontAwesome6. Svg} & 2.0.2 & SVG-Icon Bibliothek, wird für die Icons in der MenuBar verwendet.\\
     \hline
-    \textbf{MaterialDesign MessageBox.SirTheta} & 1.1.3 & Eine Messagebox welche das Material Design Theme verwendet. Die Standard Messagebox passt nicht zu der sonst nach Material-Design aufgebauten Applikation. Dieses NuGet-Paket wurde von mir selber erstellt. Der Sourcecode dazu ist auf GitHub unter \href{https://github.com/sirtheta/MaterialDesignMessageBox}{https://github.com/sirtheta/MaterialDesignMessageBox} verfügbar und kann frei verwendet werden\\
+    \textbf{MaterialDesign MessageBox. SirTheta} & 1.1.3 & Eine Messagebox welche das Material Design Theme verwendet. Die Standard Messagebox passt nicht zu der sonst nach Material-Design aufgebauten Applikation. Dieses NuGet-Paket wurde von mir selber erstellt. Der Sourcecode dazu ist auf GitHub unter \href{https://github.com/sirtheta/MaterialDesignMessageBox}{https://github.com/sirtheta/MaterialDesignMessageBox} verfügbar und kann frei verwendet werden\\
     \hline
     \textbf{MaterialDesignTheme} & 4.5.0 & Wird für die GUI-Darstellung verwendet. Enthält Material Design Templates und Styles für WPF Controls in .NET\\
     \hline
@@ -30,6 +30,8 @@ Als Programmierumgebung wird Visual Studio 2022 verwendet. Die App basiert auf d
     \textbf{Microsoft.EntityFrameWork Core.SqlServer} & 6.0.4 & Microsoft SQL Server database provider für Entity Framework Core\\
     \hline
     \textbf{Notifications. Wpf. Core} & 1.4.0 & Toast notifications für WPF apps. Wird zum Anzeigen von Toasts in der App verwendet \\
+    \hline
+    \textbf{Microsoft.Xaml. Behaviors.Wpf} & 1.1.39 & Behaviors für XAML. Wird z.B. für das Binding von einem Trigger, wie das Loaded Event verwendet\\
     \hline
 \end{tabulary}
 \caption{Verwendete NuGet-Pakete}
