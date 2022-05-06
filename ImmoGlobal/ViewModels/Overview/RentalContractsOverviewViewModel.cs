@@ -7,11 +7,11 @@ namespace ImmoGlobal.ViewModels
 {
   internal class RentalContractsOverviewViewModel : BaseViewModel
   {
-    internal RentalContractsOverviewViewModel()
+    internal override void OnLoadedEvent(object obj)
     {
-      RentalContractCollection = new ObservableCollection<RentalContract>(DbController.GetAllRentalContractsDB());
+      RentalContractCollection = new(DbController.GetAllRentalContractsDB());
+      OnPropertyChanged(nameof(RentalContractCollection));
     }
-
     public ObservableCollection<RentalContract> RentalContractCollection { get; set; }
 
     private RentalContract? _selectedContract;
@@ -29,5 +29,6 @@ namespace ImmoGlobal.ViewModels
         OnPropertyChanged();
       }
     }
+
   }
 }

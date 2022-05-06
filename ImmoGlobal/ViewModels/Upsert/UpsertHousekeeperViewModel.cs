@@ -15,7 +15,6 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     internal UpsertHousekeeperViewModel()
     {
-
       //set the title of the form
       FormTitel = Application.Current.FindResource("addNewHousekeeper") as string ?? "create new housekeeper";
     }
@@ -189,12 +188,13 @@ namespace ImmoGlobal.ViewModels
       if (Id == null && CreatePersona(phone, mobilePhone, zipCode))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddhousekeeperr") as string ?? "Housekeeper added successfully", NotificationType.Success);
-        ClearValues();
+        MainWindowViewModelInstance.NavigateBack();
       }
       // Update Perrsona
       else if (Id != null && UpdatePersona(phone, mobilePhone, zipCode, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateHousekeeper") as string ?? "Housekeeper updated successfully", NotificationType.Success);
+        MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
@@ -245,28 +245,22 @@ namespace ImmoGlobal.ViewModels
     /// <returns></returns>
     private bool UpdatePersona(long phone, long mobilePhone, int zipCode, int personaId)
     {
-      if (DbController.UpsertPersonaToDB(new Persona(LastName, FirstName, phone, Email, Address, zipCode, City, AccountNumber, mobilePhone, personaId)))
+      SelectedHousekeeper.LastName = LastName;
+      SelectedHousekeeper.FirstName = FirstName;
+      SelectedHousekeeper.Phone = phone;
+      SelectedHousekeeper.Email = Email;
+      SelectedHousekeeper.Address = Address;
+      SelectedHousekeeper.Zip = zipCode;
+      SelectedHousekeeper.City = City;
+      SelectedHousekeeper.AccountNumber = AccountNumber;
+      SelectedHousekeeper.Phone = mobilePhone;
+      SelectedHousekeeper.PersonaId = personaId;
+
+      if (DbController.UpsertPersonaToDB(SelectedHousekeeper))
       {
         return true;
       }
       return false;
     }
-
-    /// <summary>
-    /// Sets all properties to null
-    /// </summary>
-    private void ClearValues()
-    {
-      FirstName = string.Empty;
-      LastName = string.Empty;
-      Phone = string.Empty;
-      MobilePhone = string.Empty;
-      Email = string.Empty;
-      Address = string.Empty;
-      Zip = string.Empty;
-      City = string.Empty;
-      AccountNumber = string.Empty;
-    }
-
   }
 }

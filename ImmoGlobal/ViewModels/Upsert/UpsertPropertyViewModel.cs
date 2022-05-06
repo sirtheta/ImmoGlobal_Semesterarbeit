@@ -169,12 +169,13 @@ namespace ImmoGlobal.ViewModels
       if (Id == null && CreateProperty(zipCode))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddProperty") as string ?? "Property added successfully", NotificationType.Success);
-        ClearValues();
+        MainWindowViewModelInstance.NavigateBack();
       }
       // Update Property
       else if (Id != null && UpdateProperty(zipCode, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateProperty") as string ?? "Property added successfully", NotificationType.Success);
+        MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
@@ -229,37 +230,20 @@ namespace ImmoGlobal.ViewModels
     /// <returns></returns>
     private bool UpdateProperty(int zipCode, int propertyId)
     {
-      if (DbController.UpsertPropertyToDB(new Property()
-      {
-        PropertyId = propertyId,
-        Description = _description,
-        Address = _address,
-        ZipCode = zipCode,
-        City = _city,
-        PropertyInsurance = _propertyInsurance,
-        PersonInsurance = _personInsurance,
-        LiabilityInsurance = _liabilityInsurance,
-        Housekeeper = _housekeeper
-      }))
+      Property.PropertyId = propertyId;
+      Property.Description = _description;
+      Property.Address = _address;
+      Property.ZipCode = zipCode;
+      Property.City = _city;
+      Property.PropertyInsurance = _propertyInsurance;
+      Property.PersonInsurance = _personInsurance;
+      Property.LiabilityInsurance = _liabilityInsurance;
+      Property.Housekeeper = _housekeeper;
+      if (DbController.UpsertPropertyToDB(Property))
       {
         return true;
       }
       return false;
-    }
-
-    /// <summary>
-    /// Sets all properties to null
-    /// </summary>
-    private void ClearValues()
-    {
-      Description = string.Empty;
-      Address = string.Empty;
-      ZipCode = string.Empty;
-      City = string.Empty;
-      PropertyInsurance = string.Empty;
-      PersonInsurance = string.Empty;
-      LiabilityInsurance = string.Empty;
-      Housekeeper = null;
     }
   }
 }

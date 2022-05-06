@@ -9,14 +9,23 @@ namespace ImmoGlobal.ViewModels
 {
   internal class InvoicePositionViewModel : BaseViewModel
   {
+    /// <summary>
+    /// c'tor to create a new invoice position
+    /// </summary>
     internal InvoicePositionViewModel()
     {
       PropertyCollection = new(DbController.GetAllPropertiesDB());
       AccountCollection = new(DbController.GetAllAccountsDB());
     }
 
+    /// <summary>
+    /// c'tor for editing an existing invoice position
+    /// </summary>
+    /// <param name="invoicePosition"></param>
     internal InvoicePositionViewModel(InvoicePosition invoicePosition)
     {
+      InvoicePosition = invoicePosition;
+
       PropertyCollection = new(DbController.GetAllPropertiesDB());
       AccountCollection = new(DbController.GetAllAccountsDB());
 
@@ -39,6 +48,7 @@ namespace ImmoGlobal.ViewModels
     private double _value;
     private EAdditionalCosts? _additionalCosts;
 
+    internal InvoicePosition InvoicePosition { get; set; }
     public InvoicePositionViewModel InvoicePositionViewModelContent { get => this; }
     public int InvoicePositionNumber
     {

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ImmoGlobal.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:viewmodels="clr-namespace:ImmoGlobal.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:PropertyObjectViewModel}"
              mc:Ignorable="d" 
@@ -12,6 +13,12 @@
              d:DesignHeight="650" 
              d:DesignWidth="1200"
              TextOptions.TextFormattingMode="Display">
+
+  <i:Interaction.Triggers>
+    <i:EventTrigger EventName="Loaded">
+      <i:InvokeCommandAction Command="{Binding UserControlLoaded}"/>
+    </i:EventTrigger>
+  </i:Interaction.Triggers>
 
   <ScrollViewer VerticalScrollBarVisibility="Auto" UseLayoutRounding="True">
     <Grid>
@@ -177,7 +184,7 @@
             </Grid>
           </Grid>
         </Border>
-        
+
         <!--Renter details-->
         <Border Grid.Row="0" Grid.Column="1" CornerRadius="2"
                 Margin="10,0,0,0"
@@ -295,11 +302,11 @@
                 <DataGridTextColumn Header="{DynamicResource invoiceDate}"         
                                 IsReadOnly="True" 
                                 Binding="{Binding InvoiceDate, StringFormat=\{0:dd.MM.yyyy\}}"/>
-                
+
                 <DataGridTextColumn Header="{DynamicResource invoiceValue}"           
                                 IsReadOnly="True" 
                                 Binding="{Binding TotalValue, StringFormat={}{0:0.00}}"/>
-                
+
                 <DataGridTextColumn Header="{DynamicResource invoicePurpose}"        
                                 IsReadOnly="True" 
                                 Binding="{Binding InvoicePurpose}"/>
@@ -307,7 +314,7 @@
                 <DataGridTextColumn Header="{DynamicResource invoiceCategory}"      
                                 IsReadOnly="True" 
                                 Binding="{Binding InvoiceCategoryString, Mode=OneWay}"/>
-                
+
                 <DataGridTextColumn Header="{DynamicResource invoiceState}"        
                                 IsReadOnly="True" 
                                 Binding="{Binding InvoiceStateString}" />

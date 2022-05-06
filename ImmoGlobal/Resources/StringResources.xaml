@@ -191,9 +191,12 @@
     <system:String x:Key="singnedContract">unterschriebener Vertrag</system:String>
     <system:String x:Key="canceledContract">gekündeter Vertrag</system:String>
 
+    <system:String x:Key="errorDeleteRentalContract">Fehler beim löschen des Mietvertrages</system:String>
+    <system:String x:Key="successDeleteRentalContract">Löschen des Mietvertrages erfolgreich</system:String>
     <system:String x:Key="successAddRentalContract">Mietvertrag erfolgreich hinzugefügt!</system:String>
     <system:String x:Key="successUpdateRentalContract">Update des Mietvertrags erfolgreich!</system:String>
     <system:String x:Key="errorAddRentalContract">Speichern des Mietvertrags fehlgeschlagen!</system:String>
+    <system:String x:Key="errorActivContract">Es kann kein zweiter, aktiver Mietvertrag für dieses Mietobjekt hinzugefügt werden</system:String>
     <system:String x:Key="errorRent">Bitte eine gültige Miete eingeben!</system:String>
 
     <system:String x:Key="accountsOverview">Übersicht der Konten</system:String>
@@ -248,6 +251,7 @@
     <system:String x:Key="addNewBillReminder">Neue Mahnung erstellen</system:String>
     <system:String x:Key="editBillReminder">Mahnung bearbeiten</system:String>
 
+    <system:String x:Key="back">Zurück</system:String>
 
     <system:String x:Key="loginSuccessfull">Login erfolgreich</system:String>
     <system:String x:Key="loginFailed">Login fehlgeschlagen! Email oder Passwort nicht gefunden!</system:String>

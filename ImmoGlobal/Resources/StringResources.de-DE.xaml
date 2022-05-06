@@ -159,8 +159,6 @@
   <system:String x:Key="errorDeletePropertyObject">Fehler beim löschen des Objekts</system:String>
   <system:String x:Key="successDeletePropertyObject">Löschen des Objekts erfolgreich!</system:String>
 
-  <system:String x:Key="errorDeleteRentalContract">Fehler beim löschen des Mietvertrages</system:String>
-  <system:String x:Key="successDeleteRentalContract">Löschen des Mietvertrages erfolgreich</system:String>
 
   <system:String x:Key="successAddPropertyObject">Objekt erfolgreich hinzugefügt!</system:String>
   <system:String x:Key="successUpdatePropertyObject">Update des Objekts erfolgreich!</system:String>
@@ -193,9 +191,12 @@
   <system:String x:Key="singnedContract">unterschriebener Vertrag</system:String>
   <system:String x:Key="canceledContract">gekündeter Vertrag</system:String>
 
+  <system:String x:Key="errorDeleteRentalContract">Fehler beim löschen des Mietvertrages</system:String>
+  <system:String x:Key="successDeleteRentalContract">Löschen des Mietvertrages erfolgreich</system:String>
   <system:String x:Key="successAddRentalContract">Mietvertrag erfolgreich hinzugefügt!</system:String>
   <system:String x:Key="successUpdateRentalContract">Update des Mietvertrags erfolgreich!</system:String>
   <system:String x:Key="errorAddRentalContract">Speichern des Mietvertrags fehlgeschlagen!</system:String>
+  <system:String x:Key="errorActivContract">Es kann kein zweiter, aktiver Mietvertrag für dieses Mietobjekt hinzugefügt werden</system:String>
   <system:String x:Key="errorRent">Bitte eine gültige Miete eingeben!</system:String>
 
   <system:String x:Key="accountsOverview">Übersicht der Konten</system:String>

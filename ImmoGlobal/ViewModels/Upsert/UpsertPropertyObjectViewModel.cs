@@ -36,6 +36,8 @@ namespace ImmoGlobal.ViewModels
     internal UpsertPropertyObjectViewModel(Property selectedProperty, PropertyObject propertyObject)
     {
       BtnDeleteVisibility = Visibility.Visible;
+
+      PropertyObject = propertyObject;
       Id = propertyObject.PropertyObjectId;
       Property = selectedProperty;
       Description = propertyObject.Description;
@@ -72,6 +74,7 @@ namespace ImmoGlobal.ViewModels
     private bool _washingMachine;
     private bool _tumbler;
 
+    private PropertyObject PropertyObject { get; set; }
     public string? Description
     {
       get => _description;
@@ -255,11 +258,12 @@ namespace ImmoGlobal.ViewModels
       if (Id == null && CreatePropertyObject(numberOfRooms, area, numberOfKeys))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddProperty") as string ?? "Property added successfully", NotificationType.Success);
-        ClearValues();
+        MainWindowViewModelInstance.NavigateBack();
       }
       else if (Id != null && UpdatePropertyObject(numberOfRooms, area, numberOfKeys, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdatePropertyObject") as string ?? "Property added successfully", NotificationType.Success);
+        MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
@@ -321,45 +325,26 @@ namespace ImmoGlobal.ViewModels
     /// <returns></returns>
     private bool UpdatePropertyObject(double numberOfRooms, double area, int numberOfKeys, int propertyObjectId)
     {
-      if (DbController.UpsertPropertyObjectDB(new PropertyObject()
-      {
-        PropertyObjectId = propertyObjectId,
-        Property = _property,
-        Description = _description,
-        ObjectType = _objectType,
-        Location = _location,
-        NumberOfRooms = numberOfRooms,
-        Area = area,
-        NumberOfKeys = numberOfKeys,
-        Fridge = _fridge,
-        Dishwasher = _dishwasher,
-        Stove = _stove,
-        Oven = _oven,
-        WashingMachine = _washingMachine,
-        Tumbler = _tumbler,
-      }))
+      PropertyObject.PropertyObjectId = propertyObjectId;
+      PropertyObject.Property = _property;
+      PropertyObject.Description = _description;
+      PropertyObject.ObjectType = _objectType;
+      PropertyObject.Location = _location;
+      PropertyObject.NumberOfRooms = numberOfRooms;
+      PropertyObject.Area = area;
+      PropertyObject.NumberOfKeys = numberOfKeys;
+      PropertyObject.Fridge = _fridge;
+      PropertyObject.Dishwasher = _dishwasher;
+      PropertyObject.Stove = _stove;
+      PropertyObject.Oven = _oven;
+      PropertyObject.WashingMachine = _washingMachine;
+      PropertyObject.Tumbler = _tumbler;
+
+      if (DbController.UpsertPropertyObjectDB(PropertyObject))
       {
         return true;
       }
       return false;
-    }
-
-    /// <summary>
-    /// Sets all properties to null
-    /// </summary>
-    private void ClearValues()
-    {
-      Description = string.Empty;
-      Location = string.Empty;
-      NumberOfRooms = string.Empty;
-      Area = string.Empty;
-      NumberOfKeys = string.Empty;
-      Fridge = false;
-      Dishwasher = false;
-      Stove = false;
-      Oven = false;
-      WashingMachine = false;
-      Tumbler = false;
     }
   }
 }

@@ -14,7 +14,7 @@ namespace ImmoGlobal.MainClasses
   internal class Property
   {
     public int PropertyId { get; set; }
-    public string? Description { get; set; }
+    public string Description { get; set; }
     public string Address { get; set; }
     public int ZipCode { get; set; }
     public string City { get; set; }
@@ -36,9 +36,9 @@ namespace ImmoGlobal.MainClasses
     /// gets all PropertyObjects of the Property
     /// </summary>
     /// <returns></returns>
-    internal List<PropertyObject> GetPropertyObjects()
+    internal ICollection<PropertyObject> GetPropertyObjects()
     {
-      return new(DbController.GetPropertyObjectsToPropertyDB(this));
+      return DbController.GetPropertyObjectsToPropertyDB(this);
     }
 
     /// <summary>
@@ -128,7 +128,7 @@ namespace ImmoGlobal.MainClasses
       if (MainWindowViewModel.GetInstance != null)
       {
         MainWindowViewModel.GetInstance.SelectedProperty = this;
-        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyObjectOverviewViewModel(GetPropertyObjects(), GetHouskeeper(), Description ?? "no description found");
+        MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyObjectOverviewViewModel();
       }
     }
 

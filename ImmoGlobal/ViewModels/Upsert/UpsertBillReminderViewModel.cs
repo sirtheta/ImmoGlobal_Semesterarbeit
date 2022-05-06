@@ -27,6 +27,7 @@ namespace ImmoGlobal.ViewModels
     /// <param name="billReminder"></param>
     internal UpsertBillReminderViewModel(BillReminder billReminder)
     {
+      BillReminder = billReminder;
       Id = billReminder.BillReminderId;
 
       ReminderDate = billReminder.ReminderDate;
@@ -42,6 +43,7 @@ namespace ImmoGlobal.ViewModels
     private DateTime _reminderDate;
     private string _reminderText;
 
+    private BillReminder BillReminder { get; set; }
     public string ReminderAmount
     {
       get => _reminderAmount;
@@ -72,7 +74,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-    internal Invoice SelectedInvoice { get; set; }
+    //internal Invoice SelectedInvoice { get; set; }
 
     internal override void SaveClicked(object obj)
     {
@@ -92,12 +94,13 @@ namespace ImmoGlobal.ViewModels
       if (Id == null && CreateBillReminder(reminderAmount))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddBillReminder") as string ?? "BillReminder added successfully", NotificationType.Success);
-        ClearValues();
+        MainWindowViewModelInstance.NavigateBack();
       }
       // Update bill reminder
       else if (Id != null && UpdateBillReminder(reminderAmount, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateBillReminder") as string ?? "BillReminder updated successfully", NotificationType.Success);
+        MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
@@ -143,27 +146,16 @@ namespace ImmoGlobal.ViewModels
     /// <returns></returns>
     private bool UpdateBillReminder(double reminderAmount, int reminderId)
     {
-      if (DbController.UpsertBillReminderToDB(new BillReminder
-      {
-        BillReminderId = reminderId,
-        ReminderAmount = reminderAmount,
-        ReminderDate = ReminderDate,
-        ReminderText = ReminderText
-      }))
+      BillReminder.BillReminderId = reminderId;
+      BillReminder.ReminderAmount = reminderAmount;
+      BillReminder.ReminderDate = ReminderDate;
+      BillReminder.ReminderText = ReminderText;
+
+      if (DbController.UpsertBillReminderToDB(BillReminder))
       {
         return true;
       }
       return false;
-    }
-
-    /// <summary>
-    /// Sets all properties to null
-    /// </summary>
-    private void ClearValues()
-    {
-      ReminderAmount = string.Empty;
-      ReminderDate = DateTime.Now;
-      ReminderText = string.Empty;
     }
   }
 }

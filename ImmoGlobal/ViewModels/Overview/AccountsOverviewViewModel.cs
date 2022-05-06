@@ -8,26 +8,15 @@ namespace ImmoGlobal.ViewModels
 {
   internal class AccountsOverviewViewModel : BaseViewModel
   {
-    internal AccountsOverviewViewModel()
+    internal override void OnLoadedEvent(object obj)
     {
       AccountsCollection = new ObservableCollection<Account>(DbController.GetAllAccountsDB());
-      AccountTitel = Application.Current.FindResource("incomeExpenseToAccount") as string ?? "income and expenses for";
+      OnPropertyChanged(nameof(AccountsCollection));
     }
 
-    private string _accountTitel;
-    public string AccountTitel
-    {
-      get => _accountTitel;
-      set
-      {
-        _accountTitel = value;
-        OnPropertyChanged();
-      }
-    }
-
+    public string AccountTitel { get; set; }
     public ObservableCollection<Account> AccountsCollection { get; set; }
 
-    private ObservableCollection<PaymentRecord> _icomeExpenseCollection;
     private Account? _selectedAccount;
     public Account? SelectedAccount
     {
@@ -50,20 +39,12 @@ namespace ImmoGlobal.ViewModels
 
         AccountTitel = (Application.Current.FindResource("incomeExpenseToAccount") as string ?? "income and expenses for")
                         + " " + _selectedAccount?.Description;
-
+        OnPropertyChanged(nameof(AccountTitel));
         OnPropertyChanged();
       }
     }
 
-    public ObservableCollection<PaymentRecord> IncomeExpenseCollection
-    {
-      get => _icomeExpenseCollection;
-      set
-      {
-        _icomeExpenseCollection = value;
-        OnPropertyChanged();
-      }
-    }
+    public ObservableCollection<PaymentRecord> IncomeExpenseCollection { get; set; }
 
     private PaymentRecord? _selectedPaymentRecord;
     public PaymentRecord? SelectedPaymentRecord
@@ -80,7 +61,6 @@ namespace ImmoGlobal.ViewModels
             (Application.Current.FindResource("edit") as string ?? "edit");
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoVisibility = Visibility.Visible;
         }
-
         OnPropertyChanged();
       }
     }

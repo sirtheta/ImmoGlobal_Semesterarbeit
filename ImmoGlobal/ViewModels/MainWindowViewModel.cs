@@ -72,7 +72,7 @@ namespace ImmoGlobal.ViewModels
     internal List<BaseViewModel> NavigationStore { get; set; }
     internal void NavigateBack()
     {
-      if (NavigationStore.Count > 1)
+      if (NavigationStore.Count >= 1)
       {
         // do not add the current viewmodel to the navigation store when naivgating back
         DoNotAddViewModel = true;
@@ -88,7 +88,7 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     internal void CheckForNavigation()
     {
-      if (NavigationStore.Count < 2)
+      if (NavigationStore.Count < 1)
       {
         SideMenuViewModel.CanNavigate = false;
       }
@@ -104,7 +104,7 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedViewModel"></param>
     private void AddPageToNavigation(BaseViewModel selectedViewModel)
     {
-      if (_selectedViewModel is not LoginViewModel && !DoNotAddViewModel)
+      if (_selectedViewModel is not LoginViewModel && _selectedViewModel != null && !DoNotAddViewModel)
       {
         NavigationStore.Add(selectedViewModel);
       }
@@ -130,10 +130,17 @@ namespace ImmoGlobal.ViewModels
       }
       set
       {
-        AddPageToNavigation(_selectedViewModel);
-        CheckForNavigation();
-        _selectedViewModel = value;
-        OnPropertyChanged(nameof(SelectedViewModel));
+        if (_selectedViewModel == null)
+        {
+          _selectedViewModel = value;
+        }
+        else if (_selectedViewModel.GetType() != value.GetType())
+        {
+          AddPageToNavigation(_selectedViewModel);
+          CheckForNavigation();
+          _selectedViewModel = value;
+          OnPropertyChanged();
+        }
       }
     }
 
@@ -141,7 +148,6 @@ namespace ImmoGlobal.ViewModels
     internal Property? SelectedProperty { get; set; }
     internal PropertyObject? SelectedPropertyObject { get; set; }
     internal Persona? SelectedPersona { get; set; }
-    internal Invoice? SelectedInvoice { get; set; }
     internal Account? SelectedAccount { get; set; }
     internal RentalContract? SelectedRentalContract { get; set; }
     internal PaymentRecord? SelectedPaymentRecord { get; set; }

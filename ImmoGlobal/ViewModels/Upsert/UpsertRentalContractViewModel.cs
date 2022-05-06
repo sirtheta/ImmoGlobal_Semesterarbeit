@@ -19,7 +19,6 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     internal UpsertRentalContractViewModel()
     {
-
       PersonaCollection = new(DbController.GetAllPersonasDB());
       PropertyCollection = new(DbController.GetAllPropertiesDB());
 
@@ -121,17 +120,7 @@ namespace ImmoGlobal.ViewModels
           _selectedProperty = value;
           SelectedPropertyObject = null;
         }
-
-
-        if (SelectedRentalContract == null)
-        {
-          //for new rental contract, the user can only select property objects that are not already assigned to an active rental contract
-          PropertyObjectCollection = new(DbController.GetPropertyObjectsToPropertyDB(_selectedProperty).Where(x => !x.GetRentalContractToObject().Any(y => y.ContractState == EContractState.Active)));
-        }
-        else
-        {
-          PropertyObjectCollection = new(DbController.GetPropertyObjectsToPropertyDB(_selectedProperty));
-        }
+        PropertyObjectCollection = new(DbController.GetPropertyObjectsToPropertyDB(_selectedProperty));
         OnPropertyChanged();
       }
     }
@@ -219,6 +208,12 @@ namespace ImmoGlobal.ViewModels
 
     internal override void SaveClicked(object obj)
     {
+      if (Id == null && ContractState == EContractState.Active && DbController.GetPropertyObjectsToPropertyDB(_selectedProperty).Where(x => !x.GetRentalContractToObject().Any(y => y.ContractState == EContractState.Active)).Any())
+      {
+        ShowMessageBox(Application.Current.FindResource("errorActivContract") as string ?? "Cannot add second activ contract", MessageType.Error, MessageButtons.Ok);
+        return;
+      }
+
       if (!NullFieldCheck())
       {
         ShowMessageBox(Application.Current.FindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
@@ -234,12 +229,13 @@ namespace ImmoGlobal.ViewModels
       if (Id == null && CreateRentalContract(rent))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddRentalContract") as string ?? "Rental Contract added successfully", NotificationType.Success);
-        ClearValues();
+        MainWindowViewModelInstance.NavigateBack();
       }
       // Update Property
       else if (Id != null && UpdateRentalContract(rent, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateRentalContract") as string ?? "Rental Contract updated successfully", NotificationType.Success);
+        MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
@@ -290,37 +286,19 @@ namespace ImmoGlobal.ViewModels
     /// <returns></returns>
     private bool UpdateRentalContract(double rent, int propertyId)
     {
-      if (DbController.UpsertRentalContractToDB(new RentalContract()
-      {
-        RentalContractId = propertyId,
-        Renter = SelectedPersona,
-        PropertyObject = SelectedPropertyObject,
-        RentStartDate = RentStartDate,
-        RentEndDate = RentEndDate,
-        Rent = rent,
-        Deposit = Deposit,
-        ContractState = ContractState
-
-      }))
+      SelectedRentalContract.RentalContractId = propertyId;
+      SelectedRentalContract.Renter = SelectedPersona;
+      SelectedRentalContract.PropertyObject = SelectedPropertyObject;
+      SelectedRentalContract.RentStartDate = RentStartDate;
+      SelectedRentalContract.RentEndDate = RentEndDate;
+      SelectedRentalContract.Rent = rent;
+      SelectedRentalContract.Deposit = Deposit;
+      SelectedRentalContract.ContractState = ContractState;
+      if (DbController.UpsertRentalContractToDB(SelectedRentalContract))
       {
         return true;
       }
       return false;
-    }
-
-    /// <summary>
-    /// Sets all properties to null
-    /// </summary>
-    private void ClearValues()
-    {
-      SelectedPersona = null;
-      SelectedProperty = null;
-      SelectedPropertyObject = null;
-      RentStartDate = DateTime.Now;
-      RentEndDate = RentStartDate.AddDays(30);
-      Rent = string.Empty;
-      Deposit = false;
-      ContractState = EContractState.NotActive;
     }
   }
 }

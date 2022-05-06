@@ -240,12 +240,13 @@ namespace ImmoGlobal.ViewModels
       if (Id == null && CreatePersona(phone, mobilePhone, officePhone, zipCode))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddCreditor") as string ?? "Creditor added successfully", NotificationType.Success);
-        ClearValues();
+        MainWindowViewModelInstance.NavigateBack();
       }
       // Update Perrsona
       else if (Id != null && UpdatePersona(phone, mobilePhone, officePhone, zipCode, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateCreditor") as string ?? "Creditor updated successfully", NotificationType.Success);
+        MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
@@ -298,31 +299,26 @@ namespace ImmoGlobal.ViewModels
     /// <returns></returns>
     private bool UpdatePersona(long phone, long mobilePhone, long officePhone, int zipCode, int personaId)
     {
-      if (DbController.UpsertPersonaToDB(new Persona(CreditorIsActive, CreditorCompanyName, Address, zipCode, City, phone, CreditorContactPerson, LastName, FirstName, Email, VatNumber, mobilePhone, officePhone, personaId)))
+      SelectedCreditor.PersonaId = personaId;
+      SelectedCreditor.FirstName = FirstName;
+      SelectedCreditor.LastName = LastName;
+      SelectedCreditor.Email = Email;
+      SelectedCreditor.CreditorCompanyName = CreditorCompanyName;
+      SelectedCreditor.Address = Address;
+      SelectedCreditor.Zip = zipCode;
+      SelectedCreditor.City = City;
+      SelectedCreditor.Phone = phone;
+      SelectedCreditor.OfficePhone = officePhone;
+      SelectedCreditor.Mobile = mobilePhone;
+      SelectedCreditor.CreditorContactPerson = CreditorContactPerson;
+      SelectedCreditor.VatNumber = VatNumber;
+      SelectedCreditor.CreditorIsActive = CreditorIsActive;
+
+      if (DbController.UpsertPersonaToDB(SelectedCreditor))
       {
         return true;
       }
       return false;
-    }
-
-    /// <summary>
-    /// Sets all properties to null
-    /// </summary>
-    private void ClearValues()
-    {
-      FirstName = string.Empty;
-      LastName = string.Empty;
-      Phone = string.Empty;
-      MobilePhone = string.Empty;
-      OfficePhone = string.Empty;
-      Email = string.Empty;
-      Address = string.Empty;
-      Zip = string.Empty;
-      City = string.Empty;
-      VatNumber = string.Empty;
-      CreditorCompanyName = string.Empty;
-      CreditorContactPerson = string.Empty;
-      CreditorIsActive = false;
     }
   }
 }

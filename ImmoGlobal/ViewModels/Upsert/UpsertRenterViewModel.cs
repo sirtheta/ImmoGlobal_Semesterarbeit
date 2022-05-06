@@ -202,9 +202,7 @@ namespace ImmoGlobal.ViewModels
       }
     }
 
-
     public Persona? SelectedRenter { get; set; }
-
 
     internal override void SaveClicked(object obj)
     {
@@ -254,12 +252,13 @@ namespace ImmoGlobal.ViewModels
       if (Id == null && CreatePersona(phone, mobilePhone, officePhone, zipCode))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddRenter") as string ?? "Renter added successfully", NotificationType.Success);
-        ClearValues();
+        MainWindowViewModelInstance.NavigateBack();
       }
       // Update Perrsona
       else if (Id != null && UpdatePersona(phone, mobilePhone, officePhone, zipCode, (int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateRenter") as string ?? "Renter updated successfully", NotificationType.Success);
+        MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
@@ -313,32 +312,28 @@ namespace ImmoGlobal.ViewModels
     /// <returns></returns>
     private bool UpdatePersona(long phone, long mobilePhone, long officePhone, int zipCode, int personaId)
     {
-      if (DateOfBirth != null &&
-        DbController.UpsertPersonaToDB(new Persona(LastName, FirstName, phone, Email, (DateTime)DateOfBirth, Address, zipCode, City, CivilState, AddressBefore, AccountNumber, mobilePhone, officePhone, personaId)))
+      if (DateOfBirth != null)
       {
-        return true;
+        SelectedRenter.LastName = LastName;
+        SelectedRenter.FirstName = FirstName;
+        SelectedRenter.Phone = phone;
+        SelectedRenter.Email = Email;
+        SelectedRenter.DateOfBirth = (DateTime)DateOfBirth;
+        SelectedRenter.Address = Address;
+        SelectedRenter.Zip = zipCode;
+        SelectedRenter.City = City;
+        SelectedRenter.CivilState = CivilState;
+        SelectedRenter.AddressBefore = AddressBefore;
+        SelectedRenter.AccountNumber = AccountNumber;
+        SelectedRenter.Mobile = mobilePhone;
+        SelectedRenter.OfficePhone = officePhone;
+        SelectedRenter.PersonaId = personaId;
+        if (DbController.UpsertPersonaToDB(SelectedRenter))
+        {
+          return true;
+        }
       }
       return false;
-    }
-
-    /// <summary>
-    /// Sets all properties to null
-    /// </summary>
-    private void ClearValues()
-    {
-      FirstName = string.Empty;
-      LastName = string.Empty;
-      Phone = string.Empty;
-      MobilePhone = string.Empty;
-      OfficePhone = string.Empty;
-      Email = string.Empty;
-      Address = string.Empty;
-      Zip = string.Empty;
-      City = string.Empty;
-      AddressBefore = string.Empty;
-      AccountNumber = string.Empty;
-      DateOfBirth = null;
-      CivilState = ECivilState.Single;
     }
   }
 }

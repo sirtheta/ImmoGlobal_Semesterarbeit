@@ -15,7 +15,6 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedAccount"></param>
     internal UpsertPaymentRecordViewModel(Account selectedAccount)
     {
-
       SelectedAccount = selectedAccount;
 
       Date = DateTime.Now;
@@ -33,6 +32,7 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedPaymentRecord"></param>
     internal UpsertPaymentRecordViewModel(Account selectedAccount, PaymentRecord selectedPaymentRecord)
     {
+      PaymentRecord = selectedPaymentRecord;
       Id = selectedPaymentRecord.PaymentRecordId;
       SelectedAccount = selectedAccount;
 
@@ -57,6 +57,7 @@ namespace ImmoGlobal.ViewModels
     private bool _expenseEnabled = true;
     private DateTime _date;
 
+    private PaymentRecord PaymentRecord { get; set; }
     public string ReceiptNumber
     {
       get => _receiptNumber;
@@ -177,12 +178,13 @@ namespace ImmoGlobal.ViewModels
       if (Id == null && CreatePaymentRecord(receiptNumber, incomeAmount, expenseAmount))
       {
         ShowNotification("Success", Application.Current.FindResource("successAddPaymentRecord") as string ?? "Payment record added successfully", NotificationType.Success);
-        ClearValues();
+        MainWindowViewModelInstance.NavigateBack();
       }
       // Update payment record
       else if (Id != null && UpdatePaymentRecord(receiptNumber, (int)Id, incomeAmount, expenseAmount))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdatePaymentRecord") as string ?? "Payment record updated successfully", NotificationType.Success);
+        MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
@@ -239,38 +241,24 @@ namespace ImmoGlobal.ViewModels
     private bool UpdatePaymentRecord(int receiptNumber, int paymentRecordId, double? incomeAmount, double? expenseAmount)
     {
       if (incomeAmount == 0)
-      {
         incomeAmount = null;
-      }
+
       if (expenseAmount == 0)
-      {
         expenseAmount = null;
-      }
-      if (DbController.UpsertPaymentRecordToDB(new PaymentRecord()
-      {
-        PaymentRecordId = paymentRecordId,
-        Account = SelectedAccount,
-        Description = Description,
-        ReceiptNumber = receiptNumber,
-        IncomeAmount = incomeAmount,
-        ExpenseAmount = expenseAmount,
-        Date = Date
-      }))
+
+      PaymentRecord.PaymentRecordId = paymentRecordId;
+      PaymentRecord.Account = SelectedAccount;
+      PaymentRecord.Description = Description;
+      PaymentRecord.ReceiptNumber = receiptNumber;
+      PaymentRecord.IncomeAmount = incomeAmount;
+      PaymentRecord.ExpenseAmount = expenseAmount;
+      PaymentRecord.Date = Date;
+
+      if (DbController.UpsertPaymentRecordToDB(PaymentRecord))
       {
         return true;
       }
       return false;
-    }
-
-    /// <summary>
-    /// Sets all properties to null
-    /// </summary>
-    private void ClearValues()
-    {
-      ReceiptNumber = string.Empty;
-      Description = string.Empty;
-      IncomeAmount = string.Empty;
-      ExpenseAmount = string.Empty;
     }
   }
 }

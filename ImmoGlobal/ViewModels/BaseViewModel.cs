@@ -1,4 +1,5 @@
 ﻿using ImmoGlobal.Commands;
+using ImmoGlobal.MainClasses;
 using ImmoGlobal.MainClasses.Enum;
 using MaterialDesignMessageBoxSirTheta;
 using Notifications.Wpf.Core;
@@ -85,6 +86,7 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     /// <param name="obj"></param>
     internal virtual void DeleteClicked(object obj) { }
+    internal virtual void OnLoadedEvent(object obj) { }
 
     internal static MainWindowViewModel? MainWindowViewModelInstance { get => MainWindowViewModel.GetInstance; }
 
@@ -124,9 +126,42 @@ namespace ImmoGlobal.ViewModels
       get => new RelayCommand<object>(DeleteClicked);
     }
 
+    public ICommand UserControlLoaded
+    {
+      get => new RelayCommand<object>(OnLoadedEvent);
+    }
+
+
     public Visibility BtnDeleteVisibility { get; set; }
 
     public string FormTitel { get; set; }
     internal int? Id { get; set; }
+
+    private Invoice? _selectedInvoice;
+    public Invoice? SelectedInvoice
+    {
+      get => _selectedInvoice;
+      set
+      {
+        if (_selectedInvoice != value && value != null && MainWindowViewModelInstance != null)
+        {
+          _selectedInvoice = value;
+          MainWindowViewModelInstance.SelectedInvoice = _selectedInvoice;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoVisibility = Visibility.Visible;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoWidth = 200;
+          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTextTwo =
+             Application.Current.FindResource("editInvoice") as string ?? "Edit Invoice";
+          if (_selectedInvoice.DueDate < System.DateTime.Now && _selectedInvoice.InvoiceState == EInvoiceState.Released)
+          {
+            MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
+          }
+          else
+          {
+            MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
+          }
+        }
+        OnPropertyChanged();
+      }
+    }
   }
 }

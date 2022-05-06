@@ -1,59 +1,32 @@
 ﻿using ImmoGlobal.MainClasses;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace ImmoGlobal.ViewModels
 {
   internal class PropertyObjectOverviewViewModel : BaseViewModel
   {
-    internal PropertyObjectOverviewViewModel(List<PropertyObject> propertyObjects, Persona persona, string description)
+    internal override void OnLoadedEvent(object obj)
     {
-      _propertyObjectCollection = new ObservableCollection<PropertyObject>();
-      propertyObjects.ForEach(po => _propertyObjectCollection.Add(po));
-      _housekeeper = persona.FullName;
-      _description = description;
-      MainWindowViewModelInstance.SelectedPersona = persona;
+      PropertyObjectCollection = new();
+      _selectedProperty.GetPropertyObjects().ToList().ForEach(po => PropertyObjectCollection.Add(po));
+      Housekeeper = _selectedProperty.GetHouskeeper().FullName;
+      Description = _selectedProperty.Description;
+      OnPropertyChanged(nameof(PropertyObjectCollection));
+      OnPropertyChanged(nameof(Description));
+      OnPropertyChanged(nameof(Housekeeper));
     }
 
-    private ObservableCollection<PropertyObject>? _propertyObjectCollection;
-    private string _housekeeper;
-    private string _description;
+    internal PropertyObjectOverviewViewModel()
+    {
+      _selectedProperty = MainWindowViewModelInstance.SelectedProperty;
+    }
 
-    public ObservableCollection<PropertyObject>? PropertyObjectCollection
-    {
-      get
-      {
-        return _propertyObjectCollection;
-      }
-      set
-      {
-        _propertyObjectCollection = value;
-        OnPropertyChanged();
-      }
-    }
-    public string Housekeeper
-    {
-      get
-      {
-        return _housekeeper;
-      }
-      set
-      {
-        _housekeeper = value;
-        OnPropertyChanged();
-      }
-    }
-    public string Description
-    {
-      get
-      {
-        return _description;
-      }
-      set
-      {
-        _description = value;
-        OnPropertyChanged();
-      }
-    }
+    private readonly Property _selectedProperty;
+
+    public ObservableCollection<PropertyObject>? PropertyObjectCollection { get; set; }
+    public string Housekeeper { get; set; }
+
+    public string Description { get; set; }
   }
 }

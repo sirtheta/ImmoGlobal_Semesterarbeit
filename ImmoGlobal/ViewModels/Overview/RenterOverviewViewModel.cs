@@ -1,6 +1,5 @@
 ﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
-using ImmoGlobal.MainClasses.Enum;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -8,28 +7,24 @@ namespace ImmoGlobal.ViewModels
 {
   internal class RenterOverviewViewModel : BaseViewModel
   {
+    internal override void OnLoadedEvent(object obj)
+    {
+      RenterCollection = new(DbController.GetAllRentersDB());
+      OnPropertyChanged(nameof(RenterCollection));
+    }
+
     internal RenterOverviewViewModel()
     {
-      _renterCollection = new ObservableCollection<Persona>(DbController.GetAllRentersDB());
       _selectedRenterDetailsViewModel = null;
     }
 
-    private ObservableCollection<Persona> _renterCollection;
     private ObservableCollection<Invoice>? _invoiceCollection;
     private ObservableCollection<RentalContract>? _rentalContractCollection;
     private Persona? _selectedRenter;
     private RenterDetailsViewModel? _selectedRenterDetailsViewModel;
-    private Invoice? _selectedInvoice;
 
-    public ObservableCollection<Persona> RenterCollection
-    {
-      get => _renterCollection;
-      set
-      {
-        _renterCollection = value;
-        OnPropertyChanged();
-      }
-    }
+
+    public ObservableCollection<Persona> RenterCollection { get; set; }
     public ObservableCollection<RentalContract>? RentalContractCollection
     {
       get => _rentalContractCollection;
@@ -46,31 +41,6 @@ namespace ImmoGlobal.ViewModels
       set
       {
         _invoiceCollection = value;
-        OnPropertyChanged();
-      }
-    }
-    public Invoice? SelectedInvoice
-    {
-      get => _selectedInvoice;
-      set
-      {
-        if (_selectedInvoice != value && MainWindowViewModelInstance != null)
-        {
-          _selectedInvoice = value;
-          MainWindowViewModelInstance.SelectedInvoice = _selectedInvoice;
-          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoVisibility = Visibility.Visible;
-          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoWidth = 200;
-          MainWindowViewModelInstance.SideMenuViewModel.BtnEditTextTwo =
-             Application.Current.FindResource("editInvoice") as string ?? "Edit Invoice";
-          if (_selectedInvoice.DueDate < System.DateTime.Now && _selectedInvoice.InvoiceState == EInvoiceState.Released)
-          {
-            MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Visible;
-          }
-          else
-          {
-            MainWindowViewModelInstance.SideMenuViewModel.BtnNewBillReminderVisibility = Visibility.Collapsed;
-          }
-        }
         OnPropertyChanged();
       }
     }

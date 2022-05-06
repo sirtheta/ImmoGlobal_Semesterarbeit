@@ -64,23 +64,7 @@ namespace ImmoGlobal.ViewModels
     /// <param name="invoicePositions"></param>
     internal UpsertInvoiceViewModel(Invoice selectedInvoice)
     {
-      //BtnSave = new RelayCommand<object>(SaveClicked);
-
-      // Enable only the Invoice state field if the invoice is not NotReleased
-      if (selectedInvoice.InvoiceState != EInvoiceState.NotReleased)
-      {
-        IsEnabled = false;
-      }
-      if (selectedInvoice.InvoiceState == EInvoiceState.Paid)
-      {
-        StateIsEnabled = false;
-      }
-
-      if (!CanEdit)
-      {
-        IsEnabled = false;
-        StateIsEnabled = false;
-      }
+      SelectedInvoice = selectedInvoice;
 
       PersonaCollection = new(DbController.GetAllPersonasDB());
       Id = selectedInvoice.InvoiceId;
@@ -102,11 +86,34 @@ namespace ImmoGlobal.ViewModels
         InvoicePositionViewModelCollection.Add(new InvoicePositionViewModel(item) { InvoicePositionNumber = _invoicePositionNumber });
       }
 
+      EnableOrDisableFields();
+
       // sets the titel of the form
       FormTitel = (Application.Current.FindResource("invoice") as string ?? "invoice") + " " +
                (Application.Current.FindResource("edit") as string ?? "edit");
     }
 
+    /// <summary>
+    /// Enable or  disable fields for editing, depending on the invoice state
+    /// </summary>
+    private void EnableOrDisableFields()
+    {
+      // Enable only the Invoice state field if the invoice is not NotReleased
+      if (SelectedInvoice.InvoiceState != EInvoiceState.NotReleased)
+      {
+        IsEnabled = false;
+      }
+      if (SelectedInvoice.InvoiceState == EInvoiceState.Paid)
+      {
+        StateIsEnabled = false;
+      }
+
+      if (!CanEdit)
+      {
+        IsEnabled = false;
+        StateIsEnabled = false;
+      }
+    }
 
     private Persona _persona;
     private Persona _selectedPersona;
@@ -297,12 +304,13 @@ namespace ImmoGlobal.ViewModels
       if (Id == null && CreateInvoice())
       {
         ShowNotification("Success", Application.Current.FindResource("successAddInvoice") as string ?? "Invoice added successfully", NotificationType.Success);
-        ClearValues();
+        MainWindowViewModelInstance.NavigateBack();
       }
       // Update invoice
       else if (Id != null && UpdateInvoice((int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateInvoice") as string ?? "Invoice updated successfully", NotificationType.Success);
+        MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
@@ -321,7 +329,6 @@ namespace ImmoGlobal.ViewModels
       }
       return false;
     }
-
 
     private bool CreateInvoice()
     {
@@ -366,37 +373,35 @@ namespace ImmoGlobal.ViewModels
       return false;
     }
 
-
     private bool UpdateInvoice(int invoiceId)
     {
       var success = true;
-      var invoice = new Invoice()
-      {
-        InvoiceId = invoiceId,
-        Persona = SelectedPersona,
-        InvoiceDate = InvoiceDate,
-        DueDate = DueDate,
-        InvoicePurpose = InvoicePurpose,
-        InvoiceCategory = InvoiceCategory,
-        InvoiceState = InvoiceState
-      };
-      if (DbController.UpsertInvoiceToDB(invoice))
+
+      SelectedInvoice.InvoiceId = invoiceId;
+      SelectedInvoice.Persona = SelectedPersona;
+      SelectedInvoice.InvoiceDate = InvoiceDate;
+      SelectedInvoice.DueDate = DueDate;
+      SelectedInvoice.InvoiceCategory = InvoiceCategory;
+      SelectedInvoice.InvoiceState = InvoiceState;
+
+      if (DbController.UpsertInvoiceToDB(SelectedInvoice))
       {
         foreach (var item in InvoicePositionViewModelCollection)
         {
           if (item.SelectedInvoicePositionId != null)
           {
-            var invoicePosition = new InvoicePosition()
-            {
-              InvoicePositionId = (int)item.SelectedInvoicePositionId,
-              InvoicePositionNumber = item.InvoicePositionNumber,
-              Property = item.SelectedProperty,
-              PropertyObject = item.SelectedPropertyObject,
-              Invoice = invoice,
-              Value = item.Value,
-              AdditionalCostsCategory = item.AdditionalCostsCategory,
-              Account = item.SelectedAccount
-            };
+            var invoicePosition = item.InvoicePosition;
+
+            invoicePosition.InvoicePositionId = (int)item.SelectedInvoicePositionId;
+            invoicePosition.InvoicePositionNumber = item.InvoicePositionNumber;
+            invoicePosition.Property = item.SelectedProperty;
+            invoicePosition.PropertyObject = item.SelectedPropertyObject;
+            invoicePosition.Invoice = SelectedInvoice;
+            invoicePosition.Value = item.Value;
+            invoicePosition.AdditionalCostsCategory = item.AdditionalCostsCategory;
+            invoicePosition.Account = item.SelectedAccount;
+
+            //write updated invoice position to db
             if (!DbController.UpsertInvoicePositionToDB(invoicePosition))
             {
               success = false;
@@ -413,21 +418,6 @@ namespace ImmoGlobal.ViewModels
         return true;
       }
       return false;
-    }
-
-    /// <summary>
-    /// Sets all properties to null
-    /// </summary>
-    private void ClearValues()
-    {
-      Persona = null;
-      InvoiceDate = DateTime.Now;
-      DueDate = DateTime.Now;
-      InvoicePurpose = string.Empty;
-      InvoiceCategory = EInvoiceCategory.None;
-      InvoiceState = EInvoiceState.NotReleased;
-      InvoicePositionViewModelCollection.Clear();
-      AddOneInvoicePosition();
     }
   }
 }

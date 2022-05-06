@@ -13,7 +13,6 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     internal UpsertAccountViewModel()
     {
-
       //set the title of the form
       FormTitel = Application.Current.FindResource("addNewAccount") as string ?? "create new account";
     }
@@ -24,7 +23,6 @@ namespace ImmoGlobal.ViewModels
     /// <param name="selectedAccount"></param>
     internal UpsertAccountViewModel(Account selectedAccount)
     {
-
       Id = selectedAccount.AccountId;
       AccountDescription = selectedAccount.Description;
       AccountNumber = selectedAccount.AccountNumber;
@@ -68,13 +66,13 @@ namespace ImmoGlobal.ViewModels
       if (Id == null && CreateAccount())
       {
         ShowNotification("Success", Application.Current.FindResource("successAddAccount") as string ?? "Account added successfully", NotificationType.Success);
-        ClearValues();
+        MainWindowViewModelInstance.NavigateBack();
       }
       // Update account
       else if (Id != null && UpdateAccount((int)Id))
       {
         ShowNotification("Success", Application.Current.FindResource("successUpdateAccount") as string ?? "Account updated successfully", NotificationType.Success);
-        MainWindowViewModelInstance.SelectedViewModel = new AccountsOverviewViewModel();
+        MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
@@ -126,15 +124,6 @@ namespace ImmoGlobal.ViewModels
         return true;
       }
       return false;
-    }
-
-    /// <summary>
-    /// Sets all properties to null
-    /// </summary>
-    private void ClearValues()
-    {
-      AccountNumber = string.Empty;
-      AccountDescription = string.Empty;
     }
   }
 }
