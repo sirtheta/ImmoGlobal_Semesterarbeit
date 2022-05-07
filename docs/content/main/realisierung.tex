@@ -7,7 +7,7 @@ Als Programmierumgebung wird Visual Studio 2022 verwendet. Die App basiert auf d
   \item Argumente von Methoden in Camel Case
   \item fields von Properties beginnen mit einem Underscore
   \item Enum und Interface immer mit dem jeweiligen Prefix, E oder I
-  \item Jede Klasse in einer Separaten Datei
+  \item Jede Klasse in einer separaten Datei
 \end{itemize}
 
 \subsubsection{Verwendete NuGet-Pakete}
@@ -80,6 +80,7 @@ Für das GUI werden verschieden Namen verwendet, welche hier beschrieben werden.
 \subsection{Datenbankimplementierung und –anbindung}
 \subsubsection{Generelles}
 Die Datenbank wird mit dem Entity Framework Core mittels der Code-First Methode erstellt. In der \textbf{App.config} wird der Connection String für die Verbindung zur Datenbank festgelegt. Zum Testen und Vorführen der Applikation ist dieser auf die \verb+localdb+ eingestellt. Auch in der \textbf{App.config} Datei kann festgelegt werden, ob die Datenbank beim Start der Applikation gelöscht und mit Dummy-Einträgen gefüllt werden soll. So ist ein Vorführen und Testen der Applikation problemlos möglich.
+Wenn die Applikation über das Setup installiert wird, muss die ImmoGlobal.dll.config Datei angepasst werden.
 
 \subsubsection{EF Core Datacontext}
 Über die Klasse \verb+ImmoGlobalContext+  wird der Datacontext für Entity FrameWork Core erstellt. Jede Fachklasse wird mit dem \verb+DbSet+ implementiert und so werden die Tabellen dann von EF Core automatisch erzeugt und dann kann mittels des DbContext darauf zugegriffen werden. (EF Code First Methode)
@@ -87,6 +88,9 @@ Die Datenbank wird mit dem Entity Framework Core mittels der Code-First Methode 
 \subsubsection{Audit Trail}
 Um jede Änderung über die Applikation zu tracken, wurde ein Audit Trail implementiert. Jede Upsert-Methode verwendet anstelle des ImmoGlobalContext, den ImmoGlobalAuditableContext, welcher die \verb+SaveChanges()+ Methode des Entity Frameworks überschreibt und dann für jede veränderte Eigenschaft einen Eintrag in der AuditTrail Tabelle anlegt, mit dem aktuell eingeloggten User und dem Datum und der Zeit.
 Aus Performancegründen wäre es bei einer Definitiven Applikation besser, wenn der Audit Trail direkt auf der Datenbank als Trigger erfasst werden würde.
+
+\subsubsection{User für die Applikation}
+Da die Userverwaltung nicht zum Umfang des Prototypen gehört, es aber zum Testen und für die Demonstration sinnvoll ist verschiedene User zu haben, gibt es drei vordefinierte User welche je unterschiedliche rechte und Namen haben. Die Logins für diese User sind wie folgt: Benutzername 1, 2, oder 3 und das Passwort auch 1, 2 oder 3. 
 
 \newpage
 \subsection{Testprotokoll}
