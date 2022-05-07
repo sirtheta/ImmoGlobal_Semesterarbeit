@@ -37,11 +37,11 @@ namespace ImmoGlobal.ViewModels
     {
       if (VerifyUser())
       {
-        ShowNotification("Success", Application.Current.FindResource("loginSuccessfull") as string ?? "Login successfull", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("loginSuccessfull") as string ?? "Login successfull", NotificationType.Success);
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("loginFailed") as string ?? "Login failed", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("loginFailed") as string ?? "Login failed", MessageType.Error, MessageButtons.Ok);
 
         //Close the app after 3 login failures
         _loginAttempts++;
@@ -87,11 +87,11 @@ namespace ImmoGlobal.ViewModels
 
         if (CanEdit)
         {
-          instance.SideMenuViewModel.BtnHousekeeperText = Application.Current.FindResource("btnHousekeeperExtended") as string ?? "edit";
+          instance.SideMenuViewModel.BtnHousekeeperText = Application.Current.TryFindResource("btnHousekeeperExtended") as string ?? "edit";
         }
         else
         {
-          instance.SideMenuViewModel.BtnHousekeeperText = Application.Current.FindResource("btnHousekeeper") as string ?? "edit";
+          instance.SideMenuViewModel.BtnHousekeeperText = Application.Current.TryFindResource("btnHousekeeper") as string ?? "edit";
         }
       }
     }

@@ -18,7 +18,7 @@ namespace ImmoGlobal.ViewModels
     internal UpsertRenterViewModel()
     {
       //set the title of the form
-      FormTitel = Application.Current.FindResource("addNewRenter") as string ?? "create new renter";
+      FormTitel = Application.Current.TryFindResource("addNewRenter") as string ?? "create new renter";
     }
 
     /// <summary>
@@ -45,8 +45,8 @@ namespace ImmoGlobal.ViewModels
       OfficePhone = selectedRenter.OfficePhoneString;
 
       //set the title of the form
-      FormTitel = (Application.Current.FindResource("renter") as string ?? "renter") + " " +
-             (Application.Current.FindResource("edit") as string ?? "edit");
+      FormTitel = (Application.Current.TryFindResource("renter") as string ?? "renter") + " " +
+             (Application.Current.TryFindResource("edit") as string ?? "edit");
     }
 
     private string? _lastName;
@@ -176,10 +176,10 @@ namespace ImmoGlobal.ViewModels
     public Dictionary<ECivilState, string> ECivilStateTypeWithCaptions { get; } =
     new Dictionary<ECivilState, string>()
     {
-              {ECivilState.Single, Application.Current.FindResource("single") as string ?? "single" },
-              {ECivilState.Married, Application.Current.FindResource("married") as string ?? "married"},
-              {ECivilState.Divorced, Application.Current.FindResource("divorced") as string ?? "divorced"},
-              {ECivilState.Widowed, Application.Current.FindResource("widowed") as string ?? "widowed"},
+              {ECivilState.Single, Application.Current.TryFindResource("single") as string ?? "single" },
+              {ECivilState.Married, Application.Current.TryFindResource("married") as string ?? "married"},
+              {ECivilState.Divorced, Application.Current.TryFindResource("divorced") as string ?? "divorced"},
+              {ECivilState.Widowed, Application.Current.TryFindResource("widowed") as string ?? "widowed"},
     };
 
     public string? AddressBefore
@@ -208,13 +208,13 @@ namespace ImmoGlobal.ViewModels
     {
       if (!NullFieldCheck())
       {
-        ShowMessageBox(Application.Current.FindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (!int.TryParse(Zip, out int zipCode) && zipCode < 1000 && zipCode > 9999)
       {
-        ShowMessageBox(Application.Current.FindResource("errorZipCode") as string ?? "Please enter a valid zip code", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorZipCode") as string ?? "Please enter a valid zip code", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
@@ -237,13 +237,13 @@ namespace ImmoGlobal.ViewModels
 
       if (!phoneParse && !mobilePhoneParse && !officePhoneParse)
       {
-        ShowMessageBox(Application.Current.FindResource("errorPhone") as string ?? "Please enter a valid phone number", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorPhone") as string ?? "Please enter a valid phone number", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (!Validator.IsValidEmail(Email))
       {
-        ShowMessageBox(Application.Current.FindResource("errorMail") as string ?? "Please enter a valid Email Address", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorMail") as string ?? "Please enter a valid Email Address", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
@@ -251,18 +251,18 @@ namespace ImmoGlobal.ViewModels
       //Create Persona
       if (Id == null && CreatePersona(phone, mobilePhone, officePhone, zipCode))
       {
-        ShowNotification("Success", Application.Current.FindResource("successAddRenter") as string ?? "Renter added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successAddRenter") as string ?? "Renter added successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       // Update Perrsona
       else if (Id != null && UpdatePersona(phone, mobilePhone, officePhone, zipCode, (int)Id))
       {
-        ShowNotification("Success", Application.Current.FindResource("successUpdateRenter") as string ?? "Renter updated successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successUpdateRenter") as string ?? "Renter updated successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorAddRenter") as string ?? "Error adding renter", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorAddRenter") as string ?? "Error adding renter", MessageType.Error, MessageButtons.Ok);
       }
     }
 

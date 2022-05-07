@@ -56,12 +56,12 @@ namespace ImmoGlobal.MainClasses
       {
         return InvoiceCategory switch
         {
-          EInvoiceCategory.Property => Application.Current.FindResource("property") as string ?? "Property",
-          EInvoiceCategory.Object => Application.Current.FindResource("propertyObject") as string ?? "Property Object",
-          EInvoiceCategory.Rent => Application.Current.FindResource("rent") as string ?? "Rent",
-          EInvoiceCategory.AdditionalCosts => Application.Current.FindResource("additionalCosts") as string ?? "Additional Costs",
-          EInvoiceCategory.BillReminder => Application.Current.FindResource("billReminder") as string ?? "Bill Reminder",
-          EInvoiceCategory.None => Application.Current.FindResource("none") as string ?? "none",
+          EInvoiceCategory.Property => Application.Current.TryFindResource("property") as string ?? "Property",
+          EInvoiceCategory.Object => Application.Current.TryFindResource("propertyObject") as string ?? "Property Object",
+          EInvoiceCategory.Rent => Application.Current.TryFindResource("rent") as string ?? "Rent",
+          EInvoiceCategory.AdditionalCosts => Application.Current.TryFindResource("additionalCosts") as string ?? "Additional Costs",
+          EInvoiceCategory.BillReminder => Application.Current.TryFindResource("billReminder") as string ?? "Bill Reminder",
+          EInvoiceCategory.None => Application.Current.TryFindResource("none") as string ?? "none",
           _ => "",
         };
       }
@@ -73,10 +73,10 @@ namespace ImmoGlobal.MainClasses
       {
         return InvoiceState switch
         {
-          EInvoiceState.NotReleased => Application.Current.FindResource("notReleased") as string ?? "not Released",
-          EInvoiceState.Released => Application.Current.FindResource("released") as string ?? "Released",
-          EInvoiceState.Paid => Application.Current.FindResource("paid") as string ?? "Paid",
-          EInvoiceState.Canceled => Application.Current.FindResource("canceled") as string ?? "Canceled",
+          EInvoiceState.NotReleased => Application.Current.TryFindResource("notReleased") as string ?? "not Released",
+          EInvoiceState.Released => Application.Current.TryFindResource("released") as string ?? "Released",
+          EInvoiceState.Paid => Application.Current.TryFindResource("paid") as string ?? "Paid",
+          EInvoiceState.Canceled => Application.Current.TryFindResource("canceled") as string ?? "Canceled",
           _ => "",
         };
       }
@@ -93,7 +93,7 @@ namespace ImmoGlobal.MainClasses
           reminders = reminderCollection.Count;
         }
 
-        return reminders == 0 ? Application.Current.FindResource("none") as string ?? "none" : reminders.ToString();
+        return reminders == 0 ? Application.Current.TryFindResource("none") as string ?? "none" : reminders.ToString();
       }
     }
 

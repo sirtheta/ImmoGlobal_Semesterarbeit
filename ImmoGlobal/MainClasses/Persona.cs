@@ -136,9 +136,9 @@ namespace ImmoGlobal.MainClasses
     public string? CreditorCompanyName { get; set; }
 
 
-    public string MobileString => Mobile == 0 ? Application.Current.FindResource("none") as string ?? "none" : Mobile.ToString("D10");
-    public string PhoneString => Phone == 0 ? Application.Current.FindResource("none") as string ?? "none" : Phone.ToString("D10");
-    public string OfficePhoneString => OfficePhone == 0 ? Application.Current.FindResource("none") as string ?? "none" : OfficePhone.ToString("D10");
+    public string MobileString => Mobile == 0 ? Application.Current.TryFindResource("none") as string ?? "none" : Mobile.ToString("D10");
+    public string PhoneString => Phone == 0 ? Application.Current.TryFindResource("none") as string ?? "none" : Phone.ToString("D10");
+    public string OfficePhoneString => OfficePhone == 0 ? Application.Current.TryFindResource("none") as string ?? "none" : OfficePhone.ToString("D10");
     public string FullName => $"{LastName} {FirstName}";
     public string FullNameAndCity => $"{LastName} {FirstName}, {City}";
     public string CivilStateString
@@ -147,10 +147,10 @@ namespace ImmoGlobal.MainClasses
       {
         return CivilState switch
         {
-          ECivilState.Single => Application.Current.FindResource("single") as string ?? "Single",
-          ECivilState.Married => Application.Current.FindResource("married") as string ?? "Married",
-          ECivilState.Divorced => Application.Current.FindResource("divorced") as string ?? "Divorced",
-          ECivilState.Widowed => Application.Current.FindResource("widowed") as string ?? "Widowed",
+          ECivilState.Single => Application.Current.TryFindResource("single") as string ?? "Single",
+          ECivilState.Married => Application.Current.TryFindResource("married") as string ?? "Married",
+          ECivilState.Divorced => Application.Current.TryFindResource("divorced") as string ?? "Divorced",
+          ECivilState.Widowed => Application.Current.TryFindResource("widowed") as string ?? "Widowed",
           _ => "unknown",
         };
       }
@@ -162,11 +162,11 @@ namespace ImmoGlobal.MainClasses
       {
         if (CreditorIsActive != null)
         {
-          return (bool)CreditorIsActive ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
+          return (bool)CreditorIsActive ? Application.Current.TryFindResource("yes") as string ?? "yes" : Application.Current.TryFindResource("no") as string ?? "no";
         }
         else
         {
-          return Application.Current.FindResource("no") as string ?? "no";
+          return Application.Current.TryFindResource("no") as string ?? "no";
         }
       }
     }

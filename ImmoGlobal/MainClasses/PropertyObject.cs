@@ -72,7 +72,7 @@ namespace ImmoGlobal.MainClasses
     public string CurrentRenter
     {
       get => GetRentalContractToObject().Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.RenterFullName ??
-          Application.Current.FindResource("notRented2") as string ?? "not rented";
+          Application.Current.TryFindResource("notRented2") as string ?? "not rented";
     }
 
     /// <summary>
@@ -84,12 +84,12 @@ namespace ImmoGlobal.MainClasses
       {
         return ObjectType switch
         {
-          EPropertyObjectType.House => Application.Current.FindResource("house") as string ?? "house",
-          EPropertyObjectType.Apartment => Application.Current.FindResource("apartment") as string ?? "apartment",
-          EPropertyObjectType.Room => Application.Current.FindResource("room") as string ?? "room",
-          EPropertyObjectType.Garage => Application.Current.FindResource("garage") as string ?? "garage",
-          EPropertyObjectType.Office => Application.Current.FindResource("office") as string ?? "office",
-          EPropertyObjectType.Parking => Application.Current.FindResource("parking") as string ?? "parking",
+          EPropertyObjectType.House => Application.Current.TryFindResource("house") as string ?? "house",
+          EPropertyObjectType.Apartment => Application.Current.TryFindResource("apartment") as string ?? "apartment",
+          EPropertyObjectType.Room => Application.Current.TryFindResource("room") as string ?? "room",
+          EPropertyObjectType.Garage => Application.Current.TryFindResource("garage") as string ?? "garage",
+          EPropertyObjectType.Office => Application.Current.TryFindResource("office") as string ?? "office",
+          EPropertyObjectType.Parking => Application.Current.TryFindResource("parking") as string ?? "parking",
           _ => "string not defined",
         };
       }
@@ -112,31 +112,31 @@ namespace ImmoGlobal.MainClasses
     // Gets translatet string for boolean, yes or no
     public string FridgeString
     {
-      get => Fridge ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
+      get => Fridge ? Application.Current.TryFindResource("yes") as string ?? "yes" : Application.Current.TryFindResource("no") as string ?? "no";
     }
     public string DishwasherString
     {
-      get => Dishwasher ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
+      get => Dishwasher ? Application.Current.TryFindResource("yes") as string ?? "yes" : Application.Current.TryFindResource("no") as string ?? "no";
     }
     public string StoveString
     {
-      get => Stove ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
+      get => Stove ? Application.Current.TryFindResource("yes") as string ?? "yes" : Application.Current.TryFindResource("no") as string ?? "no";
     }
     public string OvenString
     {
-      get => Oven ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
+      get => Oven ? Application.Current.TryFindResource("yes") as string ?? "yes" : Application.Current.TryFindResource("no") as string ?? "no";
     }
     public string WashingMachineString
     {
-      get => WashingMachine ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
+      get => WashingMachine ? Application.Current.TryFindResource("yes") as string ?? "yes" : Application.Current.TryFindResource("no") as string ?? "no";
     }
     public string TumblerString
     {
-      get => Tumbler ? Application.Current.FindResource("yes") as string ?? "yes" : Application.Current.FindResource("no") as string ?? "no";
+      get => Tumbler ? Application.Current.TryFindResource("yes") as string ?? "yes" : Application.Current.TryFindResource("no") as string ?? "no";
     }
     public string? NumberOfKeysString
     {
-      get => NumberOfKeys > 0 ? NumberOfKeys.ToString() : Application.Current.FindResource("none") as string ?? "none";
+      get => NumberOfKeys > 0 ? NumberOfKeys.ToString() : Application.Current.TryFindResource("none") as string ?? "none";
     }
 
     // Set icon type and color if any invoice of the property object is overdue

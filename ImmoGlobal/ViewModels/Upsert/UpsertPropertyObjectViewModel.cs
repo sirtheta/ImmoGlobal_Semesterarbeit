@@ -22,10 +22,10 @@ namespace ImmoGlobal.ViewModels
 
       //set the title of the form
       FormTitel =
-        (Application.Current.FindResource("newPropertyObjectFor") as string ?? "new property object for") + " " +
-        (Application.Current.FindResource("property") as string ?? "property") +
+        (Application.Current.TryFindResource("newPropertyObjectFor") as string ?? "new property object for") + " " +
+        (Application.Current.TryFindResource("property") as string ?? "property") +
         " " + _property.Description + " " +
-        (Application.Current.FindResource("create") as string ?? "create");
+        (Application.Current.TryFindResource("create") as string ?? "create");
     }
 
     /// <summary>
@@ -55,9 +55,9 @@ namespace ImmoGlobal.ViewModels
 
       //set the title of the form
       FormTitel =
-        (Application.Current.FindResource("propertyObject") as string ?? "object") + " " +
+        (Application.Current.TryFindResource("propertyObject") as string ?? "object") + " " +
         " " + propertyObject.Description + " " +
-        (Application.Current.FindResource("edit") as string ?? "edit");
+        (Application.Current.TryFindResource("edit") as string ?? "edit");
     }
 
     private string? _description;
@@ -98,12 +98,12 @@ namespace ImmoGlobal.ViewModels
     public Dictionary<EPropertyObjectType, string> EPropertyObjectTypeWithCaptions { get; } =
     new Dictionary<EPropertyObjectType, string>()
     {
-          {EPropertyObjectType.House,     Application.Current.FindResource("house") as string ?? "house" },
-          {EPropertyObjectType.Apartment, Application.Current.FindResource("apartment") as string ?? "apartment"},
-          {EPropertyObjectType.Room,      Application.Current.FindResource("room") as string ?? "room"},
-          {EPropertyObjectType.Garage,    Application.Current.FindResource("garage") as string ?? "garage"},
-          {EPropertyObjectType.Office,    Application.Current.FindResource("office") as string ?? "office"},
-          {EPropertyObjectType.Parking,   Application.Current.FindResource("parking") as string ?? "parking"},
+          {EPropertyObjectType.House,     Application.Current.TryFindResource("house") as string ?? "house" },
+          {EPropertyObjectType.Apartment, Application.Current.TryFindResource("apartment") as string ?? "apartment"},
+          {EPropertyObjectType.Room,      Application.Current.TryFindResource("room") as string ?? "room"},
+          {EPropertyObjectType.Garage,    Application.Current.TryFindResource("garage") as string ?? "garage"},
+          {EPropertyObjectType.Office,    Application.Current.TryFindResource("office") as string ?? "office"},
+          {EPropertyObjectType.Parking,   Application.Current.TryFindResource("parking") as string ?? "parking"},
     };
 
     public Property Property
@@ -220,12 +220,12 @@ namespace ImmoGlobal.ViewModels
     {
       if (DbController.DeletePropertyObjcetDB(Id))
       {
-        ShowNotification("Success", Application.Current.FindResource("successDeletePropertyObject") as string ?? "Property object deleted successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successDeletePropertyObject") as string ?? "Property object deleted successfully", NotificationType.Success);
         MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyOverviewViewModel();
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorDeletePropertyObject") as string ?? "Cannot delete property with objects", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorDeletePropertyObject") as string ?? "Cannot delete property with objects", MessageType.Error, MessageButtons.Ok);
       }
     }
 
@@ -233,41 +233,41 @@ namespace ImmoGlobal.ViewModels
     {
       if (!NullFieldCheck())
       {
-        ShowMessageBox(Application.Current.FindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (!double.TryParse(Area, out double area))
       {
-        ShowMessageBox(Application.Current.FindResource("errorArea") as string ?? "Please enter a valid number for area", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorArea") as string ?? "Please enter a valid number for area", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (!double.TryParse(NumberOfRooms, out double numberOfRooms))
       {
-        ShowMessageBox(Application.Current.FindResource("errorRooms") as string ?? "Please enter a valid number for rooms", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorRooms") as string ?? "Please enter a valid number for rooms", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (!int.TryParse(NumberOfKeys, out int numberOfKeys))
       {
-        ShowMessageBox(Application.Current.FindResource("errorKeys") as string ?? "Please enter a valid number for keys", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorKeys") as string ?? "Please enter a valid number for keys", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (Id == null && CreatePropertyObject(numberOfRooms, area, numberOfKeys))
       {
-        ShowNotification("Success", Application.Current.FindResource("successAddProperty") as string ?? "Property added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successAddProperty") as string ?? "Property added successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       else if (Id != null && UpdatePropertyObject(numberOfRooms, area, numberOfKeys, (int)Id))
       {
-        ShowNotification("Success", Application.Current.FindResource("successUpdatePropertyObject") as string ?? "Property added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successUpdatePropertyObject") as string ?? "Property added successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorAddProperty") as string ?? "Error adding property", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorAddProperty") as string ?? "Error adding property", MessageType.Error, MessageButtons.Ok);
       }
     }
 

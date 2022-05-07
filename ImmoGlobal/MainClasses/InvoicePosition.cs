@@ -48,17 +48,17 @@ namespace ImmoGlobal.MainClasses
       {
         return AdditionalCostsCategory switch
         {
-          EAdditionalCosts.Water => Application.Current.FindResource("water") as string ?? "Water",
-          EAdditionalCosts.Housekeeper => Application.Current.FindResource("housekeeper") as string ?? "Housekeeper",
-          EAdditionalCosts.Cleaning => Application.Current.FindResource("cleaning") as string ?? "Cleaning",
-          EAdditionalCosts.Gardening => Application.Current.FindResource("gardening") as string ?? "OthGardeninger",
-          EAdditionalCosts.Electricity => Application.Current.FindResource("electricity") as string ?? "Electricity",
-          EAdditionalCosts.Gas => Application.Current.FindResource("gas") as string ?? "Gas",
-          EAdditionalCosts.Lift => Application.Current.FindResource("lift") as string ?? "Lift",
-          EAdditionalCosts.TV => Application.Current.FindResource("tv") as string ?? "TV",
-          EAdditionalCosts.Sewer => Application.Current.FindResource("sewer") as string ?? "Sewer",
-          EAdditionalCosts.Garbage => Application.Current.FindResource("garbage") as string ?? "Garbage",
-          _ => Application.Current.FindResource("none") as string ?? "none"
+          EAdditionalCosts.Water => Application.Current.TryFindResource("water") as string ?? "Water",
+          EAdditionalCosts.Housekeeper => Application.Current.TryFindResource("housekeeper") as string ?? "Housekeeper",
+          EAdditionalCosts.Cleaning => Application.Current.TryFindResource("cleaning") as string ?? "Cleaning",
+          EAdditionalCosts.Gardening => Application.Current.TryFindResource("gardening") as string ?? "OthGardeninger",
+          EAdditionalCosts.Electricity => Application.Current.TryFindResource("electricity") as string ?? "Electricity",
+          EAdditionalCosts.Gas => Application.Current.TryFindResource("gas") as string ?? "Gas",
+          EAdditionalCosts.Lift => Application.Current.TryFindResource("lift") as string ?? "Lift",
+          EAdditionalCosts.TV => Application.Current.TryFindResource("tv") as string ?? "TV",
+          EAdditionalCosts.Sewer => Application.Current.TryFindResource("sewer") as string ?? "Sewer",
+          EAdditionalCosts.Garbage => Application.Current.TryFindResource("garbage") as string ?? "Garbage",
+          _ => Application.Current.TryFindResource("none") as string ?? "none"
         };
       }
     }

@@ -18,7 +18,7 @@ namespace ImmoGlobal.ViewModels
       SelectedInvoice = selectedInvoice;
       ReminderDate = DateTime.Now;
 
-      FormTitel = Application.Current.FindResource("addNewBillReminder") as string ?? "create new bill reminder";
+      FormTitel = Application.Current.TryFindResource("addNewBillReminder") as string ?? "create new bill reminder";
     }
 
     /// <summary>
@@ -35,8 +35,8 @@ namespace ImmoGlobal.ViewModels
       ReminderText = billReminder.ReminderText;
 
       //set the title of the form
-      FormTitel = (Application.Current.FindResource("account") as string ?? "Bill Reminder") + " " +
-       (Application.Current.FindResource("edit") as string ?? "edit");
+      FormTitel = (Application.Current.TryFindResource("account") as string ?? "Bill Reminder") + " " +
+       (Application.Current.TryFindResource("edit") as string ?? "edit");
     }
 
     private string _reminderAmount;
@@ -80,31 +80,31 @@ namespace ImmoGlobal.ViewModels
     {
       if (!NullFieldCheck())
       {
-        ShowMessageBox(Application.Current.FindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (!double.TryParse(ReminderAmount, out double reminderAmount))
       {
-        ShowMessageBox(Application.Current.FindResource("errorReminderAmount") as string ?? "Please enter a valid reminder amount", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorReminderAmount") as string ?? "Please enter a valid reminder amount", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       //Create bill reminder
       if (Id == null && CreateBillReminder(reminderAmount))
       {
-        ShowNotification("Success", Application.Current.FindResource("successAddBillReminder") as string ?? "BillReminder added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successAddBillReminder") as string ?? "BillReminder added successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       // Update bill reminder
       else if (Id != null && UpdateBillReminder(reminderAmount, (int)Id))
       {
-        ShowNotification("Success", Application.Current.FindResource("successUpdateBillReminder") as string ?? "BillReminder updated successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successUpdateBillReminder") as string ?? "BillReminder updated successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorAddBillReminder") as string ?? "Error adding Bill Reminder", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorAddBillReminder") as string ?? "Error adding Bill Reminder", MessageType.Error, MessageButtons.Ok);
       }
     }
 

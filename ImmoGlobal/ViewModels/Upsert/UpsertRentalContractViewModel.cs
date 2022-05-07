@@ -26,7 +26,7 @@ namespace ImmoGlobal.ViewModels
       RentEndDate = RentStartDate.AddDays(30);
 
       //set the title of the form
-      FormTitel = Application.Current.FindResource("createNewRentalContract") as string ?? "create new rental contract";
+      FormTitel = Application.Current.TryFindResource("createNewRentalContract") as string ?? "create new rental contract";
     }
 
     /// <summary>
@@ -52,8 +52,8 @@ namespace ImmoGlobal.ViewModels
       ContractState = selectedRentalContract.ContractState;
 
       //set the title of the form
-      FormTitel = (Application.Current.FindResource("rentalContract") as string ?? "rental contract") + " " +
-                     (Application.Current.FindResource("edit") as string ?? "edit");
+      FormTitel = (Application.Current.TryFindResource("rentalContract") as string ?? "rental contract") + " " +
+                     (Application.Current.TryFindResource("edit") as string ?? "edit");
     }
 
 
@@ -187,22 +187,22 @@ namespace ImmoGlobal.ViewModels
 
     public Dictionary<EContractState, string> EContractStateWithCaptions { get; } = new Dictionary<EContractState, string>()
     {
-      {EContractState.NotActive, Application.Current.FindResource("notActiveContract") as string ?? "not active contract" },
-      {EContractState.Singend, Application.Current.FindResource("singnedContract") as string ?? "singned contract"},
-      {EContractState.Active, Application.Current.FindResource("activeContract") as string ?? "active contract"},
-      {EContractState.Canceled, Application.Current.FindResource("canceledContract") as string ?? "canceled contract"},
+      {EContractState.NotActive, Application.Current.TryFindResource("notActiveContract") as string ?? "not active contract" },
+      {EContractState.Singend, Application.Current.TryFindResource("singnedContract") as string ?? "singned contract"},
+      {EContractState.Active, Application.Current.TryFindResource("activeContract") as string ?? "active contract"},
+      {EContractState.Canceled, Application.Current.TryFindResource("canceledContract") as string ?? "canceled contract"},
     };
 
     internal override void DeleteClicked(object obj)
     {
       if (DbController.DeleteRentalContractDB(Id))
       {
-        ShowNotification("Success", Application.Current.FindResource("successDeleteRentalContract") as string ?? "Rental Contract deleted successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successDeleteRentalContract") as string ?? "Rental Contract deleted successfully", NotificationType.Success);
         MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyOverviewViewModel();
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorDeleteRentalContract") as string ?? "Error on delete Rental Contract", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorDeleteRentalContract") as string ?? "Error on delete Rental Contract", MessageType.Error, MessageButtons.Ok);
       }
     }
 
@@ -210,36 +210,36 @@ namespace ImmoGlobal.ViewModels
     {
       if (Id == null && ContractState == EContractState.Active && DbController.GetPropertyObjectsToPropertyDB(_selectedProperty).Where(x => !x.GetRentalContractToObject().Any(y => y.ContractState == EContractState.Active)).Any())
       {
-        ShowMessageBox(Application.Current.FindResource("errorActivContract") as string ?? "Cannot add second activ contract", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorActivContract") as string ?? "Cannot add second activ contract", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (!NullFieldCheck())
       {
-        ShowMessageBox(Application.Current.FindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (!double.TryParse(Rent, out double rent))
       {
-        ShowMessageBox(Application.Current.FindResource("errorRent") as string ?? "Please enter a valid rent", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorRent") as string ?? "Please enter a valid rent", MessageType.Error, MessageButtons.Ok);
         return;
       }
       //Create RentalContract
       if (Id == null && CreateRentalContract(rent))
       {
-        ShowNotification("Success", Application.Current.FindResource("successAddRentalContract") as string ?? "Rental Contract added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successAddRentalContract") as string ?? "Rental Contract added successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       // Update Property
       else if (Id != null && UpdateRentalContract(rent, (int)Id))
       {
-        ShowNotification("Success", Application.Current.FindResource("successUpdateRentalContract") as string ?? "Rental Contract updated successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successUpdateRentalContract") as string ?? "Rental Contract updated successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorAddRentalContract") as string ?? "Error adding Rental Contract", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorAddRentalContract") as string ?? "Error adding Rental Contract", MessageType.Error, MessageButtons.Ok);
       }
     }
 

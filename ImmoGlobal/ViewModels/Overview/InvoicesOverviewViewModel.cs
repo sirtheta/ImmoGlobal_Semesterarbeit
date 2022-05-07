@@ -84,7 +84,7 @@ namespace ImmoGlobal.ViewModels
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoVisibility = Visibility.Visible;
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoWidth = 195;
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditTextTwo =
-            (Application.Current.FindResource("editBillReminder") as string ?? "edit bill reminder");
+            (Application.Current.TryFindResource("editBillReminder") as string ?? "edit bill reminder");
         }
         OnPropertyChanged();
       }

@@ -29,15 +29,15 @@ namespace ImmoGlobal.ViewModels
         {
           MainWindowViewModelInstance.SelectedAccount = _selectedAccount;
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditText =
-            (Application.Current.FindResource("account") as string ?? "account") + " " +
-            (Application.Current.FindResource("edit") as string ?? "edit");
+            (Application.Current.TryFindResource("account") as string ?? "account") + " " +
+            (Application.Current.TryFindResource("edit") as string ?? "edit");
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditVisibility = Visibility.Visible;
           MainWindowViewModelInstance.SideMenuViewModel.BtnNewPaymentRecordVisibility = Visibility.Visible;
         }
         IncomeExpenseCollection = new(DbController.GetIncomeToAccountDB(_selectedAccount).
         Concat(DbController.GetExpenseToAccountDB(_selectedAccount)).ToList());
 
-        AccountTitel = (Application.Current.FindResource("incomeExpenseToAccount") as string ?? "income and expenses for")
+        AccountTitel = (Application.Current.TryFindResource("incomeExpenseToAccount") as string ?? "income and expenses for")
                         + " " + _selectedAccount?.Description;
         OnPropertyChanged(nameof(AccountTitel));
         OnPropertyChanged();
@@ -57,8 +57,8 @@ namespace ImmoGlobal.ViewModels
         {
           MainWindowViewModelInstance.SelectedPaymentRecord = _selectedPaymentRecord;
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditTextTwo =
-            (Application.Current.FindResource("paymentRecord") as string ?? "payment record") + " " +
-            (Application.Current.FindResource("edit") as string ?? "edit");
+            (Application.Current.TryFindResource("paymentRecord") as string ?? "payment record") + " " +
+            (Application.Current.TryFindResource("edit") as string ?? "edit");
           MainWindowViewModelInstance.SideMenuViewModel.BtnEditTwoVisibility = Visibility.Visible;
         }
         OnPropertyChanged();

@@ -27,8 +27,8 @@ namespace ImmoGlobal.ViewModels
       BtnHousekeeper = new RelayCommand<object>(BtnHousekeeperClicked);
       BtnNewHousekeeper = new RelayCommand<object>(BtnNewHousekeeperClicked);
 
-      BtnEditText = Application.Current.FindResource("btnEdit") as string ?? "edit";
-      BtnEditTextTwo = Application.Current.FindResource("btnEdit") as string ?? "edit";
+      BtnEditText = Application.Current.TryFindResource("btnEdit") as string ?? "edit";
+      BtnEditTextTwo = Application.Current.TryFindResource("btnEdit") as string ?? "edit";
 
       CurrentLanguage = "DE";
     }

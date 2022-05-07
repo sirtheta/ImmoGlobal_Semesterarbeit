@@ -18,7 +18,7 @@ namespace ImmoGlobal.ViewModels
       _personas = new(DbController.GetAllPersonasDB());
 
       //set the title of the form
-      FormTitel = Application.Current.FindResource("createNewProperty") as string ?? "create new property";
+      FormTitel = Application.Current.TryFindResource("createNewProperty") as string ?? "create new property";
     }
 
     /// <summary>
@@ -42,8 +42,8 @@ namespace ImmoGlobal.ViewModels
       LiabilityInsurance = property.LiabilityInsurance;
 
       //set the title of the form
-      FormTitel = (Application.Current.FindResource("property") as string ?? "property") + " " +
-                   (Application.Current.FindResource("edit") as string ?? "edit");
+      FormTitel = (Application.Current.TryFindResource("property") as string ?? "property") + " " +
+                   (Application.Current.TryFindResource("edit") as string ?? "edit");
     }
 
     private string _description;
@@ -143,12 +143,12 @@ namespace ImmoGlobal.ViewModels
     {
       if (Property.GetPropertyObjects().Count == 0 && DbController.DeletePropertyDB(Id))
       {
-        ShowNotification("Success", Application.Current.FindResource("successDeleteProperty") as string ?? "Property deleted successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successDeleteProperty") as string ?? "Property deleted successfully", NotificationType.Success);
         MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyOverviewViewModel();
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorDeleteProperty") as string ?? "Cannot delete property with objects", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorDeleteProperty") as string ?? "Cannot delete property with objects", MessageType.Error, MessageButtons.Ok);
       }
     }
 
@@ -156,30 +156,30 @@ namespace ImmoGlobal.ViewModels
     {
       if (!NullFieldCheck())
       {
-        ShowMessageBox(Application.Current.FindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (!int.TryParse(ZipCode, out int zipCode) && zipCode < 1000 && zipCode > 9999)
       {
-        ShowMessageBox(Application.Current.FindResource("errorZipCode") as string ?? "Please enter a valid zip code", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorZipCode") as string ?? "Please enter a valid zip code", MessageType.Error, MessageButtons.Ok);
         return;
       }
       //Create Property
       if (Id == null && CreateProperty(zipCode))
       {
-        ShowNotification("Success", Application.Current.FindResource("successAddProperty") as string ?? "Property added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successAddProperty") as string ?? "Property added successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       // Update Property
       else if (Id != null && UpdateProperty(zipCode, (int)Id))
       {
-        ShowNotification("Success", Application.Current.FindResource("successUpdateProperty") as string ?? "Property added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successUpdateProperty") as string ?? "Property added successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorAddProperty") as string ?? "Error adding property", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorAddProperty") as string ?? "Error adding property", MessageType.Error, MessageButtons.Ok);
       }
     }
 

@@ -125,7 +125,7 @@ namespace ImmoGlobal.ViewModels
         SetMenuBarIconColor();
         SetSideMenuButtons();
         //set side menu edit button to standard text, it can be changed in the viewmodel as needed
-        SideMenuViewModel.BtnEditText = Application.Current.FindResource("btnEdit") as string ?? "edit";
+        SideMenuViewModel.BtnEditText = Application.Current.TryFindResource("btnEdit") as string ?? "edit";
         return _selectedViewModel;
       }
       set

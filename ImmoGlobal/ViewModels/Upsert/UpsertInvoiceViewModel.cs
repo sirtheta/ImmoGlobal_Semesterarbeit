@@ -26,7 +26,7 @@ namespace ImmoGlobal.ViewModels
       InvoiceDate = DateTime.Now;
 
       // sets the titel of the form      
-      FormTitel = Application.Current.FindResource("createNewInvoice") as string ?? "create new invoioce";
+      FormTitel = Application.Current.TryFindResource("createNewInvoice") as string ?? "create new invoioce";
       InvoicePositionViewModelCollection = new();
 
       AddOneInvoicePosition();
@@ -50,7 +50,7 @@ namespace ImmoGlobal.ViewModels
       DueDate = DateTime.Now.AddDays(30);
 
       // sets the titel of the form      
-      FormTitel = Application.Current.FindResource("createNewInvoice") as string ?? "create new invoioce";
+      FormTitel = Application.Current.TryFindResource("createNewInvoice") as string ?? "create new invoioce";
       InvoicePositionViewModelCollection = new();
 
       AddOneInvoicePosition();
@@ -89,8 +89,8 @@ namespace ImmoGlobal.ViewModels
       EnableOrDisableFields();
 
       // sets the titel of the form
-      FormTitel = (Application.Current.FindResource("invoice") as string ?? "invoice") + " " +
-               (Application.Current.FindResource("edit") as string ?? "edit");
+      FormTitel = (Application.Current.TryFindResource("invoice") as string ?? "invoice") + " " +
+               (Application.Current.TryFindResource("edit") as string ?? "edit");
     }
 
     /// <summary>
@@ -210,12 +210,12 @@ namespace ImmoGlobal.ViewModels
     /// </summary>
     public Dictionary<EInvoiceCategory, string> EInvoiceCategoryWithCaptions { get; } = new Dictionary<EInvoiceCategory, string>
     {
-          {EInvoiceCategory.Property,Application.Current.FindResource("property") as string ?? "Property" },
-          {EInvoiceCategory.Object, Application.Current.FindResource("propertyObject") as string ?? "Property Object" },
-          {EInvoiceCategory.Rent,Application.Current.FindResource("rent") as string ?? "Rent" },
-          {EInvoiceCategory.AdditionalCosts, Application.Current.FindResource("additionalCosts") as string ?? "Additional Costs" },
-          {EInvoiceCategory.BillReminder, Application.Current.FindResource("billReminder") as string ?? "Bill Reminder" },
-      {EInvoiceCategory.None, Application.Current.FindResource("none") as string ?? "none" },
+          {EInvoiceCategory.Property,Application.Current.TryFindResource("property") as string ?? "Property" },
+          {EInvoiceCategory.Object, Application.Current.TryFindResource("propertyObject") as string ?? "Property Object" },
+          {EInvoiceCategory.Rent,Application.Current.TryFindResource("rent") as string ?? "Rent" },
+          {EInvoiceCategory.AdditionalCosts, Application.Current.TryFindResource("additionalCosts") as string ?? "Additional Costs" },
+          {EInvoiceCategory.BillReminder, Application.Current.TryFindResource("billReminder") as string ?? "Bill Reminder" },
+      {EInvoiceCategory.None, Application.Current.TryFindResource("none") as string ?? "none" },
     };
 
     public EInvoiceState InvoiceState
@@ -240,19 +240,19 @@ namespace ImmoGlobal.ViewModels
         {
           return new Dictionary<EInvoiceState, string>
           {
-            {EInvoiceState.NotReleased, Application.Current.FindResource("notReleased") as string ?? "not Released" },
-            {EInvoiceState.Released,Application.Current.FindResource("released") as string ?? "Released" },
-            {EInvoiceState.Paid, Application.Current.FindResource("paid") as string ?? "Paid" },
-            {EInvoiceState.Canceled, Application.Current.FindResource("canceled") as string ?? "Canceled" },
+            {EInvoiceState.NotReleased, Application.Current.TryFindResource("notReleased") as string ?? "not Released" },
+            {EInvoiceState.Released,Application.Current.TryFindResource("released") as string ?? "Released" },
+            {EInvoiceState.Paid, Application.Current.TryFindResource("paid") as string ?? "Paid" },
+            {EInvoiceState.Canceled, Application.Current.TryFindResource("canceled") as string ?? "Canceled" },
           };
         }
         else
         {
           return new Dictionary<EInvoiceState, string>
           {
-            {EInvoiceState.Released,Application.Current.FindResource("released") as string ?? "Released" },
-            {EInvoiceState.Paid, Application.Current.FindResource("paid") as string ?? "Paid" },
-            {EInvoiceState.Canceled, Application.Current.FindResource("canceled") as string ?? "Canceled" },
+            {EInvoiceState.Released,Application.Current.TryFindResource("released") as string ?? "Released" },
+            {EInvoiceState.Paid, Application.Current.TryFindResource("paid") as string ?? "Paid" },
+            {EInvoiceState.Canceled, Application.Current.TryFindResource("canceled") as string ?? "Canceled" },
           };
         }
       }
@@ -296,25 +296,25 @@ namespace ImmoGlobal.ViewModels
     {
       if (!NullFieldCheck())
       {
-        ShowMessageBox(Application.Current.FindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       //Create invoice
       if (Id == null && CreateInvoice())
       {
-        ShowNotification("Success", Application.Current.FindResource("successAddInvoice") as string ?? "Invoice added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successAddInvoice") as string ?? "Invoice added successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       // Update invoice
       else if (Id != null && UpdateInvoice((int)Id))
       {
-        ShowNotification("Success", Application.Current.FindResource("successUpdateInvoice") as string ?? "Invoice updated successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successUpdateInvoice") as string ?? "Invoice updated successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorAddInvoice") as string ?? "Error adding invoice", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorAddInvoice") as string ?? "Error adding invoice", MessageType.Error, MessageButtons.Ok);
       }
     }
 

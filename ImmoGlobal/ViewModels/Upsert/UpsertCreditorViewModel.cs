@@ -15,7 +15,7 @@ namespace ImmoGlobal.ViewModels
     internal UpsertCreditorViewModel()
     {
       //set the title of the form
-      FormTitel = Application.Current.FindResource("addNewCreditor") as string ?? "create new creditor";
+      FormTitel = Application.Current.TryFindResource("addNewCreditor") as string ?? "create new creditor";
     }
 
     /// <summary>
@@ -42,8 +42,8 @@ namespace ImmoGlobal.ViewModels
       CreditorContactPerson = selectedCreditor.CreditorContactPerson;
 
       //set the title of the form
-      FormTitel = (Application.Current.FindResource("creditor") as string ?? "creditor") + " " +
-             (Application.Current.FindResource("edit") as string ?? "edit");
+      FormTitel = (Application.Current.TryFindResource("creditor") as string ?? "creditor") + " " +
+             (Application.Current.TryFindResource("edit") as string ?? "edit");
     }
 
     private string? _firstName;
@@ -196,13 +196,13 @@ namespace ImmoGlobal.ViewModels
     {
       if (!NullFieldCheck())
       {
-        ShowMessageBox(Application.Current.FindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (!int.TryParse(Zip, out int zipCode) && zipCode < 1000 && zipCode > 9999)
       {
-        ShowMessageBox(Application.Current.FindResource("errorZipCode") as string ?? "Please enter a valid zip code", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorZipCode") as string ?? "Please enter a valid zip code", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
@@ -225,13 +225,13 @@ namespace ImmoGlobal.ViewModels
 
       if (!phoneParse && !mobilePhoneParse && !officePhoneParse)
       {
-        ShowMessageBox(Application.Current.FindResource("errorPhone") as string ?? "Please enter a valid phone number", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorPhone") as string ?? "Please enter a valid phone number", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (!Validator.IsValidEmail(Email))
       {
-        ShowMessageBox(Application.Current.FindResource("errorMail") as string ?? "Please enter a valid Email Address", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorMail") as string ?? "Please enter a valid Email Address", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
@@ -239,18 +239,18 @@ namespace ImmoGlobal.ViewModels
       //Create Persona
       if (Id == null && CreatePersona(phone, mobilePhone, officePhone, zipCode))
       {
-        ShowNotification("Success", Application.Current.FindResource("successAddCreditor") as string ?? "Creditor added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successAddCreditor") as string ?? "Creditor added successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       // Update Perrsona
       else if (Id != null && UpdatePersona(phone, mobilePhone, officePhone, zipCode, (int)Id))
       {
-        ShowNotification("Success", Application.Current.FindResource("successUpdateCreditor") as string ?? "Creditor updated successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successUpdateCreditor") as string ?? "Creditor updated successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorAddCreditor") as string ?? "Error adding creditor", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorAddCreditor") as string ?? "Error adding creditor", MessageType.Error, MessageButtons.Ok);
       }
     }
 

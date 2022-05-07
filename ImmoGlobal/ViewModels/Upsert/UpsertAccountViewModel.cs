@@ -14,7 +14,7 @@ namespace ImmoGlobal.ViewModels
     internal UpsertAccountViewModel()
     {
       //set the title of the form
-      FormTitel = Application.Current.FindResource("addNewAccount") as string ?? "create new account";
+      FormTitel = Application.Current.TryFindResource("addNewAccount") as string ?? "create new account";
     }
 
     /// <summary>
@@ -28,8 +28,8 @@ namespace ImmoGlobal.ViewModels
       AccountNumber = selectedAccount.AccountNumber;
 
       //set the title of the form
-      FormTitel = (Application.Current.FindResource("account") as string ?? "account") + " " +
-       (Application.Current.FindResource("edit") as string ?? "edit");
+      FormTitel = (Application.Current.TryFindResource("account") as string ?? "account") + " " +
+       (Application.Current.TryFindResource("edit") as string ?? "edit");
     }
 
     private string _accountNumber;
@@ -58,25 +58,25 @@ namespace ImmoGlobal.ViewModels
     {
       if (!NullFieldCheck())
       {
-        ShowMessageBox(Application.Current.FindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       //Create account
       if (Id == null && CreateAccount())
       {
-        ShowNotification("Success", Application.Current.FindResource("successAddAccount") as string ?? "Account added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successAddAccount") as string ?? "Account added successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       // Update account
       else if (Id != null && UpdateAccount((int)Id))
       {
-        ShowNotification("Success", Application.Current.FindResource("successUpdateAccount") as string ?? "Account updated successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successUpdateAccount") as string ?? "Account updated successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorAddAccount") as string ?? "Error adding account", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorAddAccount") as string ?? "Error adding account", MessageType.Error, MessageButtons.Ok);
       }
     }
 

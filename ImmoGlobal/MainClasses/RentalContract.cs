@@ -31,8 +31,8 @@ namespace ImmoGlobal.MainClasses
 
     public string DepositString
     {
-      get => Deposit ? Application.Current.FindResource("yes") as string ?? "yes" :
-          Application.Current.FindResource("no") as string ?? "no";
+      get => Deposit ? Application.Current.TryFindResource("yes") as string ?? "yes" :
+          Application.Current.TryFindResource("no") as string ?? "no";
     }
 
     public string ActivContract
@@ -41,11 +41,11 @@ namespace ImmoGlobal.MainClasses
       {
         return ContractState switch
         {
-          EContractState.NotActive => Application.Current.FindResource("notActiveContract") as string ?? "not active contract",
-          EContractState.Singend => Application.Current.FindResource("singnedContract") as string ?? "singned contract",
-          EContractState.Active => Application.Current.FindResource("activeContract") as string ?? "active contract",
-          EContractState.Canceled => Application.Current.FindResource("canceledContract") as string ?? "canceled contract",
-          _ => Application.Current.FindResource("unknown") as string ?? "unknown",
+          EContractState.NotActive => Application.Current.TryFindResource("notActiveContract") as string ?? "not active contract",
+          EContractState.Singend => Application.Current.TryFindResource("singnedContract") as string ?? "singned contract",
+          EContractState.Active => Application.Current.TryFindResource("activeContract") as string ?? "active contract",
+          EContractState.Canceled => Application.Current.TryFindResource("canceledContract") as string ?? "canceled contract",
+          _ => Application.Current.TryFindResource("unknown") as string ?? "unknown",
         };
       }
     }

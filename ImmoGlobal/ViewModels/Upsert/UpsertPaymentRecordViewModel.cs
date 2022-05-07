@@ -20,9 +20,9 @@ namespace ImmoGlobal.ViewModels
       Date = DateTime.Now;
 
       //set the title of the form
-      FormTitel = (Application.Current.FindResource("addNewPaymentRecord") as string ?? "create new payment record") + " " +
-                  (Application.Current.FindResource("for") as string ?? "for") + " " + SelectedAccount.Description + " " +
-                  (Application.Current.FindResource("add") as string ?? "add");
+      FormTitel = (Application.Current.TryFindResource("addNewPaymentRecord") as string ?? "create new payment record") + " " +
+                  (Application.Current.TryFindResource("for") as string ?? "for") + " " + SelectedAccount.Description + " " +
+                  (Application.Current.TryFindResource("add") as string ?? "add");
     }
 
     /// <summary>
@@ -43,8 +43,8 @@ namespace ImmoGlobal.ViewModels
       Date = selectedPaymentRecord.Date;
 
       //set the title of the form
-      FormTitel = (Application.Current.FindResource("paymentRecord") as string ?? "payment record") + " " +
-                  (Application.Current.FindResource("edit") as string ?? "edit");
+      FormTitel = (Application.Current.TryFindResource("paymentRecord") as string ?? "payment record") + " " +
+                  (Application.Current.TryFindResource("edit") as string ?? "edit");
     }
 
     public Account SelectedAccount { get; private set; }
@@ -146,7 +146,7 @@ namespace ImmoGlobal.ViewModels
     {
       if (!NullFieldCheck())
       {
-        ShowMessageBox(Application.Current.FindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorFillAllFields") as string ?? "Please fill in all fields", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
@@ -164,31 +164,31 @@ namespace ImmoGlobal.ViewModels
 
       if (!income && !expense)
       {
-        ShowMessageBox(Application.Current.FindResource("errorIncomeExpense") as string ?? "Please enter income or expense value", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorIncomeExpense") as string ?? "Please enter income or expense value", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       if (!int.TryParse(ReceiptNumber, out int receiptNumber))
       {
-        ShowMessageBox(Application.Current.FindResource("errorReceiptNumber") as string ?? "Please enter a valid receipt number", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorReceiptNumber") as string ?? "Please enter a valid receipt number", MessageType.Error, MessageButtons.Ok);
         return;
       }
 
       //Create payment record
       if (Id == null && CreatePaymentRecord(receiptNumber, incomeAmount, expenseAmount))
       {
-        ShowNotification("Success", Application.Current.FindResource("successAddPaymentRecord") as string ?? "Payment record added successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successAddPaymentRecord") as string ?? "Payment record added successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       // Update payment record
       else if (Id != null && UpdatePaymentRecord(receiptNumber, (int)Id, incomeAmount, expenseAmount))
       {
-        ShowNotification("Success", Application.Current.FindResource("successUpdatePaymentRecord") as string ?? "Payment record updated successfully", NotificationType.Success);
+        ShowNotification("Success", Application.Current.TryFindResource("successUpdatePaymentRecord") as string ?? "Payment record updated successfully", NotificationType.Success);
         MainWindowViewModelInstance.NavigateBack();
       }
       else
       {
-        ShowMessageBox(Application.Current.FindResource("errorAddPaymentRecord") as string ?? "Error adding payment record", MessageType.Error, MessageButtons.Ok);
+        ShowMessageBox(Application.Current.TryFindResource("errorAddPaymentRecord") as string ?? "Error adding payment record", MessageType.Error, MessageButtons.Ok);
       }
     }
 
