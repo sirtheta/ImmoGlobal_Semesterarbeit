@@ -11,6 +11,7 @@ namespace ImmoGlobal.ViewModels
     {
       RenterCollection = new(DbController.GetAllRentersDB());
       OnPropertyChanged(nameof(RenterCollection));
+      SelectedRenter = RenterCollection[0];
     }
 
     internal RenterOverviewViewModel()

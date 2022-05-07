@@ -11,6 +11,7 @@ namespace ImmoGlobal.ViewModels
     internal override void OnLoadedEvent(object obj)
     {
       AccountsCollection = new ObservableCollection<Account>(DbController.GetAllAccountsDB());
+      SelectedAccount = AccountsCollection.FirstOrDefault();
       OnPropertyChanged(nameof(AccountsCollection));
     }
 
@@ -40,6 +41,7 @@ namespace ImmoGlobal.ViewModels
         AccountTitel = (Application.Current.TryFindResource("incomeExpenseToAccount") as string ?? "income and expenses for")
                         + " " + _selectedAccount?.Description;
         OnPropertyChanged(nameof(AccountTitel));
+        OnPropertyChanged(nameof(IncomeExpenseCollection));
         OnPropertyChanged();
       }
     }

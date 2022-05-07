@@ -68,6 +68,7 @@
                    FontSize="15"/>
         </StackPanel>
 
+        <!--Property overview-->
       </Grid>
       <ItemsControl ItemsSource="{Binding PropertyObjectCollection}" Grid.Row="1">
         <ItemsControl.ItemsPanel>
@@ -90,7 +91,7 @@
                   <DropShadowEffect Color="{DynamicResource MaterialDesignShadow}" ShadowDepth="1"/>
                 </Border.Effect>
                 <Grid>
-     
+
                   <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="1*"/>
@@ -116,7 +117,7 @@
                                            Height="50"
                                            Width="50" />
 
-                  
+
                   <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
                            Text="{Binding Description}" 
                            TextWrapping="Wrap"/>

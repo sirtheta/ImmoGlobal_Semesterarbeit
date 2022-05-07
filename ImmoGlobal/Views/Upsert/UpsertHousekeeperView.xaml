@@ -64,6 +64,7 @@
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
           </Grid>
+
           <Grid>
             <Grid.ColumnDefinitions>
               <ColumnDefinition/>
@@ -93,6 +94,7 @@
                Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                HorizontalAlignment="Stretch"/>
           </Grid>
+
           <Grid>
             <Grid.ColumnDefinitions>
               <ColumnDefinition/>

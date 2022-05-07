@@ -12,11 +12,11 @@
              d:DesignHeight="800" 
              d:DesignWidth="800"
              TextOptions.TextFormattingMode="Display">
-  
+
   <UserControl.Resources>
     <viewHelpers:MinusOneConverter x:Key="MinusOneConverter"/>
   </UserControl.Resources>
-  
+
   <ScrollViewer VerticalScrollBarVisibility="Auto">
     <Grid>
       <Grid.Resources>
@@ -100,8 +100,8 @@
                   Margin="10"
                   SelectedIndex="{Binding Housekeeper.PersonaId, Converter={StaticResource MinusOneConverter}}"
                   materialDesign:HintAssist.Hint="{DynamicResource selectHousekeeper}"/>
-
         </StackPanel>
+
         <Grid Grid.Row="1" Margin="0,-50,0,10">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>

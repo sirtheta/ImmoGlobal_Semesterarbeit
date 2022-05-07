@@ -38,7 +38,7 @@
                FontFamily="{DynamicResource MaterialDesignFont}"
                FontSize="30"
                FontWeight="Bold"/>
-      
+
       <!--InvoicesOverview-->
       <Border Grid.Column="0" 
               Grid.Row="1" 
@@ -101,9 +101,9 @@
             </DataGrid>
           </Grid>
         </ScrollViewer>
-      </Border>      
-        
-            <!--InvoicePsoition-->
+      </Border>
+
+      <!--InvoicePsoition-->
       <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
         <Grid.RowDefinitions>
           <RowDefinition Height="auto"/>

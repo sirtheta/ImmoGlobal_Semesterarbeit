@@ -13,11 +13,11 @@
              d:DesignHeight="650" 
              d:DesignWidth="1500"
              TextOptions.TextFormattingMode="Display">
-  
+
   <UserControl.Resources>
     <viewHelpers:MinusOneConverter x:Key="MinusOneConverter"/>
   </UserControl.Resources>
-  
+
   <ScrollViewer VerticalScrollBarVisibility="Auto">
     <Grid>
       <Grid.Resources>
@@ -84,6 +84,7 @@
                       SelectedItem="{Binding SelectedPropertyObject}"
                       materialDesign:HintAssist.Hint="{DynamicResource selectPropertyObject}"/>
           </Grid>
+          
           <Grid Margin="10,30,0,0">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="1*"/>
@@ -101,6 +102,7 @@
                       Style="{DynamicResource MaterialDesignDatePicker}"
                       materialDesign:HintAssist.Hint="{DynamicResource rentEnd}"/>
           </Grid>
+          
           <Grid Margin="10,20,0,0">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="1*"/>
@@ -152,7 +154,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"/>
 
-        <Button Grid.Column="1"
+          <Button Grid.Column="1"
             Command="{Binding BtnDelete}" 
             Content="{DynamicResource delete}"
             Style="{DynamicResource MaterialDesignRaisedButton}"

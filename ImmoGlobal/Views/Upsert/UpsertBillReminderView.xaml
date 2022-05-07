@@ -37,6 +37,7 @@
                FontWeight="Bold"
                TextWrapping="Wrap">
       <Run Text="{Binding FormTitel}"/>
+        
       </TextBlock>
       <Grid Grid.Row="1">
         <Grid.RowDefinitions>

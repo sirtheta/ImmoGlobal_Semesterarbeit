@@ -13,6 +13,7 @@ namespace ImmoGlobal.ViewModels
       CreditorCollection = new ObservableCollection<Persona>(DbController.GetAllCreditorsDB());
       SelectedCreditorDetailsViewModel = null;
       OnPropertyChanged(nameof(CreditorCollection));
+      SelectedCreditor = CreditorCollection[0];
     }
 
     public ObservableCollection<Persona> CreditorCollection { get; set; }

@@ -69,6 +69,7 @@
                      Style="{DynamicResource MaterialDesignOutlinedTextBox}"
                      HorizontalAlignment="Stretch"/>
           </Grid>
+
           <Grid>
             <Grid.ColumnDefinitions>
               <ColumnDefinition/>
@@ -107,9 +108,6 @@
                       Style="{DynamicResource MaterialDesignDatePicker}"
                       materialDesign:HintAssist.Hint="{DynamicResource date}"/>
           </Grid>
-
-
-
 
         </StackPanel>
         <Grid Grid.Row="1" Margin="0,-50,0,10">
