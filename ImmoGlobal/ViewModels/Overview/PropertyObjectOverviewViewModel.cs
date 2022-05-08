@@ -9,7 +9,9 @@ namespace ImmoGlobal.ViewModels
     internal override void OnLoadedEvent(object obj)
     {
       PropertyObjectCollection = new();
-      _selectedProperty.GetPropertyObjects().ToList().ForEach(po => PropertyObjectCollection.Add(po));
+      var propObj = _selectedProperty.GetPropertyObjectsToProperty();
+      propObj.ToList().ForEach(po => PropertyObjectCollection.Add(po));
+      PropertyId = _selectedProperty.PropertyId;
       Housekeeper = _selectedProperty.GetHouskeeper().FullName;
       Description = _selectedProperty.Description;
       OnPropertyChanged(nameof(PropertyObjectCollection));
@@ -23,10 +25,20 @@ namespace ImmoGlobal.ViewModels
     }
 
     private readonly Property _selectedProperty;
-
+    private int _propertyId;
     public ObservableCollection<PropertyObject>? PropertyObjectCollection { get; set; }
     public string Housekeeper { get; set; }
 
     public string Description { get; set; }
+
+    public int PropertyId
+    {
+      get => _propertyId;
+      set
+      {
+        _propertyId = value;
+        OnPropertyChanged();
+      }
+    }
   }
 }

@@ -27,10 +27,8 @@ namespace ImmoGlobal.MainClasses
       get => GetPersonaToInvoice().FullName;
     }
 
-    internal Persona GetPersonaToInvoice()
-    {
-      return DbController.GetPersonaToInvoiceDB(this);
-    }
+    internal Persona GetPersonaToInvoice() => DbController.GetPersonaToInvoiceDB(this);
+
 
     public double TotalValue
     {
@@ -45,10 +43,7 @@ namespace ImmoGlobal.MainClasses
       }
     }
 
-    internal ICollection<InvoicePosition> GetInvoicePositonToInvoice()
-    {
-      return DbController.GetInvoicePositionsToInvoiceDB(this);
-    }
+    internal ICollection<InvoicePosition> GetInvoicePositonToInvoice() => DbController.GetInvoicePositionsToInvoiceDB(this);
 
     public string InvoiceCategoryString
     {
@@ -97,9 +92,6 @@ namespace ImmoGlobal.MainClasses
       }
     }
 
-    internal ICollection<BillReminder>? GetBillReminders()
-    {
-      return DbController.GetBillRemindersToInvoiceDB(this);
-    }
+    internal ICollection<BillReminder>? GetBillReminders() => DbController.GetBillRemindersToInvoiceDB(this);
   }
 }

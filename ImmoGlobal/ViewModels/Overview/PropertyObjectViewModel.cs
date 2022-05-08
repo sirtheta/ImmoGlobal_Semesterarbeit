@@ -10,14 +10,14 @@ namespace ImmoGlobal.ViewModels
   {
     internal override void OnLoadedEvent(object obj)
     {
-      RenterDetailsViewModel = new RenterDetailsViewModel(Renter);
+      RentalContracsOfPropertyObject = new(PropertyObject.GetRentalContractToPropertyObject());
       InvoicesOfPropertyObject = new(PropertyObject.GetInvoicesOfPropertyObject());
-      RentalContracsOfPropertyObject = new(PropertyObject.GetRentalContractToObject());
+      RenterDetailsViewModel = new RenterDetailsViewModel(Renter);
       OnPropertyChanged(nameof(RenterDetailsViewModel));
       OnPropertyChanged(nameof(InvoicesOfPropertyObject));
       OnPropertyChanged(nameof(RentalContracsOfPropertyObject));
     }
-    
+
     internal PropertyObjectViewModel(PropertyObject propertyObject)
     {
       PropertyObject = propertyObject;

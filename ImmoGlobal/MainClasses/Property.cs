@@ -26,29 +26,20 @@ namespace ImmoGlobal.MainClasses
 
     public int NumberOfPropertyObjects
     {
-      get
-      {
-        return GetPropertyObjects()?.Count ?? 0;
-      }
+      get => GetPropertyObjectsToProperty()?.Count ?? 0;
     }
 
     /// <summary>
     /// gets all PropertyObjects of the Property
     /// </summary>
     /// <returns></returns>
-    internal ICollection<PropertyObject> GetPropertyObjects()
-    {
-      return DbController.GetPropertyObjectsToPropertyDB(this);
-    }
+    internal ICollection<PropertyObject> GetPropertyObjectsToProperty() => DbController.GetPropertyObjectsToPropertyDB(this);
 
     /// <summary>
     /// get all invoice positions to Property
     /// </summary>
     /// <returns></returns>
-    internal ICollection<InvoicePosition> GetInvoicePositions()
-    {
-      return DbController.GetInvoicePositionsToPropertyDB(this);
-    }
+    internal ICollection<InvoicePosition> GetInvoicePositions() => DbController.GetInvoicePositionsToPropertyDB(this);
 
     /// <summary>
     /// get a list of all invoices to the property
@@ -57,7 +48,7 @@ namespace ImmoGlobal.MainClasses
     internal List<Invoice>? GetAllInvoicesRelatedToProperty()
     {
       List<Invoice> invoices = new();
-      foreach (var item in GetPropertyObjects())
+      foreach (var item in GetPropertyObjectsToProperty())
       {
         invoices = new(item.GetInvoicesOfPropertyObject());
       }
@@ -70,21 +61,21 @@ namespace ImmoGlobal.MainClasses
     }
 
 
-    private readonly List<RentalContract> _rentalContracts = new();
 
+    private readonly List<RentalContract> _rentalContracts = new();
     /// <summary>
     /// Gets all rental contracts of all PropertyObjects in a property
     /// </summary>
-    private List<RentalContract>? RentalContracts()
+    private List<RentalContract>? RentalContractsInPropertyObject()
     {
-      foreach (var item in GetPropertyObjects())
+      foreach (var item in GetPropertyObjectsToProperty())
       {
-        foreach (var contract in DbController.GetAllRentalContractsToPropertyObjectDB(item).ToList())
+        foreach (var contract in item.GetRentalContractToPropertyObject())
         {
           _rentalContracts.Add(contract);
         }
       }
-      return _rentalContracts;
+      return _rentalContracts.DistinctBy(p => p.RentalContractId).ToList();
     }
 
     /// <summary>
@@ -92,16 +83,15 @@ namespace ImmoGlobal.MainClasses
     /// </summary>
     public int NumberOfActiveContracts
     {
-      get => RentalContracts()?.Where(x => x.ContractState == EContractState.Active).Count() ?? 0;
-
+      get => RentalContractsInPropertyObject()?.Count(p => p.ContractState == EContractState.Active) ?? 0;
     }
 
     /// <summary>
     /// Gets all inactive rental conracts in a property
     /// </summary>
-    public int NumberOfInactiveContracts
+    public int NumberOfNotRentedPropertyObjects
     {
-      get => RentalContracts()?.Where(x => x.ContractState != EContractState.Active).Count() ?? 0;
+      get => NumberOfPropertyObjects - NumberOfActiveContracts;
     }
 
     public string DescriptionAndAddress
@@ -113,10 +103,8 @@ namespace ImmoGlobal.MainClasses
     /// returns string of housekeeper name
     /// </summary>
     /// <returns>string FirstName + LastName</returns>
-    internal Persona GetHouskeeper()
-    {
-      return DbController.GetHouskeeperToPropertyDB(this);
-    }
+    internal Persona GetHouskeeper() => DbController.GetHouskeeperToPropertyDB(this);
+
 
     public ICommand PropertyClickCommand
     {

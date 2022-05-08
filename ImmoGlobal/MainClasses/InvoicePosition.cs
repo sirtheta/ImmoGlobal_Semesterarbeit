@@ -19,25 +19,13 @@ namespace ImmoGlobal.MainClasses
     public Account Account { get; set; }
 
 
-    internal Invoice GetInvoiceToInvoicePosition()
-    {
-      return DbController.GetInvoiceToPositionDB(this);
-    }
+    internal Invoice GetInvoiceToInvoicePosition() => DbController.GetInvoiceToPositionDB(this);
 
-    internal Account GetAccountToInvoicePosition()
-    {
-      return DbController.GetAccountToInvoicePositionDB(this);
-    }
+    internal Account GetAccountToInvoicePosition() => DbController.GetAccountToInvoicePositionDB(this);
 
-    internal Property? GetPropertyToInvoicePosition()
-    {
-      return DbController.GetPropertyToInvoicePosition(this);
-    }
+    internal Property? GetPropertyToInvoicePosition() => DbController.GetPropertyToInvoicePosition(this);
 
-    internal PropertyObject? GetPropertyObjectToInvoicePosition()
-    {
-      return DbController.GetPropertyObjectToInvoicePosition(this);
-    }
+    internal PropertyObject? GetPropertyObjectToInvoicePosition() => DbController.GetPropertyObjectToInvoicePosition(this);
 
     /// <summary>
     /// maps the Additional cost enum to the string for the combobox
@@ -86,10 +74,7 @@ namespace ImmoGlobal.MainClasses
 
     public string AccountDescription
     {
-      get
-      {
-        return GetAccountToInvoicePosition().Description ?? "";
-      }
+      get => GetAccountToInvoicePosition().Description ?? "";
     }
   }
 }

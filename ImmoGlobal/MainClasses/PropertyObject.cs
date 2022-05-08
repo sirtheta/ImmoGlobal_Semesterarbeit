@@ -30,10 +30,7 @@ namespace ImmoGlobal.MainClasses
     public bool Tumbler { get; set; }
     public ICollection<RentalContract>? RentalContracts { get; set; }
 
-    internal ICollection<InvoicePosition> GetInvoicePositions()
-    {
-      return DbController.GetInvoicePositionsToPropertyObjectDB(this);
-    }
+    internal ICollection<InvoicePosition> GetInvoicePositions() => DbController.GetInvoicePositionsToPropertyObjectDB(this);
 
     /// <summary>
     /// returns all invoices related to the property object
@@ -53,25 +50,19 @@ namespace ImmoGlobal.MainClasses
     /// returns a collection of rental contracts related to the property
     /// </summary>
     /// <returns></returns>
-    internal ICollection<RentalContract> GetRentalContractToObject()
-    {
-      return DbController.GetAllRentalContractsToPropertyObjectDB(this);
-    }
+    internal ICollection<RentalContract> GetRentalContractToPropertyObject() => DbController.GetAllRentalContractsToPropertyObjectDB(this);
 
     /// <summary>
     /// returns property relatet to this property object
     /// </summary>
     /// <returns></returns>
-    internal Property? GetPropertyToPropertyObject()
-    {
-      return DbController.GetPropertyToPropertyObjectDB(this);
-    }
+    internal Property? GetPropertyToPropertyObject() => DbController.GetPropertyToPropertyObjectDB(this);
 
     public string PropertyDescription => GetPropertyToPropertyObject()?.Description ?? "";
 
     public string CurrentRenter
     {
-      get => GetRentalContractToObject().Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.RenterFullName ??
+      get => GetRentalContractToPropertyObject().Where(x => x.ContractState == EContractState.Active).FirstOrDefault()?.RenterFullName ??
           Application.Current.TryFindResource("notRented2") as string ?? "not rented";
     }
 

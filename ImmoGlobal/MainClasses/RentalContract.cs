@@ -24,10 +24,7 @@ namespace ImmoGlobal.MainClasses
       get => GetRenter()?.FullName ?? "";
     }
 
-    internal Persona GetRenter()
-    {
-      return DbController.GetRenterToRentalContractDB(this);
-    }
+    internal Persona GetRenter() => DbController.GetRenterToRentalContractDB(this);
 
     public string DepositString
     {
@@ -50,10 +47,7 @@ namespace ImmoGlobal.MainClasses
       }
     }
 
-    public PropertyObject? GetPropertyObjectToRentalContract()
-    {
-      return DbController.GetPropertyObjectToRentalContractDB(this);
-    }
+    public PropertyObject? GetPropertyObjectToRentalContract() => DbController.GetPropertyObjectToRentalContractDB(this);
 
     public string PropertyObjectName
     {

@@ -208,7 +208,7 @@ namespace ImmoGlobal.ViewModels
 
     internal override void SaveClicked(object obj)
     {
-      if (Id == null && ContractState == EContractState.Active && DbController.GetPropertyObjectsToPropertyDB(_selectedProperty).Where(x => !x.GetRentalContractToObject().Any(y => y.ContractState == EContractState.Active)).Any())
+      if (Id == null && ContractState == EContractState.Active && DbController.GetPropertyObjectsToPropertyDB(_selectedProperty).Where(x => !x.GetRentalContractToPropertyObject().Any(y => y.ContractState == EContractState.Active)).Any())
       {
         ShowMessageBox(Application.Current.TryFindResource("errorActivContract") as string ?? "Cannot add second activ contract", MessageType.Error, MessageButtons.Ok);
         return;

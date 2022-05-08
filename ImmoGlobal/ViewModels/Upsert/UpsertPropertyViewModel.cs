@@ -141,7 +141,7 @@ namespace ImmoGlobal.ViewModels
 
     internal override void DeleteClicked(object obj)
     {
-      if (Property.GetPropertyObjects().Count == 0 && DbController.DeletePropertyDB(Id))
+      if (Property.GetPropertyObjectsToProperty().Count == 0 && DbController.DeletePropertyDB(Id))
       {
         ShowNotification("Success", Application.Current.TryFindResource("successDeleteProperty") as string ?? "Property deleted successfully", NotificationType.Success);
         MainWindowViewModel.GetInstance.SelectedViewModel = new PropertyOverviewViewModel();
