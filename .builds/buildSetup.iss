@@ -30,6 +30,7 @@ OutputBaseFilename=ImmoGlobal Setup
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+SetupIconFile=..\ImmoGlobal\Resources\icon.ico
 
 [Languages]
 Name: "german"; MessagesFile: "compiler:Languages\German.isl"
