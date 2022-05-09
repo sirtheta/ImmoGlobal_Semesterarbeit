@@ -29,7 +29,6 @@ namespace ImmoGlobal.MainClasses
 
     internal Persona GetPersonaToInvoice() => DbController.GetPersonaToInvoiceDB(this);
 
-
     public double TotalValue
     {
       get

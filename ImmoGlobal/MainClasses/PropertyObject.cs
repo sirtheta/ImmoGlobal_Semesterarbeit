@@ -43,7 +43,7 @@ namespace ImmoGlobal.MainClasses
       {
         invoices.Add(item.GetInvoiceToInvoicePosition());
       }
-      return new List<Invoice>(invoices.DistinctBy(p => p.InvoiceId));
+      return invoices.DistinctBy(p => p.InvoiceId).ToList();
     }
 
     /// <summary>

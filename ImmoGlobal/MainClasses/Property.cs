@@ -57,17 +57,17 @@ namespace ImmoGlobal.MainClasses
       {
         invoices.Add(item.GetInvoiceToInvoicePosition());
       }
-      return new List<Invoice>(invoices.DistinctBy(p => p.InvoiceId));
+      return invoices.DistinctBy(p => p.InvoiceId).ToList();
     }
 
 
 
-    private readonly List<RentalContract> _rentalContracts = new();
     /// <summary>
     /// Gets all rental contracts of all PropertyObjects in a property
     /// </summary>
     private List<RentalContract>? RentalContractsInPropertyObject()
     {
+      List<RentalContract> _rentalContracts = new();
       foreach (var item in GetPropertyObjectsToProperty())
       {
         foreach (var contract in item.GetRentalContractToPropertyObject())
@@ -75,7 +75,7 @@ namespace ImmoGlobal.MainClasses
           _rentalContracts.Add(contract);
         }
       }
-      return _rentalContracts.DistinctBy(p => p.RentalContractId).ToList();
+      return _rentalContracts;
     }
 
     /// <summary>
