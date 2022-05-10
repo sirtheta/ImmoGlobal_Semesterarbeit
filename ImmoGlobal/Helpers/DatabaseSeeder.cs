@@ -164,6 +164,15 @@ namespace ImmoGlobal.Helpers
       var _user2 = new User() { FirstName = "Patrick", LastName = "Graber", Password = SecurePasswordHasher.Hash("2"), Email = "2", Role = ERole.User };
       var _user3 = new User() { FirstName = "Test", LastName = "User", Password = SecurePasswordHasher.Hash("3"), Email = "3", Role = ERole.Viewer };
 
+
+      List<Property> properties = new();
+      for (int i = 0; i < 20; i++)
+      {
+        properties.Add(new Property() { Housekeeper = _housekeeper, Description = "TestLiegenschaft1", Address = "TestAdress1", ZipCode = 3612, City = "TestCity1", PropertyInsurance = "Helvetia1", PersonInsurance = "Mobiliar1", LiabilityInsurance = "Emmitaler1" });
+      }
+
+
+
       using var db = new ImmoGlobalContext();
 
       db.Properties.Add(_property1);
@@ -203,6 +212,7 @@ namespace ImmoGlobal.Helpers
       db.Users.Add(_user1);
       db.Users.Add(_user2);
       db.Users.Add(_user3);
+      db.Properties.AddRange(properties);
       db.SaveChanges();
     }
   }

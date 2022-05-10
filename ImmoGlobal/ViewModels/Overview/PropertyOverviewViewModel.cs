@@ -1,6 +1,7 @@
 ﻿using ImmoGlobal.Database;
 using ImmoGlobal.MainClasses;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace ImmoGlobal.ViewModels
 {
@@ -8,10 +9,17 @@ namespace ImmoGlobal.ViewModels
   {
     internal override void OnLoadedEvent(object obj)
     {
-      PropertyCollection = new(DbController.GetAllPropertiesDB());
+      var loadProps = new Task(LoadProperties);
+      loadProps.Start();
       OnPropertyChanged(nameof(PropertyCollection));
     }
 
     public ObservableCollection<Property>? PropertyCollection { get; set; }
+
+    private void LoadProperties()
+    {
+      PropertyCollection = new(DbController.GetAllPropertiesDB());
+      OnPropertyChanged(nameof(PropertyCollection));
+    }
   }
 }
